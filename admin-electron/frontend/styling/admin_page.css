@@ -43,9 +43,13 @@ body{
 }
 
 /* ADMIN'S MAIN FEED  BEGINS HERE*/
-#clients-container{
+#sellers_container{
     display: none;
 }
+
+/* #clients_container {
+    display: none;
+} */
 .main-section{
     height: 100%;
     width: 88%;
@@ -186,7 +190,6 @@ background: black;
 .general-SELLERS {
     width: 94%;
     margin-left: 3%;
-    /* height: 80px; */
     background: var(--light-blue);
     border-radius: 50px;
     display: grid;
@@ -196,7 +199,7 @@ background: black;
     padding: 5px ;
 }
 
-.option {
+.general-SELLERS .option {
     width: 90%;
     height: 100%;
     background-color: var(--bg-color);
@@ -208,7 +211,7 @@ background: black;
     margin-left: 5%;
 }
 
-.option input {
+.general-SELLERS .option input {
     min-width: 50%;
     padding: 5px 20px;
     border-radius: 30px;
@@ -216,11 +219,11 @@ background: black;
     margin: 5px ;
 }
 
-.option input:focus {
+.general-SELLERS .option input:focus {
     outline: none;
 }
 
-.option select {
+.general-SELLERS .option select {
     margin: 5px;
     min-width: 50%;
     padding: 5px 20px;
