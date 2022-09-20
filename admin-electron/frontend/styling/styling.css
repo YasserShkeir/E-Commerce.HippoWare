@@ -8,6 +8,14 @@ html{
     scroll-behavior: smooth;
 }
 
+/* 
+1_ :root is a way of creating variables in css.
+2_ you include -- (two dashes before the variable).
+3_  you assingn a value to it (color, numbers such as sizes..etc).
+4_ you use  unified variable as a value such as in the body tag below where i gave the background value a variable declared and assigned in :root tag.
+5_ this helps unifies and organize the code
+copy paste the root to all css files and change accordingly if needed  .
+*/
 :root{
     --bg-color: #A9CEF4;
     --dark-blue: #181818;
