@@ -1,0 +1,15 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form{
+    background: white;
+    width:50vh;
+    height:80vh;
+    display: flex;
+    flex-flow: wrap column;
+    justify-self: center;
+    align-items: center;
+}
