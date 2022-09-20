@@ -153,7 +153,7 @@ background: black;
 }
 
 .right-section button{
-    min-width: 120px;
+    min-width: 150px;
     border-radius: 30px;
     border: none;
     color: white;
@@ -162,7 +162,13 @@ background: black;
     justify-content: center;
     align-items: center;
     padding: 2px 10px;
+    cursor: pointer;
 }
+
+.right-section button:hover {
+    filter: brightness(.8);
+    transform: scale(1.02);
+}    
 
 .red-btn{
     background: red;
