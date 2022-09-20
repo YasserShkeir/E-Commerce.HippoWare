@@ -109,6 +109,7 @@ body{
     margin-left: 5%;
     margin-top: 2%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 
 }
@@ -132,4 +133,38 @@ background: black;
     justify-content: space-evenly;
     align-items: flex-start;
     margin-left: 15px;
+}
+
+.right-section{
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: space-around;
+    align-items: center;
+    height: 80%;
+    border-radius: 30px;
+    margin-right: 1%;
+}
+
+.right-section button{
+    min-width: 120px;
+    border-radius: 30px;
+    border: none;
+    color: white;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 10px;
+}
+
+.ban-btn{
+    background: red;
+}
+
+.unban-btn {
+    background: var(--light-blue);
+}
+
+.view-btn{
+    background: var(--dark-blue);
 }
