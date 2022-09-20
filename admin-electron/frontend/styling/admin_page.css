@@ -43,6 +43,9 @@ body{
 }
 
 /* ADMIN'S MAIN FEED  BEGINS HERE*/
+#clients-container{
+    display: none;
+}
 .main-section{
     height: 100%;
     width: 88%;
@@ -102,7 +105,8 @@ body{
     border: none;
 }
 
-.client-div{
+.client-div,
+.sellers-div{
     width: 90%;
     height: 12%;
     background: var(--bg-color);
@@ -121,14 +125,16 @@ body{
     margin-left: 1%;
 }
 
-.client-div img{
+.client-div img,
+.sellers-div img{
 width: 60px;
 aspect-ratio: 1 / 1;
 border-radius: 20%;
 background: black;
 }
 
-.client-div .info{
+.client-div .info,
+.sellers-div .info{
     display: flex;
     flex-flow: wrap column;
     justify-content: space-evenly;
@@ -158,14 +164,15 @@ background: black;
     padding: 2px 10px;
 }
 
-.ban-btn{
+.red-btn{
     background: red;
 }
 
-.unban-btn {
+.light-btn {
     background: var(--light-blue);
 }
 
-.view-btn{
+.dark-btn{
     background: var(--dark-blue);
 }
+

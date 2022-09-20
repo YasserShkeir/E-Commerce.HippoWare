@@ -31,142 +31,195 @@
     <!-- MAIN SECTION BEGINS HERE -->
     <section class="main-section">
 
-        <!-- wrapping the title in a div to center it -->
-        <div class="title-div">
-            <h1>Clients List</h1>
-        </div>
-
-        <!-- admins options and general info -->
-        <div class="general">
-
-            <div class="option">
-                <h2>Search</h2>
-                <input type="text" placeholder="type here..">
+        <div id="clients-container">
+            <!-- wrapping the title in a div to center it -->
+            <div class="title-div">
+                <h1>Clients List</h1>
             </div>
-
-            <div class="option">
-                <h2>Status</h2>
-                <select name="status" id="status">
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                </select>
-            </div>
-
-            <div class="option">
-                <h2>Filter</h2>
-                <select name="status" id="status">
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                </select>
-            </div>
-
-        </div>
-
-        <!-- clients below -->
-        <div class="client-div">
-
-            <div class="left-section">
-
-                <img src="/admin-electron/assets/images/logo-removebg-preview.png" alt="">
-
-                <div class="info">
-                    <h3>Name Name</h3>
-                    <h4>Registered at <span id="registration_date">xx/xx/xxxx</span></h4>
+        
+            <!-- admins options and general info -->
+            <div class="general">
+        
+                <div class="option">
+                    <h2>Search</h2>
+                    <input type="text" placeholder="type here..">
                 </div>
-
-            </div>
-
-            <div class="right-section">
-                <button class="view-btn"><i class="material-icons">leaderboard</i> <p>View Stats</p></button>
-                
-                <button class="ban-btn">
-                    <i class="material-icons">block</i>
-                    <p>Ban User</p>
-                </button>
-            </div>
-
-        </div>
-        <!-- clients -->
-        <div class="client-div">
         
-            <div class="left-section">
+                <div class="option">
+                    <h2>Status</h2>
+                    <select name="status" id="status">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                </div>
         
-                <img src="/admin-electron/assets/images/logo-removebg-preview.png" alt="">
-        
-                <div class="info">
-                    <h3>Name Name</h3>
-                    <h4>Registered at <span id="registration_date">xx/xx/xxxx</span></h4>
+                <div class="option">
+                    <h2>Filter</h2>
+                    <select name="status" id="status">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
                 </div>
         
             </div>
         
-            <div class="right-section">
-                <button class="view-btn"><i class="material-icons">leaderboard</i>
-                    <p>View Stats</p>
-                </button>
+            <!-- clients below -->
+            <div class="client-div">
         
-                <button class="unban-btn">
-                    <i class="material-icons">block</i>
-                    <p>UnBan User</p>
-                </button>
-            </div>
+                <div class="left-section">
         
-        </div>
-        <!-- clients -->
-        <div class="client-div">
+                    <img src="/admin-electron/assets/images/logo-removebg-preview.png" alt="">
         
-            <div class="left-section">
+                    <div class="info">
+                        <h3>Name Name</h3>
+                        <h4>Registered at <span id="registration_date">xx/xx/xxxx</span></h4>
+                    </div>
         
-                <img src="/admin-electron/assets/images/logo-removebg-preview.png" alt="">
+                </div>
         
-                <div class="info">
-                    <h3>Name Name</h3>
-                    <h4>Registered at <span id="registration_date">xx/xx/xxxx</span></h4>
+                <div class="right-section">
+                    <button class="dark-btn"><i class="material-icons">leaderboard</i>
+                        <p>View Stats</p>
+                    </button>
+        
+                    <button class="red-btn">
+                        <i class="material-icons">block</i>
+                        <p>Ban User</p>
+                    </button>
                 </div>
         
             </div>
+            <!-- clients -->
+            <div class="client-div">
         
-            <div class="right-section">
-                <button class="view-btn"><i class="material-icons">leaderboard</i>
-                    <p>View Stats</p>
-                </button>
+                <div class="left-section">
         
-                <button class="unban-btn">
-                    <i class="material-icons">block</i>
-                    <p>UnBan User</p>
-                </button>
-            </div>
+                    <img src="/admin-electron/assets/images/logo-removebg-preview.png" alt="">
         
-        </div>
-        <!-- clients -->
-        <div class="client-div">
+                    <div class="info">
+                        <h3>Name Name</h3>
+                        <h4>Registered at <span id="registration_date">xx/xx/xxxx</span></h4>
+                    </div>
         
-            <div class="left-section">
+                </div>
         
-                <img src="/admin-electron/assets/images/logo-removebg-preview.png" alt="">
+                <div class="right-section">
+                    <button class="dark-btn"><i class="material-icons">leaderboard</i>
+                        <p>View Stats</p>
+                    </button>
         
-                <div class="info">
-                    <h3>Name Name</h3>
-                    <h4>Registered at <span id="registration_date">xx/xx/xxxx</span></h4>
+                    <button class="light-btn">
+                        <i class="material-icons">block</i>
+                        <p>UnBan User</p>
+                    </button>
                 </div>
         
             </div>
+            <!-- clients -->
+            <div class="client-div">
         
-            <div class="right-section">
-                <button class="view-btn"><i class="material-icons">leaderboard</i>
-                    <p>View Stats</p>
-                </button>
+                <div class="left-section">
         
-                <button class="ban-btn">
-                    <i class="material-icons">block</i>
-                    <p>Ban User</p>
-                </button>
+                    <img src="/admin-electron/assets/images/logo-removebg-preview.png" alt="">
+        
+                    <div class="info">
+                        <h3>Name Name</h3>
+                        <h4>Registered at <span id="registration_date">xx/xx/xxxx</span></h4>
+                    </div>
+        
+                </div>
+        
+                <div class="right-section">
+                    <button class="dark-btn"><i class="material-icons">leaderboard</i>
+                        <p>View Stats</p>
+                    </button>
+        
+                    <button class="red-btn">
+                        <i class="material-icons">block</i>
+                        <p>UnBan User</p>
+                    </button>
+                </div>
+        
             </div>
+            <!-- clients -->
+            <div class="client-div">
         
+                <div class="left-section">
+        
+                    <img src="/admin-electron/assets/images/logo-removebg-preview.png" alt="">
+        
+                    <div class="info">
+                        <h3>Name Name</h3>
+                        <h4>Registered at <span id="registration_date">xx/xx/xxxx</span></h4>
+                    </div>
+        
+                </div>
+        
+                <div class="right-section">
+                    <button class="dark-btn"><i class="material-icons">leaderboard</i>
+                        <p>View Stats</p>
+                    </button>
+        
+                    <button class="red-btn">
+                        <i class="material-icons">block</i>
+                        <p>Ban User</p>
+                    </button>
+                </div>
+        
+            </div>
+            <!-- clients -->
         </div>
-        <!-- clients -->
+        <!-- END OF CLIENTS CONTAINER -->
+
+
+        <!-- SELLERS CONTAINER STARTS HERE -->
+        <div id="sellers-container">
+            <!-- wrapping the title in a div to center it -->
+            <div class="title-div">
+                <h1>Sellers List</h1>
+            </div>
+
+            <!-- admins options and general info -->
+            <div class="general-sellers">
+        
+                <div class="option">
+                    <h2>Search</h2>
+                    <input type="text" placeholder="type here..">
+                </div>
+        
+                <div class="option">
+                    <h2>From-To</h2>
+                    <select name="from-to" id="from-to">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                </div>
+
+                <div class="option">
+                    <h2>Status</h2>
+                    <select name="status" id="status">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                </div>
+        
+                <div class="option">
+                    <h2>Filter</h2>
+                    <select name="status" id="status">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                </div>
+        
+            </div>
+
+        <!-- END OF SELLERS CONTAINER -->
+
 
 
     </section>
