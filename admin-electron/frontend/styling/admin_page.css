@@ -176,3 +176,29 @@ background: black;
     background: var(--dark-blue);
 }
 
+/* SELLERS */
+.general-SELLERS {
+    width: 94%;
+    margin-left: 3%;
+    /* height: 80px; */
+    background: var(--light-blue);
+    border-radius: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5%;
+    padding: 5px ;
+}
+
+.option {
+    width: 90%;
+    height: 100%;
+    background-color: var(--bg-color);
+    border-radius: 50px;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 5%;
+}
+
