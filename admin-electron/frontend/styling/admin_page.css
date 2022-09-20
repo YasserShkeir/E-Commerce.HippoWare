@@ -14,6 +14,29 @@ body{
 }
 .nav-bar{
     background: var(--bg-color);
-    width: 10vw;
+    width: 12vw;
     height: 100vh;
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header-logo{
+    transform: scale(.6);
+}
+
+.header-link{
+    color: var(--dark-blue);
+    font-size: 20px;
+    margin: 5% 0;
+    text-decoration: none;
+    opacity: .6;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.header-link:hover {
+    text-decoration: underline;
+    opacity: 1;
 }
