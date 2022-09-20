@@ -1,0 +1,19 @@
+/* Reset  */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+:root{
+    --bg-color: #A9CEF4;
+    --dark-blue: #181818;
+    --light-blue: #7EA0B7;
+}
+
+body{
+    background: var(--bg-color);
+}
