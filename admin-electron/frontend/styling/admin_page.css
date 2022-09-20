@@ -12,6 +12,7 @@ body{
     justify-content: center;
     align-self: center;
 }
+
 .nav-bar{
     background: var(--bg-color);
     width: 12vw;

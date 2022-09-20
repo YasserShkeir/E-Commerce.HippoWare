@@ -24,4 +24,5 @@ copy paste the root to all css files and change accordingly if needed  .
 
 body{
     background: var(--bg-color);
+    font-family: Arial, Helvetica, sans-serif;
 }
