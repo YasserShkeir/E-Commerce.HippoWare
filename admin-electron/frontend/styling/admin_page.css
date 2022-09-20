@@ -59,3 +59,22 @@ body{
     font-size: 30px;
     color: var(--dark-blue);
 }
+
+.general{
+    width: 94%;
+    margin-left: 3%;
+    height: 8%;
+    background: var(--light-blue);
+    border-radius: 50px;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.option{
+    width:31%;
+    height: 75%;
+    background-color: var(--bg-color);
+    border-radius: 50px;
+}
