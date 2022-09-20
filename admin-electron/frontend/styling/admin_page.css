@@ -8,7 +8,7 @@
 body{
     background: #f2fdff;
     display: flex;
-    flex-flow: wrap column;
+    flex-flow: wrap row;
     justify-content: center;
     align-self: center;
 }
@@ -39,4 +39,23 @@ body{
 .header-link:hover {
     text-decoration: underline;
     opacity: 1;
+}
+
+/* ADMIN'S MAIN FEED  BEGINS HERE*/
+.main-section{
+    height: 100%;
+    width: 88%;
+}
+
+.title-div{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-div h1{
+    font-size: 30px;
+    color: var(--dark-blue);
 }
