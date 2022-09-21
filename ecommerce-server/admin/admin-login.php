@@ -7,6 +7,7 @@ require '../vendor/autoload.php';
 
 use \Firebase\JWT\JWT;
 
+
 $obj = new Database();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -18,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     foreach ($datas as $data) {
         $id = $data['id'];
         $email = $data['email'];
-        $name = $data['first_name'] . " " . $data['first_name'];
+        $name = $data['first_name'] . " " . $data['last_name'];
         $dbpass = $data['password'];
         // $password=$data['password'];
         if ($dbpass != $password) {
@@ -28,14 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ]);
         } else {
             $payload = [
-                'exp' => time() + 1000, //10 mint
+                'exp' => time() + 1440000, //10 mint
                 'data' => [
                     'id' => $id,
                     'name' => $name,
                     'email' => $email,
                 ],
             ];
-            $secret_key = "Hilal ahmad khan";
+            $secret_key = "Hippo";
             $jwt = JWT::encode($payload, $secret_key, 'HS256');
             echo json_encode([
                 'status' => 1,

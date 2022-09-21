@@ -68,7 +68,6 @@ class Database
     // get data
     public function select($table, $row = "*", $join = null, $where = null, $order = null, $limit = null)
     {
-            print "yes";
             $sql = "SELECT $row FROM $table";
             if ($join != null) {
                 $sql .= " JOIN $join";
