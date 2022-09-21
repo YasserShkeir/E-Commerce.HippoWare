@@ -1,7 +1,13 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
 body{
     background-color: white;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden ;
     
 }
 :root{
@@ -11,10 +17,9 @@ body{
     --green-blue: #597081;
 }
 .nav-bar{
-    
     padding: 10px 20px;
     height: 80px;
-    width: 100vw;
+    /* width: 100%; */
     display: flex;
     justify-content: space-between;
     background-color: var(--bg-color);
@@ -139,11 +144,25 @@ input:focus{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
 }
 .jacket{
+    width: 100%;
+    height: 100%;
+    margin: 20px;
+    border-radius: 10px;
+    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.3));
+}
+
+.product-card{
     width: 300px;
     height: 200px;
-    margin: 20px;
+    margin: 15px;
+}
+
+.jacket:hover {
+    margin-bottom: 10px;
+    scale: 1.05;
 }
 
 /************************/
