@@ -33,17 +33,16 @@
     <!-- MAIN SECTION BEGINS HERE -->
     <section class="main-section">
 
-
-        <!-- SELLERS CONTAINER STARTS HERE -->
-        <div id="sellers_container">
+        <!-- Statistics CONTAINER STARTS HERE -->
+        <div id="statistics_container">
             <!-- wrapping the title in a div to center it -->
             <div class="title-div">
                 <h1>Statistics List</h1>
             </div>
-
+        
             <!-- admins options and general info -->
             <div class="general-infographics">
-
+        
                 <div class="option">
                     <h2>Users type</h2>
                     <select name="from-to" id="from-to">
@@ -52,7 +51,7 @@
                         <option value=""></option>
                     </select>
                 </div>
-
+        
                 <div class="option">
                     <h2>From-To</h2>
                     <select name="from-to" id="from-to">
@@ -61,7 +60,7 @@
                         <option value=""></option>
                     </select>
                 </div>
-
+        
                 <div class="option">
                     <h2>infographics type</h2>
                     <select name="status" id="status">
@@ -70,7 +69,7 @@
                         <option value=""></option>
                     </select>
                 </div>
-
+        
                 <div class="option">
                     <h2>Filter</h2>
                     <select name="status" id="status">
@@ -79,21 +78,47 @@
                         <option value=""></option>
                     </select>
                 </div>
-
+        
             </div>
+        </div>
 
-            <!-- INFOGRAPHICS BELOW -->
-            <div class="infographics-div">
+        <div class="infographics">
 
+                    <!-- CHART -->
+                    <div class="row_flex">
+                    
+                        <div class="chart" id="chart">
+                    
+                    
+                        </div>
+                    
+                        <!-- PIECHART -->
+                        <div class="piechart" id="piechart">
+                    
+                        </div>
+                    
+                    </div>
+                    
 
-            </div>
+                    <!-- LINE GRAPH -->
+                    <div class="line_graph" id="line_graph">
+                    
+                    </div>
 
-
+        </div>
 
     </section>
     <!-- MAIN SECTION ENDS HERE -->
 
-    <script src="/admin-electron/frontend/scripts/admin_page.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="/admin-electron/frontend/scripts/admin_infographics.js"></script>
 </body>
 
 </html>
+
+
+
+
+
+
