@@ -164,7 +164,24 @@ input:focus{
     font-size: 14px;
 }
 
-/************************/
+ /************************/
+.top-products-displayed{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding:20px;
+}
+.top-product{
+    width: 300px;
+    height: 200px;
+    margin: 15px;
+    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.3));
+}
+.top-product:hover {
+    margin-bottom: 10px;
+    scale: 1.05;
+}
 
 
 @media only screen and (max-width: 1000px) {
