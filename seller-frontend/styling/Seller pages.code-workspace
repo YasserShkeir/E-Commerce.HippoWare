@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../../../Seller pages"
+		},
+		{
+			"path": "../../../signUp"
+		},
+		{
+			"path": "../../../homePage"
+		},
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../SE-Factory/E-Commerce.HippoWare/admin-electron"
+		}
+	],
+	"settings": {}
+}
