@@ -149,3 +149,23 @@ input:focus{
         max-width:150px;
     } */
 }
+@media only screen and (max-width: 800px) {
+    .nav-links{
+        display:none;
+    }
+    input{
+        width:45vw;
+    }
+    .website-name{
+        display: none;
+    }
+    .menu{
+        display: block;
+    }
+    .log-out{
+        display: none;
+    }
+    .category{
+        padding:20px;
+    }
+}
