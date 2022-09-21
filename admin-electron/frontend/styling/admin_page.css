@@ -251,3 +251,16 @@ background: black;
     height: 50%;
 }
 
+.chart {
+    width: 50%;
+    height: 30vh;
+}
+
+.piechart {
+    width: 50%;
+    height: 30vh;
+}
+
+.line_graph {
+    /* margin-top: 50px; */
+}
