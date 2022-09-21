@@ -64,6 +64,37 @@ class Database
             return false;
         }
     }
+
+    // get data
+    public function select($table, $row = "*", $join = null, $where = null, $order = null, $limit = null)
+    {
+        if ($this->tableExist($table)) {
+            $sql = "SELECT $row FROM $table";
+            if ($join != null) {
+                $sql .= " JOIN $join";
+            }
+            if ($where != null) {
+                $sql .= " WHERE $where";
+            }
+            if ($order != null) {
+                $sql .= " ORDER BY $order";
+            }
+            if ($limit != null) {
+                $sql .= " LIMIT $limit";
+            }
+            $query = $this->mysqli->query($sql);
+            if ($query) {
+                $this->result = $query->fetch_all(MYSQLI_ASSOC);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    
     private function _gettype($var) {
 	    if (is_string($var)) return 's';
 	    if (is_float($var)) return 'd';
@@ -77,5 +108,18 @@ class Database
         $val = $this->result;
         $this->result = array();
         return $val;
+    }
+
+    // close the connection
+    public function __destruct()
+    {
+        if ($this->conn) {
+            if ($this->mysqli->close()) {
+                $this->conn = false;
+                return true;
+            }
+        } else {
+            return false;
+        }
     }
 }
