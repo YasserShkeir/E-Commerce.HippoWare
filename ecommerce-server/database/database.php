@@ -1,4 +1,8 @@
 <?php
+header('Access-Control-Allow-Origin:*');
+require '../vendor/autoload.php';
+ini_set('memory_limit', '44M');
+
 class Database
 {
     private $localhost = "localhost";
@@ -30,7 +34,6 @@ class Database
     // insert data
     public function insert($table, $params = array())
     {
-        if ($this->tableExist($table)) {
             $table_column = implode(', ', array_keys($params));
             $sql = "INSERT INTO $table ($table_column) VALUES (";
             $values= array_values($params);
@@ -60,15 +63,12 @@ class Database
                 array_push($this->result, false);
                 return false;
             }
-        } else {
-            return false;
-        }
     }
 
     // get data
     public function select($table, $row = "*", $join = null, $where = null, $order = null, $limit = null)
     {
-        if ($this->tableExist($table)) {
+            print "yes";
             $sql = "SELECT $row FROM $table";
             if ($join != null) {
                 $sql .= " JOIN $join";
@@ -89,15 +89,11 @@ class Database
             } else {
                 return false;
             }
-        } else {
-            return false;
         }
-    }
 
     // update data
     public function update($table, $params = array(), $where = null)
     {
-        if ($this->tableExist($table)) {
             $arg = array();
             foreach ($params as $key => $val) {
                 $arg[] = "$key = '{$val}'";
@@ -113,14 +109,10 @@ class Database
                 array_push($this->result, false);
                 return false;
             }
-        } else {
-            return false;
-        }
     }
     // delete data
     public function delete($table, $where = null)
     {
-        if ($this->tableExist($table)) {
             $sql = "DELETE FROM $table";
             if ($where != null) {
                 $sql .= " WHERE $where";
@@ -132,25 +124,8 @@ class Database
                 array_push($this->result, false);
                 return false;
             }
-        } else {
-            return false;
-        }
     }
-    // table exist
-    private function tableExist($table)
-    {
-        $sql = "SHOW TABLES FROM $this->database LIKE '{$table}'";
-        $tableInDb = $this->mysqli->query($sql);
-        if ($tableInDb) {
-            if ($tableInDb->num_rows  == 1) {
-                return true;
-            } else {
-                array_push($this->result, $table . " Does not Exist");
-            }
-        } else {
-            return false;
-        }
-    }
+    
 
     private function _gettype($var) {
 	    if (is_string($var)) return 's';
