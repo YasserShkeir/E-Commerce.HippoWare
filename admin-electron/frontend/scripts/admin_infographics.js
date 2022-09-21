@@ -25,5 +25,33 @@ function drawChart() {
         var piechart = new google.visualization.PieChart(document.getElementById('piechart'));
         piechart.draw(data, piechart_options);
 
+        // BARCHART
+var barchart_options = {title:'Highest selling items',
+                    width:540,
+                    height:200,
+                    legend: 'none'};
+        var barchart = new google.visualization.BarChart(document.getElementById('chart'));
+        barchart.draw(data, barchart_options);
+
+
+        var data = google.visualization.arrayToDataTable([
+    ['Sales', 'Time'],
+    [50,7],[60,8],[70,8],[80,9],[90,9],[100,9],
+    [110,10],[120,11],[130,14],[140,14],[150,15]
+    ]);
+// Set Options
+var options = {
+    title: 'Sales',
+    hAxis: {title: 'Time'},
+    vAxis: {title: 'Sales'},
+    legend: 'none',
+    'width':1080,
+    'height': 225
+    
+};
+// Draw Chart
+var chart = new google.visualization.LineChart(line_graph);
+chart.draw(data, options);
+
 
 }
