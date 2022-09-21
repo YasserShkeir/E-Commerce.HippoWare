@@ -86,3 +86,27 @@ body {
 .advertisment-div img:hover {
     scale: 1.005;
 }
+
+/* TOP STORES */
+.top-stores{
+    display: flex;
+    flex-flow: wrap column;
+    background: blue;
+    
+}
+
+.top-stores-row {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-between;
+    align-items: center;
+    background: green;
+    width: 200vw;
+}
+
+.top-stores-row div{
+    width:24%;
+    height:100%;
+
+    background: red;
+}
