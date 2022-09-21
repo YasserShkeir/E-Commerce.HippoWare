@@ -1,0 +1,34 @@
+/* @font-face {
+    font-family: 'Inter200';
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+}
+
+@font-face {
+    font-family: 'Inter400';
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+}
+
+@font-face {
+    font-family: 'Inter600';
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+}
+
+@font-face {
+    font-family: 'Inter700';
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+    
+} */
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-color: #A9CEF4;
+    --dark-blue: #181818;
+    --light-blue: #7EA0B7;
+    --green-blue: #597081;
+    --light-blue: #F2FDFF;
+}
