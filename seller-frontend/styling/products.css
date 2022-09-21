@@ -10,3 +10,86 @@ body{
     --light-blue: #7EA0B7;
     --green-blue: #597081;
 }
+.nav-bar{
+    
+    padding: 10px 20px;
+    height: 80px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--bg-color);
+    box-sizing: border-box;
+    align-items: center;
+}
+.website-logo{
+    display: flex;
+    align-items: center;
+}
+.nav-links{
+    display: flex;
+    justify-content: space-between;
+    
+}
+a
+{
+    margin-left: 1.8vw;
+    margin-right: 1.8vw;
+    text-decoration: none;
+    color: var(--green-blue);
+    font-size: 20px;
+    font-weight: bold;
+}
+a:hover{
+    text-decoration: underline;
+}
+.ads-btn{
+    color: white;
+    background-color: var(--green-blue);
+    padding: 5px;
+    width:100px;
+    border: none;
+    border-radius: 20px;
+    margin-left: 1.8vw;
+}
+.search{
+    position: relative;
+}
+input{
+    width: 25vw;
+    height: 30px;
+    padding: 5px 0px;
+    padding-left: 30px;
+    border-radius: 20px;
+    border: none;
+}
+input:focus{
+    outline: none;
+}
+.search-icon{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left:10px;
+    top: 25%;
+}
+.logo{
+    width: 60px;
+    height: 60px ;
+    margin-right: 20px;
+
+}
+.website-name{
+    color:white;
+}
+.log-out{
+    cursor: pointer;
+    color: var(--green-blue);
+    font-weight: bold;
+}
+.menu{
+    width: 20px;
+    height: 20px;
+    display: none;
+    margin-right: 10px;
+}
+/******************************/
