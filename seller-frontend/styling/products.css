@@ -128,3 +128,17 @@ input:focus{
     scale: 0.9;
 }
 /********************/
+
+.products{
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.jacket{
+    width: 300px;
+    height: 200px;
+    margin: 20px;
+}
+
+/************************/
