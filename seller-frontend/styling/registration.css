@@ -18,21 +18,26 @@ body{
 form{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     background-color: var(--bg-color);
-    border-radius: 10px;
+    border-radius: 25px;
     filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
     width:40vw;
+    min-width: 300px;
     height: auto;
     padding:10px 50px;
+    
 }
 .logo{
-    width:100px;
-    height:100px;
-    margin:20px;
+    width:30%;
+    height:25%;
 }
 .joinhippo-header{
     color: white;
+}
+h1{
+    text-align: center;
 }
 /* .personal-info, .address, .password{
     display: flex;
@@ -47,18 +52,21 @@ form>*{
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
+
 h3{
     align-self: flex-start;
+    font-weight: bold;
 }
 .fullname, .home-details, .city-details, .signup-btns{
     display: flex;
+    flex-direction: row;
     width:100%;
     justify-content: space-between;
 }
 .fullname>*, .home-details>*, .city-details>*{
-    width:49%
+    width:49%;
 }
 .personal-info > *, .address > *, .password>*{
     margin-top: 15px;
@@ -70,15 +78,28 @@ input{
     border: none;
     padding: 10px;
 }
-.signup-btns>*{
-    display: flex;
-    flex-direction: row;
+.seller-btn, .client-btn{
     width:40%;
     height: 50px;
-    padding: 15px 40px;
     border: none;
-    border-radius: 14px;
+    border-radius: 35px;
     background-color: var(--green-blue);
     color: white;
     font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.seller-btn:active, .client-btn:active{
+    scale:0.9;
+}
+
+/* @media only screen and (max-width: 400px) {
+    .fullname, .home-details, .city-details{
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+} */
