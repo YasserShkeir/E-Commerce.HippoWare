@@ -1,0 +1,13 @@
+body{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+:root{
+    --bg-color: #A9CEF4;
+    --dark-blue: #181818;
+    --light-blue: #7EA0B7;
+    --green-blue: #597081;
+}
