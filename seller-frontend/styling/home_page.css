@@ -234,3 +234,10 @@ body {
 .signup-btn:hover {
     background: var(--dark-blue);
 }
+
+#signup_close_btn{
+    position: fixed;
+    top:0;
+    right:0%;
+    cursor: pointer;
+}
