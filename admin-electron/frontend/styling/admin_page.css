@@ -234,3 +234,20 @@ background: black;
     border-radius: 30px;
     border: none;
 }
+
+/* INFOGRAPHICS */
+.infographics {
+    display: flex;
+    flex-flow: wrap row;
+    height: 65%;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.row_flex {
+    display: flex;
+    flex-flow: wrap row;
+    width: 100%;
+    height: 50%;
+}
+
