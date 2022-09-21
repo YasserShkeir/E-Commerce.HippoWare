@@ -14,20 +14,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password =$_POST['password'];
 
-    $obj->select('users', '*', null, "email='{$email}'", null, null);
+    $obj->select('users', '*', null, "email='{$email}'", null, null); // selected data for given attribute
     $datas = $obj->getResult();
     foreach ($datas as $data) {
         $id = $data['id'];
         $email = $data['email'];
         $name = $data['first_name'] . " " . $data['last_name'];
         $dbpass = $data['password'];
-        // $password=$data['password'];
+        $user_type = $data['user_type_id'];
         if ($dbpass != $password) {
             echo json_encode([
                 'status' => 0,
                 'message' => 'Invalid Carditional',
             ]);
-        }else if( $data['user_id_type'] != 1){
+        }else if( $data['user_type_id'] != 1){ //makes sure is admin
             echo json_encode([
                 'status' => 0,
                 'message' => 'Not an admin',
@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'data' => [
                     'id' => $id,
                     'name' => $name,
+                    'user_type'=> $user_type,
                     'email' => $email,
                 ],
             ];
