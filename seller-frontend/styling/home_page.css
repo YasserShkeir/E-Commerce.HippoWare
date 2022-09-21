@@ -163,6 +163,7 @@ body {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
 }
+
 .signup-form{
     width : 20vw;
     min-width: 400px;
@@ -182,6 +183,10 @@ body {
     align-items: center;
 }
 
+.signup-form h4{
+    margin: 10px 0 0 5px;
+}
+
 .signup-form img{
     scale: .6;
 }
@@ -191,7 +196,6 @@ body {
     flex-flow: wrap column;
     justify-content: flex-start;
     align-items: flex-start;
-    /* background: red; */
 }
 
 .form-input-div input{
@@ -199,6 +203,8 @@ body {
     margin: 1% 0;
     padding: 5px;
     border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid white;
 }
 
 .flex-row{
