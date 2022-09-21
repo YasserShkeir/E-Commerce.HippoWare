@@ -1,266 +1,278 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
 
 :root {
-    --bg-color: #A9CEF4;
-    --dark-blue: #181818;
-    --light-blue: #7EA0B7;
+  --bg-color: #a9cef4;
+  --dark-blue: #181818;
+  --light-blue: #7ea0b7;
 }
 
-body{
-    background: #f2fdff;
-    display: flex;
-    flex-flow: wrap row;
-    justify-content: center;
-    align-self: center;
+body {
+  background: #f2fdff;
+  display: flex;
+  justify-content: center;
+  align-self: center;
 }
 
-.nav-bar{
-    background: var(--bg-color);
-    width: 12vw;
-    height: 100vh;
-    display: flex;
-    flex-flow: wrap column;
-    justify-content: flex-start;
-    align-items: center;
-    
+.nav-bar {
+  background: var(--bg-color);
+  width: fit-content;
+  height: 100vh;
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px;
 }
 
-.header-logo{
-    transform: scale(.6);
+.nav-bar img {
+  margin: 0px 10px 40px 10px;
 }
 
-.header-link{
-    color: var(--dark-blue);
-    font-size: 20px;
-    margin: 5% 0;
-    text-decoration: none;
-    opacity: .6;
-    padding: 5px 10px;
-    border-radius: 20px;
+.header-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+.header-link {
+  color: var(--dark-blue);
+  font-size: 20px;
+  text-decoration: none;
+  opacity: 0.6;
+  border-radius: 20px;
+  text-align: left;
+  width: 100%;
+  padding: 10px;
 }
 
 .header-link:hover {
-    text-decoration: underline;
-    opacity: 1;
+  text-decoration: none;
+  background-color: var(--dark-blue);
+  color: var(--bg-color);
+  opacity: 1;
 }
 
 /* ADMIN'S MAIN FEED  BEGINS HERE*/
 
-.main-section{
-    height: 100%;
-    width: 87.8%;
-    display: flex;
-    flex-flow: wrap column;
-
+.main-section {
+  height: 100%;
+  width: 87.8%;
+  display: flex;
+  flex-flow: wrap column;
 }
 
-.title-div{
-    height: 10vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.title-div {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.title-div h1{
-    font-size: 30px;
-    color: var(--dark-blue);
+.title-div h1 {
+  font-size: 30px;
+  color: var(--dark-blue);
 }
 
-.general{
-    width: 94%;
-    margin-left: 3%;
-    height: 8%;
-    background: var(--light-blue);
-    border-radius: 50px;
-    display: flex;
-    flex-flow: wrap row;
-    justify-content: space-around;
-    align-items: center;
+.general {
+  width: 94%;
+  margin-left: 3%;
+  height: 8%;
+  background: var(--light-blue);
+  border-radius: 50px;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.option{
-    width:31%;
-    height: 75%;
-    background-color: var(--bg-color);
-    border-radius: 50px;
-    display: flex;
-    flex-flow: wrap row;
-    justify-content: space-around;
-    align-items: center;
+.option {
+  width: 31%;
+  height: 75%;
+  background-color: var(--bg-color);
+  border-radius: 50px;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.option input{
-    min-width: 50%;
-    padding: 5px 20px;
-    border-radius: 30px;
-    border: none;
+.option input {
+  min-width: 50%;
+  padding: 5px 20px;
+  border-radius: 30px;
+  border: none;
 }
 
-.option input:focus{
-    outline: none;
+.option input:focus {
+  outline: none;
 }
 
 .option select {
-    min-width: 50%;
-    padding: 5px 20px;
-    border-radius: 30px;
-    border: none;
+  min-width: 50%;
+  padding: 5px 20px;
+  border-radius: 30px;
+  border: none;
 }
 
 .client-div,
-.sellers-div{
-    width: 90%;
-        height: fit-content;
-            padding: 5px;
-    background: var(--bg-color);
-    border-radius: 20px;
-    margin-left: 5%;
-    margin-top: 2%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+.sellers-div {
+  width: 90%;
+  height: fit-content;
+  padding: 5px;
+  background: var(--bg-color);
+  border-radius: 20px;
+  margin-left: 5%;
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.left-section{
-    display: flex;
-    flex-flow: wrap row;
-    margin-left: 1%;
+.left-section {
+  display: flex;
+  flex-flow: wrap row;
+  margin-left: 1%;
 }
 
 .client-div img,
-.sellers-div img{
-width: 60px;
-aspect-ratio: 1 / 1;
-border-radius: 20%;
-background: black;
+.sellers-div img {
+  width: 60px;
+  aspect-ratio: 1 / 1;
+  border-radius: 20%;
+  background: black;
 }
 
 .client-div .info,
-.sellers-div .info{
-    display: flex;
-    flex-flow: wrap column;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    margin-left: 15px;
+.sellers-div .info {
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin-left: 15px;
 }
 
-.right-section{
-    display: flex;
-    flex-flow: wrap column;
-    justify-content: space-around;
-    align-items: center;
-    /* height: 80%; */
-    border-radius: 30px;
-    margin-right: 1%;
-
+.right-section {
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: space-around;
+  align-items: center;
+  /* height: 80%; */
+  border-radius: 30px;
+  margin-right: 1%;
 }
 
-.right-section button{
-    min-width: 150px;
-    border-radius: 30px;
-    border: none;
-    color: white;
-    display: flex;
-    flex-flow: wrap row;
-    justify-content: center;
-    align-items: center;
-    padding: 2px 10px;
-    cursor: pointer;
-    margin: 5px 0 ;
+.right-section button {
+  min-width: 150px;
+  border-radius: 30px;
+  border: none;
+  color: white;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 10px;
+  cursor: pointer;
+  margin: 5px 0;
 }
 
 .right-section button:hover {
-    filter: brightness(.8);
-    transform: scale(1.02);
-}    
+  filter: brightness(0.8);
+  transform: scale(1.02);
+}
 
-.red-btn{
-    background: red;
+.red-btn {
+  background: red;
 }
 
 .light-btn {
-    background: var(--light-blue);
+  background: var(--light-blue);
 }
 
-.dark-btn{
-    background: var(--dark-blue);
+.dark-btn {
+  background: var(--dark-blue);
 }
 
 /* SELLERS */
 .general-SELLERS,
 .general-infographics {
-    width: 94%;
-    margin-left: 3%;
-    background: var(--light-blue);
-    border-radius: 50px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 5%;
-    padding: 5px ;
+  width: 94%;
+  margin-left: 3%;
+  background: var(--light-blue);
+  border-radius: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 5%;
+  padding: 5px;
 }
 
 .general-SELLERS .option,
 .general-infographics .option {
-    width: 90%;
-    height: 100%;
-    background-color: var(--bg-color);
-    border-radius: 50px;
-    display: flex;
-    flex-flow: wrap row;
-    justify-content: space-around;
-    align-items: center;
-    margin-left: 5%;
+  width: 90%;
+  height: 100%;
+  background-color: var(--bg-color);
+  border-radius: 50px;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 5%;
 }
 
-.general-SELLERS .option input{
-    min-width: 50%;
-    padding: 5px 20px;
-    border-radius: 30px;
-    border: none;
-    margin: 5px ;
+.general-SELLERS .option input {
+  min-width: 50%;
+  padding: 5px 20px;
+  border-radius: 30px;
+  border: none;
+  margin: 5px;
 }
 
 .general-SELLERS .option input:focus {
-    outline: none;
+  outline: none;
 }
 
 .general-SELLERS .option select,
 .general-infographics .option select {
-    margin: 5px;
-    min-width: 50%;
-    padding: 5px 20px;
-    border-radius: 30px;
-    border: none;
+  margin: 5px;
+  min-width: 50%;
+  padding: 5px 20px;
+  border-radius: 30px;
+  border: none;
 }
 
 /* INFOGRAPHICS */
 .infographics {
-    display: flex;
-    flex-flow: wrap row;
-    height: 65%;
-    width: 90%;
-    margin-left: 5%;
+  display: flex;
+  flex-flow: wrap row;
+  height: 65%;
+  width: 90%;
+  margin-left: 5%;
 }
 
 .row_flex {
-    display: flex;
-    flex-flow: wrap row;
-    width: 100%;
-    height: 50%;
+  display: flex;
+  flex-flow: wrap row;
+  width: 100%;
+  height: 50%;
 }
 
 .chart {
-    width: 50%;
-    height: 30vh;
+  width: 50%;
+  height: 30vh;
 }
 
 .piechart {
-    width: 50%;
-    height: 30vh;
+  width: 50%;
+  height: 30vh;
 }
 
 .line_graph {
-    /* margin-top: 50px; */
+  /* margin-top: 50px; */
 }

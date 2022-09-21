@@ -1,170 +1,169 @@
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Page</title>
     <!-- FAVICON -->
-    <link rel="icon" href="/admin-electron/assets/images/logo-removebg-preview.png" type="image/png">
+    <link
+      rel="icon"
+      href="/admin-electron/assets/images/logo-removebg-preview.png"
+      type="image/png"
+    />
     <!-- CSS STYLES -->
-    <link rel="stylesheet" href="/admin-electron/frontend/styling/styling.css">
-    <link rel="stylesheet" href="/admin-electron/frontend/styling/admin_page.css">
+    <link
+      rel="stylesheet"
+      href="/admin-electron/frontend/styling/styling.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/admin-electron/frontend/styling/admin_page.css"
+    />
     <!-- MATERIAL ICONS -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <!-- SIDE NAV BAR BEGINS HERE -->
-    <section class="nav-bar">
-
-        <img src="/admin-electron/assets/images/logo-removebg-preview.png" alt="" class="header-logo">
-
-
-        <a href="admin_page.html" class="header-link" id="header_clients_btn">Clients</a>
-        <a href="#" class="header-link" id="header_sellerss_btn">sellers</a>
-        <a href="admin_infographics.html" class="header-link">Statistics</a>
-        <a href="#" class="header-link">Log out</a>
-
-    </section>
+    <nav class="nav-bar"></nav>
     <!-- SIDE NAV BAR ENDS HERE -->
 
     <!-- MAIN SECTION BEGINS HERE -->
     <section class="main-section">
-
-
-        <!-- SELLERS CONTAINER STARTS HERE -->
-        <div id="sellers_container">
-            <!-- wrapping the title in a div to center it -->
-            <div class="title-div">
-                <h1>Sellers List</h1>
-            </div>
-
-            <!-- admins options and general info -->
-            <div class="general-sellers">
-
-                <div class="option">
-                    <h2>Search</h2>
-                    <input type="text" placeholder="type here..">
-                </div>
-
-                <div class="option">
-                    <h2>From-To</h2>
-                    <select name="from-to" id="from-to">
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-                </div>
-
-                <div class="option">
-                    <h2>Status</h2>
-                    <select name="status" id="status">
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-                </div>
-
-                <div class="option">
-                    <h2>Filter</h2>
-                    <select name="status" id="status">
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-                </div>
-
-            </div>
-
-            <!-- sellers below -->
-            <div class="sellers-div">
-
-                <div class="left-section">
-
-                    <img src="/admin-electron/assets/images/logo-removebg-preview.png" alt="">
-
-                    <div class="info">
-                        <h3>Name Name</h3>
-                        <h4>Seller since <span id="registration_date">xx/xx/xxxx</span></h4>
-                    </div>
-
-                </div>
-
-                <div class="right-section">
-                    <button class="light-btn"><i class="material-icons">edit</i>
-                        <p>Edit Seller</p>
-                    </button>
-
-                    <button class="red-btn">
-                        <i class="material-icons">delete</i>
-                        <p>Delete Seller</p>
-                    </button>
-                </div>
-
-            </div>
-            <!-- sellers -->
-            <div class="sellers-div">
-
-                <div class="left-section">
-
-                    <img src="/admin-electron/assets/images/logo-removebg-preview.png" alt="">
-
-                    <div class="info">
-                        <h3>Name Name</h3>
-                        <h4>Requested on <span id="registration_date">xx/xx/xxxx</span></h4>
-                    </div>
-
-                </div>
-
-                <div class="right-section">
-                    <button class="light-btn"><i class="material-icons">done</i>
-                        <p>Approve Request</p>
-                    </button>
-
-                    <button class="red-btn">
-                        <i class="material-icons">cancel</i>
-                        <p>Deny Request</p>
-                    </button>
-                </div>
-
-            </div>
-            <!-- sellers -->
-            <div class="sellers-div">
-
-                <div class="left-section">
-
-                    <img src="/admin-electron/assets/images/logo-removebg-preview.png" alt="">
-
-                    <div class="info">
-                        <h3>Name Name</h3>
-                        <h4>Requested on <span id="registration_date">xx/xx/xxxx</span></h4>
-                    </div>
-
-                </div>
-
-                <div class="right-section">
-                    <button class="light-btn"><i class="material-icons">done</i>
-                        <p>Approve Request</p>
-                    </button>
-
-                    <button class="red-btn">
-                        <i class="material-icons">cancel</i>
-                        <p>Deny Request</p>
-                    </button>
-                </div>
-
-            </div>
+      <!-- SELLERS CONTAINER STARTS HERE -->
+      <div id="sellers_container">
+        <!-- wrapping the title in a div to center it -->
+        <div class="title-div">
+          <h1>Sellers List</h1>
         </div>
-        <!-- END OF SELLERS CONTAINER -->
 
+        <!-- admins options and general info -->
+        <div class="general-sellers">
+          <div class="option">
+            <h2>Search</h2>
+            <input type="text" placeholder="type here.." />
+          </div>
 
+          <div class="option">
+            <h2>From-To</h2>
+            <select name="from-to" id="from-to">
+              <option value=""></option>
+              <option value=""></option>
+              <option value=""></option>
+            </select>
+          </div>
 
+          <div class="option">
+            <h2>Status</h2>
+            <select name="status" id="status">
+              <option value=""></option>
+              <option value=""></option>
+              <option value=""></option>
+            </select>
+          </div>
+
+          <div class="option">
+            <h2>Filter</h2>
+            <select name="status" id="status">
+              <option value=""></option>
+              <option value=""></option>
+              <option value=""></option>
+            </select>
+          </div>
+        </div>
+
+        <!-- sellers below -->
+        <div class="sellers-div">
+          <div class="left-section">
+            <img
+              src="/admin-electron/assets/images/logo-removebg-preview.png"
+              alt=""
+            />
+
+            <div class="info">
+              <h3>Name Name</h3>
+              <h4>
+                Seller since <span id="registration_date">xx/xx/xxxx</span>
+              </h4>
+            </div>
+          </div>
+
+          <div class="right-section">
+            <button class="light-btn">
+              <i class="material-icons">edit</i>
+              <p>Edit Seller</p>
+            </button>
+
+            <button class="red-btn">
+              <i class="material-icons">delete</i>
+              <p>Delete Seller</p>
+            </button>
+          </div>
+        </div>
+        <!-- sellers -->
+        <div class="sellers-div">
+          <div class="left-section">
+            <img
+              src="/admin-electron/assets/images/logo-removebg-preview.png"
+              alt=""
+            />
+
+            <div class="info">
+              <h3>Name Name</h3>
+              <h4>
+                Requested on <span id="registration_date">xx/xx/xxxx</span>
+              </h4>
+            </div>
+          </div>
+
+          <div class="right-section">
+            <button class="light-btn">
+              <i class="material-icons">done</i>
+              <p>Approve Request</p>
+            </button>
+
+            <button class="red-btn">
+              <i class="material-icons">cancel</i>
+              <p>Deny Request</p>
+            </button>
+          </div>
+        </div>
+        <!-- sellers -->
+        <div class="sellers-div">
+          <div class="left-section">
+            <img
+              src="/admin-electron/assets/images/logo-removebg-preview.png"
+              alt=""
+            />
+
+            <div class="info">
+              <h3>Name Name</h3>
+              <h4>
+                Requested on <span id="registration_date">xx/xx/xxxx</span>
+              </h4>
+            </div>
+          </div>
+
+          <div class="right-section">
+            <button class="light-btn">
+              <i class="material-icons">done</i>
+              <p>Approve Request</p>
+            </button>
+
+            <button class="red-btn">
+              <i class="material-icons">cancel</i>
+              <p>Deny Request</p>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- END OF SELLERS CONTAINER -->
     </section>
     <!-- MAIN SECTION ENDS HERE -->
 
     <script src="/admin-electron/frontend/scripts/admin_page.js"></script>
-</body>
-
+  </body>
 </html>
