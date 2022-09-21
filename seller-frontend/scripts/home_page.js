@@ -27,3 +27,8 @@ search_input.placeholder = 'search';
 login_btn.innerText = 'Log in';
 signup_btn.innerText = 'Sign up';
 burger_img.src = '../../assets/menu.png';
+
+// APPENDING ELEMENTS IN THEIR RESPECTIVE CONTAINER
+nav_bar.append(logo_img, search_div, header_links_div);
+search_div.append(search_icon_img, search_input);
+header_links_div.append(login_btn,signup_btn);
