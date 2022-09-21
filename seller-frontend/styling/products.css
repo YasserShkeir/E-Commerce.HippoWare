@@ -142,3 +142,10 @@ input:focus{
 }
 
 /************************/
+
+
+@media only screen and (max-width: 1000px) {
+    /* input{
+        max-width:150px;
+    } */
+}
