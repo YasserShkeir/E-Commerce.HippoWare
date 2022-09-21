@@ -94,7 +94,64 @@ class Database
         }
     }
 
-    
+    // update data
+    public function update($table, $params = array(), $where = null)
+    {
+        if ($this->tableExist($table)) {
+            $arg = array();
+            foreach ($params as $key => $val) {
+                $arg[] = "$key = '{$val}'";
+            }
+            $sql = "UPDATE $table SET " . implode(', ', $arg);
+            if($where != null){
+                $sql .=" WHERE $where";
+            }
+            if ($this->mysqli->query($sql)) {
+                array_push($this->result, true);
+                return true;
+            } else {
+                array_push($this->result, false);
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    // delete data
+    public function delete($table, $where = null)
+    {
+        if ($this->tableExist($table)) {
+            $sql = "DELETE FROM $table";
+            if ($where != null) {
+                $sql .= " WHERE $where";
+            }
+            if ($this->mysqli->query($sql)) {
+                array_push($this->result, true);
+                return true;
+            } else {
+                array_push($this->result, false);
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    // table exist
+    private function tableExist($table)
+    {
+        $sql = "SHOW TABLES FROM $this->database LIKE '{$table}'";
+        $tableInDb = $this->mysqli->query($sql);
+        if ($tableInDb) {
+            if ($tableInDb->num_rows  == 1) {
+                return true;
+            } else {
+                array_push($this->result, $table . " Does not Exist");
+            }
+        } else {
+            return false;
+        }
+    }
+
     private function _gettype($var) {
 	    if (is_string($var)) return 's';
 	    if (is_float($var)) return 'd';
