@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    padding:0;
+}
 body{
     background-color: white;
     display: flex;
@@ -10,4 +14,38 @@ body{
     --dark-blue: #181818;
     --light-blue: #7EA0B7;
     --green-blue: #597081;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
+    width:auto;
+    height: auto;
+    padding:20px;
+}
+.logo{
+    width:100px;
+    height:100px;
+    margin:20px;
+}
+.joinhippo-header{
+    color: white;
+}
+.personal-info, .address, .password{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+h3{
+    align-self: flex-start;
+}
+.fullname, .home-details, .city-details{
+    display: flex;
+}
+.personal-info > *, .address > *, .password>*{
+    margin-top: 15px;
 }
