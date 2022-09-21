@@ -12,8 +12,6 @@
 body {
   background: #f2fdff;
   display: flex;
-  justify-content: center;
-  align-self: center;
 }
 
 .nav-bar {
