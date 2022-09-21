@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $images_to_save = "/xampp/htdocs/E-Commerce.HippoWare/ecommerce-server/".$file;
         $success = file_put_contents($file, $data);
         
-        $obj->insert('users', ['user_type_id' => 2, 'first_name' => $fname, 'last_name' => $lname, 'username' => $username, 'email' => $email, 'password' => $password, 'image' => $image, 'accepted' => 1, 'date' => $date]);
+        $obj->insert('users', ['user_type_id' => 2, 'first_name' => $fname, 'last_name' => $lname, 'username' => $username, 'email' => $email, 'password' => $password, 'image' => $images_to_save, 'accepted' => 1, 'date' => $date]);
         $result = $obj->getResult();
         echo json_encode($result);
     } catch (Exception $e) {
