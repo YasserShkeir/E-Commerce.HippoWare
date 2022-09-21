@@ -30,13 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         }
         if($_POST['date']){
             $date = explode(' ',$_POST['date']); 
-            $where .= " and date < '$date[1]' and  date > '$date[1]'";
+            $where .= " and date < '$date[1]' and  date > '$date[0]'";
         }
         if($_POST['search']){ 
-            $where .= " first_name LIKE '%".$_POST['search']."%' or first_name LIKE '%".$_POST['search']."%'";
+            $where .= " and (first_name LIKE '%".$_POST['search']."%' or first_name LIKE '%".$_POST['search']."%')";
         }
-        if($_POST['fiter']){
-            $where .= " accepted = ".$_POST['fiter'];
+        if($_POST['fiter'] != 2){
+            $where .= " and accepted = ".$_POST['fiter'];
         }
         
         $obj->select('users', '*', null, $where, $sortby, null);

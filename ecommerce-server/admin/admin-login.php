@@ -27,7 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'status' => 0,
                 'message' => 'Invalid Carditional',
             ]);
-        } else {
+        }else if( $data['user_id_type'] != 1){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Not an admin',
+            ]);
+        }
+         else {
             $payload = [
                 'exp' => time() + 1440000, //10 mint
                 'data' => [
