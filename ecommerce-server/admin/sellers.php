@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             'message' => 'Access Denied',
         ]);
 
-        $where = "user_type_id = 2";
+        $where = "user_type_id = 2 and accepted != -1 and accepted != -2";
         $sortby=null;
         if($_POST['sortby']){ // gets the sorts needed if any
             if($_POST['sortby'] == 'name-acs') $sortby = "first_name ASC, last_name ASC";
@@ -39,8 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         if($_POST['search']){ //search filtering
             $where .= " and (first_name LIKE '%".$_POST['search']."%' or first_name LIKE '%".$_POST['search']."%')";
         }
-        if($_POST['fiter'] != 2){ // filter accoridng to acceptance status
-            $where .= " and accepted = ".$_POST['fiter'];
+        if($_POST['filter'] != 2){ // filter accoridng to acceptance status
+            $where .= " and accepted = ".$_POST['filter'];
         }
         
         $obj->select('users', '*', null, $where, $sortby, null);

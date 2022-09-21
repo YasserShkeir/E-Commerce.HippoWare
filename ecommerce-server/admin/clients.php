@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             'message' => 'Access Denied',
         ]);
 
-        $where = "user_type_id = 3";
+        $where = "user_type_id = 3 and accepted != -1 and accepted != -2";
         $sortby=null;
         if($_POST['sortby']){ // gets the sorts needed if any
             if($_POST['sortby'] == 'name-acs') $sortby = "first_name ASC, last_name ASC";
@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $obj->select('users', '*', null, $where, $sortby, null);
         $result = $obj->getResult();
         echo json_encode($result);
+
     } catch (Exception $e) {
         echo json_encode([
             'status' => 0,
