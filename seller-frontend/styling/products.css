@@ -93,3 +93,38 @@ input:focus{
     margin-right: 10px;
 }
 /******************************/
+.category{
+    display: flex;
+    justify-content: space-between;
+    padding:25px 30px 25px 50px;
+}
+.category-dropdown{
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+.drop-down{
+    width: 12px;
+    height: 12px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.add-btns{
+    display: flex;
+}
+.add-btns>:first-child{
+    margin-right: 10px;
+}
+.add-btn{
+    color: white;
+    background-color: var(--green-blue);
+    border: none;
+    padding:5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.add-btn:active{
+    scale: 0.9;
+}
+/********************/
