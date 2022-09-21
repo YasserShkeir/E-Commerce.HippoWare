@@ -31,6 +31,21 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $email = $_POST['email'];
         $password = hash("sha256",$_POST['password']);
         $date = date('Y-m-d');
+        $flag = 1;
+        $issues = [];
+
+        $obj->select('users', '*', null, "email='{$email}'", null, null);
+        $result = $obj->getResult();
+        if($result){
+            $flag=0;
+            $issues[] = "dup email";
+        }
+        $obj->select('users', '*', null, "username='{$username}'", null, null);
+        $result = $obj->getResult();
+        if($result){
+            $flag=0;
+            $issues[] = "dup username";
+        }
 
         define('UPLOAD_DIR', '../images/');
         $img = $image;
@@ -40,10 +55,13 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $file = UPLOAD_DIR . uniqid() . '.png';
         $images_to_save = "/xampp/htdocs/E-Commerce.HippoWare/ecommerce-server/".$file;
         $success = file_put_contents($file, $data);
-        
-        $obj->insert('users', ['user_type_id' => 2, 'first_name' => $fname, 'last_name' => $lname, 'username' => $username, 'email' => $email, 'password' => $password, 'image' => $images_to_save, 'accepted' => 1, 'date' => $date]);
-        $result = $obj->getResult();
-        echo json_encode($result);
+        if($flag){
+            $obj->insert('users', ['user_type_id' => 2, 'first_name' => $fname, 'last_name' => $lname, 'username' => $username, 'email' => $email, 'password' => $password, 'image' => $images_to_save, 'accepted' => 1, 'date' => $date]);
+            $result = $obj->getResult();
+            echo json_encode($result);
+        }else {
+            echo json_encode($issues);
+        }
     } catch (Exception $e) {
         echo json_encode([
             'status' => 0,

@@ -45,7 +45,6 @@ class Database
                 } 
             }
             $sql .= "?)";
-            print $sql;
             $this->query = $this->mysqli->prepare($sql);
 
             for($i = 0; $i< count($values); $i++){
@@ -53,7 +52,6 @@ class Database
                 $args_ref[] = &$values[$i];
             }
             array_unshift($args_ref, $types);
-            print_r($args_ref);
             call_user_func_array(array($this->query, 'bind_param'), $args_ref);
             $this->query->execute();
             if ($this->query->errno) {
@@ -82,7 +80,6 @@ class Database
                 $sql .= " LIMIT $limit";
             }
             $query = $this->mysqli->query($sql);
-            print $sql;
             if ($query) {
                 $this->result = $query->fetch_all(MYSQLI_ASSOC);
                 return true;
