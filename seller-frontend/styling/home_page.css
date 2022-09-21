@@ -58,3 +58,18 @@ body {
     background: var(--dark-blue);
     color: white;
 }
+
+.main-home{
+    display: flex;
+    flex-flow: wrap column;
+    align-self: center;
+    width:90vw;
+    height: fit-content;
+}
+
+.main-home div{
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    background: red;
+}
