@@ -53,5 +53,28 @@ var options = {
 var chart = new google.visualization.LineChart(line_graph);
 chart.draw(data, options);
 
-
 }
+
+// LINE GRAPH
+function drawChart() {
+// Set Data
+var data = google.visualization.arrayToDataTable([
+    ['Sales', 'Time'],
+    [20,7],[60,8],[70,0],[90,9],[100,9],
+    [110,10],[120,11],[130,14],[140,14],[150,15]
+    ]);
+// Set Options
+var options = {
+    title: 'Sales',
+    hAxis: {title: 'Time'},
+    vAxis: {title: 'Sales(in thousands)'},
+    legend: 'none',
+    'width':1080,
+    'height': 165
+    
+};
+// Draw Chart
+var chart = new google.visualization.LineChart(line_graph);
+chart.draw(data, options);
+}
+
