@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Page - Sellers</title>
+    <title>Admin Page - Clients</title>
     <!-- FAVICON -->
     <link
       rel="icon"
@@ -26,7 +26,6 @@
     />
     <script src="/admin-electron/frontend/scripts/admin_page.js"></script>
   </head>
-
   <body>
     <!-- SIDE NAV BAR BEGINS HERE -->
     <nav class="nav-bar"></nav>
@@ -34,27 +33,17 @@
 
     <!-- MAIN SECTION BEGINS HERE -->
     <section class="main-section">
-      <!-- SELLERS CONTAINER STARTS HERE -->
-      <div id="sellers_container">
+      <div id="clients_container">
         <!-- wrapping the title in a div to center it -->
         <div class="title-div">
-          <h1>Sellers List</h1>
+          <h1>Clients List</h1>
         </div>
 
         <!-- admins options and general info -->
-        <div class="general-sellers">
+        <div class="general">
           <div class="option">
             <h2>Search</h2>
             <input type="text" placeholder="type here.." />
-          </div>
-
-          <div class="option">
-            <h2>From-To</h2>
-            <select name="from-to" id="from-to">
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-            </select>
           </div>
 
           <div class="option">
@@ -76,9 +65,11 @@
           </div>
         </div>
 
-        <!-- sellers below -->
-        <div class="sellers-list">
-          <div class="sellers-div">
+        <!-- clients below -->
+
+        <div class="clients-list">
+          <!-- clients -->
+          <div class="client-div">
             <div class="left-section">
               <img
                 src="/admin-electron/assets/images/logo-removebg-preview.png"
@@ -88,25 +79,25 @@
               <div class="info">
                 <h3>Name Name</h3>
                 <h4>
-                  Seller since <span id="registration_date">xx/xx/xxxx</span>
+                  Registered at <span id="registration_date">xx/xx/xxxx</span>
                 </h4>
               </div>
             </div>
 
             <div class="right-section">
-              <button class="light-btn">
-                <i class="material-icons">edit</i>
-                <p>Edit Seller</p>
+              <button class="dark-btn">
+                <i class="material-icons">leaderboard</i>
+                <p>View Stats</p>
               </button>
 
-              <button class="red-btn">
-                <i class="material-icons">delete</i>
-                <p>Delete Seller</p>
+              <button class="light-btn">
+                <i class="material-icons">block</i>
+                <p>UnBan User</p>
               </button>
             </div>
           </div>
-          <!-- sellers -->
-          <div class="sellers-div">
+          <!-- clients -->
+          <div class="client-div">
             <div class="left-section">
               <img
                 src="/admin-electron/assets/images/logo-removebg-preview.png"
@@ -116,25 +107,25 @@
               <div class="info">
                 <h3>Name Name</h3>
                 <h4>
-                  Requested on <span id="registration_date">xx/xx/xxxx</span>
+                  Registered at <span id="registration_date">xx/xx/xxxx</span>
                 </h4>
               </div>
             </div>
 
             <div class="right-section">
-              <button class="light-btn">
-                <i class="material-icons">done</i>
-                <p>Approve Request</p>
+              <button class="dark-btn">
+                <i class="material-icons">leaderboard</i>
+                <p>View Stats</p>
               </button>
 
               <button class="red-btn">
-                <i class="material-icons">cancel</i>
-                <p>Deny Request</p>
+                <i class="material-icons">block</i>
+                <p>UnBan User</p>
               </button>
             </div>
           </div>
-          <!-- sellers -->
-          <div class="sellers-div">
+          <!-- clients -->
+          <div class="client-div">
             <div class="left-section">
               <img
                 src="/admin-electron/assets/images/logo-removebg-preview.png"
@@ -144,26 +135,28 @@
               <div class="info">
                 <h3>Name Name</h3>
                 <h4>
-                  Requested on <span id="registration_date">xx/xx/xxxx</span>
+                  Registered at <span id="registration_date">xx/xx/xxxx</span>
                 </h4>
               </div>
             </div>
 
             <div class="right-section">
-              <button class="light-btn">
-                <i class="material-icons">done</i>
-                <p>Approve Request</p>
+              <button class="dark-btn">
+                <i class="material-icons">leaderboard</i>
+                <p>View Stats</p>
               </button>
 
               <button class="red-btn">
-                <i class="material-icons">cancel</i>
-                <p>Deny Request</p>
+                <i class="material-icons">block</i>
+                <p>Ban User</p>
               </button>
             </div>
           </div>
         </div>
+
+        <!-- clients -->
       </div>
-      <!-- END OF SELLERS CONTAINER -->
+      <!-- END OF CLIENTS CONTAINER -->
     </section>
     <!-- MAIN SECTION ENDS HERE -->
   </body>

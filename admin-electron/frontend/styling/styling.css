@@ -1,11 +1,11 @@
 /* Reset  */
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
 /* 
@@ -16,13 +16,20 @@ html{
 5_ this helps unifies and organize the code
 copy paste the root to all css files and change accordingly if needed  .
 */
-:root{
-    --bg-color: #A9CEF4;
-    --dark-blue: #181818;
-    --light-blue: #7EA0B7;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
+
+:root {
+  --bg-color: #a9cef4;
+  --dark-blue: #181818;
+  --light-blue: #7ea0b7;
 }
 
-body{
-    background: var(--bg-color);
-    font-family: Arial, Helvetica, sans-serif;
+body {
+  display: flex;
+  background: var(--bg-color);
+  font-family: Arial, Helvetica, sans-serif;
 }

@@ -62,7 +62,7 @@ body {
 
 .main-section {
   height: 100%;
-  width: 87.8%;
+  width: 80%;
   display: flex;
   flex-flow: wrap column;
 }
@@ -121,15 +121,29 @@ body {
   border: none;
 }
 
+#sellers_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sellers-list,
+.clients-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin: 30px 0px;
+  gap: 15px;
+}
+
 .client-div,
 .sellers-div {
   width: 90%;
   height: fit-content;
-  padding: 5px;
+  padding: 10px 15px;
   background: var(--bg-color);
-  border-radius: 20px;
-  margin-left: 5%;
-  margin-top: 2%;
+  border-radius: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -152,16 +166,16 @@ body {
 .client-div .info,
 .sellers-div .info {
   display: flex;
-  flex-flow: wrap column;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
   margin-left: 15px;
 }
 
 .right-section {
   display: flex;
-  flex-flow: wrap column;
-  justify-content: space-around;
+  justify-content: space-between;
+  gap: 20px;
   align-items: center;
   /* height: 80%; */
   border-radius: 30px;
@@ -174,12 +188,11 @@ body {
   border: none;
   color: white;
   display: flex;
-  flex-flow: wrap row;
-  justify-content: center;
   align-items: center;
   padding: 2px 10px;
   cursor: pointer;
   margin: 5px 0;
+  gap: 10px;
 }
 
 .right-section button:hover {
@@ -203,7 +216,6 @@ body {
 .general-SELLERS,
 .general-infographics {
   width: 94%;
-  margin-left: 3%;
   background: var(--light-blue);
   border-radius: 50px;
   display: grid;
@@ -252,14 +264,14 @@ body {
   display: flex;
   flex-flow: wrap row;
   height: 65%;
-  width: 90%;
+  width: 50%;
   margin-left: 5%;
 }
 
 .row_flex {
   display: flex;
   flex-flow: wrap row;
-  width: 100%;
+  width: fit-content;
   height: 50%;
 }
 
