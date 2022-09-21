@@ -88,6 +88,12 @@ body {
 }
 
 /* TOP STORES */
+.section-title{
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    margin-top: 40px;
+}
 .top-stores{
     display: flex;
     flex-flow: wrap column;
