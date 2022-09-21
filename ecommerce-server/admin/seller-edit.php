@@ -64,11 +64,11 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $data = base64_decode($img);
         $file = UPLOAD_DIR . uniqid() . '.png';
         $images_to_save = "/xampp/htdocs/E-Commerce.HippoWare/ecommerce-server/".$file;
-        $success = file_put_contents($file, $data);
 
         if($flag){ // if no conflicts the user is updated
             $obj->update('users', ['user_type_id' => 2, 'first_name' => $fname, 'last_name' => $lname, 'username' => $username, 'email' => $email, 'password' => $password, 'image' => $images_to_save, 'accepted' => 1, 'date' => $date]);
             $result = $obj->getResult();
+            file_put_contents($file, $data);
             echo json_encode($result);
         }else {
             echo json_encode($issues);
