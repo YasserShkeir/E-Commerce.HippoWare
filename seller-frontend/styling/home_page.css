@@ -59,6 +59,7 @@ body {
     color: white;
 }
 
+/* HOME MAIn Feed */
 .main-home{
     display: flex;
     flex-flow: wrap column;
@@ -69,7 +70,19 @@ body {
 
 .main-home div{
     width: 100%;
-    height: 100px;
-    margin-top: 10px;
-    background: red;
+    height: 40vh;
+    margin-top: 15px;
+    /* background: red; */
+}
+
+.advertisment-div img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+    cursor: pointer;
+}
+
+.advertisment-div img:hover {
+    scale: 1.005;
 }
