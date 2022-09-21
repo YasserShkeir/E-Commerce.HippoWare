@@ -18,3 +18,23 @@ body {
     --light-blue: #7EA0B7;
     --green-blue: #597081;
 }
+.logo {
+    margin-left: 2%;
+}
+
+.search {
+    scale: 1.5;
+}
+
+@media only screen and (max-width: 530px) {
+    .search {
+        scale: 1.2;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .search {
+        scale: 1;
+    }
+}
+
