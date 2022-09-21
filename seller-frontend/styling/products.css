@@ -27,8 +27,7 @@ body{
 }
 .nav-links{
     display: flex;
-    justify-content: space-between;
-    
+    justify-content: space-between;   
 }
 a
 {
@@ -50,6 +49,12 @@ a:hover{
     border: none;
     border-radius: 20px;
     margin-left: 1.8vw;
+}
+.ads-btn:active{
+    scale: 0.9;
+}
+.add-btn:hover{
+    cursor: pointer;
 }
 .search{
     position: relative;
