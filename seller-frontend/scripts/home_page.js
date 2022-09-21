@@ -1,5 +1,6 @@
 const nav_bar = document.querySelector('.nav-bar');
 const form_container = document.querySelector('.form-container');
+const signup_close_btn = document.getElementById('signup_close_btn');
 
 // CREATING NAVBAR ELEMENTS
 const logo_img = document.createElement('img');
@@ -38,4 +39,8 @@ header_links_div.append(signup_btn, login_btn);
 // SIGN UP POPUP
 signup_btn.addEventListener('click', ()=>{
     form_container.style.display = 'block';
-})
+});
+
+signup_close_btn.addEventListener('click', ()=>{
+    form_container.style.display = 'none';
+});
