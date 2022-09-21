@@ -54,7 +54,7 @@ class Database
             array_unshift($args_ref, $types);
             call_user_func_array(array($this->query, 'bind_param'), $args_ref);
             $this->query->execute();
-            if ($this->query->errno) {
+            if (!$this->query->errno) {
                 array_push($this->result, true);
                 return true;
             } else {
