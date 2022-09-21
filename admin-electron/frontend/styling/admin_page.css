@@ -181,7 +181,8 @@ background: black;
 }
 
 /* SELLERS */
-.general-SELLERS {
+.general-SELLERS,
+.general-infographics {
     width: 94%;
     margin-left: 3%;
     background: var(--light-blue);
@@ -193,7 +194,8 @@ background: black;
     padding: 5px ;
 }
 
-.general-SELLERS .option {
+.general-SELLERS .option,
+.general-infographics .option {
     width: 90%;
     height: 100%;
     background-color: var(--bg-color);
@@ -205,7 +207,7 @@ background: black;
     margin-left: 5%;
 }
 
-.general-SELLERS .option input {
+.general-SELLERS .option input{
     min-width: 50%;
     padding: 5px 20px;
     border-radius: 30px;
@@ -217,7 +219,8 @@ background: black;
     outline: none;
 }
 
-.general-SELLERS .option select {
+.general-SELLERS .option select,
+.general-infographics .option select {
     margin: 5px;
     min-width: 50%;
     padding: 5px 20px;
@@ -227,14 +230,3 @@ background: black;
 
 /* INFOGRAPHICS */
 
-.general-infographics{
-    width: 94%;
-        margin-left: 3%;
-        background: var(--light-blue);
-        border-radius: 50px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        gap: 5%;
-        padding: 5px;
-}
