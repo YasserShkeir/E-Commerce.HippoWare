@@ -96,18 +96,18 @@ body {
 .top-stores-row {
     display: flex;
     flex-flow: wrap row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
 .top-stores-row div{
     width:24%;
+    min-width: 200px;
     height:100%;
     display: flex;
     flex-flow: wrap column;
     justify-content: center;
     align-items: center;
-    /* filter: drop-shadow(0 0 3px black); */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     cursor: pointer;
