@@ -173,7 +173,7 @@ input:focus{
     margin-top:10px;
     font-size: 14px;
 }
-#trash-bin{
+.trash-bin{
     width:20px;
     height: 20px;
     align-self: flex-end;

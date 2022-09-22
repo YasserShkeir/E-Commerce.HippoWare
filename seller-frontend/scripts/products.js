@@ -13,22 +13,30 @@ window.onload = () => {
             <div>Sizes:S,M,L,XL,XXL</div>
             <div>Revenue:</div>
             <div>Price:</div>
-            <img src="../../assets/trash.png" id="trash-bin">
+            <img src="../../assets/trash.png" class="trash-bin">
         </div>
     </div>`
+    //display 9 products for now
     for(let i=0;i<9;i++){
         products.innerHTML+=productCard
     }
-
+    const displayedProducts=document.getElementsByClassName("product-card")
     const myModal= document.getElementById("myModal")
     const deleteItem= document.getElementById("delete-item")
     const cancelDelete= document.getElementById("cancel-delete")
-    document.getElementById("trash-bin").onclick=()=>{
-        console.log('heifj')
-        myModal.style.display='Block'
-    }
-    cancelDelete.onclick=()=>{
-        myModal.style.display='none'
-    }
-    
+    const trashBin=document.getElementsByClassName("trash-bin")
+
+    for (let i=0; i<displayedProducts.length;i++){
+        trashBin[i].onclick=(e)=>{
+            myModal.style.display='Block'
+            deleteItem.onclick=()=>{
+                displayedProducts[i].remove()
+                myModal.style.display='none'
+                // products.innerHTML='' 
+            }    
+        }
+        cancelDelete.onclick=()=>{
+            myModal.style.display='none'
+        }
+    }   
 }
