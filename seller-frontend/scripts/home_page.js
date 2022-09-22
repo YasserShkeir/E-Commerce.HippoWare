@@ -45,6 +45,9 @@ const password=document.getElementById('password')
 const confirmPassword=document.getElementById('password-confirm')
 const sellerSignup=document.getElementById('seller-signup')
 const clientSignup=document.getElementById('client-signup')
+const emailSignin=document.getElementById('email-signin')
+const passwordSignin=document.getElementById('password-signin')
+const loginButtonForm=document.getElementById('login')
 
 function passwordFormat(password){
     const expression=/^[0-9a-zA-Z]{8,}$/
@@ -58,12 +61,13 @@ signup_btn.addEventListener('click', ()=>{
 sellerSignup.addEventListener('click', (event)=>{
     document.getElementById('not-matching').style.display='none'
     document.getElementById('wrong-format').style.display='none'
+    document.getElementById('register-success').style.display='none'
     event.preventDefault()
     if (firstName.value && lastName.value && userName.value && email.value && password.value && confirmPassword.value)
     {
         if(password.value==confirmPassword.value){
             if(passwordFormat(password.value)){
-                signin()
+                register()
             }
             else{
                 document.getElementById('wrong-format').style.display='block'
@@ -74,12 +78,15 @@ sellerSignup.addEventListener('click', (event)=>{
         }
     }
 })
-function signin(){
+
+//function to register the user
+function register(){
     let payload = {first_name: firstName.value, last_name: lastName.value, username: userName.value, email: email.value, image: null, password: password.value, user_type_id: 2}
     let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/registration.php',payload).then(
         function (response) {
         console.log(response.data);
         // I need this data here ^^
+        document.getElementById('register-success').style.display='block'
         return response.data;
     })
     .catch(function (error) {
@@ -87,14 +94,32 @@ function signin(){
     })
 }
 
+document.getElementById("signup_close_btn").onclick=()=>{
+    signup_form_container.style.display = 'none';
+}
 
 
-
-// signup_close_btn.addEventListener('click', ()=>{
-//     signup_form_container.style.display = 'none';
-// });
-
-//sign in popup
+//logging in
 login_btn.onclick=()=>{
     signin_form_container.style.display = 'block';
+}
+loginButtonForm.addEventListener('click', (event)=>{
+    event.preventDefault()
+    if (emailSignin.value && passwordSignin.value){
+        signIn()
+    }
+})
+ function signIn(){
+    let payload = {email: emailSignin.value, password:passwordSignin.value}
+    let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/login.php',payload).then(
+        function (response) {
+        console.log(response.data);
+        // I need this data here ^^
+        localStorage.setItem('jwt', response.data.jwt)
+        console.log(localStorage)
+        return response.data;
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
 }

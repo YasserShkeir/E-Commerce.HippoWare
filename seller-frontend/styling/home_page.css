@@ -233,7 +233,7 @@ body {
     background: var(--dark-blue);
 }
 
-#signup_close_btn{
+#signup_close_btn, #signin_close_btn{
     position: fixed;
     top:0;
     right:0%;
@@ -278,7 +278,11 @@ body {
     display: none;
     font-size: 10px;
 }
-
+#register-success{
+    color:green;
+    display: none;
+    font-size: 14px;
+}
 
 
 /* SIGNUP FORM RESPONSIVNESS */

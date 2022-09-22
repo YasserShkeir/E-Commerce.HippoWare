@@ -160,6 +160,7 @@
         <p id="not-matching">passwords do not match</p>
         <p id="wrong-format">Your password should be minimum 8 Characters<br>It must contian at least
         one uppercase letter and one lower case character<br> It must contain at least one number</p>
+        <p id="register-success">Account successfully created</p>
 
 
         <div class="flex-row">
@@ -174,6 +175,7 @@
     <!-- SIGNIN FORM -->
 <section  class="signin-form-container" >
     <form action="" class="signup-form">
+        <i class="material-icons" id="signin_close_btn">close</i>
         <div class="form-topSection">
             <img
             src="../../assets/logo.png"
@@ -184,7 +186,8 @@
             <input
             type="text"
             class="username-input"
-            placeholder="Username"
+            placeholder="Email"
+            id="email-signin"
             required
             />
 
@@ -193,6 +196,7 @@
             class="password-input"
             placeholder="Password"
             required
+            id="password-signin"
             />
             </div>
     
