@@ -1,0 +1,42 @@
+section {
+  height: fit-content;
+  width: 80vw;
+  background-color: red;
+  align-self: center;
+  padding: 4% 6%;
+}
+
+#product-name {
+  font-size: 40px;
+}
+
+#product-content {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+#product-img {
+  min-width: 300px;
+  width: 50%;
+}
+
+#product-img img {
+  width: 100%;
+}
+
+#product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#product-details p {
+  margin: 0px;
+}
+
+@media only screen and (max-width: 700px) {
+  #product-content {
+    flex-direction: column;
+  }
+}
