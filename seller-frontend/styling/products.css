@@ -102,7 +102,11 @@ input:focus{
     justify-content: space-between;
     padding:25px 30px 25px 50px;
 }
-
+.category-select{
+    height: 30px;
+    width: 100px;
+    color: gray;
+}
 .drop-down{
     width: 12px;
     height: 12px;
