@@ -13,8 +13,8 @@ $obj = new Database();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $request_body = file_get_contents('php://input');
     $data = json_decode($request_body, true);
-    $email = $_POST['email'];
-    $password =$_POST['password'];
+    $email = $data['email'];
+    $password =hash("sha256",$data['password']);
 
     $obj->select('users', '*', null, "email='{$email}'", null, null); // selected data for given attribute
     $datas = $obj->getResult();
