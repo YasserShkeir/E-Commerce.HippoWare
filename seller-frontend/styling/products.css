@@ -183,7 +183,7 @@ input:focus{
 /************************/
 
 /* The Modal (background) */
-#deletion-modal {
+#deletion-modal, #logout-modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -208,11 +208,11 @@ input:focus{
     justify-content: space-between;
     text-align: center;
   }
-  .delete-btns{
+  .delete-btns, .confirm-logout-btns{
     display: flex;
     justify-content: space-between;
   }
-  #delete-item, #cancel-delete{
+  #delete-item, #cancel-delete, #confirm-logout, #cancel-logout{
     height:40px;
     width:150px;
     margin:30px 50px;

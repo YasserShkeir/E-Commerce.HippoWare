@@ -63,8 +63,20 @@ window.onload = () => {
         }
     }
 
-    addProduct.onclick=()=>{
-        
+    addProduct.onclick=()=>{  }
+
+
+    const logOut=document.getElementById('log-out')
+    const logoutModal=document.getElementById('logout-modal')
+    const cancelLogout=document.getElementById("cancel-logout")
+    const confirmLogout=document.getElementById("confirm-logout")
+    logOut.onclick=()=>{
+        logoutModal.style.display='Block'
+        cancelLogout.onclick=()=>{logoutModal.style.display='none'}
+        confirmLogout.onclick=()=>{
+            window.location.replace("home_page.html")
+            localStorage.clear()
+        }
     }
     
 
