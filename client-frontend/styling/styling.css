@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
-
 :root {
   --bg-color: #f2fdff;
+  --light-blue: #a9cef4;
+  --dark-blue: #36494e;
+  --black: #000;
+  --faded-blue: #7ea0b7;
+  --gray-blue: #597081;
 }
 
 html {
@@ -15,6 +15,66 @@ body {
   display: flex;
   flex-direction: column;
   background-color: var(--bg-color);
+  margin: 0px;
+}
+
+.client-nav {
+  height: 80px;
+  background-color: var(--light-blue);
+  padding: 10px 20px;
+  align-items: center;
+  gap: 20px;
+  /* justify-content: space-between; */
+}
+
+.client-nav img {
+  width: 100px;
+}
+
+.client-nav-links {
+  min-width: 300px;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.client-nav-link a {
+  padding: 4px 10px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: var(--dark-blue);
+  transition: 0.3s;
+}
+
+.client-nav-link a:hover {
+  cursor: pointer;
+  color: var(--bg-color);
+  background-color: var(--gray-blue);
+  transition: 0.3s;
+}
+
+.client-nav-search {
+  display: flex;
+  height: 50px;
+  min-width: 200px;
+  flex-grow: 1;
+  background-color: var(--bg-color);
+  color: var(--gray-blue);
+  border-radius: 25px;
+  align-items: center;
+  padding: 0px 15px;
+  gap: 10px;
+}
+
+#search {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+#logOut {
+  cursor: pointer;
 }
 
 .flex {
@@ -24,4 +84,34 @@ body {
 .flex-col {
   display: flex;
   flex-direction: column;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+.light-blu-btn,
+.gray-btn {
+  padding: 0px 15px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.light-blu-btn {
+  background-color: var(--light-blue);
+}
+
+.gray-btn {
+  background-color: var(--dark-blue);
+  color: var(--bg-color);
+}
+
+.gray-btn:hover,
+.light-blu-btn:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
 }

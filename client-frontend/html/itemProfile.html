@@ -2,34 +2,45 @@
 
 <html>
   <head>
-    <title id="title">Error</title>
+    <title id="title">Item Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styling/styling.css" />
     <link rel="stylesheet" href="../styling/itemProfile.css" />
+    <script src="../scripts/itemProfile.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
-    <nav></nav>
-    <section class="flex-col">
+    <nav class="client-nav flex"></nav>
+
+    <section id="itemProfile" class="flex-col">
       <div id="product-name">Product Name</div>
       <div id="product-content">
-        <div id="product-img">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png"
-          />
+        <div id="product-img" class="flex">
+          <img src="" />
         </div>
         <div id="product-details">
           <p>Product Details</p>
-          <p>Description</p>
-          <div id="product-description"></div>
-          <div id="product-brand">Brand: <span>zz</span></div>
-          <div id="product-seller">Seller: <span>zz</span></div>
-          <div id="product-price">Price: <span>zz</span></div>
-          <div id="product-colors">Select Color: <span>z z</span></div>
-          <div id="product-sizes">Select Size: <span></span></div>
+          <div id="product-text">
+            <div id="product-description">Description: <span></span></div>
+            <div id="product-brand">Brand: <span></span></div>
+            <div id="product-seller">Seller: <span></span></div>
+            <div id="product-price">
+              Price: $<span style="font-weight: 600"></span>
+            </div>
+          </div>
+          <div id="product-selections">
+            <div id="product-colors">Select Color: <span></span></div>
+            <div id="product-sizes">Select Size: <span></span></div>
+          </div>
           <div id="product-options">
-            <button>Add to cart</button>
-            <button>Add to wishlist</button>
-            <button></button>
+            <button class="btn light-blu-btn">Add to cart</button>
+            <button class="btn gray-btn">Add to wishlist</button>
+            <button class="btn heart-btn" title="Add to Favorites">
+              &#10084;
+            </button>
           </div>
         </div>
       </div>
