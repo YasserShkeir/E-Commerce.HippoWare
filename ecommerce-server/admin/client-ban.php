@@ -18,6 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $jwt =$allheaders['Authorization'];
         $secret_key = "Hippo";
         $user_data = JWT::decode($jwt, new Key($secret_key, 'HS256'));
+        $request_body = file_get_contents('php://input');
+        $data = json_decode($request_body, true);
 
         if($user_data->data->user_type != 1) 
         echo json_decode([
@@ -25,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             'message' => 'Access Denied',
         ]);
 
-        $id = $_POST['id'];
+        $id = $data['id'];
 
         $obj->select('users', '*', null, "id='{$id}'", null, null); // gets current ban status
         $datas = $obj->getResult();

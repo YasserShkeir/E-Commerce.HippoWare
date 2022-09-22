@@ -17,13 +17,15 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $jwt =$allheaders['Authorization'];
         $secret_key = "Hippo";
         $user_data = JWT::decode($jwt, new Key($secret_key, 'HS256'));
+        $request_body = file_get_contents('php://input');
+        $data = json_decode($request_body, true);
 
         if($user_data->data->user_type != 1) echo json_decode([
             'status' => 0,
             'message' => 'Access Denied',
         ]);
 
-        $user_id = $_POST['id'];
+        $user_id = $data['id'];
         $flag = 1;
         $issues = [];
             

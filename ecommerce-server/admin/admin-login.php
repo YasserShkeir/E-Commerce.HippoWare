@@ -1,7 +1,7 @@
 <?php
 
-header('Access-Control-Allow-Origin:*');
-header('Access-Control-Allow-Method:POST');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
 include '../database/Database.php';
 require '../vendor/autoload.php';
 
@@ -11,8 +11,11 @@ use \Firebase\JWT\JWT;
 $obj = new Database();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $password =$_POST['password'];
+    $request_body = file_get_contents('php://input');
+    $data = json_decode($request_body, true);
+
+    $email = $data['email'];
+    $password =$data['password'];
 
     $obj->select('users', '*', null, "email='{$email}'", null, null); // selected data for given attribute
     $datas = $obj->getResult();

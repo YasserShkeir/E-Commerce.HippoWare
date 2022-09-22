@@ -18,6 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $jwt =$allheaders['Authorization'];
         $secret_key = "Hippo";
         $user_data = JWT::decode($jwt, new Key($secret_key, 'HS256'));
+        $request_body = file_get_contents('php://input');
+        $data = json_decode($request_body, true);
 
         if($user_data->data->user_type != 1) 
         echo json_decode([
@@ -25,8 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             'message' => 'Access Denied',
         ]);
 
-        $id = $_POST['id'];
-        $status = $_POST['status'];
+        $id = $data['id'];
+        $status = $data['status'];
         $obj->update('users', ['accepted' => $status],"id='{$id}'" );
         $result = $obj->getResult();
         echo json_encode($result);
