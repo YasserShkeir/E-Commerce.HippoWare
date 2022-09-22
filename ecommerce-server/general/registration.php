@@ -53,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $data = base64_decode($img);
         $file = UPLOAD_DIR . uniqid() . '.png';
         $images_to_save = "/xampp/htdocs/E-Commerce.HippoWare/ecommerce-server/".$file;
-        
+
         if($flag){
-            $obj->insert('users', ['user_type_id' => $user_type_id, 'first_name' => $fname, 'last_name' => $lname, 'username' => $username, 'email' => $email, 'password' => $password, 'image' => $images_to_save, 'accepted' => $accepted, 'date' => $date]);
+            $obj->insert('users', ['user_type_id' => $user_type_id, 'first_name' => $first_name, 'last_name' => $last_name, 'username' => $username, 'email' => $email, 'password' => $password, 'image' => $images_to_save, 'accepted' => $accepted, 'date' => $date]);
             $result = $obj->getResult();
             $success = file_put_contents($file, $data);
             echo json_encode($result);
