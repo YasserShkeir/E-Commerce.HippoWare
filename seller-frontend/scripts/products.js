@@ -13,9 +13,10 @@ window.onload = () => {
             <div>Sizes:S,M,L,XL,XXL</div>
             <div>Revenue:</div>
             <div>Price:</div>
+            <img src="../../assets/trash.png" id="trash-bin">
         </div>
     </div>`
-    for(let i=0;i<6;i++){
+    for(let i=0;i<9;i++){
         products.innerHTML+=productCard
     }
 }
