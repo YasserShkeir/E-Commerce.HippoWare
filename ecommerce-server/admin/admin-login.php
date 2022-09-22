@@ -19,6 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $obj->select('users', '*', null, "email='{$email}'", null, null); // selected data for given attribute
     $datas = $obj->getResult();
+            if (!$datas) {
+        echo json_encode([
+            'status' => 0,
+            'message' => 'Invalid Carditional'
+        ]);}
     foreach ($datas as $data) {
         $id = $data['id'];
         $email = $data['email'];
