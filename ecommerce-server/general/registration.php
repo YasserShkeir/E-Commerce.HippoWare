@@ -17,11 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        $allheaders = getallheaders();
-        $jwt =$allheaders['Authorization'];
-        $secret_key = "Hippo";
-        $user_data = JWT::decode($jwt, new Key($secret_key, 'HS256'));
-
         $first_name = $data['first_name'];
         $last_name = $data['last_name'];
         $username = $data['username'];
@@ -58,10 +53,11 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $data = base64_decode($img);
         $file = UPLOAD_DIR . uniqid() . '.png';
         $images_to_save = "/xampp/htdocs/E-Commerce.HippoWare/ecommerce-server/".$file;
-        $success = file_put_contents($file, $data);
+        
         if($flag){
             $obj->insert('users', ['user_type_id' => $user_type_id, 'first_name' => $fname, 'last_name' => $lname, 'username' => $username, 'email' => $email, 'password' => $password, 'image' => $images_to_save, 'accepted' => $accepted, 'date' => $date]);
             $result = $obj->getResult();
+            $success = file_put_contents($file, $data);
             echo json_encode($result);
         }else {
             echo json_encode($issues);

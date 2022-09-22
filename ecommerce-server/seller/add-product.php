@@ -20,11 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $user_data = JWT::decode($jwt, new Key($secret_key, 'HS256'));
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
-        print gettype($data);
+        
         if($user_data->data->user_type != 2) echo json_decode([
             'status' => 0,
             'message' => 'Access Denied',
         ]);
+        
         $category = $data["category"];
         $price = $data["price"];
         $name = $data['name'];
@@ -52,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $file = UPLOAD_DIR . uniqid() . '.png';
         $images_to_save = "/xampp/htdocs/E-Commerce.HippoWare/ecommerce-server/".$file;
 
-        print $price;
 
         $insertArr = [
             'category_id' => $catid,
