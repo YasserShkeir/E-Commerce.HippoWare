@@ -19,4 +19,16 @@ window.onload = () => {
     for(let i=0;i<9;i++){
         products.innerHTML+=productCard
     }
+
+    const myModal= document.getElementById("myModal")
+    const deleteItem= document.getElementById("delete-item")
+    const cancelDelete= document.getElementById("cancel-delete")
+    document.getElementById("trash-bin").onclick=()=>{
+        console.log('heifj')
+        myModal.style.display='Block'
+    }
+    cancelDelete.onclick=()=>{
+        myModal.style.display='none'
+    }
+    
 }
