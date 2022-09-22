@@ -11,6 +11,8 @@ use \Firebase\JWT\JWT;
 $obj = new Database();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $request_body = file_get_contents('php://input');
+    $data = json_decode($request_body, true);
     $email = $_POST['email'];
     $password =$_POST['password'];
 

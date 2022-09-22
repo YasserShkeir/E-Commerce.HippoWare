@@ -14,19 +14,21 @@ $obj = new Database();
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     try {
+        $request_body = file_get_contents('php://input');
+        $data = json_decode($request_body, true);
 
         $allheaders = getallheaders();
         $jwt =$allheaders['Authorization'];
         $secret_key = "Hippo";
         $user_data = JWT::decode($jwt, new Key($secret_key, 'HS256'));
 
-        $first_name = $_POST['first_name'];
-        $last_name = $_POST['last_name'];
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $image = $_POST['image'];
-        $password = hash("sha256",$_POST['password']);
-        $user_type_id = $_POST['user_type_id'];
+        $first_name = $data['first_name'];
+        $last_name = $data['last_name'];
+        $username = $data['username'];
+        $email = $data['email'];
+        $image = $data['image'];
+        $password = hash("sha256",$data['password']);
+        $user_type_id = $data['user_type_id'];
         $date = date('Y-m-d');
         $flag = 1;
         $issues = [];
