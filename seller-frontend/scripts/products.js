@@ -21,13 +21,13 @@ window.onload = () => {
         products.innerHTML+=productCard
     }
     const displayedProducts=document.getElementsByClassName("product-card")
-    const myModal= document.getElementById("myModal")
+    const myModal= document.getElementById("deletion-modal")
     const deleteItem= document.getElementById("delete-item")
     const cancelDelete= document.getElementById("cancel-delete")
     const trashBin=document.getElementsByClassName("trash-bin")
 
     for (let i=0; i<displayedProducts.length;i++){
-        trashBin[i].onclick=(e)=>{
+        trashBin[i].onclick=()=>{
             myModal.style.display='Block'
             deleteItem.onclick=()=>{
                 displayedProducts[i].remove()
@@ -38,5 +38,11 @@ window.onload = () => {
         cancelDelete.onclick=()=>{
             myModal.style.display='none'
         }
-    }   
+    }
+    addCategory.onmouseover=()=>{
+        document.getElementById('drop').style.display="Block"
+        addCategory.style.color='blue'
+    }
+
 }
+       
