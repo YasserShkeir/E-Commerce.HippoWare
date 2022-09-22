@@ -178,13 +178,23 @@ input:focus{
     justify-content: space-between;
     padding:20px;
 }
-.top-product{
-    width: 300px;
-    height: 200px;
-    margin: 15px;
+.top-products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.top-product-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+    height: 100px;
+    margin: 14px;
+    font-weight: 200;
+    font-size: 14px;
     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.3));
 }
-.top-product:hover {
+.top-product-card:hover {
     margin-bottom: 10px;
     scale: 1.05;
 }
