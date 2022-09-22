@@ -1,7 +1,8 @@
 const nav_bar = document.querySelector('.nav-bar');
-const form_container = document.querySelector('.form-container');
-const signup_close_btn = document.getElementById('signup_close_btn');
-
+const signup_form_container = document.querySelector('.signup-form-container');
+const signin_form_container = document.querySelector('.signin-form-container');
+const signup_close_btn = document.querySelector('.signup_close_btn');
+const login= document.getElementById('login');
 // CREATING NAVBAR ELEMENTS
 const logo_img = document.createElement('img');
 const search_div = document.createElement('div');
@@ -38,9 +39,14 @@ header_links_div.append(signup_btn, login_btn);
 
 // SIGN UP POPUP
 signup_btn.addEventListener('click', ()=>{
-    form_container.style.display = 'block';
+    signup_form_container.style.display = 'block';
 });
 
-signup_close_btn.addEventListener('click', ()=>{
-    form_container.style.display = 'none';
-});
+// signup_close_btn.addEventListener('click', ()=>{
+//     signup_form_container.style.display = 'none';
+// });
+
+//sign in popup
+login_btn.onclick=()=>{
+    signin_form_container.style.display = 'block';
+}

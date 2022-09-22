@@ -149,11 +149,9 @@ body {
 .section-title{
     font-weight: 900;
 }
-
-
 /* SIGNUP FORM */
 
-.form-container{
+.signup-form-container, .signin-form-container {
     display: none;
     width:100vw;
     height: 100vh;
@@ -253,18 +251,23 @@ body {
     height: 200px;
 }
 .username-input, .password-input{
-    margin:15px;
-    height: 50px;
+    width: 100%;
+    margin: 1% 0;
+    padding: 5px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid white;;
 }
 .login-btn{
-    width:200px;
-    height:40px;
-    margin: 30px;
-    background-color: white;
+    width:fit-content;
+    padding: 10px 20px;
+    background: var(--green-blue);
+    color:white;
+    border: none;
     border-radius: 30px;
-    background: rgba(255, 255, 255);
-    border: 1px solid white;
-    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+    cursor:pointer;
 }
 .login-btn:active{
     scale: 0.9;
