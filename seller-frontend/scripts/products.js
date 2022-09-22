@@ -25,7 +25,8 @@ window.onload = () => {
     const deleteItem= document.getElementById("delete-item")
     const cancelDelete= document.getElementById("cancel-delete")
     const trashBin=document.getElementsByClassName("trash-bin")
-
+    const dropDownContents=document.getElementById('drop')
+    console.log(dropDownContents)
     for (let i=0; i<displayedProducts.length;i++){
         trashBin[i].onclick=()=>{
             myModal.style.display='Block'
@@ -39,10 +40,33 @@ window.onload = () => {
             myModal.style.display='none'
         }
     }
+    let categoryOptions= document.getElementById('category-select')
+    let categoryArray=[]
+    for (let option of categoryOptions.children){
+        categoryArray.push(option.value)
+    }
+    console.log(categoryArray)
     addCategory.onmouseover=()=>{
         document.getElementById('drop').style.display="Block"
-        addCategory.style.color='blue'
+        dropDownContents.onclick=(e)=>{
+            console.log(e.target.innerHTML)
+            if (categoryArray.includes(e.target.innerHTML) ){
+                window.alert('Category already exits')
+            }
+            else{
+                let option=`<option>${e.target.innerHTML}</option>`
+                categoryOptions.innerHTML+=option
+            }
+        }
+        document.getElementById('drop').onmouseleave=()=>{
+            document.getElementById('drop').style.display="none"
+        }
     }
+
+    addProduct.onclick=()=>{
+        
+    }
+    
 
 }
        

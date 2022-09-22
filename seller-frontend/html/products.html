@@ -40,14 +40,14 @@
             <option value="Women">Women</option>
             <option value="Children">Children</option>
         </select>
-        <div class="add-btns" >
+        <div class="add-btns">
             <div class="dropdown">
                 <button class="add-btn" id="add-category">Add Category</button>
                 <div class="dropdown-content" id="drop">
-                    <div>Men</div>
-                    <div>Women</div>
-                    <div>Children</div>
-                    <div><input placeholder="customize" class="customize-category"></div>
+                    <div class="category-options">Men</div>
+                    <div class="category-options">Women</div>
+                    <div class="category-options">Children</div>
+                    <div><input placeholder="new category" class="customize-category"></div>
                 </div>
             </div>
             <button class="add-btn" id="add-product">Add Product</button>
@@ -68,6 +68,30 @@
         </div>
     </div>
 
+    <form id="product-popup">
+        <h3>Upload the product</h3>
+        <img>
+        <div id="product-popup-select">
+            <select name="category" id="category-select" class="category-select">
+                <option value="none" selected disabled hidden>Category</option>
+                <option value="Men">Men</option>
+                <option value="Women">Women</option>
+                <option value="Children">Children</option>
+            </select>
+            <select name="category" id="category-select" class="category-select">
+                <option value="none" selected disabled hidden>Category</option>
+                <option value="Men">Men</option>
+                <option value="Women">Women</option>
+                <option value="Children">Children</option>
+            </select>
+        </div>
+        <input placeholder="price">
+        <input placeholder="discount">
+        <input placeholder="product type">
+        <input placeholder="color">
+        <input placeholder="size">
+        <textarea placeholder="description"></textarea>
+    </form>
 
         
     
