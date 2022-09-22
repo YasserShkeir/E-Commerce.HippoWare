@@ -273,7 +273,11 @@ body {
     scale: 0.9;
 }
 
-
+#not-matching, #wrong-format{
+    color:red;
+    display: none;
+    font-size: 10px;
+}
 
 
 

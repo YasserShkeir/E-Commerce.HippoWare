@@ -137,11 +137,11 @@
 
         <h4>Personal info</h4>
         <div class="flex-row">
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Lirst Name">
+        <input type="text" placeholder="First Name" id="fname" required>
+        <input type="text" placeholder="Lirst Name" id="lname" required>
         </div>
-        <input type="text" placeholder="User Name">
-        <input type="text" placeholder="Email">
+        <input type="text" placeholder="User Name" id="username" required>
+        <input type="text" placeholder="Email" id="email" required>
 
         <h4>Address</h4>
         <div class="flex-row">
@@ -155,20 +155,23 @@
         </div>
 
         <h4>Password</h4>
-        <input type="text" placeholder="Password">
-        <input type="text" placeholder="Confirm Password">
+        <input type="text" placeholder="Password" id="password" required>
+        <input type="text" placeholder="Confirm Password" id="password-confirm" required>
+        <p id="not-matching">passwords do not match</p>
+        <p id="wrong-format">Your password should be minimum 8 Characters<br>It must contian at least
+        one uppercase letter and one lower case character<br> It must contain at least one number</p>
 
 
         <div class="flex-row">
-            <button class="signup-btn">Sign up as a Seller</button>
-            <button class="signup-btn">Sign up as a Client</button>
+            <button class="signup-btn" id="seller-signup"  type="submit">Sign up as a Seller</button>
+            <button class="signup-btn" id="client-signup"  type="submit">Sign up as a Client</button>
         </div>
     </form>
 
     </section>
 
 
-    <!-- SIGNUP FORM -->
+    <!-- SIGNIN FORM -->
 <section  class="signin-form-container" >
     <form action="" class="signup-form">
         <div class="form-topSection">
@@ -198,6 +201,6 @@
         </div>
     </form>
 </section>
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="../scripts/home_page.js"></script>
 </body>

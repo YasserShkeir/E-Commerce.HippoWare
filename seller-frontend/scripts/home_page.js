@@ -37,10 +37,58 @@ search_div.append(search_icon_img, search_input);
 header_links_div.append(signup_btn, login_btn);
 
 
+const firstName=document.getElementById('fname')
+const lastName=document.getElementById('lname')
+const userName=document.getElementById('username')
+const email=document.getElementById('email')
+const password=document.getElementById('password')
+const confirmPassword=document.getElementById('password-confirm')
+const sellerSignup=document.getElementById('seller-signup')
+const clientSignup=document.getElementById('client-signup')
+
+function passwordFormat(password){
+    const expression=/^[0-9a-zA-Z]{8,}$/
+    return (expression.test(password))
+}
+
 // SIGN UP POPUP
 signup_btn.addEventListener('click', ()=>{
     signup_form_container.style.display = 'block';
-});
+})
+sellerSignup.addEventListener('click', (event)=>{
+    document.getElementById('not-matching').style.display='none'
+    document.getElementById('wrong-format').style.display='none'
+    event.preventDefault()
+    if (firstName.value && lastName.value && userName.value && email.value && password.value && confirmPassword.value)
+    {
+        if(password.value==confirmPassword.value){
+            if(passwordFormat(password.value)){
+                signin()
+            }
+            else{
+                document.getElementById('wrong-format').style.display='block'
+            }
+        }
+        else{
+            document.getElementById('not-matching').style.display='block'
+        }
+    }
+})
+function signin(){
+    let payload = {first_name: firstName.value, last_name: lastName.value, username: userName.value, email: email.value, image: null, password: password.value, user_type_id: 2}
+    let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/registration.php',payload).then(
+        function (response) {
+        console.log(response.data);
+        // I need this data here ^^
+        return response.data;
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
+}
+
+
+
 
 // signup_close_btn.addEventListener('click', ()=>{
 //     signup_form_container.style.display = 'none';
