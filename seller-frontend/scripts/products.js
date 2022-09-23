@@ -79,6 +79,7 @@ window.onload = () => {
 
     const dropDownContents=document.getElementById('drop')
     const categoryOptions=document.getElementsByClassName('category-options')
+    const customizeCategory=document.getElementById('customize-category')
     addCategory.onmouseover=()=>{
         dropDownContents.style.display="Block"
     }
@@ -105,7 +106,23 @@ window.onload = () => {
             })
         }
     }
- 
+    customizeCategory.onkeyup=(e)=>{
+        if (e.key==='Enter'){
+            console.log(customizeCategory.value)
+            let payload = {category: customizeCategory.value }
+            let config = {
+                headers: {'Authorization': localStorage.jwt}
+            };
+            let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/add-category.php',payload, config).then(
+                function (response) {
+                console.log(response.data);
+                return response.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        }
+    }
 
 
 
