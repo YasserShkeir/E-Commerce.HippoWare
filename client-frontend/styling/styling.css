@@ -12,6 +12,8 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   background-color: var(--bg-color);
   margin: 0px;
 }
