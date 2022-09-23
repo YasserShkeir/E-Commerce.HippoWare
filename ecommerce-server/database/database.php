@@ -115,7 +115,6 @@ class Database
             $sql = "DELETE FROM $table";
             if ($where != null) {
                 $sql .= " WHERE $where";
-                print $sql;
             }
             if ($this->mysqli->query($sql)) {
                 array_push($this->result, true);
