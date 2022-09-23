@@ -4,80 +4,86 @@ window.onload = () => {
     const addCategory= document.getElementById("add-category")
     const addProduct= document.getElementById("add-product")
     const products= document.getElementById("products")
-    
-
-
-    //display all products
-    if (categorySelect.value== 'none'){
-        let payload = {search:"0",
-        category:"0"}
-        let config = {
-            headers: {'Authorization': localStorage.jwt}
-        };
-        let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/products.php',payload,config).then(
-            function (response) {
-                console.log(response.data)
-                for (data of response.data){
-                    let productCard = 
-                        `<div class="product-card">
-                            <img src="../../assets/jacket2.jfif" class="jacket"> 
-                            <div class="product-details">
-                                <div>Name : ${data.name}</div>
-                                <div>Color: ${data.color} </div>
-                                <div>Size: ${data.size}</div>
-                                <div>Revenue: ${data.revenue}</div>
-                                <div>Price: ${data.price}</div>
-                                <img src="../../assets/trash.png" class="trash-bin">
-                            </div>
-                        </div>`
-                    products.innerHTML+=productCard
-                }
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-    }
-    categorySelect.onchange=(e)=>{
-        products.innerHTML=''
-        const categorySelected=e.target.value
-        let payload = {search:"0",
-        category:categorySelected}
-        let config = {
-            headers: {'Authorization': localStorage.jwt}
-        };
-        let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/products.php',payload,config).then(
-            function (response) {
-                for (data of response.data){
-                    let productCard = 
-                        `<div class="product-card">
-                            <img src="../../assets/jacket2.jfif" class="jacket"> 
-                            <div class="product-details">
-                                <div>Name : ${data.name}</div>
-                                <div>Color: ${data.color} </div>
-                                <div>Size: ${data.size}</div>
-                                <div>Revenue: ${data.revenue}</div>
-                                <div>Price: ${data.price}</div>
-                                <img src="../../assets/trash.png" class="trash-bin">
-                            </div>
-                        </div>`
-                    products.innerHTML+=productCard
-                }
-            return products
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-    }
-   
-
-
-    
     const displayedProducts=document.getElementsByClassName("product-card")
     const deleteModal= document.getElementById("deletion-modal")
     const deleteItem= document.getElementById("delete-item")
     const cancelDelete= document.getElementById("cancel-delete")
-    const trashBin=document.getElementsByClassName("trash-bin")
-    console.log(displayedProducts)
+    const trashBin=document.querySelectorAll(".trash-bin")
+    
+    console.log(typeof(trashBin))
+
+    //display all products
+    if (categorySelect.value== 'none'){
+        displaybyCategroy('0')
+    }
+
+    categorySelect.onchange=(e)=>{
+        products.innerHTML=''
+        const categorySelected=e.target.value
+        displaybyCategroy(categorySelected)
+    }
+
+    function displaybyCategroy(categorySelected){
+        let payload = {search:"0",
+        category:categorySelected}
+        let config = {
+            headers: {'Authorization': localStorage.jwt}
+        }
+        let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/products.php',payload,config).then(
+            function (response) {
+                for (data of response.data){
+                    displayProducts(data) 
+                }
+                console.log(trashBin.length)
+                return response.data
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        }
+    function displayProducts(data){
+        let productCard = 
+            `<div class="product-card">
+                <img src="../../assets/jacket2.jfif" class="jacket"> 
+                <div class="product-details">
+                    <div>Name : ${data.name}</div>
+                    <div>Color: ${data.color} </div>
+                    <div>Size: ${data.size}</div>
+                    <div>Revenue: ${data.revenue}</div>
+                    <div>Price: ${data.price}</div>
+                    <img src="../../assets/trash.png" class="trash-bin">
+                </div>
+            </div>`
+            products.innerHTML+=productCard
+    }
+    
+    
+    // let payload = {search:"0", category:'0'}
+    // let config = {
+    //     headers: {'Authorization': localStorage.jwt}
+    // }
+    // let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/products.php',payload,config).then(
+    //     function (response) {
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     })
+    
+   
+    // function deleteProduct(){
+    //     displayedProducts.onclick=(e)=>{
+    //         if (e.target)
+    //     }
+    // }
+
+
+    
+
+
+
+    
+    
+
     // for (let displayedProduct of displayedProducts){
     //     displayedProduct.onclick=(e)=>{
     //         console.log('Here')
@@ -103,11 +109,11 @@ window.onload = () => {
     
     //Storing Categories
     let categories=[]
-    let payload = {}
-    let config = {
+    payload = {}
+    config = {
         headers: {'Authorization': localStorage.jwt}
     };
-    let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/categories.php',payload,config).then(
+    res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/categories.php',payload,config).then(
         function (response) {
         categories=[]
         for (let i=0;i<response.data.length;i++){
@@ -117,7 +123,7 @@ window.onload = () => {
            
             localStorage.removeItem('categories')
         }
-        console.log(categories)
+
         localStorage.setItem('categories',categories.toString())
         return response.data;
     })
@@ -129,7 +135,6 @@ window.onload = () => {
     console.log(localStorage)
    
     for (let category of categories){
-        console.log('hi')
         let option=`<option value=${category}>${category}</option>`
         categorySelect.innerHTML+=option
     }
