@@ -65,6 +65,26 @@ window.onload = () => {
     });
   };
 
+  const footerCaller = () => {
+    const footer = document.querySelector(".client-footer");
+    footer.innerHTML = `<div class="footer-content flex">
+    <a href="landingPage.html"
+      ><img src="../assets/images/logo-removebg-preview.png"
+    /></a>
+    <div class="footer-col flex-col">
+      <h3>Navigation</h3>
+      <a href="landingPage.html">Home</a>
+      <a href="editProfile.html">Edit Profile</a>
+    </div>
+    <div class="footer-col flex-col">
+      <a href="favorites.html">Favorites</a>
+      <a href="wishlist.html">Wishlist</a>
+    </div>
+  </div>
+  <div class="footer-caption">© 2022 Made by Hippos 🦛</div>`;
+  };
+
+  footerCaller();
   navBarCaller();
 
   const productImg = document.querySelector("#product-img img");

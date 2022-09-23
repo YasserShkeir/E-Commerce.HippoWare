@@ -12,11 +12,11 @@ html {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
   background-color: var(--bg-color);
   margin: 0px;
 }
+
+/* Client Nav Start */
 
 .client-nav {
   height: 80px;
@@ -25,6 +25,10 @@ body {
   align-items: center;
   gap: 20px;
   justify-content: space-between;
+}
+
+#navLogo {
+  transition: 0.3s;
 }
 
 .client-nav img {
@@ -70,6 +74,7 @@ body {
   align-items: center;
   padding: 0px 15px;
   gap: 10px;
+  transition: 0.5s;
 }
 
 #search {
@@ -82,6 +87,7 @@ body {
 .mobile-links {
   display: none;
   width: fit-content;
+  transition: 0.5s;
 }
 
 .logOut {
@@ -96,6 +102,64 @@ body {
   background-color: transparent;
   border: none;
 }
+
+/* Client Nav End */
+
+/* Client Footer Start */
+
+.client-footer {
+  bottom: 0;
+  width: 100%;
+  align-items: center;
+  background-color: var(--faded-blue);
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+.footer-content {
+  display: flex;
+  width: 100%;
+  margin-bottom: 60px;
+  padding: 0px 10% 0px 6%;
+  box-sizing: border-box;
+  gap: 15%;
+  justify-content: center;
+}
+
+.footer-content a {
+  padding: 10px;
+  border-radius: 40px;
+  transition: 0.3s;
+  height: fit-content;
+}
+
+.footer-content a:first-child:hover {
+  background-color: var(--bg-color);
+  transition: 0.3s;
+}
+
+.footer-col {
+  min-width: 120px;
+  text-align: center;
+}
+
+.footer-col:last-child {
+  margin-top: 59px;
+}
+
+.footer-col a {
+  margin: 5px 0px;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.footer-col a:hover {
+  color: var(--bg-color);
+  background-color: var(--black) !important;
+}
+
+/* Client Footer End */
 
 .flex {
   display: flex;
@@ -147,6 +211,36 @@ body {
     display: block;
   }
   #navLogo {
+    transition: 0.3s;
     width: 50px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .client-footer {
+    padding: 15px;
+  }
+
+  .footer-content {
+    margin-bottom: 30px;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0px 50px;
+  }
+
+  .footer-content a:first-child {
+    display: none;
+  }
+
+  .footer-content a {
+    padding: 5px 10px;
+  }
+
+  .footer-col {
+    width: fit-content;
+  }
+
+  .footer-col a {
+    display: block !important;
   }
 }
