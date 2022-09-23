@@ -20,21 +20,34 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $user_data = JWT::decode($jwt, new Key($secret_key, 'HS256'));
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
-
-        if($user_data->data->user_type != 2)
-        echo json_encode([
+        
+        if($user_data->data->user_type != 2) echo json_decode([
             'status' => 0,
             'message' => 'Access Denied',
         ]);
 
-        $discount = $data['discount'];
-        $description = $data['description'];
-        $limit = $data['limit'];
+        $obj->select('`stores`','id', null, "seller_id = ".$user_data->data->id, null, null);// getting store id of user
+        $result = $obj->getResult();
+        $storeid = $result[0]['id'];
 
-            $obj->insert('discount_codes',['discount' => $discount, 'description' => $description, 'limit' => $limit, 'store_id' => $user_data->data->id]);
-            $result = $obj->getResult();
-            echo json_encode($result);
+        $where = "store_id = " . $storeid . " and name = '$category'";
 
+        $deletetArr = [
+            'category_id',
+            'store_id',
+            'name',
+            'price',
+            'image',
+            'description',
+            'color',
+            'size',
+            'views',
+            'revenue'
+        ];
+
+        $obj->delete('products', $deletetArr);
+        $result = $obj->getResult();
+        echo json_encode($result);
     } catch (Exception $e) {
         echo json_encode([
             'status' => 0,
