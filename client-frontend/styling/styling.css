@@ -159,6 +159,12 @@ body {
   background-color: var(--black) !important;
 }
 
+.footer-caption {
+  padding: 10px;
+  background-color: var(--bg-color);
+  border-radius: 25px;
+}
+
 /* Client Footer End */
 
 .flex {
