@@ -4,7 +4,7 @@
 header('Access-Control-Allow-Origin:*');
 header('Access-Control-Allow-Method:POST');
 header('Content-Type:application/json');
-include '../database/Database.php';
+include '../database/database.php';
 include '../vendor/autoload.php';
 
 use \Firebase\JWT\JWT;
@@ -27,13 +27,17 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             'message' => 'Access Denied',
         ]);
 
-        $discount = $data['discount'];
+        $discount = floatval( $data['discount']);
         $description = $data['description'];
         $limit = $data['limit'];
 
-            $obj->insert('discount_codes',['discount' => $discount, 'description' => $description, 'limit' => $limit, 'store_id' => $user_data->data->id]);
-            $result = $obj->getResult();
-            echo json_encode($result);
+        $obj->select('`stores`','id', null, "seller_id = ".$user_data->data->id, null, null);
+        $result = $obj->getResult();
+        $storeid = (int)$result[0]['id'];
+
+        $obj->insert('discountcodes',['discount'=> $discount, 'description' => $description, 'limits' => $limit, 'store_id' => $storeid]);
+        $result = $obj->getResult();
+        echo json_encode($result);
 
     } catch (Exception $e) {
         echo json_encode([

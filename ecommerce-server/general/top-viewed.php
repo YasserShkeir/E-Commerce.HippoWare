@@ -14,7 +14,7 @@ $obj = new Database();
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     
-        $obj->select('`products`','*', null, null, "views DESC", "0,10");
+        $obj->select('`products`','*', null, null, "views DESC", "0,9");
         $result = $obj->getResult();
         echo json_encode($result);
 

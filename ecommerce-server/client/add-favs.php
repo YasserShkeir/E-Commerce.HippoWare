@@ -27,11 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             'message' => 'Access Denied',
         ]);
 
-        $obj->select('`stores`','id', null, "seller_id = ".$user_data->data->id, null, null);
-        $result = $obj->getResult();
-        $storeid = $result[0]['id'];
-
-        $obj->delete('discount_codes',['discount', 'description', 'limit', 'store_id'], "store_id = " . $storeid);
+        $product = $data['product'];
+        $obj->insert('favorites',['client_id' => $user_data->data->id, 'product_id' => $product]);
         $result = $obj->getResult();
         echo json_encode($result);
 
