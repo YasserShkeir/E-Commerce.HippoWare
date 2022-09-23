@@ -21,11 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 3)
-        echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
+        if($user_data->data->user_type != 2){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        }
+
 
         $product = $data['product'];
         $obj->insert('favorites',['client_id' => $user_data->data->id, 'product_id' => $product]);

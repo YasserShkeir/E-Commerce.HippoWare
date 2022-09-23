@@ -28,27 +28,12 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             ]);
             die();
         }
-
-
-        $reciever = $data['username'];
-        $message = $data['message'];
-        $value = $data['value'];
-
-        $obj->select('`users`','id', null, "username = '".$reciever."'", null, null);// getting store id of user
+        $where = "p.id = w.product_id and client_id = ".$user_data->data->id;
+        
+        $obj->select('`whishlist` as w, products as p', "*", null, $where, null, null);
         $result = $obj->getResult();
+        echo json_encode($result);
 
-        if(!$result){ // if category exits insert fails
-            echo json_encode([
-                'status' => 0,
-                'message' => 'user does not exist',
-            ]);
-        }
-        else{
-            $recieverid = $result[0]['id'];
-            $obj->insert('vouchers',['sender_id' => $user_data->data->id, 'reciever_id' => $recieverid, 'message' => $message, 'value' => $value]);
-            $result = $obj->getResult();
-            echo json_encode($result);
-        }
     } catch (Exception $e) {
         echo json_encode([
             'status' => 0,
