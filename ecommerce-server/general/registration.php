@@ -59,6 +59,13 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $result = $obj->getResult();
             $success = file_put_contents($file, $data);
             echo json_encode($result);
+            if($user_type_id == 3){
+                $obj->select('users', '*', null, "username='{$username}'", null, null);
+                $result = $obj->getResult();
+                $id=$result[0]['id'];
+                $obj->insert('carts',['client_id' => $id]);
+                $result = $obj->getResult();
+            }
         }else {
             echo json_encode($issues);
         }
