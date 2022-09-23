@@ -16,6 +16,8 @@ window.onload = () => {
             <img src="../../assets/trash.png" class="trash-bin">
         </div>
     </div>`
+
+
     //display 9 products for now
     for(let i=0;i<9;i++){
         products.innerHTML+=productCard
@@ -25,8 +27,7 @@ window.onload = () => {
     const deleteItem= document.getElementById("delete-item")
     const cancelDelete= document.getElementById("cancel-delete")
     const trashBin=document.getElementsByClassName("trash-bin")
-    const dropDownContents=document.getElementById('drop')
-    console.log(dropDownContents)
+
     for (let i=0; i<displayedProducts.length;i++){
         trashBin[i].onclick=()=>{
             myModal.style.display='Block'
@@ -41,8 +42,8 @@ window.onload = () => {
         }
     }
     
+    //Storing Categories
     let categories=[]
-    
     let payload = {}
     let config = {
         headers: {'Authorization': localStorage.jwt}
@@ -64,8 +65,6 @@ window.onload = () => {
     .catch(function (error) {
         console.log(error);
     })
-
-    
     categories=localStorage.getItem('categories').split(',')
     localStorage.removeItem('categories')
     console.log(localStorage)
@@ -75,11 +74,37 @@ window.onload = () => {
         let option=`<option value=${category}>${category}</option>`
         categorySelect.innerHTML+=option
     }
-    
-    
 
-    
-    
+    //adding categories
+
+    const dropDownContents=document.getElementById('drop')
+    const categoryOptions=document.getElementsByClassName('category-options')
+    addCategory.onmouseover=()=>{
+        dropDownContents.style.display="Block"
+    }
+    dropDownContents.onmouseleave=()=>{
+        dropDownContents.style.display="none"
+    }
+
+    let categoryArray=['Men','Women','Children']
+    dropDownContents.onclick=(e)=>{
+        let clickedCategory=e.target.innerHTML
+        console.log(clickedCategory)
+        if (categoryArray.includes(clickedCategory)){
+            let payload = {category: clickedCategory }
+            let config = {
+                headers: {'Authorization': localStorage.jwt}
+            };
+            let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/add-category.php',payload, config).then(
+                function (response) {
+                console.log(response.data);
+                return response.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        }
+    }
  
 
 
