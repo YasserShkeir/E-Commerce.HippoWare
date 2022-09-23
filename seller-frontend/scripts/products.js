@@ -8,64 +8,92 @@ window.onload = () => {
 
 
     //display all products
-    let payload = {search:"0",
-    category:"0"}
-    let config = {
-        headers: {'Authorization': localStorage.jwt}
-    };
-    let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/products.php',payload,config).then(
-        function (response) {
-            console.log(response.data)
-            for (data of response.data){
-                let productCard = 
-                    `<div class="product-card">
-                        <img src="../../assets/jacket2.jfif" class="jacket"> 
-                        <div class="product-details">
-                            <div>Name : ${data.name}</div>
-                            <div>Color: ${data.color} </div>
-                            <div>Size: ${data.size}</div>
-                            <div>Revenue: ${data.revenue}</div>
-                            <div>Price: ${data.price}</div>
-                            <img src="../../assets/trash.png" class="trash-bin">
-                        </div>
-                    </div>`
-                products.innerHTML+=productCard
-            }
-    })
-    .catch(function (error) {
-        console.log(error);
-    })
-
-
-
-
-
-
-
-
-    categorySelect.onchange=()=>{
-        console.log('erhreh')
+    if (categorySelect.value== 'none'){
+        let payload = {search:"0",
+        category:"0"}
+        let config = {
+            headers: {'Authorization': localStorage.jwt}
+        };
+        let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/products.php',payload,config).then(
+            function (response) {
+                console.log(response.data)
+                for (data of response.data){
+                    let productCard = 
+                        `<div class="product-card">
+                            <img src="../../assets/jacket2.jfif" class="jacket"> 
+                            <div class="product-details">
+                                <div>Name : ${data.name}</div>
+                                <div>Color: ${data.color} </div>
+                                <div>Size: ${data.size}</div>
+                                <div>Revenue: ${data.revenue}</div>
+                                <div>Price: ${data.price}</div>
+                                <img src="../../assets/trash.png" class="trash-bin">
+                            </div>
+                        </div>`
+                    products.innerHTML+=productCard
+                }
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
     }
-    console.log(categorySelect.value)
+    categorySelect.onchange=(e)=>{
+        products.innerHTML=''
+        const categorySelected=e.target.value
+        let payload = {search:"0",
+        category:categorySelected}
+        let config = {
+            headers: {'Authorization': localStorage.jwt}
+        };
+        let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/products.php',payload,config).then(
+            function (response) {
+                for (data of response.data){
+                    let productCard = 
+                        `<div class="product-card">
+                            <img src="../../assets/jacket2.jfif" class="jacket"> 
+                            <div class="product-details">
+                                <div>Name : ${data.name}</div>
+                                <div>Color: ${data.color} </div>
+                                <div>Size: ${data.size}</div>
+                                <div>Revenue: ${data.revenue}</div>
+                                <div>Price: ${data.price}</div>
+                                <img src="../../assets/trash.png" class="trash-bin">
+                            </div>
+                        </div>`
+                    products.innerHTML+=productCard
+                }
+            return products
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+    }
+   
 
 
-    //display 9 products for now
-    // for(let i=0;i<9;i++){
-    //     products.innerHTML+=productCard
+    
+    const displayedProducts=document.getElementsByClassName("product-card")
+    const deleteModal= document.getElementById("deletion-modal")
+    const deleteItem= document.getElementById("delete-item")
+    const cancelDelete= document.getElementById("cancel-delete")
+    const trashBin=document.getElementsByClassName("trash-bin")
+    console.log(displayedProducts)
+    // for (let displayedProduct of displayedProducts){
+    //     displayedProduct.onclick=(e)=>{
+    //         console.log('Here')
+    //         if (trashBin.includes(e.target)){
+    //             console.log('yessss')
+    //         }
+    //     }
     // }
-    // const displayedProducts=document.getElementsByClassName("product-card")
-    // const myModal= document.getElementById("deletion-modal")
-    // const deleteItem= document.getElementById("delete-item")
-    // const cancelDelete= document.getElementById("cancel-delete")
-    // const trashBin=document.getElementsByClassName("trash-bin")
-
+   
+    
     // for (let i=0; i<displayedProducts.length;i++){
     //     trashBin[i].onclick=()=>{
     //         myModal.style.display='Block'
     //         deleteItem.onclick=()=>{
     //             displayedProducts[i].remove()
     //             myModal.style.display='none'
-    //             // products.innerHTML='' 
     //         }    
     //     }
     //     cancelDelete.onclick=()=>{
@@ -75,11 +103,11 @@ window.onload = () => {
     
     //Storing Categories
     let categories=[]
-    payload = {}
-    config = {
+    let payload = {}
+    let config = {
         headers: {'Authorization': localStorage.jwt}
     };
-    res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/categories.php',payload,config).then(
+    let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/categories.php',payload,config).then(
         function (response) {
         categories=[]
         for (let i=0;i<response.data.length;i++){
