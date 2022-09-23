@@ -115,11 +115,17 @@ loginButtonForm.addEventListener('click', (event)=>{
         function (response) {
         console.log(response.data);
         // I need this data here ^^
-        localStorage.setItem('jwt', response.data.jwt)
-        console.log(localStorage)
-        return response.data;
+        if(response.data.message== "Login Successfully"){
+            localStorage.setItem('jwt', response.data.jwt)
+            console.log(localStorage)
+            window.location.replace('products.html')
+            return response.data;
+        }
     })
     .catch(function (error) {
         console.log(error);
     })
+}
+document.getElementById('signin_close_btn').onclick=()=>{
+    signin_form_container.style.display = 'none';
 }

@@ -1,9 +1,9 @@
 window.onload = () => {
+    console.log(localStorage)
     const categorySelect= document.getElementById("category-select")
     const addCategory= document.getElementById("add-category")
     const addProduct= document.getElementById("add-product")
     const products= document.getElementById("products")
-
     const productCard = 
     `<div class="product-card">
         <img src="../../assets/jacket2.jfif" class="jacket"> 
@@ -40,28 +40,70 @@ window.onload = () => {
             myModal.style.display='none'
         }
     }
-    let categoryOptions= document.getElementById('category-select')
-    let categoryArray=[]
-    for (let option of categoryOptions.children){
-        categoryArray.push(option.value)
-    }
-    console.log(categoryArray)
-    addCategory.onmouseover=()=>{
-        document.getElementById('drop').style.display="Block"
-        dropDownContents.onclick=(e)=>{
-            console.log(e.target.innerHTML)
-            if (categoryArray.includes(e.target.innerHTML) ){
-                window.alert('Category already exits')
-            }
-            else{
-                let option=`<option>${e.target.innerHTML}</option>`
-                categoryOptions.innerHTML+=option
-            }
+    
+    let categories=[]
+    
+    let payload = {}
+    let config = {
+        headers: {'Authorization': localStorage.jwt}
+    };
+    let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/categories.php',payload,config).then(
+        function (response) {
+        categories=[]
+        for (let i=0;i<response.data.length;i++){
+            categories.push(response.data[i].name)
         }
-        document.getElementById('drop').onmouseleave=()=>{
-            document.getElementById('drop').style.display="none"
+        if ('categories' in localStorage){
+           
+            localStorage.removeItem('categories')
         }
+        console.log(categories)
+        localStorage.setItem('categories',categories.toString())
+        return response.data;
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
+
+    
+    categories=localStorage.getItem('categories').split(',')
+    
+   
+    for (let category of categories){
+        console.log('hi')
+        let option=`<option value=${category}>${category}</option>`
+        categorySelect.innerHTML+=option
     }
+    
+    
+
+    
+    
+ 
+
+
+
+    // let categoryArray=[]
+    // for (let option of categoryOptions.children){
+    //     categoryArray.push(option.value)
+    // }
+    // console.log(categoryArray)
+    // addCategory.onmouseover=()=>{
+    //     document.getElementById('drop').style.display="Block"
+    //     dropDownContents.onclick=(e)=>{
+    //         console.log(e.target.innerHTML)
+    //         if (categoryArray.includes(e.target.innerHTML) ){
+    //             window.alert('Category already exits')
+    //         }
+    //         else{
+    //             let option=`<option>${e.target.innerHTML}</option>`
+    //             categoryOptions.innerHTML+=option
+    //         }
+    //     }
+    //     document.getElementById('drop').onmouseleave=()=>{
+    //         document.getElementById('drop').style.display="none"
+    //     }
+    // }
 
     addProduct.onclick=()=>{  }
 

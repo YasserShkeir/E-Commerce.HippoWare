@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../scripts/products.js"></script>
 </head>
 <body>
@@ -36,13 +37,14 @@
     <div class="category">
         <select name="category" id="category-select" class="category-select">
             <option value="none" selected disabled hidden>Category</option>
-            <option value="Men">Men</option>
+            <!-- <option value="Men">Men</option>
             <option value="Women">Women</option>
-            <option value="Children">Children</option>
+            <option value="Children">Children</option> -->
         </select>
+
         <div class="add-btns">
             <div class="dropdown">
-                <button class="add-btn" id="add-category">Add Category</button>
+                <button class="addcategory-btn" id="add-category">Add Category</button>
                 <div class="dropdown-content" id="drop">
                     <div class="category-options">Men</div>
                     <div class="category-options">Women</div>
@@ -50,7 +52,8 @@
                     <div><input placeholder="new category" class="customize-category"></div>
                 </div>
             </div>
-            <button class="add-btn" id="add-product">Add Product</button>
+
+            <button class="addproduct-btn" id="add-product">Add Product</button>
         </div>
     </div>
 
