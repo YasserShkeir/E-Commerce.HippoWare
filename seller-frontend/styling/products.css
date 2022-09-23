@@ -138,7 +138,6 @@ input:focus{
 
 }
 .jacket{
-    width: 90%;
     height: 90%;
     margin: 20px;
     border-radius: 10px;
@@ -164,6 +163,7 @@ input:focus{
 .product-details{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
 }
 .product-details>*{
@@ -362,4 +362,5 @@ input:focus{
     .category{
         padding:20px;
     }
+    
 }

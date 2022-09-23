@@ -67,7 +67,8 @@ window.onload = () => {
 
     
     categories=localStorage.getItem('categories').split(',')
-    
+    localStorage.removeItem('categories')
+    console.log(localStorage)
    
     for (let category of categories){
         console.log('hi')
