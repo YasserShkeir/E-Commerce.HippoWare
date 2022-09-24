@@ -12,6 +12,7 @@
 body {
   background: #f2fdff;
   display: flex;
+  overflow-y: hidden;
 }
 
 .nav-bar {
@@ -81,7 +82,8 @@ body {
 .general {
   width: 94%;
   margin-left: 3%;
-  height: 8%;
+  height: fit-content;
+  padding: 1% 0;
   background: var(--light-blue);
   border-radius: 50px;
   display: flex;
@@ -92,7 +94,8 @@ body {
 
 .option {
   width: 31%;
-  height: 75%;
+  height: fit-content;
+  padding: 5px 0;
   background-color: var(--bg-color);
   border-radius: 50px;
   display: flex;
@@ -101,11 +104,38 @@ body {
   align-items: center;
 }
 
+.option h2 {
+  line-height: 30px;
+}
+
 .option input {
   min-width: 50%;
-  padding: 5px 20px;
+  padding: 0px 20px;
   border-radius: 30px;
   border: none;
+}
+
+#from_date_input,
+#seller_sortby_input {
+  margin-top: -7%;
+  margin-left: -22%;
+}
+
+#to_date_input,
+#filter_input {
+  margin-top: -7%;
+  margin-left: 22%;
+}
+
+.search-div {
+  margin-top: -60px;
+  width: 87%;
+  min-height: 20%;
+}
+
+.search-div input {
+  min-width: 75%;
+  min-height: 80%;
 }
 
 .option input:focus {
@@ -135,6 +165,10 @@ body {
   gap: 15px;
   overflow-y: scroll;
   height: 70vh;
+}
+
+.sellers-list {
+  height: 55vh;
 }
 
 .client-div,
@@ -286,5 +320,103 @@ body {
 }
 
 .line_graph {
-  /* margin-top: 50px; */
+  margin: -55px 0 0 -68px;
+  scale: .875;
+}
+
+
+
+
+
+/* SIGNUP FORM */
+
+.signup-form-container,
+.signin-form-container {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.signup-form {
+  width: 20vw;
+  min-width: 400px;
+  height: fit-content;
+  height: 95vh;
+  background: var(--bg-color);
+  position: fixed;
+  top: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  box-shadow: 0px 0 5px rgba(0, 0, 0, 0.3);
+  padding: 0 1%;
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.signup-form h4 {
+  margin: 10px 0 0 5px;
+}
+
+.signup-form img {
+  scale: .6;
+}
+
+.form-input-div {
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.form-input-div input {
+  width: 100%;
+  margin: 1% 0;
+  padding: 5px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid white;
+}
+
+.flex-row {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.flex-row input {
+  width: 48%;
+}
+
+.signup-btn {
+  width: fit-content;
+  padding: 10px 20px;
+  background: var(--green-blue);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  margin-top: 20px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.signup-btn:hover {
+  background: var(--dark-blue);
+}
+
+#signup_close_btn,
+#signin_close_btn {
+  position: fixed;
+  top: 0;
+  right: 0%;
+  cursor: pointer;
 }

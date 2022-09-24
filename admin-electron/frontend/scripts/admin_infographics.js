@@ -2,7 +2,7 @@ window.onload = () => {
   const navBar = document.querySelector(".nav-bar");
 
   const navContent = `<img
-src="/admin-electron/assets/images/logo-removebg-preview.png"
+src="assets/images/logo-removebg-preview.png"
 alt=""
 class="header-logo"
 />
@@ -72,7 +72,7 @@ function drawChart() {
 
   var piechart_options = {
     title: "Profit of each of the highest selling items",
-    width: 540,
+    width: 630,
     height: 200,
     is3D: true,
   };
@@ -83,7 +83,7 @@ function drawChart() {
 
   var barchart_options = {
     title: "Highest selling items",
-    width: 540,
+    width: 630,
     height: 200,
     legend: "none",
   };

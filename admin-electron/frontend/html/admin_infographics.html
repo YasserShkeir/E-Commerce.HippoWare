@@ -1,102 +1,130 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Page</title>
-    <!-- FAVICON -->
-    <link
-      rel="icon"
-      href="/admin-electron/assets/images/logo-removebg-preview.png"
-      type="image/png"
-    />
-    <!-- CSS STYLES -->
-    <link
-      rel="stylesheet"
-      href="/admin-electron/frontend/styling/styling.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/admin-electron/frontend/styling/admin_page.css"
-    />
-    <!-- MATERIAL ICONS -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <!-- SIDE NAV BAR BEGINS HERE -->
-    <nav class="nav-bar"></nav>
-    <!-- SIDE NAV BAR ENDS HERE -->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hippo Ware | Admin Panel - Infographics</title>
+  <!-- FAVICON -->
+  <link rel="icon" href="../../assets/images/hippo-icon.png" type="image/png" />
+  <!-- CSS STYLES -->
+  <link rel="stylesheet" href="../styling/styling.css" />
+  <link rel="stylesheet" href="../styling/admin_page.css" />
+  <!-- MATERIAL ICONS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
 
-    <!-- MAIN SECTION BEGINS HERE -->
-    <section class="main-section">
-      <!-- Statistics CONTAINER STARTS HERE -->
-      <div id="statistics_container">
-        <!-- wrapping the title in a div to center it -->
-        <div class="title-div">
-          <h1>Statistics List</h1>
-        </div>
+<body>
+  <!-- SIDE NAV BAR BEGINS HERE -->
+  <nav class="nav-bar"></nav>
+  <!-- SIDE NAV BAR ENDS HERE -->
 
-        <!-- admins options and general info -->
-        <div class="general-infographics">
-          <div class="option">
-            <h2>Users type</h2>
-            <select name="from-to" id="from-to">
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-            </select>
-          </div>
-
-          <div class="option">
-            <h2>From-To</h2>
-            <select name="from-to" id="from-to">
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-            </select>
-          </div>
-
-          <div class="option">
-            <h2>infographics type</h2>
-            <select name="status" id="status">
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-            </select>
-          </div>
-
-          <div class="option">
-            <h2>Filter</h2>
-            <select name="status" id="status">
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-            </select>
-          </div>
-        </div>
+  <!-- MAIN SECTION BEGINS HERE -->
+  <section class="main-section">
+    <!-- Statistics CONTAINER STARTS HERE -->
+    <div id="statistics_container">
+      <!-- wrapping the title in a div to center it -->
+      <div class="title-div">
+        <h1>Statistics List</h1>
       </div>
 
-      <div class="infographics">
-        <!-- CHART -->
-        <div class="row_flex">
-          <div class="chart" id="chart"></div>
-
-          <!-- PIECHART -->
-          <div class="piechart" id="piechart"></div>
+      <!-- admins options and general info -->
+      <div class="general-infographics">
+        <div class="option">
+          <h2>Users type</h2>
+          <select name="from-to" id="from-to">
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+          </select>
         </div>
 
-        <!-- LINE GRAPH -->
-        <div class="line_graph" id="line_graph"></div>
-      </div>
-    </section>
-    <!-- MAIN SECTION ENDS HERE -->
+        <div class="option">
+          <h2>From-To</h2>
+          <select name="from-to" id="from-to">
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+          </select>
+        </div>
 
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="//d3js.org/d3.v3.min.js"></script>
-    <script src="/admin-electron/frontend/scripts/admin_infographics.js"></script>
-  </body>
+        <div class="option">
+          <h2>infographics type</h2>
+          <select name="status" id="status">
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+          </select>
+        </div>
+
+        <div class="option">
+          <h2>Filter</h2>
+          <select name="status" id="status">
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="infographics">
+      <!-- CHART -->
+      <div class="row_flex">
+        <div class="chart" id="chart"></div>
+
+        <!-- PIECHART -->
+        <div class="piechart" id="piechart"></div>
+      </div>
+
+      <!-- LINE GRAPH -->
+      <div class="line_graph" id="line_graph"></div>
+    </div>
+  </section>
+  <!-- MAIN SECTION ENDS HERE -->
+  <section class="signup-form-container">
+    <form action="" class="signup-form">
+
+      <i class="material-icons" id="signup_close_btn">close</i>
+
+      <img src="../../assets/images/logo-removebg-preview.png" alt="">
+
+      <h1>Join The Hippo Gang</h1>
+
+      <div class="form-input-div">
+
+        <h4>Personal info</h4>
+        <div class="flex-row">
+          <input type="text" placeholder="First Name" id="fname" required>
+          <input type="text" placeholder="Lirst Name" id="lname" required>
+        </div>
+        <input type="text" placeholder="User Name" id="username" required>
+        <input type="text" placeholder="Email" id="email" required>
+
+        <h4>Address</h4>
+        <div class="flex-row">
+          <input type="text" placeholder="Building No. (optional)">
+          <input type="text" placeholder="Home No.">
+        </div>
+        <input type="text" placeholder="Street Address">
+        <div class="flex-row">
+          <input type="text" placeholder="City">
+          <input type="text" placeholder="State">
+        </div>
+
+        <h4>Password</h4>
+        <input type="text" placeholder="Password" id="password" required>
+        <input type="text" placeholder="Confirm Password" id="password-confirm" required>
+
+        <div class="flex-row">
+          <button class="signup-btn" id="seller-add" type="submit">Add Seller</button>
+        </div>
+    </form>
+  </section>
+
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="//d3js.org/d3.v3.min.js"></script>
+  <script src="../scripts/admin_infographics.js"></script>
+</body>
+
 </html>

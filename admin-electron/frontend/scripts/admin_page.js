@@ -1,117 +1,72 @@
+
 window.onload = () => {
-  // const sellers_container = document.getElementById("sellers_container");
-  // const clients_container = document.getElementById("clients_container");
-  // const header_clients_btn = document.getElementById("header_clients_btn");
-  // const header_sellerss_btn = document.getElementById("header_sellerss_btn");
 
   // NAVBAR COMPONENT
   const navBar = document.querySelector(".nav-bar");
 
   const navContent = `<img
-src="/admin-electron/assets/images/logo-removebg-preview.png"
+src="../../assets/images/logo-removebg-preview.png"
 alt=""
 class="header-logo"
 />
 
 <div class="header-links">
-<a
-  href="admin_sellers.html"
-  class="header-link"
-  id="header_sellerss_btn"
-  >Sellers</a
->
+<a href="admin_sellers.html" class="header-link" id="header_sellerss_btn" >Sellers</a>
+
+<a href="#" class="header-link" id="add_seller_btn" >Add Seller</a>
+
 <a href="admin_client.html" class="header-link" id="header_clients_btn">Clients</a>
 
 <a href="admin_infographics.html" class="header-link">Statistics</a>
-<a href="#" class="header-link">Log Out</a>
+
+<a href="index.html" class="header-link" id="logout_btn">Log Out</a>
 </div>`;
 
   navBar.innerHTML += navContent;
+// 
 
-  // SELLER COMPONENT
+let add_seller_btn = document.getElementById('add_seller_btn');
+const signup_form_container = document.querySelector('.signup-form-container');
 
-  const sellersList = document.querySelector(".sellers-list");
-
-  const rightSectionBtn1 = (status) => {
-    if (status == "Seller since") {
-      return `<button class="light-btn">
-      <i class="material-icons">edit</i>
-      <p>Edit Seller</p>
-    </button>`;
-    }
-    if (status == "Requested on") {
-      return `<button class="light-btn">
-      <i class="material-icons">done</i>
-      <p>Approve Request</p>
-    </button>`;
-    }
-  };
-
-  const rightSectionBtn2 = (status) => {
-    if (status == "Seller since") {
-      return `<button class="red-btn">
-      <i class="material-icons">delete</i>
-      <p>Delete Seller</p>
-    </button>`;
-    }
-    if (status == "Requested on") {
-      return `<button class="red-btn">
-      <i class="material-icons">cancel</i>
-      <p>Deny Request</p>
-    </button>`;
-    }
-  };
-
-  let sellerProfiles = [
-    {
-      image: "/admin-electron/assets/images/logo-removebg-preview.png",
-      Name: "Yasser Shkeir",
-      Status: "Seller since",
-      Date: "10/10/2010",
-      leftBtn: `${rightSectionBtn1("Seller since")}`,
-      rightBtn: `${rightSectionBtn2("Seller since")}`,
-    },
-    {
-      image: "/admin-electron/assets/images/logo-removebg-preview.png",
-      Name: "Ching chong",
-      Status: "Requested on",
-      Date: "10/10/2010",
-      leftBtn: `${rightSectionBtn1("Requested on")}`,
-      rightBtn: `${rightSectionBtn2("Requested on")}`,
-    },
-  ];
-
-  for (seller of sellerProfiles) {
-    sellersList.innerHTML += `<div class="sellers-div">
-    <div class="left-section">
-      <img
-        src="${seller.image}"
-        alt=""
-      />
+add_seller_btn.addEventListener('click', ()=>{
+  console.log(document.body);
+  signup_form_container .style.display = 'block';
   
-      <div class="info">
-        <h3>${seller.Name}</h3>
-        <h4>
-        ${seller.Status} <span id="registration_date">${seller.Date}</span>
-        </h4>
-      </div>
-    </div>
-  
-    <div class="right-section">
-      ${seller.leftBtn}
-      ${seller.rightBtn}
-      
-    </div>
-  </div>`;
-  }
+    document.getElementById('signup_close_btn').addEventListener('click', ()=>{
+      signup_form_container .style.display = 'none';
+    });
 
-  // header_sellerss_btn.addEventListener('click', ()=>{
-  //     sellers_container.style.display = 'flex';
-  //     clients_container.style.display = 'none';
-  // });
+    // ADD SELLER
+    document.getElementById('seller-add').addEventListener('click', ()=>{
+      let fname = document.getElementById('fname');
+      let lname = document.getElementById('lname');
+      let username = document.getElementById('username');
+      let email = document.getElementById('email');
+      let password = document.getElementById('password');
+      addSeller(fname, lname, username, email, password)
+    });
 
-  // header_clients_btn.addEventListener('click', ()=>{
-  //     clients_container.style.display = 'flex';
-  //     sellers_container.style.display = 'none';
-  // });
+    // LOG OUT
+    document.getElementById('logout_btn').addEventListener('click', ()=>{
+      window.location = 'index.html';
+    })
+
+});
+
 };
+
+// ADD SELLER
+function addSeller(firstName, lastName, userName, email, password){
+    let payload = {first_name: firstName.value, last_name: lastName.value, username: userName.value, email: email.value, image: null, password: password.value, user_type_id: 2}
+    let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/registration.php',payload).then(
+        function (response) {
+        console.log(response.data);
+        // I need this data here ^^
+        document.getElementById('register-success').style.display='block'
+        return response.data;
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
+};
+

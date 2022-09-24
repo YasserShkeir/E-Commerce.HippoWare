@@ -1,55 +1,38 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hippo Ware | Admin</title>
-    <!-- FAVICON -->
-    <link
-      rel="icon"
-      href="/admin-electron/assets/images/logo-removebg-preview.png"
-      type="image/png"
-    />
-    <!-- CSS STYLES -->
-    <link
-      rel="stylesheet"
-      href="/admin-electron/frontend/styling/styling.css"
-    />
-    <link rel="stylesheet" href="/admin-electron/frontend/styling/login.css" />
-    <!-- MATERIAL ICONS -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <form action="" class="login-form">
-      <div class="form-topSection">
-        <img
-          src="/admin-electron/assets/images/logo-removebg-preview.png"
-          alt=""
-        />
 
-        <input
-          type="text"
-          class="username-input"
-          placeholder="Username"
-          required
-        />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin</title>
+  <!-- FAVICON -->
+  <link rel="icon" href="../../../assets/images/hippo-icon.png" type="image/png" />
+  <!-- CSS STYLES -->
+  <link rel="stylesheet" href="../styling/styling.css" />
+  <link rel="stylesheet" href="../styling/login.css">
+  <!-- MATERIAL ICONS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
 
-        <input
-          type="password"
-          class="password-input"
-          placeholder="Password"
-          required
-        />
-      </div>
+<body>
+  <form action="post" class="login-form">
+    <div class="form-topSection">
+      <img src="../../assets/images/logo-removebg-preview.png" alt="" />
 
-      <div class="form-botSection">
-        <button class="login-btn">Log in</button>
-      </div>
-    </form>
+      <input type="text" class="username-input" id="email_input" placeholder="Email" required />
 
-    <script src="scripts/scripts.js"></script>
-  </body>
+      <input type="password" class="password-input" id="password_input" placeholder="Password" required />
+    </div>
+
+    <div class="form-botSection">
+      <button class="login-btn">Log in</button>
+    </div>
+  </form>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="../scripts/backend.js"></script>
+  <script src="../scripts/main.js"></script>
+  <script src="../scripts/scripts.js"></script>
+</body>
+
 </html>
