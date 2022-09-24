@@ -41,7 +41,7 @@ a
 a:hover{
     text-decoration: underline;
 }
-.ads-btn{
+.ads-btn, #register-store-btn{
     color: white;
     background-color: var(--green-blue);
     padding: 5px;
@@ -50,10 +50,10 @@ a:hover{
     border-radius: 20px;
     margin-left: 1.8vw;
 }
-.ads-btn:active{
+.ads-btn:active, #register-store-btn:active{
     scale: 0.9;
 }
-.add-btn:hover{
+.add-btn:hover, #register-store-btn:hover{
     cursor: pointer;
 }
 .search{
@@ -432,6 +432,52 @@ input:focus{
     margin-bottom: 10px;
     scale: 1.05;
 }
+/****************************/
+#registerstore_close_btn{
+    position: fixed;
+    top:0;
+    right:0%;
+    cursor: pointer;
+}
+.registerstore-form-container {
+    display: none;
+    width:100vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left:0;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+#register-store{
+    width:fit-content;
+    padding: 10px 20px;
+    background: var(--green-blue);
+    color:white;
+    border: none;
+    border-radius: 30px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+    cursor:pointer;
+}
+
+#register-store:active{
+    scale: 0.9;
+}
+
+#store-img{
+    height: 100px;
+    display: flex;
+}
+
+input::file-selector-button {
+    font-weight: bold;
+    padding: 0.5em;
+    border: thin solid grey;
+    border-radius: 3px;
+ 
+}
+
 
 
 @media only screen and (max-width: 1000px) {
