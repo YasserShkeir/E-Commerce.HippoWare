@@ -84,4 +84,31 @@ window.onload = () => {
 
   navBarCaller();
   footerCaller();
+
+
+
+const favorite_items = document.querySelector('.favorite-items');
+
+for(i=0; i<5; i++){
+  favorite_items.innerHTML +=`<section class="favorite-items">    <div class="favorite-product">
+
+    <!-- PRODUCTS LEFT SIDE -->
+    <div class="left-side">
+      <img src="../../seller-frontend/assets/shirt.jpg" alt="">
+      <div>
+        <h3>Green shirt</h3>
+        
+
+        <h3 id="price">55$</h3>
+      </div>
+    </div>
+
+    <!-- PRODUCTS RIGHT SIDE -->
+    <div class="right-side">
+      <a href="#" class="remove-link">Remove</a>
+    </div>
+
+  </div>
+  </section>`;
+}
 };
