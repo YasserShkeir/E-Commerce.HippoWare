@@ -12,12 +12,7 @@ const header_links_div = document.createElement('div');
 const login_btn = document.createElement('button');
 const signup_btn = document.createElement('button');
 const burger_img = document.createElement('img');
-//store registration
-const storeRegistration= document.getElementById('store-registration');
-const registerStore= document.getElementById('register-store');
-const storeImage= document.getElementById('store-img');
-const storeName= document.getElementById('store-name')
-const storeWelcome= document.getElementById('store-welcome')
+
 // GIVING NAVBAR ELEMENTS CLASSES
 logo_img.classList.add('logo'); 
 search_div.classList.add('search'); 
@@ -91,7 +86,6 @@ function register(){
         function (response) {
         console.log(response.data);
         // I need this data here ^^
-        storeRegistration.style.display='block'
         return response.data;
     })
     .catch(function (error) {
@@ -101,32 +95,6 @@ function register(){
 
 document.getElementById("signup_close_btn").onclick=()=>{
     signup_form_container.style.display = 'none';
-}
-
-let images=''
-let reader = new FileReader();
-reader.addEventListener("load", () => {
-    images = reader.result 
-    console.log(images)
-    localStorage.setItem('img',images)
-})
-
-function registerStore(){
-    reader.readAsDataURL(document.getElementById('file').files[0]);
-    console.log(localStorage.getItem('img'))
-    let payload = {
-        name:storeName.value,
-        welc_msg: storeWelcome.value,
-        image:localStorage.getItem('img')}
-    let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/add-store.php',payload).then(
-        function (response) {
-        console.log(response.data);
-        // I need this data here ^^
-        return response.data;
-    })
-    .catch(function (error) {
-        console.log(error);
-    }) 
 }
 
 //logging in

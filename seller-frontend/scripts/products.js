@@ -26,6 +26,14 @@ window.onload = () => {
     const hamburgerMenu= document.getElementById('hamburger-menu')
     const searchInput= document.getElementById("search-input")
     const uploadImage=document.getElementById("upload-image")
+    //store registration
+    const storeRegistration= document.getElementById('store-registration');
+    const registerStore= document.getElementById('register-store');
+    const storeImage= document.getElementById('store-img');
+    const storeName= document.getElementById('store-name')
+    const storeWelcome= document.getElementById('store-welcome')
+    const storeRegisterBtn=document.getElementById('register-store-btn')
+    const registerStoreClose=document.getElementById('registerstore_close_btn')
     //display all products
     if (categorySelect.value== 'none'){
         displaybyCategroy('0')
@@ -292,6 +300,36 @@ window.onload = () => {
     menuContents.onmouseleave=()=>{
         menuContents.style.display='none'
     }
+    ///////////////////////////////////////////////
+    images=''
+    reader = new FileReader();
+    reader.addEventListener("load", () => {
+    images = reader.result 
+    console.log(images)
+    localStorage.setItem('store-img',images)
+    })
+
+    function registerStore(){
+    reader.readAsDataURL(storeImage.files[0]);
+    console.log(localStorage.getItem('store-img'))
+    let payload = {
+        name:storeName.value,
+        welc_msg: storeWelcome.value,
+        image:localStorage.getItem('store-img')}
+    let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/add-store.php',payload).then(
+        function (response) {
+        console.log(response.data);
+        // I need this data here ^^
+        return response.data;
+    })
+    .catch(function (error) {
+        console.log(error);
+    }) 
+}
+    storeRegisterBtn.onclick=()=>{
+        storeRegistration.style.display="Block"
+    }
+
     
 }
        
