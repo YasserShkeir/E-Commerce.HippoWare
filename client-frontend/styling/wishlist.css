@@ -5,8 +5,8 @@
     align-self: center;
     gap: 10px;
     width: 94vw;
-    height: 100px;
-    margin: 50px 0;
+    height: fit-content;
+    margin: 30px 0 0 0;
 
 }
 
@@ -57,4 +57,10 @@
     align-self: flex-end;
     font-size: 10px;
     color: rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (max-width: 440px) {
+    .whishlist-product{
+        scale: .8;
+    }
 }
