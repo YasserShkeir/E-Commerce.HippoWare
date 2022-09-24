@@ -36,6 +36,7 @@ class Database
     // insert data
     public function insert($table, $params = array())
     {
+            //mysqli_report(MYSQLI_REPORT_ALL);
             $table_column = implode(', ', array_keys($params));
             $sql = "INSERT INTO $table ($table_column) VALUES (";
             $values= array_values($params);
@@ -56,6 +57,7 @@ class Database
             array_unshift($args_ref, $types);
             call_user_func_array(array($this->query, 'bind_param'), $args_ref);
             $this->query->execute();
+            
             if (!$this->query->errno) {
                 array_push($this->result, true);
                 return true;
@@ -115,6 +117,7 @@ class Database
             $sql = "DELETE FROM $table";
             if ($where != null) {
                 $sql .= " WHERE $where";
+                // print $sql;
             }
             if ($this->mysqli->query($sql)) {
                 array_push($this->result, true);
