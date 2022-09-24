@@ -26,26 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             'message' => 'Access Denied',
         ]);
 
-        $obj->select('`stores`','id', null, "seller_id = ".$user_data->data->id, null, null);// getting store id of user
-        $result = $obj->getResult();
-        $storeid = $result[0]['id'];
+        $product = $data['product'];
 
-        $where = "store_id = " . $storeid . " and name = '$category'";
-
-        $deletetArr = [
-            'category_id',
-            'store_id',
-            'name',
-            'price',
-            'image',
-            'description',
-            'color',
-            'size',
-            'views',
-            'revenue'
-        ];
-
-        $obj->delete('products', $deletetArr);
+        $obj->delete('products', "id = ". $product);
         $result = $obj->getResult();
         echo json_encode($result);
     } catch (Exception $e) {
