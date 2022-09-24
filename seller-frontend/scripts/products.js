@@ -47,20 +47,30 @@ window.onload = () => {
             })
         }
     function displayProducts(response){
-        for (data of response){
+        if (response==''){
+            console.log('efijweif')
             let productCard = 
-                `<div class="product-card">
-                    <img src="../../assets/jacket2.jfif" class="jacket"> 
-                    <div class="product-details">
-                        <div>Name : ${data.name}</div>
-                        <div>Color: ${data.color} </div>
-                        <div>Size: ${data.size}</div>
-                        <div>Revenue: ${data.revenue}</div>
-                        <div>Price: ${data.price}</div>
-                        <img src="../../assets/trash.png" class="trash-bin">
-                    </div>
-                </div>`
+            `<div> Sorry no such product exit</div>`
+            products.innerHTML+=productCard
+        }
+        else{
+            console.log('aaa')
+            for (data of response){
+                let productCard = 
+                    `<div class="product-card">
+                        <img src="../../assets/jacket2.jfif" class="jacket"> 
+                        <div class="product-details">
+                            <div>Name : ${data.name}</div>
+                            <div>Color: ${data.color} </div>
+                            <div>Size: ${data.size}</div>
+                            <div>Revenue: ${data.revenue}</div>
+                            <div>Price: ${data.price}</div>
+                            <img src="../../assets/trash.png" class="trash-bin">
+                        </div>
+                    </div>`
                 products.innerHTML+=productCard
+            }
+            
         }
     }
 
@@ -123,20 +133,6 @@ window.onload = () => {
     //         if (trashBin.includes(e.target)){
     //             console.log('yessss')
     //         }
-    //     }
-    // }
-   
-    
-    // for (let i=0; i<displayedProducts.length;i++){
-    //     trashBin[i].onclick=()=>{
-    //         myModal.style.display='Block'
-    //         deleteItem.onclick=()=>{
-    //             displayedProducts[i].remove()
-    //             myModal.style.display='none'
-    //         }    
-    //     }
-    //     cancelDelete.onclick=()=>{
-    //         myModal.style.display='none'
     //     }
     // }
     
@@ -218,29 +214,6 @@ window.onload = () => {
     }
 
 
-
-    // let categoryArray=[]
-    // for (let option of categoryOptions.children){
-    //     categoryArray.push(option.value)
-    // }
-    // console.log(categoryArray)
-    // addCategory.onmouseover=()=>{
-    //     document.getElementById('drop').style.display="Block"
-    //     dropDownContents.onclick=(e)=>{
-    //         console.log(e.target.innerHTML)
-    //         if (categoryArray.includes(e.target.innerHTML) ){
-    //             window.alert('Category already exits')
-    //         }
-    //         else{
-    //             let option=`<option>${e.target.innerHTML}</option>`
-    //             categoryOptions.innerHTML+=option
-    //         }
-    //     }
-    //     document.getElementById('drop').onmouseleave=()=>{
-    //         document.getElementById('drop').style.display="none"
-    //     }
-    // }
-
     logOut.onclick=()=>{
         logoutModal.style.display='Block'
         cancelLogout.onclick=()=>{logoutModal.style.display='none'}
@@ -249,7 +222,30 @@ window.onload = () => {
             localStorage.clear()
         }
     }
-    
+    const searchInput= document.getElementById("search-input")
+    searchInput.onkeyup=(e)=>{
+        if (e.key === "Enter") {
+            e.preventDefault();
+            products.innerHTML=''
+            searchforProduct(searchInput.value)
+          }
+    }
+    function searchforProduct(productName){
+        let payload = {search: productName,
+        category:'0'}
+        let config = {
+            headers: {'Authorization': localStorage.jwt}
+        }
+        let res =  axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/products.php',payload,config).then(
+            function (response) {
+                console.log(response.data)
+                displayProducts(response.data)
+                return response.data
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
 
 }
        
