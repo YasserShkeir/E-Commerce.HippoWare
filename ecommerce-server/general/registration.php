@@ -51,9 +51,10 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
         $data = base64_decode($img);
-        $file = "../".UPLOAD_DIR . uniqid() . '.png';
-        $images_to_save = "/xampp/htdocs/E-Commerce.HippoWare/ecommerce-server/".$file;
-
+        $filee = UPLOAD_DIR . uniqid() . '.png';
+        $file = "../".$filee;
+        $images_to_save = "/xampp/htdocs/E-Commerce.HippoWare/ecommerce-server/".$filee;
+        
         if($flag){
             $obj->insert('users', ['user_type_id' => $user_type_id, 'first_name' => $first_name, 'last_name' => $last_name, 'username' => $username, 'email' => $email, 'password' => $password, 'image' => $images_to_save, 'accepted' => $accepted, 'date' => $date]);
             $result = $obj->getResult();
