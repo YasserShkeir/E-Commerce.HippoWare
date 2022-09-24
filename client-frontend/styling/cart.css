@@ -89,6 +89,42 @@
   width: max-content;
   flex-grow: 1;
   background-color: var(--light-blue);
+  padding: 0px 4%;
+  box-sizing: border-box;
+}
+
+#discount-sec {
+  margin: 20px 0px;
+}
+
+#discount-sec-input {
+  display: flex;
+  gap: 0px;
+  margin: 5px 0px;
+  background-color: var(--bg-color);
+  width: fit-content;
+  border-radius: 25px;
+}
+
+#discount-sec-input input {
+  border: none;
+  border-radius: 25px;
+  margin-left: 10px;
+  margin: 10px;
+}
+
+#discount-sec-input button {
+  border-radius: 25px;
+  color: var(--bg-color);
+  background-color: var(--dark-blue);
+  padding: 0px 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#subtotal-section {
+  display: flex;
+  justify-content: space-between;
 }
 
 .vert-line {

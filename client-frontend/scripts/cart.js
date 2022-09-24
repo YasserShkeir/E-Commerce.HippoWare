@@ -90,15 +90,15 @@ window.onload = () => {
       imgSrc: "../assets/images/logo-removebg-preview.png",
       productName: "123",
       productColor: "1231",
-      qty: "4",
-      itemPrice: "100",
+      qty: "1",
+      itemPrice: "70",
     },
     {
       imgSrc: "../assets/images/logo-removebg-preview.png",
       productName: "333121",
       productColor: "1312",
-      qty: "3",
-      itemPrice: "100",
+      qty: "1",
+      itemPrice: "125",
     },
   ];
 
@@ -152,8 +152,8 @@ window.onload = () => {
     });
 
     plusBtn.addEventListener("click", () => {
-      if (counter.innerHTML == 10) {
-        counter.innerHTML = 10;
+      if (counter.innerHTML == 15) {
+        counter.innerHTML = 15;
         total.innerHTML = counter.innerHTML * card.itemPrice;
       } else {
         counter.innerHTML++;
@@ -163,10 +163,24 @@ window.onload = () => {
   });
 
   const checkboxes = document.querySelectorAll(".check-box input");
+  const totalPrices = document.querySelectorAll("#totalPrice");
+  const subTotal = document.querySelector("#subtotal");
 
   checkboxes.forEach((element, index) => {
     checkboxes[index].addEventListener("click", () => {
-      console.log(element);
+      console.log(totalPrices);
+      console.log(index);
+      console.log(element.checked);
+
+      if (element.checked) {
+        minusButtons[index].disabled = true;
+        plusButtons[index].disabled = true;
+        subTotal.innerHTML =
+          Number(subTotal.innerHTML) + Number(totalPrices[index].innerHTML);
+      } else {
+        subTotal.innerHTML =
+          Number(subTotal.innerHTML) - Number(totalPrices[index].innerHTML);
+      }
     });
   });
 };
