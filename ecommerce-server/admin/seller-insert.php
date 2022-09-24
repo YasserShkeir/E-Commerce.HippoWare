@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $issues[] = "dup username";
         }
 
-        define('UPLOAD_DIR', '../images/');
+        define('UPLOAD_DIR', 'images/');
         $img = $image;
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);

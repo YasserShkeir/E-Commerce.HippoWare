@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $name = $data["name"];
         $welc_msg = $data["welc_msg"];
 
-        define('UPLOAD_DIR', '../images/');
+        define('UPLOAD_DIR', 'images/');
         $img = $data['image'];
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
