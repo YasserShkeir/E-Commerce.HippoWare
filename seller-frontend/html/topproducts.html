@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="icon" href="../../assets/logo.png" type="image/png">
+    <link rel="stylesheet" href="../styling/styling.css">
+    <link rel="stylesheet" href="../styling/products.css">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../scripts/statistics.js"></script>
+</head>
+<body>
+    
+    <nav class="nav-bar">
+        <div class="website-logo">
+            <img class="logo" src="../../assets/logo.png" alt="">
+            <div class="website-name">Hippo Ware</div>
+        </div>
+        <div class="nav-links">
+            <a href="products.html">Products</a>
+            <a href="topproducts.html">Statistics</a>
+            <button class="ads-btn">Upload Ads</button>
+        </div>
+        <div class="search">
+            <img class="search-icon" src="../../assets/search-icon.png">
+            <input type="search" name="search" class="search-input" placeholder="search">
+        </div>
+        <a class="log-out" id="log-out">Log Out</a>
+        <div class="hamburger-menu" id="hamburger-menu">
+            <img src="../../assets/menu.png" class="menu" id="menu"> 
+            <ul class="menu-contents" id="menu-contents">
+                <a href="products.html"><li>products</li></a>
+                <a href="topproducts.html"><li>Statistics</li></a>
+                <a id="log-out-menu"><li>Log Out</li></a>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="top-products-displayed">
+        <h1 class="title">
+            Top 5 viewed products
+        </h1>
+        <div class="top-products">
+            <div class="top-product-card">
+                <div>10K views</div>
+                <img src="../../assets/jacket.jpg" class="jacket"> 
+                <div>Jacket</div>
+            </div>
+            <div class="top-product-card" >
+                <div>10K views</div>
+                <img src="../../assets/jacket.jpg" class="jacket"> 
+                <div>Jacket</div>
+            </div>
+            <div class="top-product-card">
+                <div>10K views</div>
+                <img src="../../assets/jacket.jpg" class="jacket"> 
+                <div>Jacket</div> 
+            </div>
+            <div class="top-product-card">
+                <div>10K views</div>
+                <img src="../../assets/jacket.jpg" class="jacket"> 
+                <div>Jacket</div>
+            </div>
+            <div class="top-product-card">
+                <div>10K views</div>
+                <img src="../../assets/jacket.jpg" class="jacket"> 
+                <div>Jacket</div>
+            </div>
+        </div>
+    </section>
+
+    <div id="logout-modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <h2>Are you sure you want to logout</h2>
+            <div class="confirm-logout-btns">
+                <button id="confirm-logout">Yes</button>
+                <button id="cancel-logout">No</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
