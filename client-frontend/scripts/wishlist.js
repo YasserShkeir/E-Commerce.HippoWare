@@ -85,3 +85,37 @@ window.onload = () => {
   navBarCaller();
   footerCaller();
 };
+
+// RENDER Products
+
+
+
+const whishlist_items = document.querySelector('.whishlist-items');
+
+for(i=0; i<5; i++){
+  whishlist_items.innerHTML +=`    <section class="whishlist-items">
+
+      <div class="whishlist-product">
+
+        <!-- PRODUCTS LEFT SIDE -->
+        <div class="left-side">
+          <img src="../../seller-frontend/assets/shirt.jpg" alt="">
+          <div>
+            <h3>Gree shirt</h3>
+            <p>color <div class="color-div"></div></p>
+            <p>size <span id="size">L</span></p>
+            <h3 id="price">55$</h3>
+          </div>
+        </div>
+
+        <!-- PRODUCTS RIGHT SIDE -->
+        <div class="right-side">
+          <button class="purchase-btn">Purchase</button>
+        <a href="#" class="remove-link">Remove</a>
+        </div>
+
+      </div>
+
+    </section>`;
+}
+

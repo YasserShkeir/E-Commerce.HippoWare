@@ -6,15 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styling/styling.css" />
     <link rel="stylesheet" href="../styling/wishlist.css" />
-    <script src="../scripts/wishlist.js"></script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
   </head>
   <body>
+    <!-- NAV BAR-->
     <nav class="client-nav flex"></nav>
 
+    <!-- WISH LIST ITEMS -->
+    <section class="whishlist-items">
+
+      <div class="whishlist-product">
+
+        <!-- PRODUCTS LEFT SIDE -->
+        <div class="left-side">
+          <img src="../../seller-frontend/assets/shirt.jpg" alt="">
+          <div>
+            <h3>Green shirt</h3>
+            <p>color <div class="color-div"></div></p>
+            <p>size <span id="size">L</span></p>
+            <h3 id="price">55$</h3>
+          </div>
+        </div>
+
+        <!-- PRODUCTS RIGHT SIDE -->
+        <div class="right-side">
+          <button class="purchase-btn">Purchase</button>
+        <a href="#" class="remove-link">Remove</a>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
     <footer class="client-footer flex-col"></footer>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>   
+        <script src="../scripts/wishlist.js"></script>
+
   </body>
 </html>

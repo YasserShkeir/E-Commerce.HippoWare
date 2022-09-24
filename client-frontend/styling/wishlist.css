@@ -1,0 +1,66 @@
+.whishlist-items{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: center;
+    align-self: center;
+    gap: 10px;
+    width: 94vw;
+    height: fit-content;
+    margin: 30px 0 0 0;
+
+}
+
+.whishlist-product{
+    display: flex;
+    flex-flow: wrap row;
+    align-self: center;
+    justify-content: space-between;
+    width: 100%;
+    height: fit-content;
+    padding: 5px;
+    background: white;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+.left-side{
+    display: flex;
+    flex-flow: wrap row;
+    max-width: 300px;
+    height: 100%;
+}
+
+.left-side img{
+    width:60%;
+    height: 100%;
+}
+.left-side div{
+    height: fit-content;
+    width: 40%;
+}
+
+.right-side{
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: flex-end;
+    align-self: center;
+    gap: 5px;
+}
+.purchase-btn{
+    font-size: 18px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+.remove-link{
+    align-self: flex-end;
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (max-width: 440px) {
+    .whishlist-product{
+        scale: .8;
+    }
+}
