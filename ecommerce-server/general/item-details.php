@@ -16,9 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $request_body = file_get_contents('php://input');
     $data = json_decode($request_body, true);
 
-    $where = "id = ".$data['id'];
+    $where = "p.store_id = s.id and p.id = ".$data['product'];
         
-    $obj->select('`products`','*', null, $where, null, null);
+    $obj->select('`products` as p, stores as s','p.name, p.id, p.color, p.size, p.image, p.price, s.name as store, p.description', null, $where, null, null);
     $result = $obj->getResult();
     echo json_encode($result);
 
