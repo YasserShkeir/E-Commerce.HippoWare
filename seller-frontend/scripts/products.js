@@ -51,7 +51,7 @@ window.onload = () => {
         }
         let res =  await axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/products.php',payload,config).then(
             function (response) {
-               
+                console.log(response.data)
                 displayProducts(response.data)
                 return response.data
             })
@@ -61,13 +61,11 @@ window.onload = () => {
         }
     function displayProducts(response){
         if (response==''){
-            console.log('efijweif')
             let productCard = 
-            `<div> Sorry no such product exit</div>`
+            `<div> No product exits</div>`
             products.innerHTML+=productCard
         }
         else{
-            console.log('aaa')
             for (data of response){
                 let productCard = 
                     `<div class="product-card">
@@ -109,15 +107,12 @@ window.onload = () => {
         
         if (uploadCategory.value && uploadPrice.value && uploadColor.value && uploadName.value && 
             uploadSize.value && uploadDescription.value &&uploadDiscount.value){
-                console.log(uploadCategory.value)
-                console.log(uploadColor.value)
                 uplaodNewPorduct()
                 uploadProduct.style.display="none"
     
         }
     }
-    //convert into base 64
-   
+    //convert image into base 64
     let images=''
     let reader = new FileReader();
     reader.addEventListener("load", () => {
@@ -127,7 +122,7 @@ window.onload = () => {
     })
   
     
-
+    //upload new product
     function uplaodNewPorduct(){
         reader.readAsDataURL(document.getElementById('file').files[0]);
         console.log(localStorage.getItem('img'))
@@ -187,9 +182,12 @@ window.onload = () => {
     .catch(function (error) {
         console.log(error);
     })
-    categories=localStorage.getItem('categories').split(',')
-    localStorage.removeItem('categories')
-    console.log(localStorage)
+    
+    if('categories' in localStorage){
+        categories=localStorage.getItem('categories').split(',')
+        localStorage.removeItem('categories')
+        console.log(localStorage)
+    }
    
     for (let category of categories){
         let option=`<option value=${category}>${category}</option>`
@@ -267,7 +265,6 @@ window.onload = () => {
 
 
     //search products
-    
     searchInput.onkeyup=(e)=>{
         if (e.key === "Enter") {
             e.preventDefault();
@@ -301,6 +298,9 @@ window.onload = () => {
         menuContents.style.display='none'
     }
     ///////////////////////////////////////////////
+    
+
+    function registeraStore(){
     images=''
     reader = new FileReader();
     reader.addEventListener("load", () => {
@@ -308,15 +308,16 @@ window.onload = () => {
     console.log(images)
     localStorage.setItem('store-img',images)
     })
-
-    function registerStore(){
     reader.readAsDataURL(storeImage.files[0]);
     console.log(localStorage.getItem('store-img'))
+    let config = {
+        headers: {'Authorization': localStorage.jwt}
+    }
     let payload = {
         name:storeName.value,
         welc_msg: storeWelcome.value,
         image:localStorage.getItem('store-img')}
-    let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/add-store.php',payload).then(
+    let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/add-store.php',payload,config).then(
         function (response) {
         console.log(response.data);
         // I need this data here ^^
@@ -329,7 +330,16 @@ window.onload = () => {
     storeRegisterBtn.onclick=()=>{
         storeRegistration.style.display="Block"
     }
-
+    registerStoreClose.onclick=()=>{
+        storeRegistration.style.display="none"
+    }
+    registerStore.onclick=(e)=>{
+        e.preventDefault();
+        if(storeName.value && storeWelcome.value ){
+            console.log('fe')
+            registeraStore()
+        }
+    }
     
 }
        
