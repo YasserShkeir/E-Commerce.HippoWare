@@ -314,6 +314,7 @@ body {
   height: fit-content;
   width: 50%;
   margin-left: 5%;
+  margin-top:20px;
 }
 
 .row_flex {
@@ -444,7 +445,7 @@ body {
   cursor: pointer;
 }
 
-.flex-col {
+.flex-col{
   display: flex;
   flex-flow: wrap column;
   justify-content: center;
