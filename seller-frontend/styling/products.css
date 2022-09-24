@@ -257,7 +257,7 @@ input:focus{
     position: absolute; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
-    top: 25%;
+    top: 100px;
     width: 100%; /* Full width */
     height: auto; /* Full height */
   }
@@ -457,6 +457,9 @@ input:focus{
     }
     .category{
         padding:20px;
+    }
+    #delete-item, #cancel-delete, #confirm-logout, #cancel-logout{
+        width:100px;
     }
     
 }

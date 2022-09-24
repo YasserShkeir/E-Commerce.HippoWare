@@ -24,12 +24,12 @@ signup_btn.classList.add('log-out');
 burger_img.classList.add('menu');
 
 // INSERTING VALUES TO ELEMENTS 
-logo_img.src = '../../assets/logo.png';
-search_icon_img.src = '../../assets/search-icon.png';
+logo_img.src = '../assets/logo.png';
+search_icon_img.src = '../assets/search-icon.png';
 search_input.placeholder = 'search';
 login_btn.innerText = 'Log in';
 signup_btn.innerText = 'Sign up';
-burger_img.src = '../../assets/menu.png';
+burger_img.src = '../assets/menu.png';
 
 // APPENDING ELEMENTS IN THEIR RESPECTIVE CONTAINER
 nav_bar.append(logo_img, search_div, header_links_div);

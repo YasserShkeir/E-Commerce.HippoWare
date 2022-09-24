@@ -70,7 +70,7 @@ window.onload = () => {
                             <div>Size: ${data.size}</div>
                             <div>Revenue: ${data.revenue}</div>
                             <div>Price: ${data.price}</div>
-                            <img src="../../assets/trash.png" class="trash-bin">
+                            <img src="../assets/trash.png" class="trash-bin">
                         </div>
                     </div>`
                 products.innerHTML+=productCard
