@@ -25,7 +25,7 @@ window.onload = () => {
     const menuLogOut= document.getElementById('log-out-menu')
     const hamburgerMenu= document.getElementById('hamburger-menu')
     const searchInput= document.getElementById("search-input")
-    
+    const uploadImage=document.getElementById("upload-image")
     //display all products
     if (categorySelect.value== 'none'){
         displaybyCategroy('0')
@@ -63,7 +63,7 @@ window.onload = () => {
             for (data of response){
                 let productCard = 
                     `<div class="product-card">
-                        <img src="../../assets/jacket2.jfif" class="jacket"> 
+                        <img src=${data.image} class="jacket"> 
                         <div class="product-details">
                             <div>Name : ${data.name}</div>
                             <div>Color: ${data.color} </div>
@@ -98,26 +98,54 @@ window.onload = () => {
     }
     submitUpload.onclick=(e)=>{
         e.preventDefault()
-        console.log(uploadCategory.value)
-        console.log(uploadColor.value)
+        
         if (uploadCategory.value && uploadPrice.value && uploadColor.value && uploadName.value && 
             uploadSize.value && uploadDescription.value &&uploadDiscount.value){
                 console.log(uploadCategory.value)
                 console.log(uploadColor.value)
                 uplaodNewPorduct()
                 uploadProduct.style.display="none"
+    
         }
     }
+    //convert into base 64
+    
+    // document.getElementById('file').onchange = function reader() {
+    //     localStorage.removeItem('img')
+    //     let reader = new FileReader();
+    //     reader.readAsDataURL(document.getElementById('file').files[0]);
+    //     reader.onload = function () {
+    //     result=reader.result
+    //     localStorage.setItem('img',result)
+    //     console.log(localStorage.img)
+    //     // localStorage.setItem('img',reader.result)
+    //     };
+    //     reader.onerror = function (error) {
+    //     console.log('Error: ', error);
+    //     }; 
+    // }
+
+
+    
+
+    localStorage.removeItem('img')
+
     function uplaodNewPorduct(){
-        let payload = {image:"null", 
+        let reader = new FileReader();
+        reader.readAsDataURL(document.getElementById('file').files[0]);
+        reader.onload = function () {
+        result=reader.result
+        localStorage.setItem('img',result)}
+        console.log(localStorage.img)
+        let payload = {image:localStorage.img, 
         category:uploadCategory.value,
         price:uploadPrice.value,
         revenue:uploadRevenue.value,
         name: uploadName.value,
         description: uploadDescription.value,
         color:uploadColor.value,
-        size: uploadSize.value
-    }
+        size: uploadSize.value}
+        localStorage.removeItem('img')
         let config = {
             headers: {'Authorization': localStorage.jwt}
         }
@@ -128,7 +156,7 @@ window.onload = () => {
             .catch(function (error) {
                 console.log(error);
             })
-        }
+    }
     ///////////////////////////////////////////////    
 
 
