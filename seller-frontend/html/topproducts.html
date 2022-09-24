@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="../styling/styling.css">
     <link rel="stylesheet" href="../styling/products.css">
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
     />
+    <link rel="stylesheet" href="../styling/topproducts.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../scripts/statistics.js"></script>
+
 </head>
 <body>
     
@@ -41,7 +43,7 @@
         </div>
     </nav>
 
-    <section class="top-products-displayed">
+    <!-- <section class="top-products-displayed">
         <h1 class="title">
             Top 5 viewed products
         </h1>
@@ -72,7 +74,73 @@
                 <div>Jacket</div>
             </div>
         </div>
+    </section> -->
+    <div class="top-products-infographics">
+
+    <section class="top-products">
+
+        <img src="../assets/jacket.jpg" alt="" class="product-img">
+
+        <div class="product-linegraph-container">
+            <p><b>Item Statistics |</b> Name: Hoodie | Views: 100,000</p>
+
+        <div class="product-linegraph"></div>
+            
+        </div>
+
+        <table class="codes-table">
+            <thead>
+                <tr>
+                    <th>CODE</th>
+                    <th>LIMIT</th>
+                    <th>DIS +</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CNAAF</td>
+                    <td>100</td>
+                    <td>9 <i class="material-icons">delete</i></td>
+                </tr>
+                <tr>
+                    <td>CNAAF</td>
+                    <td>100</td>
+                    <td>9 <i class="material-icons">delete</i></td>
+                </tr>
+                <tr>
+                    <td>CNAAF</td>
+                    <td>100</td>
+                    <td>9 <i class="material-icons">delete</i></td>
+                </tr>
+                <tr>
+                    <td>CNAAF</td>
+                    <td>100</td>
+                    <td>9 <i class="material-icons">delete</i></td>
+                </tr>
+                <tr>
+                    <td>CNAAF</td>
+                    <td>100</td>
+                    <td>9 <i class="material-icons">delete</i></td>
+                </tr>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+
     </section>
+
+<!-- TOP VIEWD -->
+    <section class="topviewd">
+
+        <img src="../assets/ads.webp" alt="" class="advertisment">
+        <div class="piechart"></div>
+
+    </section>
+
+    <!-- REVENUE -->
+    <section class="revenue"></section>
+
+    </div>
 
     <div id="logout-modal">
         <!-- Modal content -->
@@ -84,5 +152,11 @@
             </div>
         </div>
     </div>
+
+
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="../scripts/topproducts.js"></script>
+
 </body>
 </html>
