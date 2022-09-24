@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 2){
+        if($user_data->data->user_type != 3){
             echo json_encode([
                 'status' => 0,
                 'message' => 'Access Denied',
@@ -33,11 +33,48 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $cart = $result[0]['id'];
 
         $product = $data['product'];
+        $code = $data['code'];
         $date = date('Y-m-d');
 
-        $obj->update('cart_items',['date' => $date, 'paid' => 1], 'cart_id = '. $cart . ' and products_id = '.$product);
-        $result = $obj->getResult();
-        echo json_encode($result);
+        $where = "id = " . $code;
+
+        if($code){
+            $obj->select('`discountcodes`','*', null, $where, null, null);
+            $result = $obj->getResult();
+            $dis_store_id = $result[0]["store_id"];
+            $limit = $result[0]["limits"];
+            $discount = $result[0]["discount"];
+
+            $where = "id = " . $product;
+
+            $obj->select('`products`','*', null, $where, null, null);
+            $result = $obj->getResult();
+            $prod_store_id = $result[0]["store_id"];
+            $price = $result[0]["price"];
+
+            if($prod_store_id == $dis_store_id && $price >= $limit){
+                $obj->update('cart_items',['date' => $date, 'paid' => 1, 'discount' => $discount], 'cart_id = '. $cart . ' and products_id = '.$product);
+                $result = $obj->getResult();
+                echo json_encode([
+                    'discount' => 1,
+                    'message' => 1,
+                ]);
+            }else {
+                $obj->update('cart_items',['date' => $date, 'paid' => 1], 'cart_id = '. $cart . ' and products_id = '.$product);
+                $result = $obj->getResult();
+                echo json_encode([
+                    'discount' => 0,
+                    'message' => 1,
+                ]);
+            }
+        }else{
+            $obj->update('cart_items',['date' => $date, 'paid' => 1], 'cart_id = '. $cart . ' and products_id = '.$product);
+            $result = $obj->getResult();
+            echo json_encode([
+                'discount' => 0,
+                'message' => 1,
+            ]);
+        }
 
     } catch (Exception $e) {
         echo json_encode([
