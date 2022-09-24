@@ -96,10 +96,6 @@ window.onload = () => {
   const productColors = document.querySelector("#product-colors span div");
   const productSizes = document.querySelector("#product-sizes span");
 
-  localStorage.setItem('itemId',1)
-  localStorage.setItem('jwt',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU0ODMxMDEsImRhdGEiOnsiaWQiOiIxIiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGEifX0.yLlJMIxpF4uXzea3v-56TEZ1if0_QsCyGzVKndkV8JA")
-
-
   let payload = {product:localStorage.getItem('itemId')}
 
   axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/item-details.php', payload)
