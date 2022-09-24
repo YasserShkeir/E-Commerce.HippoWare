@@ -5,6 +5,37 @@ let config = {
 google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
 
+// filling pie chart
+let pie = new Array()
+const fillArr = (x,y) =>{
+  pie.push([x,y])
+}
+axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/top-viewed.php',null, config).then(
+function (response) {
+  for(const code of response.data){
+    fillArr(code['name'],parseInt(code['views']))
+  } 
+})
+.catch(function (error) {
+  console.log(error);
+})
+
+let chart = new Array()
+const fillArr2 = (x,y) => {
+  chart.push([x,y])
+}
+
+axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/top-viewed.php',null, config).then(
+function (response) {
+  for(const code of response.data){
+    fillArr(code['name'],parseInt(code['views']))
+  } 
+})
+.catch(function (error) {
+  console.log(error);
+})
+
+
 
 const line_graph = document.querySelector(".product-linegraph");
 const revenue = document.querySelector(".revenue");
@@ -45,18 +76,8 @@ function drawChart() {
   var data = new google.visualization.DataTable();
   data.addColumn("string", "Topping");
   data.addColumn("number", "Slices");
-  axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/top-viewed.php',null, config).then(
-  function (response) {
-    let array = []
-    for(const code of response.data){
-      array.push([code['name'],parseInt( code['views'])])
-    } 
-    console.log(array)
-    data.addRows(array)
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
+
+  data.addRows(pie)
 
   var piechart_options = {
     title: "Top 5 Items viewd",

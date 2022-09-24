@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 1) echo json_decode([
+        if($user_data->data->user_type != 1) echo json_encode([
             'status' => 0,
             'message' => 'Access Denied',
         ]);
