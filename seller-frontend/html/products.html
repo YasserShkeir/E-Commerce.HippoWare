@@ -19,7 +19,7 @@
     <nav class="nav-bar">
         <div class="website-logo">
             <img class="logo" src="../assets/logo.png" alt="">
-            <div class="website-name">Hippo Ware</div>
+            <button class="register-store-btn" id="register-store-btn">register store</button>
         </div>
         <div class="nav-links">
             <a href="products.html">Products</a>
@@ -110,6 +110,34 @@
             </div>
         </form>
     </div>
+
+    <!-- Store registration FORM -->
+    <section  class="registerstore-form-container" id="store-registration">
+        <form action="" class="signup-form">
+        
+            <i class="material-icons" id="registerstore_close_btn">close</i>
+        
+            <img src="../assets/logo.png" alt="">
+        
+            <h1>Register your store</h1>
+        
+            <div class="form-input-div">
+        
+                <h4>Store image</h4>
+                <input type="file" placeholder="Upload photo" id="store-img" required>
+                <label for="file">Choose a file</label>
+                <h4>Store Name</h4>
+                <input type="text" placeholder="Name of the store" id="store-name" required>
+                
+                <h5>Welcome message</h5>
+                <input type="text" placeholder="Welcome message" id="store-welcome" required>
+
+                
+                <button id="register-store"  type="submit">Register Store</button>
+            </div>
+        </form>
+        
+    </section>
 
 </body>
 </html>

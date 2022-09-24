@@ -86,7 +86,6 @@ function register(){
         function (response) {
         console.log(response.data);
         // I need this data here ^^
-        document.getElementById('register-success').style.display='block'
         return response.data;
     })
     .catch(function (error) {
@@ -97,7 +96,6 @@ function register(){
 document.getElementById("signup_close_btn").onclick=()=>{
     signup_form_container.style.display = 'none';
 }
-
 
 //logging in
 login_btn.onclick=()=>{
