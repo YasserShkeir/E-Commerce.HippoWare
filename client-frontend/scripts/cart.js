@@ -102,9 +102,9 @@ window.onload = () => {
     },
   ];
 
-  let cardsList = document.querySelector("#cart-content");
+  const cardsList = document.querySelector("#cart-content");
 
-  arr.forEach((card, index) => {
+  arr.forEach((card) => {
     cardsList.innerHTML += `<div class="item-card flex">
     <div class="check-box">
       <input type="checkbox" />
@@ -116,15 +116,50 @@ window.onload = () => {
       <h3>${card.productName}</h3>
       <h4>Color: <span>${card.productColor}</span></h4>
       <h4>
-        Quantity: <button class="qtyMins">-</button><span> ${card.qty} </span
+        Quantity: <button class="qtyMins">-</button><span id="counter"> ${
+          card.qty
+        } </span
         ><button class="qtyPlus">+</button>
       </h4>
       <h2>Item Price: $<span>${card.itemPrice}</span></h2>
     </div>
-    <div class="item-card-price">$<span>${
+    <div class="item-card-price">$<span id="totalPrice">${
       card.itemPrice * card.qty
     }</span></div>
   </div>`;
+  });
+
+  const cards = document.querySelectorAll(".item-card");
+  const minusButtons = document.querySelectorAll(".qtyMins");
+  const plusButtons = document.querySelectorAll(".qtyPlus");
+  const counters = document.querySelectorAll("#counter");
+  const totals = document.querySelectorAll("#totalPrice");
+
+  arr.forEach((card, index) => {
+    let counter = counters[index];
+    let total = totals[index];
+    let minusBtn = minusButtons[index];
+    let plusBtn = plusButtons[index];
+
+    minusBtn.addEventListener("click", () => {
+      if (counter.innerHTML <= 0) {
+        counter.innerHTML = 0;
+        total.innerHTML = counter.innerHTML * card.itemPrice;
+      } else {
+        counter.innerHTML--;
+        total.innerHTML = counter.innerHTML * card.itemPrice;
+      }
+    });
+
+    plusBtn.addEventListener("click", () => {
+      if (counter.innerHTML == 10) {
+        counter.innerHTML = 10;
+        total.innerHTML = counter.innerHTML * card.itemPrice;
+      } else {
+        counter.innerHTML++;
+        total.innerHTML = counter.innerHTML * card.itemPrice;
+      }
+    });
   });
 
   const checkboxes = document.querySelectorAll(".check-box input");
