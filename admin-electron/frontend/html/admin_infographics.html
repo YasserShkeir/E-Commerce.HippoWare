@@ -28,45 +28,24 @@
         <h1>Statistics List</h1>
       </div>
 
-      <!-- admins options and general info -->
-      <div class="general-infographics">
-        <div class="option">
-          <h2>Users type</h2>
-          <select name="from-to" id="from-to">
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-          </select>
-        </div>
-
-        <div class="option">
-          <h2>From-To</h2>
-          <select name="from-to" id="from-to">
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-          </select>
-        </div>
-
-        <div class="option">
-          <h2>infographics type</h2>
-          <select name="status" id="status">
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-          </select>
-        </div>
-
-        <div class="option">
-          <h2>Filter</h2>
-          <select name="status" id="status">
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
-          </select>
-        </div>
-      </div>
-    </div>
+          <!-- admins options and general info -->
+          <div class="general">
+          
+            <div class="option">
+              <h2>User type</h2>
+              <select name="sortby" id="sortby_input">
+                <option value="3">Client</option>
+                <option value="2">Seller</option>
+          
+              </select>
+            </div>
+          
+            <div class="option">
+              <h2>From <br> To</h2>
+              <input type="date" id="from_date_input">
+              <input type="date" id="to_date_input">
+            </div>
+          </div>
 
     <div class="infographics">
       <!-- CHART -->
@@ -96,7 +75,7 @@
         <h4>Personal info</h4>
         <div class="flex-row">
           <input type="text" placeholder="First Name" id="fname" required>
-          <input type="text" placeholder="Lirst Name" id="lname" required>
+          <input type="text" placeholder="Last Name" id="lname" required>
         </div>
         <input type="text" placeholder="User Name" id="username" required>
         <input type="text" placeholder="Email" id="email" required>
@@ -125,6 +104,7 @@
   <script src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="//d3js.org/d3.v3.min.js"></script>
   <script src="../scripts/admin_infographics.js"></script>
+    <script src="../scripts/admin_page.js"></script>
 </body>
 
 </html>

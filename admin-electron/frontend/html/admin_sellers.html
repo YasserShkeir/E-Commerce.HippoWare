@@ -30,16 +30,7 @@
       </div>
 
       <!-- admins options and general info -->
-      <div class="general-sellers">
-
-        <!-- <div class="option">
-            <h2>Status</h2>
-            <select name="status" id="status">
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-            </select>
-          </div> -->
+      <div class="general-sellers" style="height: 150px;">
 
         <div class="option">
           <h2>Sort by <br> Filter</h2>
@@ -61,10 +52,15 @@
           </select>
         </div>
 
-        <div class="option">
-          <h2>From <br> To</h2>
-          <input type="date" id="from_date_input">
-          <input type="date" id="to_date_input">
+        <div class="option flex-col">
+          <div class="flex-row">
+            <h2>From</h2>
+            <input type="date" id="from_date_input">
+          </div>
+          <div class="flex-row">
+            <h2>To</h2>
+            <input type="date" id="to_date_input">
+          </div>
         </div>
       </div>
 
@@ -98,7 +94,7 @@
         <h4>Personal info</h4>
         <div class="flex-row">
           <input type="text" placeholder="First Name" id="fname" required>
-          <input type="text" placeholder="Lirst Name" id="lname" required>
+          <input type="text" placeholder="Last Name" id="lname" required>
         </div>
         <input type="text" placeholder="User Name" id="username" required>
         <input type="text" placeholder="Email" id="email" required>
