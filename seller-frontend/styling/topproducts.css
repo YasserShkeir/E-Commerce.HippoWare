@@ -1,0 +1,65 @@
+.top-products-infographics{
+    display: flex;
+    flex-flow: wrap column;
+    width: 94vw;
+    height: fit-content;
+    gap: 10px;
+    align-self: center;
+}
+
+.top-products-infographics section{
+    height:fit-content;
+    width: 100%;
+    /* background : red; */
+}
+
+.top-products{
+    margin: 30px 0;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: fit-content;
+    gap:5px;
+}
+
+.product-img{
+    width:20%;
+    height: 100%;
+}
+
+.product-linegraph-container p{
+    font-size: 14px;
+}
+.codes-table{
+    width:25%;
+    border: 1px solid black;
+}
+
+.codes-table thead th{
+    border-bottom: 2px solid rgba(0, 0, 0, 0.356);
+}
+
+.codes-table tbody tr {
+    text-align: center;
+}
+
+.codes-table tbody tr i{
+    scale: .8;
+}
+
+/* SECTION */
+.topviewd{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+}
+.advertisment{
+    width: 55%;
+}
+
+/* revenue */
