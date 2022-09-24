@@ -84,4 +84,54 @@ window.onload = () => {
 
   navBarCaller();
   footerCaller();
+
+  let arr = [
+    {
+      imgSrc: "../assets/images/logo-removebg-preview.png",
+      productName: "123",
+      productColor: "1231",
+      qty: "4",
+      itemPrice: "100",
+    },
+    {
+      imgSrc: "../assets/images/logo-removebg-preview.png",
+      productName: "333121",
+      productColor: "1312",
+      qty: "3",
+      itemPrice: "100",
+    },
+  ];
+
+  let cardsList = document.querySelector("#cart-content");
+
+  arr.forEach((card, index) => {
+    cardsList.innerHTML += `<div class="item-card flex">
+    <div class="check-box">
+      <input type="checkbox" />
+    </div>
+    <div class="item-card-img">
+      <img src="${card.imgSrc}" />
+    </div>
+    <div class="item-card-details flex-col">
+      <h3>${card.productName}</h3>
+      <h4>Color: <span>${card.productColor}</span></h4>
+      <h4>
+        Quantity: <button class="qtyMins">-</button><span> ${card.qty} </span
+        ><button class="qtyPlus">+</button>
+      </h4>
+      <h2>Item Price: $<span>${card.itemPrice}</span></h2>
+    </div>
+    <div class="item-card-price">$<span>${
+      card.itemPrice * card.qty
+    }</span></div>
+  </div>`;
+  });
+
+  const checkboxes = document.querySelectorAll(".check-box input");
+
+  checkboxes.forEach((element, index) => {
+    checkboxes[index].addEventListener("click", () => {
+      console.log(element);
+    });
+  });
 };
