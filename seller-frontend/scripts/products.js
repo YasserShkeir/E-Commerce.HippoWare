@@ -14,6 +14,7 @@ window.onload = () => {
     const cancelLogout=document.getElementById("cancel-logout")
     const confirmLogout=document.getElementById("confirm-logout")
     const dropDownContents=document.getElementById('drop')
+    const dropDown= document.getElementById('dropdown')
     const categoryOptions=document.getElementsByClassName('category-options')
     const customizeCategory=document.getElementById('customize-category')
     const uploadProduct=document.getElementById('uploadproduct-modal')
@@ -22,6 +23,9 @@ window.onload = () => {
     const menu= document.getElementById('menu')
     const menuContents= document.getElementById('menu-contents')
     const menuLogOut= document.getElementById('log-out-menu')
+    const hamburgerMenu= document.getElementById('hamburger-menu')
+    const searchInput= document.getElementById("search-input")
+    
     //display all products
     if (categorySelect.value== 'none'){
         displaybyCategroy('0')
@@ -74,7 +78,7 @@ window.onload = () => {
             
         }
     }
-
+    //////////////////////////////////
 
     //adding a new product
     const uploadCategory=document.getElementById('upload-category')
@@ -125,7 +129,7 @@ window.onload = () => {
                 console.log(error);
             })
         }
-        
+    ///////////////////////////////////////////////    
 
 
     // for (let displayedProduct of displayedProducts){
@@ -136,7 +140,8 @@ window.onload = () => {
     //         }
     //     }
     // }
-    
+    ///////////////////////////////////////////////////////////
+
     //Storing Categories in category options
     let categories=[]
     payload = {}
@@ -168,12 +173,14 @@ window.onload = () => {
         let option=`<option value=${category}>${category}</option>`
         categorySelect.innerHTML+=option
     }
+    /////////////////////////////////////////////////// 
+
 
     //adding new categories
     addCategory.onmouseover=()=>{
         dropDownContents.style.display="Block"
     }
-    dropDownContents.onmouseleave=()=>{
+    dropDown.onmouseleave=()=>{
         dropDownContents.style.display="none"
     }
 
@@ -213,6 +220,8 @@ window.onload = () => {
             })
         }
     }
+    ////////////////////////////////////////////////////
+
 
     //logging out
     logOut.onclick=()=>{
@@ -232,9 +241,11 @@ window.onload = () => {
             localStorage.clear()
         }
     }
+    ///////////////////////////////////////////////
 
+
+    //search products
     
-    const searchInput= document.getElementById("search-input")
     searchInput.onkeyup=(e)=>{
         if (e.key === "Enter") {
             e.preventDefault();
@@ -258,8 +269,10 @@ window.onload = () => {
                 console.log(error);
             })
     }
-    
-    menu.onmouseover=()=>{
+    //////////////////////////////////////////////////////
+
+    //Hamburger menu
+    hamburgerMenu.onmouseover=()=>{
         menuContents.style.display='Block'
     }
     menuContents.onmouseleave=()=>{
