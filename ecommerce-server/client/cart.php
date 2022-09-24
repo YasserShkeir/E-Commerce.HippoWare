@@ -28,10 +28,13 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             ]);
             die();
         }
+        $obj->select('carts','id', null, `client_id = `.$user_data->data->id, null, null);
+        $result = $obj->getResult();
+        $cart = $result[0]['id'];
 
-
-        $product = $data['product'];
-        $obj->delete('favorites','client_id = '. $user_data->data->id . ' and product_id = '.$product);
+        $where = "p.id = c.products_id and c.cart_id = ".$cart;
+        
+        $obj->select('cart_items as c, products as p', "*", null, $where, null, null);
         $result = $obj->getResult();
         echo json_encode($result);
 

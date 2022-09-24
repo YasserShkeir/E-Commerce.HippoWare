@@ -21,17 +21,26 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 3){
-            echo json_encode([
-                'status' => 0,
-                'message' => 'Access Denied',
-            ]);
-            die();
+        if($user_data->data->user_type != 2) echo json_decode([
+            'status' => 0,
+            'message' => 'Access Denied',
+        ]);
+
+        $obj->select('`stores`','id', null, "seller_id = ".$user_data->data->id, null, null);// getting store id of user
+        $result = $obj->getResult();
+        $storeid=$result[0]['id'];
+        $where = "c.paid = 1 and c.products_id = p.id AND p.store_id = " . $storeid;
+
+        $start_date = $data['start-date'];
+        $end_date = $data['end-date'];
+        if($start_date){
+            $where .=" and c.date <= '" . $end_date."'"." and c.date >= '" . $start_date."'";
         }
-
-
-        $product = $data['product'];
-        $obj->delete('favorites','client_id = '. $user_data->data->id . ' and product_id = '.$product);
+        $where .= " GROUP by p.id";
+        
+        $obj->select("`cart_items` as c, `products` as p ",
+        'CAST(sum((((p.price - ((100-p.revenue)/100)*p.price)-c.discount)) * c.quantity) as DECIMAL(20,2)) as profit, p.id, p.name, p.image,c.date',
+        null, $where,null, null);
         $result = $obj->getResult();
         echo json_encode($result);
 

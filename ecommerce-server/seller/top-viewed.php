@@ -21,17 +21,17 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 3){
-            echo json_encode([
-                'status' => 0,
-                'message' => 'Access Denied',
-            ]);
-            die();
-        }
+        if($user_data->data->user_type != 2) echo json_decode([
+            'status' => 0,
+            'message' => 'Access Denied',
+        ]);
 
-
-        $product = $data['product'];
-        $obj->delete('favorites','client_id = '. $user_data->data->id . ' and product_id = '.$product);
+        $obj->select('`stores`','id', null, "seller_id = ".$user_data->data->id, null, null);// getting store id of user
+        $result = $obj->getResult();
+        $storeid=$result[0]['id'];
+        $where = "store_id = " . $storeid;
+        
+        $obj->select('`products`','*', null, $where, "views DESC", "0,9");
         $result = $obj->getResult();
         echo json_encode($result);
 

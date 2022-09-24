@@ -15,10 +15,10 @@ $obj = new Database();
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $request_body = file_get_contents('php://input');
     $data = json_decode($request_body, true);
-
-    $where = "p.store_id = s.id and p.id = ".$data['product'];
         
-    $obj->select('`products` as p, stores as s','p.name, p.id, p.color, p.size, p.image, p.price, s.name as store, p.description', null, $where, null, null);
+    $obj->select('(SELECT p.id,p.name,p.image,p.description,p.price, COUNT(p.id) as total FROM `products` as p, cart_items as c
+     WHERE c.paid = 1 and c.products_id = p.id GROUP By p.id) as a',
+    '*', null, null, 'total DESC', '0,9');
     $result = $obj->getResult();
     echo json_encode($result);
 

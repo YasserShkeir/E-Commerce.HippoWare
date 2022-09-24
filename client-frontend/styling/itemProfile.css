@@ -36,6 +36,7 @@ section {
   margin: 10px;
   width: 90%;
   border-radius: 25px;
+  max-width: 500px;
 }
 
 #product-details {
@@ -85,6 +86,28 @@ span {
 .heart-btn:hover {
   color: red;
   background-color: var(--light-blue);
+}
+
+.item-colors{
+  display: flex;
+}
+
+.item-color{
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  margin: 0 5px;
+  cursor: pointer;
+  border: #a9cef4 2px solid;
+}
+
+#quantity {
+  width: 30px;
+}
+
+#product-colors{
+  display: flex;
+  align-items: center;
 }
 
 @media only screen and (max-width: 700px) {
