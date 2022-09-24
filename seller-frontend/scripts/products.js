@@ -63,7 +63,7 @@ window.onload = () => {
             for (data of response){
                 let productCard = 
                     `<div class="product-card">
-                        <img src=${data.image} class="jacket"> 
+                        <img src="../../../../..${data.image}" class="jacket"> 
                         <div class="product-details">
                             <div>Name : ${data.name}</div>
                             <div>Color: ${data.color} </div>
@@ -109,35 +109,21 @@ window.onload = () => {
         }
     }
     //convert into base 64
+   
+    let images=''
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+        images = reader.result 
+        console.log(images)
+        localStorage.setItem('img',images)
+    })
+  
     
-    // document.getElementById('file').onchange = function reader() {
-    //     localStorage.removeItem('img')
-    //     let reader = new FileReader();
-    //     reader.readAsDataURL(document.getElementById('file').files[0]);
-    //     reader.onload = function () {
-    //     result=reader.result
-    //     localStorage.setItem('img',result)
-    //     console.log(localStorage.img)
-    //     // localStorage.setItem('img',reader.result)
-    //     };
-    //     reader.onerror = function (error) {
-    //     console.log('Error: ', error);
-    //     }; 
-    // }
-
-
-    
-
-    localStorage.removeItem('img')
 
     function uplaodNewPorduct(){
-        let reader = new FileReader();
         reader.readAsDataURL(document.getElementById('file').files[0]);
-        reader.onload = function () {
-        result=reader.result
-        localStorage.setItem('img',result)}
-        console.log(localStorage.img)
-        let payload = {image:localStorage.img, 
+        console.log(localStorage.getItem('img'))
+        let payload = {image:localStorage.getItem('img'), 
         category:uploadCategory.value,
         price:uploadPrice.value,
         revenue:uploadRevenue.value,
