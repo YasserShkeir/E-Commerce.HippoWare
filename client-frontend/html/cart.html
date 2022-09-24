@@ -19,7 +19,6 @@
       <div id="cart-content" class="flex-col">
         <h1>Your Cart:</h1>
       </div>
-      <div class="vert-line"></div>
       <div id="cart-summary" class="flex-col">
         <h2>Summary</h2>
         <div class="hori-line"></div>
@@ -27,13 +26,29 @@
           <label>Do you have a discount code?</label>
           <div id="discount-sec-input">
             <input type="text" placeholder="Discount Code" />
-            <button>Apply</button>
+            <button id="discountBtn">Apply</button>
           </div>
         </div>
         <div class="hori-line"></div>
         <div id="subtotal-section">
-          <h1>SUBTOTAL</h1>
+          <h1>Subtotal</h1>
           <h2>$<span id="subtotal">0</span></h2>
+        </div>
+        <div class="hori-line"></div>
+        <div id="misc">
+          <div id="discount-section">
+            <h3>Discount:</h3>
+            <h4>$<span id="discount"></span></h4>
+          </div>
+          <div id="shipping-section">
+            <h3>Shipping Fees:</h3>
+            <h4>$<span id="shipping">20</span></h4>
+          </div>
+        </div>
+        <div class="hori-line"></div>
+        <div id="total-section">
+          <h1>TOTAL</h1>
+          <h2>$<span id="total">0</span></h2>
         </div>
       </div>
     </section>

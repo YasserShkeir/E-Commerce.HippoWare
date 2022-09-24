@@ -123,7 +123,7 @@ window.onload = () => {
       </h4>
       <h2>Item Price: $<span>${card.itemPrice}</span></h2>
     </div>
-    <div class="item-card-price">$<span id="totalPrice">${
+    <div class="item-card-price">Total: $<span id="totalPrice">${
       card.itemPrice * card.qty
     }</span></div>
   </div>`;
@@ -165,22 +165,51 @@ window.onload = () => {
   const checkboxes = document.querySelectorAll(".check-box input");
   const totalPrices = document.querySelectorAll("#totalPrice");
   const subTotal = document.querySelector("#subtotal");
+  const shipping = document.querySelector("#shipping");
+  const total = document.querySelector("#total");
 
   checkboxes.forEach((element, index) => {
     checkboxes[index].addEventListener("click", () => {
-      console.log(totalPrices);
-      console.log(index);
-      console.log(element.checked);
-
       if (element.checked) {
         minusButtons[index].disabled = true;
         plusButtons[index].disabled = true;
         subTotal.innerHTML =
           Number(subTotal.innerHTML) + Number(totalPrices[index].innerHTML);
+
+        total.innerHTML =
+          Number(subTotal.innerHTML) + Number(shipping.innerHTML);
       } else {
+        minusButtons[index].disabled = false;
+        plusButtons[index].disabled = false;
         subTotal.innerHTML =
           Number(subTotal.innerHTML) - Number(totalPrices[index].innerHTML);
+        total.innerHTML =
+          Number(subTotal.innerHTML) + Number(shipping.innerHTML);
+      }
+
+      if (Number(subTotal.innerHTML) == 0) {
+        total.innerHTML = 0;
       }
     });
   });
+
+  const discountButton = document.querySelector("#discountBtn");
+  const discountInput = document.querySelector("#discount-sec-input input");
+
+  discountButton.addEventListener(
+    "click",
+    () => {
+      if (Number(discountInput.value) && Number(discountInput.value) > 0) {
+        let discountAmt = document.querySelector("#discount");
+        discountAmt.innerHTML = discountInput.value;
+
+        if (Number(discountInput.value) < Number(subTotal.innerHTML)) {
+          total.innerHTML -= discountAmt.innerHTML;
+        } else {
+          total.innerHTML = shipping.innerHTML;
+        }
+      }
+    },
+    { once: true }
+  );
 };
