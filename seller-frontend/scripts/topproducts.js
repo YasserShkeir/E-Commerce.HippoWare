@@ -22,12 +22,13 @@ function drawChart() {
     [150, 15],
   ]);
   // Set Options
+
   var options = {
     title: "Views in last month",
     hAxis: { title: "" },
     vAxis: { title: "" },
     legend: "none",
-    width: window.screen.width/2,
+    width: window.screen.width < 1100 ? window.screen.width*.95 : window.screen.width/2,
     height: 250,
   };
   // Draw Chart
@@ -50,7 +51,7 @@ function drawChart() {
 
   var piechart_options = {
     title: "Top 5 Items viewd",
-    width: window.screen.width*.4,
+    width: window.screen.width < 1100 ? window.screen.width*.95 : window.screen.width*.4,
     height: 340,
     is3D: true,
   };

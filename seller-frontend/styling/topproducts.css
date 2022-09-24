@@ -10,7 +10,7 @@
 .top-products-infographics section{
     height:fit-content;
     width: 100%;
-    /* background : red; */
+    overflow-y: hidden;
 }
 
 .top-products{
@@ -50,16 +50,37 @@
 }
 
 /* SECTION */
-.topviewd{
+.topviewd {
     display: flex;
     flex-flow: wrap row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 90%;
     height: fit-content;
 }
-.advertisment{
+
+.advertisment {
     width: 55%;
 }
 
-/* revenue */
+
+@media only screen and (max-width: 1100px) {
+    .top-products {
+        flex-flow: wrap column;
+        justify-content: center;
+    }
+    .product-img {
+        width: 100%;
+        height: 240px;
+    }
+    .product-linegraph,
+    .codes-table,
+    .advertisment,
+    .piechart{
+        width: 100%;
+    }
+    .revenue,
+    .product-linegraph{
+    overflow-y: scroll;
+    }
+}
