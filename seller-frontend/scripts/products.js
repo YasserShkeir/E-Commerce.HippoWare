@@ -19,17 +19,18 @@ window.onload = () => {
     const uploadProduct=document.getElementById('uploadproduct-modal')
     const submitUpload= document.getElementById('submit-upload')
     const cancelUpload= document.getElementById('cancel-upload')
+    const menu= document.getElementById('menu')
+    const menuContents= document.getElementById('menu-contents')
+    const menuLogOut= document.getElementById('log-out-menu')
     //display all products
     if (categorySelect.value== 'none'){
         displaybyCategroy('0')
     }
-
     categorySelect.onchange=(e)=>{
         products.innerHTML=''
         const categorySelected=e.target.value
         displaybyCategroy(categorySelected)
     }
-
     async function displaybyCategroy(categorySelected){
         let payload = {search:"0",
         category:categorySelected}
@@ -136,7 +137,7 @@ window.onload = () => {
     //     }
     // }
     
-    //Storing Categories
+    //Storing Categories in category options
     let categories=[]
     payload = {}
     config = {
@@ -149,7 +150,7 @@ window.onload = () => {
             categories.push(response.data[i].name)
         }
         if ('categories' in localStorage){
-           
+            console.log(localStorage)
             localStorage.removeItem('categories')
         }
 
@@ -168,7 +169,7 @@ window.onload = () => {
         categorySelect.innerHTML+=option
     }
 
-    //adding categories
+    //adding new categories
     addCategory.onmouseover=()=>{
         dropDownContents.style.display="Block"
     }
@@ -213,7 +214,7 @@ window.onload = () => {
         }
     }
 
-
+    //logging out
     logOut.onclick=()=>{
         logoutModal.style.display='Block'
         cancelLogout.onclick=()=>{logoutModal.style.display='none'}
@@ -222,6 +223,17 @@ window.onload = () => {
             localStorage.clear()
         }
     }
+
+    menuLogOut.onclick=()=>{
+        logoutModal.style.display='Block'
+        cancelLogout.onclick=()=>{logoutModal.style.display='none'}
+        confirmLogout.onclick=()=>{
+            window.location.replace("home_page.html")
+            localStorage.clear()
+        }
+    }
+
+    
     const searchInput= document.getElementById("search-input")
     searchInput.onkeyup=(e)=>{
         if (e.key === "Enter") {
@@ -246,6 +258,13 @@ window.onload = () => {
                 console.log(error);
             })
     }
-
+    
+    menu.onmouseover=()=>{
+        menuContents.style.display='Block'
+    }
+    menuContents.onmouseleave=()=>{
+        menuContents.style.display='none'
+    }
+    
 }
        
