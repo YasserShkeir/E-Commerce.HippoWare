@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title id="title">Home - Landing Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styling/styling.css" />
+    <link rel="stylesheet" href="../styling/cart.css" />
+    <script src="../scripts/cart.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <nav class="client-nav flex"></nav>
+
+    <section id="cart-body" class="flex">
+      <div id="cart-content" class="flex-col">
+        <h1>Your Cart:</h1>
+      </div>
+      <div id="cart-summary" class="flex-col">
+        <h2>Summary</h2>
+        <div class="hori-line"></div>
+        <div id="discount-sec">
+          <label>Do you have a discount code?</label>
+          <div id="discount-sec-input">
+            <input type="text" placeholder="Discount Code" />
+            <button id="discountBtn">Apply</button>
+          </div>
+        </div>
+        <div class="hori-line"></div>
+        <div id="subtotal-section">
+          <h1>Subtotal</h1>
+          <h2>$<span id="subtotal">0</span></h2>
+        </div>
+        <div class="hori-line"></div>
+        <div id="misc">
+          <div id="discount-section">
+            <h3>Discount:</h3>
+            <h4>$<span id="discount"></span></h4>
+          </div>
+          <div id="shipping-section">
+            <h3>Shipping Fees:</h3>
+            <h4>$<span id="shipping">20</span></h4>
+          </div>
+        </div>
+        <div class="hori-line"></div>
+        <div id="total-section">
+          <h1>TOTAL</h1>
+          <h2>$<span id="total">0</span></h2>
+        </div>
+      </div>
+    </section>
+
+    <footer class="client-footer flex-col"></footer>
+  </body>
+</html>
