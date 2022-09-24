@@ -1,3 +1,7 @@
+localStorage.setItem('jwt', "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjUzMDA5MTYsImRhdGEiOnsiaWQiOiI3IiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMiIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGFzIn19.uNlmQ1XccyQJbidRL5uoC7c2FxqzY9a3T0taHLCNDMU")
+let config = {
+  headers: { 'Authorization': localStorage.getItem('jwt') }
+}
 google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
 
@@ -41,13 +45,18 @@ function drawChart() {
   var data = new google.visualization.DataTable();
   data.addColumn("string", "Topping");
   data.addColumn("number", "Slices");
-  data.addRows([
-    ["Shirts", 4],
-    ["Jeans", 2],
-    ["suits", 0.5],
-    ["Dresses", 1],
-    ["Hoodies", 1.5]
-  ]);
+  axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/top-viewed.php',null, config).then(
+  function (response) {
+    let array = []
+    for(const code of response.data){
+      array.push([code['name'],parseInt( code['views'])])
+    } 
+    console.log(array)
+    data.addRows(array)
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
 
   var piechart_options = {
     title: "Top 5 Items viewd",
@@ -87,3 +96,58 @@ function drawChart() {
   chart.draw(data, options);
 
 };
+// discount-codes table 
+
+const table = document.getElementById('tbody')
+
+const addDisc = (code) => {
+  const row = document.createElement('tr')
+
+  let col = document.createElement('td')
+  col.innerHTML = code['id']
+  row.appendChild(col)
+
+  col = document.createElement('td')
+  col.innerHTML = code['limits']
+  row.appendChild(col)
+
+  col = document.createElement('td')
+  col.innerHTML = code['discount']
+  row.appendChild(col)
+
+  let del = document.createElement('i')
+  del.classList.add('material-icons')
+  del.innerHTML = "delete"
+  del.style.cursor ="pointer"
+  row.appendChild(del)
+
+  del.addEventListener('click', () => {
+    let payload = {
+      discount: code['id']
+    }
+    let config = {
+      headers: { 'Authorization': localStorage.getItem('jwt') }
+    }
+    axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/delete-discount-code.php', payload, config).then(
+      function (response) {
+        if(response) table.removeChild(row)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  })
+
+  table.append(row)
+
+}
+
+
+axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/discount-codes.php',null, config).then(
+  function (response) {
+    for(const code of response.data){
+      addDisc(code)
+    } 
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
