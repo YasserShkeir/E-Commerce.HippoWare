@@ -211,8 +211,23 @@ cart.addEventListener('click', () => {
   }
   axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/client/add-cart.php', payload, config).then(
     function (response) {
-      if(response.data) wish.innerHTML = "Added"
-      else wish.innerHTML = "Already added"
+      if(response.data) cart.innerHTML = "Added"
+      else cart.innerHTML = "Already added"
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+})
+fav.addEventListener('click', () => {
+  let payload = {
+    product: localStorage.getItem('itemId')
+  }
+  let config = {
+    headers: { 'Authorization': localStorage.getItem('jwt') }
+  }
+  axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/client/add-favs.php', payload, config).then(
+    function (response) {
+      if(response.data) fav.style.color = "red"
     })
     .catch(function (error) {
       console.log(error);

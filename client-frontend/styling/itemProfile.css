@@ -36,6 +36,7 @@ section {
   margin: 10px;
   width: 90%;
   border-radius: 25px;
+  max-width: 500px;
 }
 
 #product-details {
