@@ -20,17 +20,24 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $user_data = JWT::decode($jwt, new Key($secret_key, 'HS256'));
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
+
+        if($user_data->data->user_type != 3){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        }
+        $obj->select('carts','id', null, `client_id = `.$user_data->data->id, null, null);
+        $result = $obj->getResult();
+        $cart = $result[0]['id'];
+
+        $where = "p.id = c.products_id and c.cart_id = ".$cart;
         
-        if($user_data->data->user_type != 2) echo json_decode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
-
-        $product = $data['product'];
-
-        $obj->delete('products', "id = ". $product);
+        $obj->select('cart_items as c, products as p', "*", null, $where, null, null);
         $result = $obj->getResult();
         echo json_encode($result);
+
     } catch (Exception $e) {
         echo json_encode([
             'status' => 0,

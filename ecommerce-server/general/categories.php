@@ -13,30 +13,16 @@ use Firebase\JWT\Key;
 $obj = new Database();
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
-    try {
-        $allheaders = getallheaders();
-        $jwt =$allheaders['Authorization'];
-        $secret_key = "Hippo";
-        $user_data = JWT::decode($jwt, new Key($secret_key, 'HS256'));
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
+
+        $storeid=$data["storeid"];
+        $where = "store_id = ".$storeid;
         
-        if($user_data->data->user_type != 2) echo json_decode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
-
-        $product = $data['product'];
-
-        $obj->delete('products', "id = ". $product);
+        $obj->select('categories',"*", null, $where, null, null);
         $result = $obj->getResult();
         echo json_encode($result);
-    } catch (Exception $e) {
-        echo json_encode([
-            'status' => 0,
-            'message' => $e->getMessage(),
-        ]);
-    }
+
 } else {
     echo json_encode([
         'status' => 0,
