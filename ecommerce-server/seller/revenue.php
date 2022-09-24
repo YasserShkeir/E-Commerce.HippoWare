@@ -31,17 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $storeid=$result[0]['id'];
         $where = "c.paid = 1 and c.products_id = p.id AND p.store_id = " . $storeid;
 
-        $date = $data['date'];
-        if($date){
-            if($date == "month"){
-                $date = date('Y-m-d',strtotime('-1 months'));
-                
-            }else if($date == "week"){
-                $date = date('Y-m-d',strtotime('-1 weeks'));
-            }else if($date == "year"){
-                $date = date('Y-m-d',strtotime('-1 years'));
-            }
-            $where .=" and c.date > '" . $date."'";
+        $start_date = $data['start-date'];
+        $end_date = $data['end-date'];
+        if($start_date){
+            $where .=" and c.date <= '" . $end_date."'"." and c.date >= '" . $start_date."'";
         }
         $where .= " GROUP by p.id";
         
