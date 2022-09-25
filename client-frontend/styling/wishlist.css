@@ -26,7 +26,8 @@
 .left-side{
     display: flex;
     flex-flow: wrap row;
-    max-width: 300px;
+    min-width: 300px;
+    width: fit-content;
     height: 100%;
 }
 
@@ -34,6 +35,15 @@
     width:60%;
     height: 100%;
 }
+.color-div{
+    width: 10px;
+    height: 10px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid black;
+    border-radius: 50px;
+    scale: .5;
+}
+
 .left-side div{
     height: fit-content;
     width: 40%;

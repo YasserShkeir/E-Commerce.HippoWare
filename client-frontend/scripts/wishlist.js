@@ -103,7 +103,7 @@ for(i=0; i<data.length; i++){
           <img src="${data[i].image}" alt="">
           <div>
             <h3>${data[i].name}</h3>
-            <p>color <div class="color-div">${data[i].color}</div></p>
+            <p>color <span class="color-div" style="background:${data[i].color}; color:${data[i].color};">00</span></p>
             <p>size <span id="size">${data[i].size}</span></p>
             <h3 id="price">${data[i].price}$</h3>
           </div>
