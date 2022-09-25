@@ -84,4 +84,16 @@ window.onload = () => {
 
   navBarCaller();
   footerCaller();
+
+  // logout 
+
+  const logout = document.querySelector(".logOut")
+
+  logout.addEventListener('click', () => {
+    console.log("logout")
+    localStorage.removeItem("jwt")
+    window.open("../../index.html","_self")
+  })
 };
+
+
