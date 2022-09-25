@@ -48,11 +48,11 @@
         <img src="../assets/images/logo-removebg-preview.png" />
         <div id="voucherTitle">Send a Voucher, help a Hippo*</div>
         <div id="voucherUsers">
-          <input type="text" id="receiverName" placeholder="To:" />
-          <input type="text" id="senderName" placeholder="From:" />
+          <input type="text" id="receiverName" placeholder="To:" required/>
+          <input type="text" id="senderName" placeholder="From:" required />
         </div>
-        <textarea type="text" id="message" placeholder="Message:"></textarea>
-        <input type="number" id="value" min="0" placeholder="Value:" />
+        <textarea type="text" id="message" placeholder="Message:" required></textarea>
+        <input type="number" id="value" min="0" placeholder="Value:" required />
         <button id="createVoucher" class="btn light-blu-btn">
           Create Voucher
         </button>
