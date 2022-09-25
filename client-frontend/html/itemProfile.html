@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styling/styling.css" />
     <link rel="stylesheet" href="../styling/itemProfile.css" />
+    <link rel="icon" href="../assets/images/hippo-icon.png" type="image/png" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link
       rel="stylesheet"
@@ -31,9 +32,14 @@
             </div>
           </div>
           <div id="product-selections">
-            <div id="product-colors">Select Color: <span><div class="item-colors"></div></span></div>
+            <div id="product-colors">
+              Select Color: <span><div class="item-colors"></div></span>
+            </div>
             <div id="product-sizes">Select Size: <span></span></div>
-            <div>Select Quantity: <input type="number" id="quantity" max="15" value="1" min="1"></div>
+            <div>
+              Select Quantity:
+              <input type="number" id="quantity" max="15" value="1" min="1" />
+            </div>
           </div>
           <div id="product-options">
             <button id="cart" class="btn light-blu-btn">Add to cart</button>
