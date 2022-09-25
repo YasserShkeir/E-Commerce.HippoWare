@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $images_to_save = "/xampp/htdocs/E-Commerce.HippoWare/ecommerce-server/".$filee;
 
         if($flag){ // if no conflicts the user is updated
-            $obj->update('users', ['user_type_id' => 2, 'first_name' => $fname, 'last_name' => $lname, 'username' => $username, 'email' => $email, 'password' => $password, 'image' => $images_to_save, 'date' => $date],"id='{$id}'" );
+            $obj->update('users', ['user_type_id' => 3, 'first_name' => $fname, 'last_name' => $lname, 'username' => $username, 'email' => $email, 'password' => $password, 'image' => $images_to_save, 'date' => $date],"id='{$id}'" );
             $result = $obj->getResult();
             file_put_contents($file, $data);
             echo json_encode($result);
