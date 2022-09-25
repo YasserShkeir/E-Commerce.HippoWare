@@ -95,6 +95,8 @@ window.onload = () => {
   const productPrice = document.querySelector("#product-price span");
   const productColors = document.querySelector("#product-colors span div");
   const productSizes = document.querySelector("#product-sizes span");
+  const productName = document.querySelector("#product-name");
+
 
   let payload = {product:localStorage.getItem('itemId')}
 
@@ -106,6 +108,7 @@ window.onload = () => {
         productDesc: response.data[0]['description'],
         productSeller: response.data[0]['store'],
         productPrice: response.data[0]['price'],
+        productName: response.data[0]['name'],
         productColors: response.data[0]['color'].split(" "),
         productSizes: response.data[0]['size'].split(","),
       }; 
@@ -114,6 +117,7 @@ window.onload = () => {
       productDesc.innerHTML = fetchedProduct.productDesc;
       productSeller.innerHTML = fetchedProduct.productSeller;
       productPrice.innerHTML = fetchedProduct.productPrice;
+      productName.innerHTML = fetchedProduct.productName
 
       for(const color of fetchedProduct.productColors){
         const circle = document.createElement('div')

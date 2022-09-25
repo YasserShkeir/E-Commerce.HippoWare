@@ -171,8 +171,6 @@ input:focus{
     flex-wrap: wrap;
 }
 .section-title{
-    align-self: flex-start;
-    margin-left: 40px;
 }
 .top-stores-row>div{
     width:fit-content;
