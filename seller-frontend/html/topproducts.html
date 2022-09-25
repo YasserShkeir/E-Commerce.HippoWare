@@ -103,7 +103,20 @@
             </div>
         </div>
     </div>
-
+    <!--discount code modal-->
+    <div class="discount-container" id="discount-container">
+        <form id="discount_code_popup">
+            <i class="material-icons" id="close_btn">close</i>
+            <h4>Create discount code</h4>
+            <label for="value">Discount value</label>
+            <input type="text" name="value" id="value" placeholder="discount value" required>
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description" placeholder="description" required>
+            <label for="limit">Limit</label>
+            <input type="text" name="limit" id="limit" placeholder="limit" required>
+            <button type="submit" id="submit-discount">Submit</button>
+        </form>
+    </div>
 
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="../scripts/topproducts.js"></script>
