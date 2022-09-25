@@ -1,118 +1,147 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin</title>
-    <link rel="icon" href="../assets/logo.png" type="image/png">
-    <link rel="stylesheet" href="../styling/styling.css">
-    <link rel="stylesheet" href="../styling/products.css">
+    <link rel="icon" href="../assets/logo.png" type="image/png" />
+    <link rel="stylesheet" href="../styling/styling.css" />
+    <link rel="stylesheet" href="../styling/products.css" />
     <link
-    href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
     />
-    <link rel="stylesheet" href="../styling/topproducts.css">
+    <link rel="stylesheet" href="../styling/topproducts.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../scripts/statistics.js"></script>
-
-</head>
-<body>
-    
+  </head>
+  <body>
     <nav class="nav-bar">
-        <div class="website-logo">
-            <img class="logo" src="../assets/logo.png" alt="">
-            <div class="website-name">Hippo Ware</div>
-        </div>
-        <div class="nav-links">
-            <a href="products.html">Products</a>
-            <a href="topproducts.html">Statistics</a>
-            <button class="ads-btn">Upload Ads</button>
-        </div>
-        <div class="search">
-            <img class="search-icon" src="../assets/search-icon.png">
-            <input type="search" name="search" class="search-input" placeholder="search">
-        </div>
-        <a class="log-out" id="log-out">Log Out</a>
-    
+      <div class="website-logo">
+        <img class="logo" src="../assets/logo.png" alt="" />
+        <div class="website-name">Hippo Ware</div>
+      </div>
+      <div class="nav-links">
+        <a href="products.html">Products</a>
+        <a href="topproducts.html">Statistics</a>
+        <button class="ads-btn">Upload Ads</button>
+      </div>
+      <div class="search">
+        <img class="search-icon" src="../assets/search-icon.png" />
+        <input
+          type="search"
+          name="search"
+          class="search-input"
+          placeholder="search"
+        />
+      </div>
+      <a class="log-out" id="log-out">Log Out</a>
     </nav>
 
-    </section>
+    <!-- <nav class="nav-bar">
+        <img
+            src="../assets/logo.png"
+            alt=""
+            class="header-logo"
+            />
+
+            <div class="header-links">
+            <a href="#" class="header-link" id="header_sellerss_btn" >Sellers</a>
+
+            <a href="#" class="header-link" id="add_seller_btn" >Add Seller</a>
+
+            <a href="#" class="header-link" id="header_clients_btn">Clients</a>
+
+            <a href="#" class="header-link">Statistics</a>
+
+            <a href="#" class="header-link" id="logout_btn">Log Out</a>
+            </div>
+    </nav> -->
+
     <div class="top-products-infographics">
-
-    <section class="top-products">
-
-        <img src="../assets/jacket.jpg" alt="" class="product-img">
+      <section class="top-products">
+        <img src="../assets/jacket.jpg" alt="" class="product-img" />
 
         <div class="product-linegraph-container">
-            <p><b>Item Statistics |</b> Name: Hoodie | Views: 100,000</p>
+          <p><b>Item Statistics |</b> Name: Hoodie | Views: 100,000</p>
 
-        <div class="product-linegraph"></div>
-            
+          <div class="product-linegraph"></div>
         </div>
 
         <table class="codes-table">
-            <thead>
-                <tr>
-                    <th>CODE</th>
-                    <th>LIMIT</th>
-                    <th>DIS</th>
-                    <th id="add-discount" style="cursor: pointer;">+</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
-                
-            </tbody>
+          <thead>
+            <tr>
+              <th>CODE</th>
+              <th>LIMIT</th>
+              <th>DIS</th>
+              <th id="add-discount" style="cursor: pointer">+</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
         </table>
+      </section>
 
-    </section>
-
-<!-- TOP VIEWD -->
-    <section class="topviewd">
-
-        <img src="../assets/ads.webp" alt="" class="advertisment">
+      <!-- TOP VIEWD -->
+      <section class="topviewd">
+        <img src="../assets/ads.webp" alt="" class="advertisment" />
         <div class="piechart"></div>
+      </section>
 
-    </section>
-
-    <!-- REVENUE -->
-    <select id="revenue-time" s>
+      <!-- REVENUE -->
+      <select id="revenue-time" s>
         <option selected value="week">Weekly</option>
         <option value="month">Monthly</option>
         <option value="year">Yearly</option>
-    </select>
-    <section id="rev-week" class="revenue"></section>
-    <section id="rev-month" class="revenue"></section>
-    <section id="rev-year" class="revenue"></section>
-
+      </select>
+      <section id="rev-week" class="revenue"></section>
+      <section id="rev-month" class="revenue"></section>
+      <section id="rev-year" class="revenue"></section>
     </div>
 
     <div id="logout-modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <h2>Are you sure you want to logout</h2>
-            <div class="confirm-logout-btns">
-                <button id="confirm-logout">Yes</button>
-                <button id="cancel-logout">No</button>
-            </div>
+      <!-- Modal content -->
+      <div class="modal-content">
+        <h2>Are you sure you want to logout</h2>
+        <div class="confirm-logout-btns">
+          <button id="confirm-logout">Yes</button>
+          <button id="cancel-logout">No</button>
         </div>
+      </div>
     </div>
     <!--discount code modal-->
     <div class="discount-container" id="discount-container">
-        <form id="discount_code_popup">
-            <i class="material-icons" id="close_btn">close</i>
-            <h4>Create discount code</h4>
-            <label for="value">Discount value</label>
-            <input type="text" name="value" id="value" placeholder="discount value" required>
-            <label for="description">Description</label>
-            <input type="text" name="description" id="description" placeholder="description" required>
-            <label for="limit">Limit</label>
-            <input type="text" name="limit" id="limit" placeholder="limit" required>
-            <button type="submit" id="submit-discount">Submit</button>
-        </form>
+      <form id="discount_code_popup">
+        <i class="material-icons" id="close_btn">close</i>
+        <h4>Create discount code</h4>
+        <label for="value">Discount value</label>
+        <input
+          type="text"
+          name="value"
+          id="value"
+          placeholder="discount value"
+          required
+        />
+        <label for="description">Description</label>
+        <input
+          type="text"
+          name="description"
+          id="description"
+          placeholder="description"
+          required
+        />
+        <label for="limit">Limit</label>
+        <input
+          type="text"
+          name="limit"
+          id="limit"
+          placeholder="limit"
+          required
+        />
+        <button type="submit" id="submit-discount">Submit</button>
+      </form>
     </div>
 
-<script src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="../scripts/topproducts.js"></script>
-
-</body>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="../scripts/topproducts.js"></script>
+  </body>
 </html>
