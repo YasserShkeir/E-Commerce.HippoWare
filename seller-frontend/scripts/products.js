@@ -167,7 +167,7 @@ window.onload = () => {
         console.log(images)
         localStorage.setItem('img',images)
     })
-  
+    console.log(localStorage.getItem('img'))
     //upload new product
     function uplaodNewPorduct(){
         reader.readAsDataURL(document.getElementById('file').files[0]);
