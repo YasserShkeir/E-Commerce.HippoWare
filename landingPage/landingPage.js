@@ -27,8 +27,8 @@ burger_img.classList.add("menu");
 logo_img.src = "./landingPage/assets/logo.png";
 search_icon_img.src = "./landingPage/assets/search-icon.png";
 search_input.placeholder = "search";
-login_btn.innerText = "Log in";
-signup_btn.innerText = "Sign up";
+login_btn.innerText = "Log-in";
+signup_btn.innerText = "Sign-up";
 burger_img.src = "./landingPage/assets/menu.png";
 
 // APPENDING ELEMENTS IN THEIR RESPECTIVE CONTAINER
@@ -48,6 +48,9 @@ const emailSignin = document.getElementById("email-signin");
 const passwordSignin = document.getElementById("password-signin");
 const loginButtonForm = document.getElementById("login");
 
+
+/**********************User registration*********************/
+//password format
 function passwordFormat(password) {
   const expression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   return expression.test(password);
@@ -75,6 +78,7 @@ sellerSignup.addEventListener("click", (event) => {
     if (password.value == confirmPassword.value) {
       if (passwordFormat(password.value)) {
         register(2);
+        document.getElementById("register-success").style.display="Block"
       } else {
         document.getElementById("wrong-format").style.display = "block";
       }
@@ -83,6 +87,7 @@ sellerSignup.addEventListener("click", (event) => {
     }
   }
 });
+
 //clinet signup
 clientSignup.addEventListener("click", (event) => {
   document.getElementById("not-matching").style.display = "none";
@@ -100,6 +105,7 @@ clientSignup.addEventListener("click", (event) => {
     if (password.value == confirmPassword.value) {
       if (passwordFormat(password.value)) {
         register(3);
+        document.getElementById("register-success").style.display="Block"
       } else {
         console.log('here')
         document.getElementById("wrong-format").style.display = "block";
@@ -110,8 +116,9 @@ clientSignup.addEventListener("click", (event) => {
   }
 });
 
-//function to register the user 
+//function to register users according to their type
 function register(type) {
+  console.log(type)
   let payload = {
     first_name: firstName.value,
     last_name: lastName.value,
@@ -135,12 +142,12 @@ function register(type) {
       console.log(error);
     });
 }
-
+//close pop-up
 document.getElementById("signup_close_btn").onclick = () => {
   signup_form_container.style.display = "none";
 };
 
-//logging in
+/**********************User login*********************/
 login_btn.onclick = () => {
   signin_form_container.style.display = "block";
 };
@@ -166,6 +173,9 @@ function signIn() {
         if(response.data['user_type']==2){
           window.location.replace("./seller-frontend/html/products.html");
         }
+        else{
+          window.location.replace("./client-frontend/html/landingPage.html");
+        }
         return response.data;
       }
     })
@@ -173,6 +183,7 @@ function signIn() {
       console.log(error);
     });
 }
+//close signin pop-up
 document.getElementById("signin_close_btn").onclick = () => {
   signin_form_container.style.display = "none";
 };
