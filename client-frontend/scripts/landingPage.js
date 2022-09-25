@@ -180,15 +180,45 @@ window.onload = () => {
   voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
   voucher.id = "voucher-card";
   document.getElementById("row").appendChild(voucher);
-
+    
   voucher.style.cursor = "pointer";
   const voucherPopup = document.querySelector("#voucherForm");
   const closePopup = document.querySelector("#close");
-
+  const createVoucher =document.querySelector("#createVoucher");
+  const receiverName=document.querySelector("#receiverName");
+  const senderName=document.querySelector("#senderName");
+  const message=document.querySelector("#message");
+  const amount=document.querySelector("#value");
   voucher.addEventListener("click", () => {
-    voucherPopup.style.display = "block";
-    closePopup.addEventListener("click", () => {
-      voucherPopup.style.display = "none";
-    });
-  });
-};
+    voucherPopup.style.display = "block";})
+
+  closePopup.addEventListener("click", () => {
+    voucherPopup.style.display = "none";})
+
+  createVoucher.onclick=(e)=>{
+    e.preventDefault()
+    if(receiverName.value && senderName.value && message.value && amount.value){
+      sendVoucher(receiverName.value,message.value,amount.value)
+    }
+    voucherPopup.style.display = "none";
+  }
+  function sendVoucher(rec,msg,val){
+    let payload = {
+      username:rec,
+      message: msg,
+      value: val
+    }
+      let config = {
+          headers: {'Authorization': localStorage.jwt}
+      }
+      let res =  axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/client/send-voucher.php',payload,config).then(
+          function (response) {
+              console.log(response.data)
+              return response.data
+          })
+          .catch(function (error) {
+              console.log(error);
+          })
+  }
+}
+  
