@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $storeid=$result[0]['id'];
         $where = "store_id = " . $storeid;
         
-        $obj->select('`products`','*', null, $where, "views DESC", "0,9");
+        $obj->select('`products`','*', null, $where, "views DESC", "0,4");
         $result = $obj->getResult();
         echo json_encode($result);
 
