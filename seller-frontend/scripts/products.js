@@ -100,25 +100,32 @@ window.onload = () => {
             productCard.appendChild(prodDetails)
             products.appendChild(productCard)
             trash.addEventListener('click', () => {
-                console.log('deleted')
-                let payload = {
-                    product: data.id
-                }
-                let config = {
-                    headers: { 'Authorization': localStorage.getItem('jwt') }
-                }
-                axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/delete-product.php', payload, config).then(
-                    function (response) {
-                    if(response) 
-                        products.removeChild(productCard)
-                    })
-                    .catch(function (error) {
-                    console.log(error);
-                    })
+                deleteModal.style.display="Block"
+                deleteProduct(data.id)
             })
         }
     }
-
+    function deleteProduct(id){
+        deleteItem.onclick=()=>{
+            let payload = {
+                product: id
+            }
+            let config = {
+                headers: { 'Authorization': localStorage.getItem('jwt') }
+            }
+            axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/delete-product.php', payload, config).then(
+            function (response) {
+            if(response) 
+                products.removeChild(productCard)
+            })
+            .catch(function (error) {
+            console.log(error);
+            })
+        }
+        cancelDelete.onclick=()=>{
+            deleteModal.style.display="None"
+        }
+    }
 
 
 
