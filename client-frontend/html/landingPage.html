@@ -1,85 +1,47 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title id="title">Home - Landing Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styling/styling.css" />
-    <link rel="stylesheet" href="../styling/landingPage.css" />
-    <script src="../scripts/landingPage.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-  </head>
-  <body>
-    <nav class="client-nav flex"></nav>
 
-    <section id="landingPage-content" class="flex-col">
-      <div class="ads-carousel"><img src="../assets/images/test.jpg" /></div>
+<head>
+  <title id="title">Home - Landing Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styling/styling.css" />
+  <link rel="stylesheet" href="../styling/landingPage.css" />
+  <link rel="stylesheet" href="../../landingPage/landingPage.css" />
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="../scripts/landingPage.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
 
-      <div class="row-label"></div>
-      <div class="row flex">
-        <div class="seller-card flex">
-          <a href="#"
-            ><img src="../assets/images/logo-removebg-preview.png"
-          /></a>
-        </div>
-        <div class="seller-card flex">
-          <a href="#"
-            ><img src="../assets/images/logo-removebg-preview.png"
-          /></a>
-        </div>
-        <div id="voucher-card">
-          <a><img src="../assets/images/voucher.png" /></a>
-        </div>
+<body>
+  <nav class="client-nav flex"></nav>
+
+  <section id="landingPage-content" class="flex-col">
+    <div class="ads-carousel"><img src="../assets/images/test.jpg" /></div>
+
+    <div class="row-label"></div>
+    <h1 class="section-title">TOP STORES</h1>
+    <div id="row" class="row flex">
+
+      <div id="stores1" class="top-stores-row">
       </div>
-      <div class="row flex">
-        <div class="product-card">
-          <img src="../assets/images/logo-removebg-preview.png" />
-          <div id="product-name">${product.productName}</div>
-          <div id="product-colors">
-            Colors:
-            <span><div class="item-colors">${product.colors}</div></span>
-          </div>
-          <div id="product-sizes">Sizes: ${product.sizes}</div>
-          <div id="product-price">$${product.price}</div>
-        </div>
-        <div class="product-card">
-          <img src="../assets/images/logo-removebg-preview.png" />
-          <div id="product-name">${product.productName}</div>
-          <div id="product-colors">
-            Colors:
-            <span><div class="item-colors">${product.colors}</div></span>
-          </div>
-          <div id="product-sizes">Sizes: ${product.sizes}</div>
-          <div id="product-price">$${product.price}</div>
-        </div>
-        <div class="product-card">
-          <img src="../assets/images/logo-removebg-preview.png" />
-          <div id="product-name">${product.productName}</div>
-          <div id="product-colors">
-            Colors:
-            <span><div class="item-colors">${product.colors}</div></span>
-          </div>
-          <div id="product-sizes">Sizes: ${product.sizes}</div>
-          <div id="product-price">$${product.price}</div>
-        </div>
-        <div class="product-card">
-          <img src="../assets/images/logo-removebg-preview.png" />
-          <div id="product-name">${product.productName}</div>
-          <div id="product-colors">
-            Colors:
-            <span><div class="item-colors">${product.colors}</div></span>
-          </div>
-          <div id="product-sizes">Sizes: ${product.sizes}</div>
-          <div id="product-price">$${product.price}</div>
-        </div>
-      </div>
-      <div class="row"></div>
-      <div class="row"></div>
-    </section>
+    </div>
 
-    <footer class="client-footer flex-col"></footer>
-  </body>
+
+    <h1 class="section-title">TOP SELLERS</h1>
+
+    <div id="topSellers" class="top-stores-row" >
+    </div>
+
+    <h1 class="section-title">TOP VIEWED</h1>
+
+    <div id="topViews" class="top-stores-row">
+    </div>
+    <div class="row"></div>
+    <div class="row"></div>
+  </section>
+
+  <footer class="client-footer flex-col"></footer>
+</body>
+
 </html>

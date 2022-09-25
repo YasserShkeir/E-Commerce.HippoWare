@@ -31,7 +31,8 @@
 }
 
 #voucher-card {
-  border: 1px solid black;
+  flex-grow: 1;
+  text-align: center;
 }
 
 .product-card {
