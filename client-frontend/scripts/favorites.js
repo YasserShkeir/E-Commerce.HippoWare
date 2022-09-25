@@ -89,26 +89,63 @@ window.onload = () => {
 
 const favorite_items = document.querySelector('.favorite-items');
 
+function renderFavorites(data){
+
+
 for(i=0; i<5; i++){
   favorite_items.innerHTML +=`<section class="favorite-items">    <div class="favorite-product">
 
     <!-- PRODUCTS LEFT SIDE -->
     <div class="left-side">
-      <img src="../../seller-frontend/assets/shirt.jpg" alt="">
+      <img src="${data[i].image}" alt="">
       <div>
-        <h3>Green shirt</h3>
+        <h3>${data[i].name}</h3>
         
 
-        <h3 id="price">55$</h3>
+        <h3 id="price">${data[i].price}$</h3>
       </div>
     </div>
 
     <!-- PRODUCTS RIGHT SIDE -->
     <div class="right-side">
-      <a href="#" class="remove-link">Remove</a>
+      <a href="#" class="remove-link" id="${data[i].id}">Remove</a>
     </div>
 
   </div>
   </section>`;
-}
+
+  // REMOVE FUNCTIONALITY
+    let remove_links = Object.values(document.getElementsByClassName('remove-link'));
+    remove_links.forEach(element => {
+                element.addEventListener('click', () => {
+                  let payload = {product: element.id}
+                  let config = {
+                      headers: {'Authorization':'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU0OTcxMjIsImRhdGEiOnsiaWQiOiI4IiwibmFtZSI6ImNsaWVudCAgY2xpZW50IiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiY2xpZW50QGdtYWlsLmNvbSJ9fQ.TGAuZo0TnWnpPsdS2j8KBPv1x3zX2svqzANeZ8FHDwg'}
+                  };
+                  let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/client/delete-favs.php',payload, config).then(
+                      function (response) {
+                      console.log(response)
+                  })
+                  .catch(function (error) {
+                      console.log(error);
+                  })
+                  window.location.reload();
+                })
+              });
+  }
+};
+
+// RENDER ITEMS
+    let config = {
+        headers: {'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU0OTcxMjIsImRhdGEiOnsiaWQiOiI4IiwibmFtZSI6ImNsaWVudCAgY2xpZW50IiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiY2xpZW50QGdtYWlsLmNvbSJ9fQ.TGAuZo0TnWnpPsdS2j8KBPv1x3zX2svqzANeZ8FHDwg'}
+    };
+    let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/client/favorites.php', null, config).then(
+        function (response) {
+        renderFavorites(response.data)
+        console.log(response.data)
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
 };

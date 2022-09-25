@@ -84,4 +84,30 @@ window.onload = () => {
 
   navBarCaller();
   footerCaller();
+
+//   // EDIT PROFILE IMG
+
+let new_profile_img = document.getElementById('profile_img');
+let default_profile_img_btn = document.getElementById('profile_img_input');
+
+new_profile_img.addEventListener('click', ()=>{
+    default_profile_img_btn.click();
+});
+
+default_profile_img_btn.addEventListener('change', function(){
+
+    const file = this.files[0];
+
+    if(file){
+
+    const reader = new FileReader();
+    reader.onload = function(){
+        const result = reader.result;
+        new_profile_img.src = result
+    }
+    reader.readAsDataURL(file);
+    }
+    
+})
+
 };
