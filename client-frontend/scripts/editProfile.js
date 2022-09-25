@@ -110,4 +110,43 @@ default_profile_img_btn.addEventListener('change', function(){
     
 })
 
+
+
+
+
+// EDIT PROFILE FUNCTIONALITY
+const fname = document.getElementById('fname');
+const lname = document.getElementById('lname');
+const email = document.getElementById('email');
+const building_number = document.getElementById('building_number');
+const home_number = document.getElementById('home_number');
+const street_address = document.getElementById('street_address');
+const current_password = document.getElementById('current_password');
+const new_password = document.getElementById('new_password');
+const confirm_new_password = document.getElementById('confirm_new_password');
+const profile_img_input = document.getElementById('profile_img_input');
+const save_changes = document.getElementById('save_changes');
+
+
+save_changes.addEventListener('click', ()=>{
+    let payload ={
+                  image: profile_img_input.value,
+                  first_name: fname.value,
+                  last_name: lname.value,
+                  username: fname.value+lname.value,
+                  email: email.value,
+                  password: new_password.value}
+                  let config = {
+                      headers: {'Authorization':'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU1NjYxMDMsImRhdGEiOnsiaWQiOiIyMyIsIm5hbWUiOiJCYW4gTWUiLCJ1c2VyX3R5cGUiOiIzIiwiZW1haWwiOiJiYW5tZUBnbWFpbC5jb20ifX0.fbCucMT3poOUrQ_i1Q8cyUHrlqV3YVV5Rdft-4-e1H0'}
+                  };
+                  let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/client/edit-profile.php',payload, config).then(
+                      function (response) {
+                      console.log(response);
+                  })
+                  .catch(function (error) {
+                      console.log(error);
+                  })
+})
+
+
 };

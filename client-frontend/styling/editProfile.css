@@ -110,9 +110,6 @@ min-width: 40% ;
 }
 
 @media only screen and (max-width: 750px) {
-    .edit-profile-form h3 {
-            align-self: center;
-        }
     .edit-profile-form,
     .flex-row {
         flex-direction: column;
