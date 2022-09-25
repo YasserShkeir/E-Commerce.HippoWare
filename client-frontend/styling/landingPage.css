@@ -63,5 +63,78 @@
   font-weight: 600;
 }
 
+#voucherForm {
+  display: none;
+  height: 500px;
+  width: 500px;
+  background-color: #a9cef4;
+  border-radius: 25px;
+  position: fixed;
+  align-self: center;
+  top: 10%;
+  padding: 30px;
+}
+
+#close {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#voucherContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  gap: 20px;
+  width: 100%;
+}
+
+#voucherTitle {
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+}
+
+#voucherUsers {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+#voucherUsers input {
+  font-weight: 600;
+  flex-grow: 1;
+}
+
+#voucherContent #message {
+  padding-right: 30px;
+  box-sizing: border-box;
+  flex-grow: 1;
+  width: 100%;
+  height: 100px;
+  text-align: start;
+}
+
+#voucherContent #value {
+  padding-right: 30px;
+  box-sizing: border-box;
+  width: 140px;
+}
+
+#voucherContent img {
+  width: 30%;
+}
+
+#voucherContent textarea {
+  border-radius: 25px;
+  padding: 10px 15px;
+  border: none;
+  font-family: "Inter", sans-serif;
+}
+
+#createVoucher {
+  padding: 5px 10px !important;
+}
+
 @media only screen and (max-width: 900px) {
 }

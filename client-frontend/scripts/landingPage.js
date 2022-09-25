@@ -61,6 +61,10 @@ window.onload = () => {
         logout.style.display = "none";
       }
     });
+
+    logout.addEventListener("click", () => {
+      window.open("../../index.html", "_self");
+    });
   };
 
   const footerCaller = () => {
@@ -85,88 +89,118 @@ window.onload = () => {
   navBarCaller();
   footerCaller();
 
-  // logout 
+  // logout
 
-  const logout = document.querySelector(".logOut")
+  const logout = document.querySelector(".logOut");
 
-  logout.addEventListener('click', () => {
-    console.log("logout")
-    localStorage.removeItem("jwt")
-    window.open("../../index.html","_self")
-  })
-  
+  logout.addEventListener("click", () => {
+    console.log("logout");
+    localStorage.removeItem("jwt");
+    window.open("../../index.html", "_self");
+  });
 
+  // top sellers
 
-// top sellers 
+  const topSeller = document.querySelector("#topSellers");
+  const topViews = document.querySelector("#topViews");
+  const stores1 = document.querySelector("#stores1");
+  const stores2 = document.querySelector("#stores2");
 
-const topSeller = document.querySelector("#topSellers")
-const topViews = document.querySelector("#topViews")
-const stores1 = document.querySelector("#stores1")
-const stores2 = document.querySelector("#stores2")
+  const constructproduct = (data, div, flag) => {
+    const main = document.createElement("div");
+    main.classList.add("store");
 
+    const img = document.createElement("img");
+    img.src = `../../../../..${data["image"]}`;
+    main.appendChild(img);
 
-const constructproduct = (data,div,flag) => {
-  const main = document.createElement('div')
-  main.classList.add('store')
+    const text = document.createElement("h3");
+    text.innerHTML = data["name"];
+    main.appendChild(text);
 
-  const img = document.createElement('img')
-  img.src = `../../../../..${data['image']}`
-  main.appendChild(img)
+    if (flag) {
+      main.addEventListener("click", () => {
+        localStorage.setItem("product", data["id"]);
+        window.open("client-frontend/html/sellerProfile.html", "_self");
+      });
+      div.appendChild(main);
+      return;
+    }
 
-  const text = document.createElement('h3')
-  text.innerHTML = data['name']
-  main.appendChild(text)
+    main.addEventListener("click", () => {
+      localStorage.setItem("itemId", data["id"]);
+      window.open("client-frontend/html/itemProfile.html", "_self");
+    });
+    div.appendChild(main);
+  };
 
+<<<<<<< HEAD
   if (flag) {
 
     main.addEventListener('click', () => {
       localStorage.setItem("storeid", data['id'])
       window.open("client-frontend/html/sellerProfile.html", "_self")
+=======
+  axios
+    .post(
+      "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-sellers.php",
+      null,
+      null
+    )
+    .then(function (response) {
+      for (const data of response.data) {
+        constructproduct(data, topSeller, 0);
+      }
+>>>>>>> de0a331c4844ecbcda2ff23567d8a944f8da40ba
     })
-    div.appendChild(main)
-    return
-  }
+    .catch(function (error) {
+      console.log(error);
+    });
 
-  main.addEventListener('click', () => {
-    localStorage.setItem("itemId", data['id'])
-    window.open("client-frontend/html/itemProfile.html", "_self")
-  })
-  div.appendChild(main)
-}
+  axios
+    .post(
+      "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-viewed.php",
+      null,
+      null
+    )
+    .then(function (response) {
+      for (const data of response.data) {
+        constructproduct(data, topViews, 0);
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-sellers.php', null, null).then(
-  function (response) {
-    for (const data of response.data) {
-      constructproduct(data, topSeller, 0)
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
+  axios
+    .post(
+      "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/stores.php",
+      null,
+      null
+    )
+    .then(function (response) {
+      console.log(response.data);
+      for (let i = 0; i < response.data.length && i < 2; i++) {
+        constructproduct(response.data[i], stores1, 1);
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-viewed.php', null, null).then(
-  function (response) {
-    for (const data of response.data) {
-      constructproduct(data, topViews,0)
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
+  const voucher = document.createElement("div");
+  voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
+  voucher.id = "voucher-card";
+  document.getElementById("row").appendChild(voucher);
 
-  axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/stores.php', null, null).then(
-  function (response) {
-    console.log(response.data)
-    for (let i = 0 ; i < response.data.length && i < 2 ; i++) {
-      constructproduct(response.data[i], stores1,1)
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
+  voucher.style.cursor = "pointer";
+  const voucherPopup = document.querySelector("#voucherForm");
+  const closePopup = document.querySelector("#close");
 
-  const voucher = document.createElement('div')
-  voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>'
-  voucher.id = "voucher-card"
-  document.getElementById("row").appendChild(voucher)
+  voucher.addEventListener("click", () => {
+    voucherPopup.style.display = "block";
+    closePopup.addEventListener("click", () => {
+      voucherPopup.style.display = "none";
+    });
+  });
 };

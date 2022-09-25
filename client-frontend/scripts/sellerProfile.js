@@ -63,6 +63,10 @@ window.onload = () => {
         logout.style.display = "none";
       }
     });
+
+    logout.addEventListener("click", () => {
+      window.open("../../index.html", "_self");
+    });
   };
 
   const footerCaller = () => {
