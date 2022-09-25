@@ -49,7 +49,7 @@ const passwordSignin = document.getElementById("password-signin");
 const loginButtonForm = document.getElementById("login");
 
 function passwordFormat(password) {
-
+  const expression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   return expression.test(password);
 }
 
