@@ -17,7 +17,7 @@ window.onload = () => {
   </div>
   <div class="client-nav-search">
     <i class="fa fa-search"></i>
-    <input id="search" type="text" placeholder="Search" />
+    <input id="search" type="text" placeholder="Search"/>
   </div>
   
   <div class="mobile-links">
@@ -169,4 +169,25 @@ axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-v
   voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>'
   voucher.id = "voucher-card"
   document.getElementById("row").appendChild(voucher)
+
+
+  // SEARCH IMPLEMENTED
+  const search_input= document.getElementById('search')
+  search_input.addEventListener('input', ()=>{
+    
+    document.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+
+            localStorage.setItem("searchItem", search_input.value);
+
+        }
+
+    });
+
+  })
+
+
+
+
+
 };
