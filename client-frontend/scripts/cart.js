@@ -1,5 +1,8 @@
 window.onload = () => {
-  localStorage.setItem('jwt', "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU1MzQyNjMsImRhdGEiOnsiaWQiOiIxIiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGEifX0.qD2Dw_a4EIr0rlbuzpcar-esx8Ttog-bP8vXrMmC54E")
+  localStorage.setItem(
+    "jwt",
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU1MzQyNjMsImRhdGEiOnsiaWQiOiIxIiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGEifX0.qD2Dw_a4EIr0rlbuzpcar-esx8Ttog-bP8vXrMmC54E"
+  );
   const navBarCaller = () => {
     const navBar = document.querySelector(".client-nav");
     navBar.innerHTML = `<a href="landingPage.html"
@@ -62,6 +65,10 @@ window.onload = () => {
         logout.style.display = "none";
       }
     });
+
+    logout.addEventListener("click", () => {
+      window.open("../../index.html", "_self");
+    });
   };
 
   const footerCaller = () => {
@@ -84,17 +91,17 @@ window.onload = () => {
   };
 
   let payload = {
-    product: localStorage.getItem('itemId')//////////////////////////////////////////////////////////////////////////////////
-  }
+    product: localStorage.getItem("itemId"), //////////////////////////////////////////////////////////////////////////////////
+  };
   navBarCaller();
   footerCaller();
 
   const cardsList = document.querySelector("#cart-content");
-  const purchase = document.getElementById("purchase")
-  const cartTotal = document.getElementById('total')
-  const code = document.getElementById("code")
-  let cartItems = new Array()
-  let checked = new Array()
+  const purchase = document.getElementById("purchase");
+  const cartTotal = document.getElementById("total");
+  const code = document.getElementById("code");
+  let cartItems = new Array();
+  let checked = new Array();
 
   function removeFirst(arr, target) {
     var idx = arr.indexOf(target);
@@ -104,108 +111,122 @@ window.onload = () => {
     return arr;
   }
   const numbers = [5, 10, 15];
-  console.log(removeFirst(numbers, 10))
+  console.log(removeFirst(numbers, 10));
 
   const addItem = (card) => {
-    const itemCard = document.createElement('div')
-    itemCard.classList.add('item-card')
-    itemCard.classList.add('flex')
-    itemCard.id=card['id']
-    cardsList.appendChild(itemCard)
+    const itemCard = document.createElement("div");
+    itemCard.classList.add("item-card");
+    itemCard.classList.add("flex");
+    itemCard.id = card["id"];
+    cardsList.appendChild(itemCard);
 
-    const checkbox = document.createElement('div')
-    checkbox.classList.add('check-box')
-    itemCard.appendChild(checkbox)
+    const checkbox = document.createElement("div");
+    checkbox.classList.add("check-box");
+    itemCard.appendChild(checkbox);
 
-    const input = document.createElement('input')
-    input.type = "checkbox"
-    checkbox.appendChild(input)
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    checkbox.appendChild(input);
 
-    const imgdiv = document.createElement('div')
-    imgdiv.classList.add('item-card-img')
-    itemCard.appendChild(imgdiv)
+    const imgdiv = document.createElement("div");
+    imgdiv.classList.add("item-card-img");
+    itemCard.appendChild(imgdiv);
 
-    const img = document.createElement('img')
-    img.src = `../../../../..${card["image"]}`
-    imgdiv.appendChild(img)
+    const img = document.createElement("img");
+    img.src = `../../../../..${card["image"]}`;
+    imgdiv.appendChild(img);
 
-    const details = document.createElement('div')
-    details.classList.add('item-card-details')
-    details.classList.add('flex-col')
-    itemCard.appendChild(details)
+    const details = document.createElement("div");
+    details.classList.add("item-card-details");
+    details.classList.add("flex-col");
+    itemCard.appendChild(details);
 
-    const name = document.createElement('h3')
-    name.innerHTML = card['name']
-    details.appendChild(name)
+    const name = document.createElement("h3");
+    name.innerHTML = card["name"];
+    details.appendChild(name);
 
-    const color = document.createElement('h4')
-    color.innerHTML = `Color: <span>${card['colorc']}</span>`
-    details.appendChild(color)
+    const color = document.createElement("h4");
+    color.innerHTML = `Color: <span>${card["colorc"]}</span>`;
+    details.appendChild(color);
 
-    const quantity = document.createElement('h4')
-    quantity.innerHTML = `Quantity: <span>${card['quantity']}</span>`
-    details.appendChild(quantity)
+    const quantity = document.createElement("h4");
+    quantity.innerHTML = `Quantity: <span>${card["quantity"]}</span>`;
+    details.appendChild(quantity);
 
-    const price = document.createElement('h4')
-    price.innerHTML = `Price: $<span>${card['price']}</span>`
-    details.appendChild(price)
+    const price = document.createElement("h4");
+    price.innerHTML = `Price: $<span>${card["price"]}</span>`;
+    details.appendChild(price);
 
-    const total = document.createElement('div')
-    total.innerHTML = `Total: $<span id="totalPrice">${card['price'] * card['quantity']}</span>`
-    total.classList.add('item-card-price')
-    itemCard.appendChild(total)
+    const total = document.createElement("div");
+    total.innerHTML = `Total: $<span id="totalPrice">${
+      card["price"] * card["quantity"]
+    }</span>`;
+    total.classList.add("item-card-price");
+    itemCard.appendChild(total);
 
-    cartItems.push(itemCard)
+    cartItems.push(itemCard);
 
-    input.addEventListener('change', () => {
+    input.addEventListener("change", () => {
       if (!input.checked) {
-        cartTotal.innerHTML = parseFloat(cartTotal.innerHTML) - card['price'] * card['quantity']
-        removeFirst(checked, card['id'])
+        cartTotal.innerHTML =
+          parseFloat(cartTotal.innerHTML) - card["price"] * card["quantity"];
+        removeFirst(checked, card["id"]);
       } else {
-        cartTotal.innerHTML = parseFloat(cartTotal.innerHTML) + card['price'] * card['quantity']
-        checked.push(card['id'])
+        cartTotal.innerHTML =
+          parseFloat(cartTotal.innerHTML) + card["price"] * card["quantity"];
+        checked.push(card["id"]);
       }
-    })
-  }
+    });
+  };
 
   let config = {
-    headers: { 'Authorization': localStorage.getItem('jwt') }
-  }
-  axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/client/cart.php', null, config).then(
-    function (response) {
+    headers: { Authorization: localStorage.getItem("jwt") },
+  };
+  axios
+    .post(
+      "http://localhost/E-Commerce.HippoWare/ecommerce-server/client/cart.php",
+      null,
+      config
+    )
+    .then(function (response) {
       for (const data of response.data) {
-        addItem(data)
+        addItem(data);
       }
     })
     .catch(function (error) {
       console.log(error);
-    })
+    });
 
-  purchase.addEventListener('click', () => {
+  purchase.addEventListener("click", () => {
     for (const item of checked) {
-      let payload
-      if(code.value){
+      let payload;
+      if (code.value) {
         payload = {
           product: getItem,
-          code:code.value
-        }
-      }else {
+          code: code.value,
+        };
+      } else {
         payload = {
           product: item,
-          code:0
-        }
+          code: 0,
+        };
       }
       let config = {
-        headers: { 'Authorization': localStorage.getItem('jwt') }
-      }
-      axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/client/purchase.php', payload, config).then(
-        function (response) {
-          cardsList.removeChild(document.getElementById(item))
-          removeFirst(checked,item)
+        headers: { Authorization: localStorage.getItem("jwt") },
+      };
+      axios
+        .post(
+          "http://localhost/E-Commerce.HippoWare/ecommerce-server/client/purchase.php",
+          payload,
+          config
+        )
+        .then(function (response) {
+          cardsList.removeChild(document.getElementById(item));
+          removeFirst(checked, item);
         })
         .catch(function (error) {
           console.log(error);
-        })
+        });
     }
-  })
+  });
 };

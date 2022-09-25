@@ -207,7 +207,7 @@ const constructproduct = (data, div, flag) => {
 
   if (flag) {
     main.addEventListener("click", () => {
-      localStorage.setItem("product", data["id"]);
+      localStorage.setItem("storeid", data["id"]);
       window.open("client-frontend/html/sellerProfile.html", "_self");
     });
     div.appendChild(main);

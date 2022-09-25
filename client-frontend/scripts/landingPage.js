@@ -61,6 +61,10 @@ window.onload = () => {
         logout.style.display = "none";
       }
     });
+
+    logout.addEventListener("click", () => {
+      window.open("../../index.html", "_self");
+    });
   };
 
   const footerCaller = () => {
@@ -130,19 +134,61 @@ window.onload = () => {
     div.appendChild(main);
   };
 
-  axios
-    .post(
-      "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-sellers.php",
-      null,
-      null
-    )
-    .then(function (response) {
-      for (const data of response.data) {
-        constructproduct(data, topSeller, 0);
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
+  if (flag) {
+    main
+      .addEventListener("click", () => {
+        localStorage.setItem("storeid", data["id"]);
+        window.open("client-frontend/html/sellerProfile.html", "_self");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    axios
+      .post(
+        "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-viewed.php",
+        null,
+        null
+      )
+      .then(function (response) {
+        for (const data of response.data) {
+          constructproduct(data, topViews, 0);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    axios
+      .post(
+        "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/stores.php",
+        null,
+        null
+      )
+      .then(function (response) {
+        console.log(response.data);
+        for (let i = 0; i < response.data.length && i < 2; i++) {
+          constructproduct(response.data[i], stores1, 1);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    const voucher = document.createElement("div");
+    voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
+    voucher.id = "voucher-card";
+    document.getElementById("row").appendChild(voucher);
+
+    voucher.style.cursor = "pointer";
+    const voucherPopup = document.querySelector("#voucherForm");
+    const closePopup = document.querySelector("#close");
+
+    voucher.addEventListener("click", () => {
+      voucherPopup.style.display = "block";
+      closePopup.addEventListener("click", () => {
+        voucherPopup.style.display = "none";
+      });
     });
 
   axios
@@ -176,14 +222,12 @@ window.onload = () => {
       console.log(error);
     });
 
-  const voucher = document.createElement("div");
   voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
   voucher.id = "voucher-card";
   document.getElementById("row").appendChild(voucher);
     
   voucher.style.cursor = "pointer";
-  const voucherPopup = document.querySelector("#voucherForm");
-  const closePopup = document.querySelector("#close");
+  
   const createVoucher =document.querySelector("#createVoucher");
   const receiverName=document.querySelector("#receiverName");
   const senderName=document.querySelector("#senderName");
@@ -220,5 +264,6 @@ window.onload = () => {
               console.log(error);
           })
   }
+ }
 }
   
