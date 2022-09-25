@@ -48,7 +48,6 @@ const emailSignin = document.getElementById("email-signin");
 const passwordSignin = document.getElementById("password-signin");
 const loginButtonForm = document.getElementById("login");
 
-
 /**********************User registration*********************/
 //password format
 function passwordFormat(password) {
@@ -78,7 +77,7 @@ sellerSignup.addEventListener("click", (event) => {
     if (password.value == confirmPassword.value) {
       if (passwordFormat(password.value)) {
         register(2);
-        document.getElementById("register-success").style.display="Block"
+        document.getElementById("register-success").style.display = "Block";
       } else {
         document.getElementById("wrong-format").style.display = "block";
       }
@@ -105,9 +104,9 @@ clientSignup.addEventListener("click", (event) => {
     if (password.value == confirmPassword.value) {
       if (passwordFormat(password.value)) {
         register(3);
-        document.getElementById("register-success").style.display="Block"
+        document.getElementById("register-success").style.display = "Block";
       } else {
-        console.log('here')
+        console.log("here");
         document.getElementById("wrong-format").style.display = "block";
       }
     } else {
@@ -118,7 +117,7 @@ clientSignup.addEventListener("click", (event) => {
 
 //function to register users according to their type
 function register(type) {
-  console.log(type)
+  console.log(type);
   let payload = {
     first_name: firstName.value,
     last_name: lastName.value,
@@ -170,10 +169,9 @@ function signIn() {
       if (response.data.message == "Login Successfully") {
         localStorage.setItem("jwt", response.data.jwt);
         console.log(localStorage);
-        if(response.data['user_type']==2){
+        if (response.data["user_type"] == 2) {
           window.location.replace("./seller-frontend/html/products.html");
-        }
-        else{
+        } else {
           window.location.replace("./client-frontend/html/landingPage.html");
         }
         return response.data;
@@ -188,70 +186,98 @@ document.getElementById("signin_close_btn").onclick = () => {
   signin_form_container.style.display = "none";
 };
 
-// top sellers 
+// top sellers
 
-const topSeller = document.querySelector("#topSellers")
-const topViews = document.querySelector("#topViews")
-const stores1 = document.querySelector("#stores1")
-const stores2 = document.querySelector("#stores2")
+const topSeller = document.querySelector("#topSellers");
+const topViews = document.querySelector("#topViews");
+const stores1 = document.querySelector("#stores1");
+const stores2 = document.querySelector("#stores2");
 
+const constructproduct = (data, div, flag) => {
+  const main = document.createElement("div");
+  main.classList.add("store");
 
-const constructproduct = (data,div,flag) => {
-  const main = document.createElement('div')
-  main.classList.add('store')
+  const img = document.createElement("img");
+  img.src = `../../..${data["image"]}`;
+  main.appendChild(img);
 
-  const img = document.createElement('img')
-  img.src = `../../..${data['image']}`
-  main.appendChild(img)
-
-  const text = document.createElement('h3')
-  text.innerHTML = data['name']
-  main.appendChild(text)
+  const text = document.createElement("h3");
+  text.innerHTML = data["name"];
+  main.appendChild(text);
 
   if (flag) {
-
-    main.addEventListener('click', () => {
-      localStorage.setItem("product", data['id'])
-      window.open("client-frontend/html/sellerProfile.html", "_self")
-    })
-    div.appendChild(main)
-    return
+    main.addEventListener("click", () => {
+      localStorage.setItem("product", data["id"]);
+      window.open("client-frontend/html/sellerProfile.html", "_self");
+    });
+    div.appendChild(main);
+    return;
   }
 
-  main.addEventListener('click', () => {
-    localStorage.setItem("itemId", data['id'])
-    window.open("client-frontend/html/itemProfile.html", "_self")
-  })
-  div.appendChild(main)
-}
+  main.addEventListener("click", () => {
+    localStorage.setItem("itemId", data["id"]);
+    window.open("client-frontend/html/itemProfile.html", "_self");
+  });
+  div.appendChild(main);
+};
 
-axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-sellers.php', null, null).then(
-  function (response) {
+axios
+  .post(
+    "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-sellers.php",
+    null,
+    null
+  )
+  .then(function (response) {
     for (const data of response.data) {
-      constructproduct(data, topSeller, 0)
+      constructproduct(data, topSeller, 0);
     }
   })
   .catch(function (error) {
     console.log(error);
-  })
+  });
 
-axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-viewed.php', null, null).then(
-  function (response) {
+axios
+  .post(
+    "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-viewed.php",
+    null,
+    null
+  )
+  .then(function (response) {
     for (const data of response.data) {
-      constructproduct(data, topViews,0)
+      constructproduct(data, topViews, 0);
     }
   })
   .catch(function (error) {
     console.log(error);
-  })
+  });
 
-  axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/stores.php', null, null).then(
-  function (response) {
-    console.log(response.data)
-    for (let i = 0 ; i < response.data.length || i < 8 ; i++) {
-      constructproduct(response.data[i], stores1,1)
+axios
+  .post(
+    "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/stores.php",
+    null,
+    null
+  )
+  .then(function (response) {
+    console.log(response.data);
+    for (let i = 0; i < response.data.length || i < 8; i++) {
+      constructproduct(response.data[i], stores1, 1);
     }
   })
   .catch(function (error) {
     console.log(error);
-  })
+  });
+
+const leftAd = document.querySelector("#leftAd");
+const rightAd = document.querySelector("#rightAd");
+const advertisment = document.querySelector(".advertisment-div img");
+
+leftAd.addEventListener("click", () => {
+  let currAd = advertisment.src;
+  advertisment.src = "./landingPage/assets/ad1.webp";
+});
+
+rightAd.addEventListener("click", () => {
+  let currAd = advertisment.src;
+  console.log(currAd);
+  advertisment.src = "./landingPage/assets/ad2.png";
+});
