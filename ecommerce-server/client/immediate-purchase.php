@@ -40,6 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $obj->insert('cart_items',['products_id' => $product, 'cart_id' => $cart, 'quantity' => 1, 'size' => $size, 'date' => $date, 'paid' => 1,'discount' => 0]);
         $result = $obj->getResult();
         echo json_encode($result);
+        $obj->delete('whishlist', "client_id = " . $user_data->data->id . " and product_id = ".$product);
+        $result = $obj->getResult();
+        echo json_encode($result);
 
     } catch (Exception $e) {
         echo json_encode([

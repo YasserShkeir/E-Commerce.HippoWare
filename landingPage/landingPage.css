@@ -43,6 +43,55 @@ body {
     }
 }
 
+.nav-bar{
+    padding: 10px 20px;
+    height: 80px;
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--bg-color);
+    box-sizing: border-box;
+    align-items: center;
+}
+.website-logo{
+    display: flex;
+    align-items: center;
+}
+
+
+.search{
+    position: relative;
+}
+input{
+    width: 25vw;
+    height: 30px;
+    padding: 5px 0px;
+    padding-left: 30px;
+    border-radius: 20px;
+    border: none;
+}
+input:focus{
+    outline: none;
+}
+.search-icon{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left:10px;
+    top: 25%;
+}
+.logo{
+    width: 60px;
+    height: 60px ;
+    margin-right: 20px;
+
+}
+.website-name{
+    color:white;
+}
+
+
+
 .header-links {
     display: flex;
     flex-flow: wrap row;
