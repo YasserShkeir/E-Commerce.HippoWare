@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title id="title">Seller Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styling/styling.css" />
+    <link rel="stylesheet" href="../styling/sellerProfile.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <link rel="icon" href="../assets/images/hippo-icon.png" type="image/png" />
+    <script src="../scripts/sellerProfile.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <nav class="client-nav flex"></nav>
+
+    <section class="flex-col">
+      <div id="seller-details" class="flex">
+        <img id="seller-img"
+          src=""
+        />
+        <div id="seller-details-info" class="flex-col">
+          <div id="seller-details-txt">
+            <h1>Welcome to <span>Shop Name here</span></h1>
+            <h4>Description Here</h4>
+          </div>
+          <button id="chat-btn" class="btn light-blu-btn">Chat with us</button>
+        </div>
+      </div>
+      <div id="discount-disclaimer">
+        <h1>
+          Purchase a total amount of $<span id="purchase-amt">100</span> and get
+          <span id="purchase-amt">10</span>% discount!
+        </h1>
+        <h3>Use: (<span>code</span>) at checkout</h3>
+      </div>
+
+      <div id="products" class="flex-col">
+        <div id="products-filter" class="flex">
+          <div id="category" class="flex">
+            <select id="categorySelect">
+              <option>Choose Category</option>
+            </select>
+          </div>
+
+          <div id="Sort" class="flex">
+            <select id="sortSelect">
+              <option>Sort</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="products-list" class="flex"></div>
+      </div>
+    </section>
+
+    <div id="messaging-window" class="flex-col">
+      <div id="messaging-window-init" class="flex">
+        <h2>Chat</h2>
+        <div id="direction">V</div>
+      </div>
+
+      <div id="message-form">
+        <div id="messages">
+          <div id="message-title">Chat with Seller</div>
+          <div id="title-spacer"></div>
+        </div>
+        <div>
+          <input id="messageContent" type="text" />
+          <button id="sendMessage">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="client-footer flex-col"></footer>
+  </body>
+</html>

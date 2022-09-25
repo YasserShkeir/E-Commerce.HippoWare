@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title id="title">Item Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styling/styling.css" />
+    <link rel="stylesheet" href="../styling/itemProfile.css" />
+    <link rel="icon" href="../assets/images/hippo-icon.png" type="image/png" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <nav class="client-nav flex"></nav>
+
+    <section id="itemProfile" class="flex-col">
+      <div id="product-name">Product Name</div>
+      <div id="product-content">
+        <div id="product-img" class="flex">
+          <img src="" />
+        </div>
+        <div id="product-details">
+          <p>Product Details</p>
+          <div id="product-text">
+            <div id="product-description">Description: <span></span></div>
+            <div id="product-seller">Seller: <span></span></div>
+            <div id="product-price">
+              Price: $<span style="font-weight: 600"></span>
+            </div>
+          </div>
+          <div id="product-selections">
+            <div id="product-colors">
+              Select Color: <span><div class="item-colors"></div></span>
+            </div>
+            <div id="product-sizes">Select Size: <span></span></div>
+            <div>
+              Select Quantity:
+              <input type="number" id="quantity" max="15" value="1" min="1" />
+            </div>
+          </div>
+          <div id="product-options">
+            <button id="cart" class="btn light-blu-btn">Add to cart</button>
+            <button id="wish" class="btn gray-btn">Add to wishlist</button>
+            <button id="fav" class="btn heart-btn" title="Add to Favorites">
+              &#10084;
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="client-footer flex-col"></footer>
+    <script src="../scripts/itemProfile.js"></script>
+  </body>
+</html>

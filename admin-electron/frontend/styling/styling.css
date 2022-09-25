@@ -1,0 +1,35 @@
+/* Reset  */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 
+1_ :root is a way of creating variables in css.
+2_ you include -- (two dashes before the variable).
+3_  you assingn a value to it (color, numbers such as sizes..etc).
+4_ you use  unified variable as a value such as in the body tag below where i gave the background value a variable declared and assigned in :root tag.
+5_ this helps unifies and organize the code
+copy paste the root to all css files and change accordingly if needed  .
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
+
+:root {
+  --bg-color: #a9cef4;
+  --dark-blue: #181818;
+  --light-blue: #7ea0b7;
+}
+
+body {
+  display: flex;
+  background: var(--bg-color);
+  font-family: Arial, Helvetica, sans-serif;
+}

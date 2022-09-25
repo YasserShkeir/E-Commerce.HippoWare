@@ -1,0 +1,140 @@
+#landingPage-content {
+  padding: 3% 6%;
+  align-items: center;
+  gap: 40px;
+}
+
+.ads-carousel {
+  width: 100%;
+  text-align: center;
+}
+
+.ads-carousel img {
+  min-width: 300px;
+  width: 70%;
+}
+
+.row {
+  gap: 20px;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.seller-card {
+  border: 1px solid black;
+  background-color: #fff;
+  width: 200px;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+}
+
+#voucher-card {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.product-card {
+  background-color: white;
+  border: 1px solid black;
+  padding: 5px;
+  box-sizing: border-box;
+  line-height: 25px;
+}
+
+.product-card img {
+  width: 50px !important;
+}
+
+#product-name {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#product-colors,
+#product-sizes {
+  font-size: 12px;
+}
+
+#product-price {
+  font-size: 16px;
+  text-align: end;
+  font-weight: 600;
+}
+
+#voucherForm {
+  display: none;
+  height: 500px;
+  width: 500px;
+  background-color: #a9cef4;
+  border-radius: 25px;
+  position: fixed;
+  align-self: center;
+  top: 10%;
+  padding: 30px;
+}
+
+#close {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#voucherContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  gap: 20px;
+  width: 100%;
+}
+
+#voucherTitle {
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+}
+
+#voucherUsers {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+#voucherUsers input {
+  font-weight: 600;
+  flex-grow: 1;
+}
+
+#voucherContent #message {
+  padding-right: 30px;
+  box-sizing: border-box;
+  flex-grow: 1;
+  width: 100%;
+  height: 100px;
+  text-align: start;
+}
+
+#voucherContent #value {
+  padding-right: 30px;
+  box-sizing: border-box;
+  width: 140px;
+}
+
+#voucherContent img {
+  width: 30%;
+}
+
+#voucherContent textarea {
+  border-radius: 25px;
+  padding: 10px 15px;
+  border: none;
+  font-family: "Inter", sans-serif;
+}
+
+#createVoucher {
+  padding: 5px 10px !important;
+}
+
+@media only screen and (max-width: 900px) {
+}

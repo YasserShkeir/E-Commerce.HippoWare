@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title id="title">Item Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styling/styling.css" />
+    <link rel="stylesheet" href="../styling/editProfile.css" />
+    <link rel="icon" href="../assets/images/hippo-icon.png" type="image/png" />
+    <script src="../scripts/editProfile.js"></script>
+          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Hippo Ware | Edit Profile</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!-- NAV BAR -->
+    <nav class="client-nav flex"></nav>
+    
+    <!-- PROFILE EDIT FORM -->
+    <h1>Edit Your Profile</h1>
+    <form action="" class="edit-profile-form">
+    
+    
+      <!-- LEFT SIDE, THE INFO SIDE -->
+      <div class="info">
+    
+        <d iv class="personal-info">
+    
+          <h3>Personal information</h3>
+    
+          <div class="flex-row">
+            <p>First Name</p>
+            <input type="text" name="first_name" class="long-input" id="fname">
+          </div>
+          <div class="flex-row">
+            <p>Last Name</p>
+            <input type="text" name="last_name" class="long-input" id="lname">
+          </div>
+          <div class="flex-row">
+            <p>Email</p>
+            <input type="text" name="email" class="long-input" id="email">
+          </div>
+    
+    
+    
+          <div class="address details">
+    
+            <h3>Address details</h3>
+    
+            <div class="flex-row">
+              <p>Building No.</p>
+              <input type="text" name="building_number" id="building_number">
+              <p>Home No.</p>
+              <input type="text" name="home_number" id="home_number">
+            </div>
+    
+            <div class="flex-row">
+              <p>Street
+              <address></address>
+              </p>
+              <input type="text" name="street_address" class="long-input" id="street_address">
+            </div>
+    
+            <div class="flex-row">
+              <p>City</p>
+              <input type="text" name="city">
+              <p>State</p>
+              <input type="text" name="state">
+            </div>
+          </div>
+    
+    
+          <div class="change password">
+    
+            <h3>Change password</h3>
+    
+            <div class="flex-row">
+              <p>Current password</p>
+              <input type="password" name="current_password" class="long-input" id="current_password">
+            </div>
+            <div class="flex-row">
+              <p>New password</p>
+              <input type="password" name="new_password" class="long-input" id="new_password">
+            </div>
+            <div class="flex-row">
+              <p>Confirm password</p>
+              <input type="password" name="confirm_password" class="long-input" id="confirm_new_password">
+            </div>
+          </div>
+      </div>
+      </div>
+      <!-- RIGHT SIDE, IMAGE & BUTTONS SIDE -->
+      <div class="img-side">
+    
+        <div class="img-changer">
+          <img src="../assets/images/image-add.svg" alt="" id="profile_img">
+          <input type="file" accept="image/*" hidden id="profile_img_input">
+          <button id="change_img_btn">change photo</button>
+        </div>
+    
+    
+        <div class="form-btns">
+          <button class="save-changes" id="save_changes">save changes</button>
+          <button class="cancel">cancel</button>
+        </div>
+    
+      </div>
+    
+    </form>
+
+    <!-- FOOTER -->
+    <footer class="client-footer flex-col"></footer>
+  </body>
+</html>

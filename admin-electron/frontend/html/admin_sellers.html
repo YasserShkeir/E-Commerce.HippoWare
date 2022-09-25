@@ -1,0 +1,131 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hippo Ware | Admin Panel - Sellers</title>
+  <!-- FAVICON -->
+  <link rel="icon" href="../../assets/images/hippo-icon.png" type="image/png" />
+  <!-- CSS STYLES -->
+  <link rel="stylesheet" href="../styling/styling.css" />
+  <link rel="stylesheet" href="../styling/admin_page.css" />
+  <!-- MATERIAL ICONS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script src="../scripts/admin_page.js"></script>
+</head>
+
+<body>
+  <!-- SIDE NAV BAR BEGINS HERE -->
+  <nav class="nav-bar"></nav>
+  <!-- SIDE NAV BAR ENDS HERE -->
+
+  <!-- MAIN SECTION BEGINS HERE -->
+  <section class="main-section">
+    <!-- SELLERS CONTAINER STARTS HERE -->
+    <div id="sellers_container">
+      <!-- wrapping the title in a div to center it -->
+      <div class="title-div">
+        <h1>Sellers List</h1>
+      </div>
+
+      <!-- admins options and general info -->
+      <div class="general-sellers" >
+
+        <div class="x-flex">
+        <div class="sellers-search">
+        <h2>Search</h2>
+        <input type="text" placeholder="type here.." id="search_input" />
+        </div>
+
+        <div class="">
+          <h2>From-To:</h2>
+          <input type="date" id="from_date_input">
+          <input type="date" id="to_date_input">
+        </div>
+
+      </div>
+
+        <div class="x-flex">
+        <div class="">
+          <h2>Sort by:</h2>
+          <select name="sortby" id="seller_sortby_input">
+            <option value="0">none</option>
+            <option value="name-acs">Name-ACS</option>
+            <option value="name-desc">Name-DESC</option>
+            <option value="date-acs">Date-ACS</option>
+            <option value="date-desc">Date-DESC</option>
+          </select>
+        </div>
+
+        <div class="">
+          <h2>Filter:</h2>
+          <select name="status" id="filter_input">
+            <option value="2">none</option>
+            <option value="-2">Deleted</option>
+            <option value="-1">Rejected</option>
+            <option value="0">Pending</option>
+            <option value="1">Accepted</option>
+          </select>
+        </div>
+
+      </div>
+
+      </div>
+
+    </div>
+
+    <!-- sellers below -->
+    <div class="sellers-list"></div>
+    </div>
+    <!-- END OF SELLERS CONTAINER -->
+  </section>
+  <!-- MAIN SECTION ENDS HERE -->
+
+
+
+  <section class="signup-form-container">
+    <form action="" class="signup-form">
+
+      <i class="material-icons" id="signup_close_btn">close</i>
+
+      <img src="../../assets/images/logo-removebg-preview.png" alt="">
+
+      <h1  id="form-title">Add Seller</h1>
+
+      <div class="form-input-div">
+
+        <h4>Personal info</h4>
+        <div class="flex-row">
+          <input type="text" placeholder="First Name" id="fname" required>
+          <input type="text" placeholder="Last Name" id="lname" required>
+        </div>
+        <input type="text" placeholder="User Name" id="username" required>
+        <input type="text" placeholder="Email" id="email" required>
+
+        <h4>Address</h4>
+        <div class="flex-row">
+          <input type="text" placeholder="Building No. (optional)">
+          <input type="text" placeholder="Home No.">
+        </div>
+        <input type="text" placeholder="Street Address">
+        <div class="flex-row">
+          <input type="text" placeholder="City">
+          <input type="text" placeholder="State">
+        </div>
+
+        <h4>Password</h4>
+        <input type="text" placeholder="Password" id="password" required>
+        <input type="text" placeholder="Confirm Password" id="password-confirm" required>
+
+        <div class="flex-row">
+          <button class="signup-btn" id="seller-add" type="submit">Add Seller</button>
+        </div>
+    </form>
+  </section>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="../scripts/admin_seller.js"></script>
+</body>
+
+</html>
