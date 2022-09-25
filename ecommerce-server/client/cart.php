@@ -32,9 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $result = $obj->getResult();
         $cart = $result[0]['id'];
 
-        $where = "p.id = c.products_id and c.cart_id = ".$cart;
+        $where = "p.id = c.products_id and paid = 0 and c.cart_id = ".$cart;
         
-        $obj->select('cart_items as c, products as p', "*", null, $where, null, null);
+        $obj->select('cart_items as c, products as p', "*, c.color as colorc", null, $where, null, null);
         $result = $obj->getResult();
         echo json_encode($result);
 

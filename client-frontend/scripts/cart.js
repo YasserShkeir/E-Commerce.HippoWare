@@ -1,4 +1,5 @@
 window.onload = () => {
+  localStorage.setItem('jwt', "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU1MzQyNjMsImRhdGEiOnsiaWQiOiIxIiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGEifX0.qD2Dw_a4EIr0rlbuzpcar-esx8Ttog-bP8vXrMmC54E")
   const navBarCaller = () => {
     const navBar = document.querySelector(".client-nav");
     navBar.innerHTML = `<a href="landingPage.html"
@@ -82,134 +83,129 @@ window.onload = () => {
   <div class="footer-caption">© 2022 Made by Hippos 🦛</div>`;
   };
 
+  let payload = {
+    product: localStorage.getItem('itemId')//////////////////////////////////////////////////////////////////////////////////
+  }
   navBarCaller();
   footerCaller();
 
-  let arr = [
-    {
-      imgSrc: "../assets/images/logo-removebg-preview.png",
-      productName: "123",
-      productColor: "1231",
-      qty: "1",
-      itemPrice: "70",
-    },
-    {
-      imgSrc: "../assets/images/logo-removebg-preview.png",
-      productName: "333121",
-      productColor: "1312",
-      qty: "1",
-      itemPrice: "125",
-    },
-  ];
-
   const cardsList = document.querySelector("#cart-content");
+  const purchase = document.getElementById("purchase")
+  const cartTotal = document.getElementById('total')
+  const code = document.getElementById("code")
+  let cartItems = new Array()
+  let checked = new Array()
 
-  arr.forEach((card) => {
-    cardsList.innerHTML += `<div class="item-card flex">
-    <div class="check-box">
-      <input type="checkbox" />
-    </div>
-    <div class="item-card-img">
-      <img src="${card.imgSrc}" />
-    </div>
-    <div class="item-card-details flex-col">
-      <h3>${card.productName}</h3>
-      <h4>Color: <span>${card.productColor}</span></h4>
-      <h4>
-        Quantity: <button class="qtyMins">-</button><span id="counter"> ${
-          card.qty
-        } </span
-        ><button class="qtyPlus">+</button>
-      </h4>
-      <h2>Item Price: $<span>${card.itemPrice}</span></h2>
-    </div>
-    <div class="item-card-price">Total: $<span id="totalPrice">${
-      card.itemPrice * card.qty
-    }</span></div>
-  </div>`;
-  });
+  function removeFirst(arr, target) {
+    var idx = arr.indexOf(target);
+    if (idx > -1) {
+      arr.splice(idx, 1);
+    }
+    return arr;
+  }
+  const numbers = [5, 10, 15];
+  console.log(removeFirst(numbers, 10))
 
-  const cards = document.querySelectorAll(".item-card");
-  const minusButtons = document.querySelectorAll(".qtyMins");
-  const plusButtons = document.querySelectorAll(".qtyPlus");
-  const counters = document.querySelectorAll("#counter");
-  const totals = document.querySelectorAll("#totalPrice");
+  const addItem = (card) => {
+    const itemCard = document.createElement('div')
+    itemCard.classList.add('item-card')
+    itemCard.classList.add('flex')
+    itemCard.id=card['id']
+    cardsList.appendChild(itemCard)
 
-  arr.forEach((card, index) => {
-    let counter = counters[index];
-    let total = totals[index];
-    let minusBtn = minusButtons[index];
-    let plusBtn = plusButtons[index];
+    const checkbox = document.createElement('div')
+    checkbox.classList.add('check-box')
+    itemCard.appendChild(checkbox)
 
-    minusBtn.addEventListener("click", () => {
-      if (counter.innerHTML <= 0) {
-        counter.innerHTML = 0;
-        total.innerHTML = counter.innerHTML * card.itemPrice;
+    const input = document.createElement('input')
+    input.type = "checkbox"
+    checkbox.appendChild(input)
+
+    const imgdiv = document.createElement('div')
+    imgdiv.classList.add('item-card-img')
+    itemCard.appendChild(imgdiv)
+
+    const img = document.createElement('img')
+    img.src = `../../../../..${card["image"]}`
+    imgdiv.appendChild(img)
+
+    const details = document.createElement('div')
+    details.classList.add('item-card-details')
+    details.classList.add('flex-col')
+    itemCard.appendChild(details)
+
+    const name = document.createElement('h3')
+    name.innerHTML = card['name']
+    details.appendChild(name)
+
+    const color = document.createElement('h4')
+    color.innerHTML = `Color: <span>${card['colorc']}</span>`
+    details.appendChild(color)
+
+    const quantity = document.createElement('h4')
+    quantity.innerHTML = `Quantity: <span>${card['quantity']}</span>`
+    details.appendChild(quantity)
+
+    const price = document.createElement('h4')
+    price.innerHTML = `Price: $<span>${card['price']}</span>`
+    details.appendChild(price)
+
+    const total = document.createElement('div')
+    total.innerHTML = `Total: $<span id="totalPrice">${card['price'] * card['quantity']}</span>`
+    total.classList.add('item-card-price')
+    itemCard.appendChild(total)
+
+    cartItems.push(itemCard)
+
+    input.addEventListener('change', () => {
+      if (!input.checked) {
+        cartTotal.innerHTML = parseFloat(cartTotal.innerHTML) - card['price'] * card['quantity']
+        removeFirst(checked, card['id'])
       } else {
-        counter.innerHTML--;
-        total.innerHTML = counter.innerHTML * card.itemPrice;
+        cartTotal.innerHTML = parseFloat(cartTotal.innerHTML) + card['price'] * card['quantity']
+        checked.push(card['id'])
       }
-    });
+    })
+  }
 
-    plusBtn.addEventListener("click", () => {
-      if (counter.innerHTML == 15) {
-        counter.innerHTML = 15;
-        total.innerHTML = counter.innerHTML * card.itemPrice;
-      } else {
-        counter.innerHTML++;
-        total.innerHTML = counter.innerHTML * card.itemPrice;
+  let config = {
+    headers: { 'Authorization': localStorage.getItem('jwt') }
+  }
+  axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/client/cart.php', null, config).then(
+    function (response) {
+      for (const data of response.data) {
+        addItem(data)
       }
-    });
-  });
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
 
-  const checkboxes = document.querySelectorAll(".check-box input");
-  const totalPrices = document.querySelectorAll("#totalPrice");
-  const subTotal = document.querySelector("#subtotal");
-  const shipping = document.querySelector("#shipping");
-  const total = document.querySelector("#total");
-
-  checkboxes.forEach((element, index) => {
-    checkboxes[index].addEventListener("click", () => {
-      if (element.checked) {
-        minusButtons[index].disabled = true;
-        plusButtons[index].disabled = true;
-        subTotal.innerHTML =
-          Number(subTotal.innerHTML) + Number(totalPrices[index].innerHTML);
-
-        total.innerHTML =
-          Number(subTotal.innerHTML) + Number(shipping.innerHTML);
-      } else {
-        minusButtons[index].disabled = false;
-        plusButtons[index].disabled = false;
-        subTotal.innerHTML =
-          Number(subTotal.innerHTML) - Number(totalPrices[index].innerHTML);
-        total.innerHTML =
-          Number(subTotal.innerHTML) + Number(shipping.innerHTML);
-      }
-
-      if (Number(subTotal.innerHTML) == 0) {
-        total.innerHTML = 0;
-      }
-    });
-  });
-
-  const discountButton = document.querySelector("#discountBtn");
-  const discountInput = document.querySelector("#discount-sec-input input");
-
-  discountButton.addEventListener(
-    "click",
-    () => {
-      if (Number(discountInput.value) && Number(discountInput.value) > 0) {
-        let discountAmt = document.querySelector("#discount");
-        discountAmt.innerHTML = discountInput.value;
-
-        if (Number(discountInput.value) < Number(subTotal.innerHTML)) {
-          total.innerHTML -= discountAmt.innerHTML;
-        } else {
-          total.innerHTML = shipping.innerHTML;
+  purchase.addEventListener('click', () => {
+    for (const item of checked) {
+      let payload
+      if(code.value){
+        payload = {
+          product: getItem,
+          code:code.value
+        }
+      }else {
+        payload = {
+          product: item,
+          code:0
         }
       }
-    },
-    { once: true }
-  );
+      let config = {
+        headers: { 'Authorization': localStorage.getItem('jwt') }
+      }
+      axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/client/purchase.php', payload, config).then(
+        function (response) {
+          cardsList.removeChild(document.getElementById(item))
+          removeFirst(checked,item)
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
+  })
 };
