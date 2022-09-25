@@ -38,9 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         }
         $where .= " GROUP by p.id";
         
-        $obj->select("`cart_items` as c, `products` as p ",
-        'CAST(sum((((p.price - ((100-p.revenue)/100)*p.price)-c.discount)) * c.quantity) as DECIMAL(20,2)) as profit, p.id, p.name, p.image,c.date',
-        null, $where,null, null);
+        $obj->select('(SELECT CAST(sum((((p.price - ((100-p.revenue)/100)*p.price)-c.discount)) * c.quantity) as DECIMAL(20,
+        2)) as profit, p.id, p.name, p.image,c.date FROM `cart_items` as c, `products` as p  WHERE '.$where.') as a',
+        "SUM(profit) as profit",
+        null, null,null, null);
         $result = $obj->getResult();
         echo json_encode($result);
 
