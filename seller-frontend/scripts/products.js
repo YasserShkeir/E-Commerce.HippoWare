@@ -36,15 +36,18 @@ window.onload = () => {
     const registerStoreClose=document.getElementById('registerstore_close_btn')
     
     
-    //display and delete products
+    /*************display and delete products*************/
+    //all categories displayed
     if (categorySelect.value== 'none'){
         displaybyCategroy('0')
     }
+    //selection of a category
     categorySelect.onchange=(e)=>{
         products.innerHTML=''
         const categorySelected=e.target.value
         displaybyCategroy(categorySelected)
     }
+    //display according to category
     function displaybyCategroy(categorySelected){
         let payload = {search:"0",
         category:categorySelected}
@@ -62,7 +65,7 @@ window.onload = () => {
                 console.log(error);
             })
     }
-
+    //helper function to display products
     function displayProducts(data){
         if (data==''){
             let productCard = 
@@ -74,19 +77,19 @@ window.onload = () => {
             productCard.classList.add("product-card")
             let prodImage=document.createElement('img')
             prodImage.classList.add("jacket")
-            prodImage.src="../../../../..${data.image}"
+            prodImage.src=`../../../../..${data.image}`
             let prodDetails=document.createElement('div')
             prodDetails.classList.add("product-details")
             let prodName=document.createElement('div')
-            prodName.innerHTML="Name : ${data.name}"
+            prodName.innerHTML=`Name : ${data.name}`
             let prodColor= document.createElement('div')
-            prodColor.innerHTML="Color: ${data.color}"
+            prodColor.innerHTML=`Color: ${data.color}`
             let prodSize= document.createElement('div')
-            prodSize.innerHTML="Size: ${data.size}"
+            prodSize.innerHTML=`Size: ${data.size}`
             let prodRevenue= document.createElement('div')
-            prodRevenue.innerHTML="Revenue: ${data.revenue}"
+            prodRevenue.innerHTML=`Revenue: ${data.revenue}`
             let prodPrice=document.createElement('div')
-            prodPrice.innerHTML="Price: ${data.price}"
+            prodPrice.innerHTML=`Price: ${data.price}`
             let trash=document.createElement('img')
             trash.classList.add("trash-bin")
             trash.src="../assets/trash.png"
@@ -102,9 +105,11 @@ window.onload = () => {
             trash.addEventListener('click', () => {
                 deleteModal.style.display="Block"
                 deleteProduct(data.id)
+               
             })
         }
     }
+    //delete a product
     function deleteProduct(id){
         deleteItem.onclick=()=>{
             let payload = {
@@ -116,6 +121,7 @@ window.onload = () => {
             axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/delete-product.php', payload, config).then(
             function (response) {
             if(response) 
+                deleteModal.style.display="None"
                 products.removeChild(productCard)
             })
             .catch(function (error) {
@@ -127,40 +133,7 @@ window.onload = () => {
         }
     }
 
-
-
-
-
-
-
-    // function displayProducts(response){
-    //     if (response==''){
-    //         let productCard = 
-    //         `<div> No product exits</div>`
-    //         products.innerHTML+=productCard
-    //     }
-    //     else{
-    //         for (data of response){
-    //             let productCard = 
-    //                 `<div class="product-card">
-    //                     <img src="../../../../..${data.image}" class="jacket"> 
-    //                     <div class="product-details">
-    //                         <div>Name : ${data.name}</div>
-    //                         <div>Color: ${data.color} </div>
-    //                         <div>Size: ${data.size}</div>
-    //                         <div>Revenue: ${data.revenue}</div>
-    //                         <div>Price: ${data.price}</div>
-    //                         <img src="../assets/trash.png" class="trash-bin">
-    //                     </div>
-    //                 </div>`
-    //             products.innerHTML+=productCard
-    //         }
-            
-    //     }
-    // }
-    //////////////////////////////////
-
-    //adding a new product
+    /*************add a new product*************/
     const uploadCategory=document.getElementById('upload-category')
     const uploadPrice=document.getElementById('upload-price')
     const uploadDiscount=document.getElementById('upload-discount')
@@ -195,7 +168,6 @@ window.onload = () => {
         localStorage.setItem('img',images)
     })
   
-    
     //upload new product
     function uplaodNewPorduct(){
         reader.readAsDataURL(document.getElementById('file').files[0]);
@@ -219,8 +191,9 @@ window.onload = () => {
             .catch(function (error) {
                 console.log(error);
             })
-    }
-    ///////////////////////////////////////////////    
+    }   
+
+    /*************stornig and creating categories*************/
 
     //Storing Categories in category options
     let categories=[]
@@ -256,9 +229,7 @@ window.onload = () => {
         let option=`<option value=${category}>${category}</option>`
         categorySelect.innerHTML+=option
     }
-    /////////////////////////////////////////////////// 
-
-
+   
     //adding new categories
     addCategory.onmouseover=()=>{
         dropDownContents.style.display="Block"
@@ -303,8 +274,8 @@ window.onload = () => {
             })
         }
     }
-    ////////////////////////////////////////////////////
-
+    
+    /*************log out*************/
 
     //logging out
     logOut.onclick=()=>{
@@ -324,8 +295,9 @@ window.onload = () => {
             localStorage.clear()
         }
     }
-    ///////////////////////////////////////////////
+    
 
+    /*************searching for product by name*************/
 
     //search products
     searchInput.onkeyup=(e)=>{
@@ -335,6 +307,7 @@ window.onload = () => {
             searchforProduct(searchInput.value)
           }
     }
+    //helper function to display searched product
     function searchforProduct(productName){
         let payload = {search: productName,
         category:'0'}
@@ -351,17 +324,17 @@ window.onload = () => {
                 console.log(error);
             })
     }
-    //////////////////////////////////////////////////////
+    
 
-    //Hamburger menu
+    /*************Hamburger Menu*************/
     hamburgerMenu.onmouseover=()=>{
         menuContents.style.display='Block'
     }
     menuContents.onmouseleave=()=>{
         menuContents.style.display='none'
     }
-    ///////////////////////////////////////////////
     
+    /*************store registration*************/
 
     function registeraStore(){
     images=''
