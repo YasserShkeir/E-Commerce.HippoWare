@@ -282,7 +282,7 @@ window.onload = () => {
         logoutModal.style.display='Block'
         cancelLogout.onclick=()=>{logoutModal.style.display='none'}
         confirmLogout.onclick=()=>{
-            window.location.replace("home_page.html")
+            window.location.replace("../../index.html")
             localStorage.clear()
         }
     }

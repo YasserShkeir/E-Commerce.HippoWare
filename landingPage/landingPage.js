@@ -49,7 +49,7 @@ const passwordSignin = document.getElementById("password-signin");
 const loginButtonForm = document.getElementById("login");
 
 function passwordFormat(password) {
-  const expression = /^[0-9a-zA-Z]{8,}$/;
+
   return expression.test(password);
 }
 
@@ -57,6 +57,8 @@ function passwordFormat(password) {
 signup_btn.addEventListener("click", () => {
   signup_form_container.style.display = "block";
 });
+
+//seller signup
 sellerSignup.addEventListener("click", (event) => {
   document.getElementById("not-matching").style.display = "none";
   document.getElementById("wrong-format").style.display = "none";
@@ -72,7 +74,7 @@ sellerSignup.addEventListener("click", (event) => {
   ) {
     if (password.value == confirmPassword.value) {
       if (passwordFormat(password.value)) {
-        register();
+        register(2);
       } else {
         document.getElementById("wrong-format").style.display = "block";
       }
@@ -81,9 +83,35 @@ sellerSignup.addEventListener("click", (event) => {
     }
   }
 });
+//clinet signup
+clientSignup.addEventListener("click", (event) => {
+  document.getElementById("not-matching").style.display = "none";
+  document.getElementById("wrong-format").style.display = "none";
+  document.getElementById("register-success").style.display = "none";
+  event.preventDefault();
+  if (
+    firstName.value &&
+    lastName.value &&
+    userName.value &&
+    email.value &&
+    password.value &&
+    confirmPassword.value
+  ) {
+    if (password.value == confirmPassword.value) {
+      if (passwordFormat(password.value)) {
+        register(3);
+      } else {
+        console.log('here')
+        document.getElementById("wrong-format").style.display = "block";
+      }
+    } else {
+      document.getElementById("not-matching").style.display = "block";
+    }
+  }
+});
 
-//function to register the user
-function register() {
+//function to register the user 
+function register(type) {
   let payload = {
     first_name: firstName.value,
     last_name: lastName.value,
@@ -91,7 +119,7 @@ function register() {
     email: email.value,
     image: null,
     password: password.value,
-    user_type_id: 2,
+    user_type_id: type,
   };
   let res = axios
     .post(
@@ -135,7 +163,9 @@ function signIn() {
       if (response.data.message == "Login Successfully") {
         localStorage.setItem("jwt", response.data.jwt);
         console.log(localStorage);
-        window.location.replace("products.html");
+        if(response.data['user_type']==2){
+          window.location.replace("./seller-frontend/html/products.html");
+        }
         return response.data;
       }
     })
