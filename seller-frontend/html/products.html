@@ -15,8 +15,11 @@
     <script src="../scripts/products.js"></script>
 </head>
 <body>
-    
     <nav class="nav-bar">
+        <div class="search">
+            <img class="search-icon" src="../assets/search-icon.png">
+            <input type="search" name="search" class="search-input" id="search-input" placeholder="search">
+        </div>
         <div class="website-logo">
             <img class="logo" src="../assets/logo.png" alt="">
             <button class="register-store-btn" id="register-store-btn">register store</button>
@@ -26,10 +29,7 @@
             <a href="topproducts.html">Statistics</a>
             <button class="ads-btn">Upload Ads</button>
         </div>
-        <div class="search">
-            <img class="search-icon" src="../assets/search-icon.png">
-            <input type="search" name="search" class="search-input" id="search-input" placeholder="search">
-        </div>
+        
         <a class="log-out" id="log-out">Log Out</a>
         <div class="hamburger-menu" id="hamburger-menu">
             <img src="../assets/menu.png" class="menu" id="menu"> 
@@ -42,101 +42,92 @@
     </nav>
     
     
-    
+    <section class="page-contents">
+        <div class="category">
+            <select name="category" id="category-select" class="category-select">
+                <option value="none" selected disabled hidden>Category</option>
+            </select>
 
-    <div class="category">
-        <select name="category" id="category-select" class="category-select">
-            <option value="none" selected disabled hidden>Category</option>
-        </select>
+            <div class="add-btns">
+                <div class="dropdown" id="dropdown">
+                    <button class="addcategory-btn" id="add-category">Add Category</button>
+                    <div class="dropdown-content" id="drop">
+                        <div class="category-options">Men</div>
+                        <div class="category-options">Women</div>
+                        <div class="category-options">Children</div>
+                        <div><input placeholder="new category" class="customize-category" id="customize-category"></div>
+                    </div>
+                </div>
 
-        <div class="add-btns">
-            <div class="dropdown" id="dropdown">
-                <button class="addcategory-btn" id="add-category">Add Category</button>
-                <div class="dropdown-content" id="drop">
-                    <div class="category-options">Men</div>
-                    <div class="category-options">Women</div>
-                    <div class="category-options">Children</div>
-                    <div><input placeholder="new category" class="customize-category" id="customize-category"></div>
+                <button class="addproduct-btn" id="add-product">Add Product</button>
+            </div>
+        </div>
+
+        <section class="products" id="products">   
+        </section>
+        
+        <!-- Delete Modal content -->
+        <div id="deletion-modal">
+            <div class="modal-content">
+                <h2>Are you sure you want to delete this item?</h2>
+                <div class="delete-btns">
+                    <button id="delete-item">Yes</button>
+                    <button id="cancel-delete">No</button>
                 </div>
             </div>
-
-            <button class="addproduct-btn" id="add-product">Add Product</button>
         </div>
-    </div>
 
-    <section class="products" id="products">   
+        <!-- logout Modal content -->
+        <div id="logout-modal">
+            <div class="modal-content">
+                <h2>Are you sure you want to logout</h2>
+                <div class="confirm-logout-btns">
+                    <button id="confirm-logout">Yes</button>
+                    <button id="cancel-logout">No</button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="uploadproduct-modal" >
+            <!-- Modal content -->
+            <form class="uploadmodal-content">
+                <h3>Upload Product</h3>
+                <input id="file" type="file" class="upload-image" accept="image/png"/>
+                <input class="upload" id="upload-category" placeholder="Category" required>
+                <input class="upload" id="upload-price" placeholder="Price" required>
+                <input class="upload" id="upload-revenue" placeholder="Revenue" required>
+                <input class="upload" id="upload-discount" placeholder="Discount" required>
+                <input class="upload" id="upload-name" placeholder="Name" required>
+                <input class="upload" id="upload-color" placeholder="Color" required>
+                <input class="upload" id="upload-size" placeholder="Size" required>
+                <textarea class="upload" id="upload-description" placeholder="Description" required></textarea>
+                <div class="confirmuplaod-btns">
+                    <button class="submit-upload" id="submit-upload">Submit</button>
+                    <button class="cancel-upload" id="cancel-upload">Cancel</button>
+                </div>
+            </form>
+        </div>
     </section>
-    
-    <!-- Delete Modal content -->
-    <div id="deletion-modal">
-        <div class="modal-content">
-            <h2>Are you sure you want to delete this item?</h2>
-            <div class="delete-btns">
-                <button id="delete-item">Yes</button>
-                <button id="cancel-delete">No</button>
-            </div>
-        </div>
-    </div>
-
-     <!-- logout Modal content -->
-    <div id="logout-modal">
-        <div class="modal-content">
-            <h2>Are you sure you want to logout</h2>
-            <div class="confirm-logout-btns">
-                <button id="confirm-logout">Yes</button>
-                <button id="cancel-logout">No</button>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div id="uploadproduct-modal" >
-        <!-- Modal content -->
-        <form class="uploadmodal-content">
-            <h3>Upload Product</h3>
-            <input id="file" type="file" class="upload-image" accept="image/png"/>
-            <input class="upload" id="upload-category" placeholder="Category" required>
-            <input class="upload" id="upload-price" placeholder="Price" required>
-            <input class="upload" id="upload-revenue" placeholder="Revenue" required>
-            <input class="upload" id="upload-discount" placeholder="Discount" required>
-            <input class="upload" id="upload-name" placeholder="Name" required>
-            <input class="upload" id="upload-color" placeholder="Color" required>
-            <input class="upload" id="upload-size" placeholder="Size" required>
-            <textarea class="upload" id="upload-description" placeholder="Description" required></textarea>
-            <div class="confirmuplaod-btns">
-                <button class="submit-upload" id="submit-upload">Submit</button>
-                <button class="cancel-upload" id="cancel-upload">Cancel</button>
-            </div>
-        </form>
-    </div>
 
     <!-- Store registration FORM -->
     <section  class="registerstore-form-container" id="store-registration">
         <form action="" class="register-form">
-        
             <i class="material-icons" id="registerstore_close_btn">close</i>
-        
             <img src="../assets/logo.png" alt="">
-        
             <h1>Register your store</h1>
-        
             <div class="form-input-div">
-        
                 <h4>Store image</h4>
                 <input type="file" placeholder="Upload photo" id="store-img" required>
                 <label for="file">Image</label>
                 <h4>Store Name</h4>
                 <input type="text" placeholder="Name of the store" id="store-name" required>
-                
                 <h4>Welcome message</h4>
                 <input type="text" placeholder="Welcome message" id="store-welcome" required>
-
-                
                 <button id="register-store"  type="submit">Register Store</button>
             </div>
-        </form>
-        
+        </form>  
     </section>
 
 </body>
