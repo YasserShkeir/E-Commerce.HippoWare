@@ -1,4 +1,3 @@
-
 let config = {
   headers: { 'Authorization': localStorage.getItem('jwt') }
 }
@@ -292,6 +291,7 @@ axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/discou
   .catch(function (error) {
     console.log(error);
   })
+
 
 
 
