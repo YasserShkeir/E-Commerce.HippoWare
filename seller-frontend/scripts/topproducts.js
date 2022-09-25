@@ -1,4 +1,4 @@
-localStorage.setItem('jwt', "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjUzMDA5MTYsImRhdGEiOnsiaWQiOiI3IiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMiIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGFzIn19.uNlmQ1XccyQJbidRL5uoC7c2FxqzY9a3T0taHLCNDMU")
+
 let config = {
   headers: { 'Authorization': localStorage.getItem('jwt') }
 }
@@ -197,7 +197,47 @@ function drawChart() {
 };
 // discount-codes table 
 
+const discountModal= document.getElementById('discount-container')
+const closeModal=document.getElementById('close_btn')
+const discountValue=document.getElementById('value')
+const description=document.getElementById('description')
+const limit=document.getElementById('limit')
+const submitDiscount= document.getElementById('submit-discount')
+const addDiscount=document.getElementById('add-discount')
+
 const table = document.getElementById('tbody')
+
+addDiscount.onclick=()=>{
+  discountModal.style.display="Block"
+}
+submitDiscount.onclick=(event)=>{
+  event.preventDefault()
+  if(discountValue.value && description.value && limit.value){
+    createNewDiscount(discountValue.value,description.value,limit.value)
+  }
+}
+closeModal.onclick=()=>{
+  discountModal.style.display="none"
+}
+
+function createNewDiscount(val,des,lim){
+  let payload = {
+    discount: val,
+    description: des,
+    limit:lim
+  }
+  let config = {
+    headers: { 'Authorization': localStorage.getItem('jwt') }
+  }
+  axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/create-discount-code.php', payload, config).then(
+    function (response) {
+      console.log(response.data)
+      discountModal.style.display="none"
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+}
 
 const addDisc = (code) => {
   const row = document.createElement('tr')
@@ -240,12 +280,14 @@ const addDisc = (code) => {
 
 }
 
-
 axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/discount-codes.php',null, config).then(
   function (response) {
+    console.log(response.data)
+    if (response.data){
     for(const code of response.data){
       addDisc(code)
-    } 
+    }
+  } 
   })
   .catch(function (error) {
     console.log(error);
