@@ -115,4 +115,82 @@ window.onload = () => {
 
     productsList.innerHTML += productCard;
   }
+
+  //Chat Section
+
+  const chatBox = document.querySelector("#messaging-window");
+  const messagingWindow = document.querySelector("#messaging-window-init");
+  const messageForm = document.querySelector("#message-form");
+  const direction = document.querySelector("#direction");
+
+  messagingWindow.addEventListener("click", () => {
+    if (messageForm.style.display != "flex") {
+      chatBox.style.height = "400px";
+      messagingWindow.style.alignItems = "top";
+      messageForm.style.display = "flex";
+      messageForm.style.flexDirection = "column";
+      messageForm.style.flexGrow = "1";
+      direction.style.transform = "rotate(0deg)";
+    } else {
+      chatBox.style.height = "fit-content";
+      messagingWindow.style.alignItems = "center";
+      messageForm.style.display = "none";
+      direction.style.transform = "rotate(180deg)";
+    }
+  });
+
+  const messages = document.querySelector("#messages");
+  const sendMessage = document.querySelector("#sendMessage");
+
+  let today = new Date();
+  let time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+  messages.innerHTML += `<div class="messageCard flex">
+  <div>
+    <h5>Store Name</h5>
+    <h6>Welcome to our Store!</h6>
+    <p>SENT AT ${time}</p>
+  </div>
+</div>`;
+
+  if (messageForm.style.display != "flex") {
+    sendMessage.addEventListener("click", () => {
+      let messageContent = document.querySelector("#messageContent");
+
+      if (messageContent.value == "") {
+        alert(
+          "🦛 🦛 🦛 🦛 🦛 🦛 🦛 🦛 🦛 \n" +
+            "🦛 No empty messages pls :3 🦛\n" +
+            "🦛 🦛 🦛 🦛 🦛 🦛 🦛 🦛 🦛 "
+        );
+      } else {
+        1;
+        2;
+        let today = new Date();
+        let time =
+          today.getHours() +
+          ":" +
+          today.getMinutes() +
+          ":" +
+          today.getSeconds();
+        messages.innerHTML += `<div class="messageCard sender flex">
+      <div>
+        <h5>You</h5>
+        <h6>${messageContent.value}</h6>
+        <p>SENT AT ${time}</p>
+      </div>
+    </div>`;
+        messageContent.value = "";
+      }
+
+      // console.log(messageContent.value);
+    });
+  }
+
+  // const chatBtn = document.querySelector("#chat-btn");
+
+  // chatBtn.addEventListener("click", () => {
+  //   console.log(123);
+  // });
 };
