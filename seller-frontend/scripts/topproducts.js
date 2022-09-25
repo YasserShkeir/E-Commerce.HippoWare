@@ -28,13 +28,22 @@ const fillArr2 = (x,y) => {
 axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/top-viewed.php',null, config).then(
 function (response) {
   for(const code of response.data){
-    fillArr(code['name'],parseInt(code['views']))
+    fillArr2(code['name'],parseInt(code['views']))
   } 
 })
 .catch(function (error) {
   console.log(error);
 })
 
+const revenueSelect = document.getElementById("revenue-time")
+revenueSelect.addEventListener('change', () => {
+  let i
+  if(revenueSelect == "week"){
+    for( i = 0; i < 84 ; i++){
+      
+    }
+  }
+})
 
 
 const line_graph = document.querySelector(".product-linegraph");
