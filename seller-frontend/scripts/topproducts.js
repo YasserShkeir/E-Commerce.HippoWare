@@ -1,4 +1,4 @@
-localStorage.setItem('jwt', "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjUzMDA5MTYsImRhdGEiOnsiaWQiOiI3IiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMiIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGFzIn19.uNlmQ1XccyQJbidRL5uoC7c2FxqzY9a3T0taHLCNDMU")
+// localStorage.setItem('jwt', "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjUzMDA5MTYsImRhdGEiOnsiaWQiOiI3IiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMiIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGFzIn19.uNlmQ1XccyQJbidRL5uoC7c2FxqzY9a3T0taHLCNDMU")
 let config = {
   headers: { 'Authorization': localStorage.getItem('jwt') }
 }
