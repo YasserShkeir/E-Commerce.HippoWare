@@ -26,17 +26,14 @@ for(i = 0; i<=data.length; i++){
 
                 <div class="info">
                     <h3>${data[i].first_name} ${data[i].last_name}</h3>
-                    <h4>
-                    Registered at <span id="registration_date">${data[i].date}</span>
-                    </h4>
+                    <p>
+                    Registered at <b id="registration_date">${data[i].date}<b>
+                    
                 </div>
                 </div>
 
                 <div class="right-section">
-                <button class="dark-btn">
-                    <i class="material-icons">leaderboard</i>
-                    <p>View Stats</p>
-                </button>
+                
 
                 <button class="${ban_btn_bg_class} ban-btn " id= "${data[i].id}">
                     <i class="material-icons">block</i>
@@ -46,7 +43,10 @@ for(i = 0; i<=data.length; i++){
                 
                 </div>
             </div>`
-
+{/* <button class="dark-btn">
+<i class="material-icons">leaderboard</i>
+<p>View Stats</p>
+</button> */}
 
 // console.log(document.querySelector('.ban-btn').classList, document.querySelector('.ban-btn').id)
 

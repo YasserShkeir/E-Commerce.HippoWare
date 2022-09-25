@@ -1,8 +1,8 @@
     const sellersList = document.querySelector(".sellers-list");
 
-    const rightSectionBtn1 = (status, id) => {
+    const rightSectionBtn1 = (status, id, name) => {
         if (status) {
-        return `<button class="light-btn edit-btn" id="${id}">
+        return `<button class="light-btn edit-btn" id="${id}" name="${name}">
         <i class="material-icons">edit</i>
         <p>Edit Seller</p>
         </button>`; 
@@ -36,8 +36,8 @@ function renderSellers(data){
 
 
     for (i=0; i < data.length; i++) {
-
-        leftBtn = rightSectionBtn1(parseInt(data[i].accepted), data[i].id);
+        
+        leftBtn = rightSectionBtn1(parseInt(data[i].accepted), data[i].id, data[i].first_name+' '+data[i].last_name);
         
         rightBtn = rightSectionBtn2(parseInt(data[i].accepted), data[i].id);
         if(parseInt(data[i].accepted)){
@@ -88,7 +88,7 @@ function renderSellers(data){
     let edit_btns = Object.values(document.getElementsByClassName('edit-btn'));
         edit_btns.forEach(element => {
                 element.addEventListener('click', () => {
-                    editSeller(element.id);
+                    editSeller(element.id, element.name);
                 });
             });
     // detecting approving request and triggering approving function
@@ -193,11 +193,14 @@ function denySeller(user_id){
 }
 
 // EDITING SELLERS
-function editSeller(user_id){
+function editSeller(user_id, user_name){
+    let form_title = document.getElementById('form-title');
+    form_title.innerText = `Edit ${user_name}` ;
     const signup_form_container = document.querySelector('.signup-form-container');
     signup_form_container .style.display = 'block';
         document.getElementById('signup_close_btn').addEventListener('click', ()=>{
     signup_form_container .style.display = 'none';
+    form_title.innerText = `Add Seller` ;
     });
 
         let fname = document.getElementById('fname');

@@ -30,11 +30,25 @@
       </div>
 
       <!-- admins options and general info -->
-      <div class="general-sellers" style="height: 150px;">
+      <div class="general-sellers" >
 
-        <div class="option">
-          <h2>Sort by <br> Filter</h2>
+        <div class="x-flex">
+        <div class="sellers-search">
+        <h2>Search</h2>
+        <input type="text" placeholder="type here.." id="search_input" />
+        </div>
 
+        <div class="">
+          <h2>From-To:</h2>
+          <input type="date" id="from_date_input">
+          <input type="date" id="to_date_input">
+        </div>
+
+      </div>
+
+        <div class="x-flex">
+        <div class="">
+          <h2>Sort by:</h2>
           <select name="sortby" id="seller_sortby_input">
             <option value="0">none</option>
             <option value="name-acs">Name-ACS</option>
@@ -42,7 +56,10 @@
             <option value="date-acs">Date-ACS</option>
             <option value="date-desc">Date-DESC</option>
           </select>
+        </div>
 
+        <div class="">
+          <h2>Filter:</h2>
           <select name="status" id="filter_input">
             <option value="2">none</option>
             <option value="-2">Deleted</option>
@@ -52,21 +69,8 @@
           </select>
         </div>
 
-        <div class="option flex-col">
-          <div class="flex-row">
-            <h2>From</h2>
-            <input type="date" id="from_date_input">
-          </div>
-          <div class="flex-row">
-            <h2>To</h2>
-            <input type="date" id="to_date_input">
-          </div>
-        </div>
       </div>
 
-      <div class="option search-div">
-        <h2>Search</h2>
-        <input type="text" placeholder="type here.." id="search_input" />
       </div>
 
     </div>
@@ -87,7 +91,7 @@
 
       <img src="../../assets/images/logo-removebg-preview.png" alt="">
 
-      <h1>Join The Hippo Gang</h1>
+      <h1  id="form-title">Add Seller</h1>
 
       <div class="form-input-div">
 
