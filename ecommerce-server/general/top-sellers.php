@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         
     $obj->select('(SELECT p.id,p.name,p.image,p.description,p.price, COUNT(p.id) as total FROM `products` as p, cart_items as c
      WHERE c.paid = 1 and c.products_id = p.id GROUP By p.id) as a',
-    '*', null, null, 'total DESC', '0,9');
+    '*', null, null, 'total DESC', '0,4');
     $result = $obj->getResult();
     echo json_encode($result);
 

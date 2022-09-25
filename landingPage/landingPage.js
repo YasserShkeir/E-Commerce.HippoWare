@@ -187,3 +187,71 @@ function signIn() {
 document.getElementById("signin_close_btn").onclick = () => {
   signin_form_container.style.display = "none";
 };
+
+// top sellers 
+
+const topSeller = document.querySelector("#topSellers")
+const topViews = document.querySelector("#topViews")
+const stores1 = document.querySelector("#stores1")
+const stores2 = document.querySelector("#stores2")
+
+
+const constructproduct = (data,div,flag) => {
+  const main = document.createElement('div')
+  main.classList.add('store')
+
+  const img = document.createElement('img')
+  img.src = `../../..${data['image']}`
+  main.appendChild(img)
+
+  const text = document.createElement('h3')
+  text.innerHTML = data['name']
+  main.appendChild(text)
+
+  if (flag) {
+
+    main.addEventListener('click', () => {
+      localStorage.setItem("product", data['id'])
+      window.open("client-frontend/html/sellerProfile.html", "_self")
+    })
+    div.appendChild(main)
+    return
+  }
+
+  main.addEventListener('click', () => {
+    localStorage.setItem("itemId", data['id'])
+    window.open("client-frontend/html/itemProfile.html", "_self")
+  })
+  div.appendChild(main)
+}
+
+axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-sellers.php', null, null).then(
+  function (response) {
+    for (const data of response.data) {
+      constructproduct(data, topSeller, 0)
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+
+axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-viewed.php', null, null).then(
+  function (response) {
+    for (const data of response.data) {
+      constructproduct(data, topViews,0)
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+
+  axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/stores.php', null, null).then(
+  function (response) {
+    console.log(response.data)
+    for (let i = 0 ; i < response.data.length || i < 8 ; i++) {
+      constructproduct(response.data[i], stores1,1)
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
