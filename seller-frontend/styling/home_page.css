@@ -151,7 +151,7 @@ body {
 }
 /* SIGNUP FORM */
 
-.signup-form-container, .signin-form-container, .registerstore-form-container {
+.signup-form-container, .signin-form-container {
     display: none;
     width:100vw;
     height: 100vh;

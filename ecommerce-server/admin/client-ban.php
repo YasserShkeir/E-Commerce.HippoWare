@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $data = json_decode($request_body, true);
 
         if($user_data->data->user_type != 1) 
-        echo json_decode([
+        echo json_encode([
             'status' => 0,
             'message' => 'Access Denied',
         ]);

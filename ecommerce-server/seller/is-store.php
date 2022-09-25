@@ -26,18 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             'message' => 'Access Denied',
         ]);
 
-        $where = "u.id = s.seller_id and p.store_id = s.id and p.category_id = c.id and u.id = ".$user_data->data->id;
-        if($data['category']){ // category filtering
-            $where .= " and c.name = '". $data['category']."'";
-        }
-
-        if($data['search']){ //search filtering
-            $where .= " and p.name LIKE '%".$data['search']."%'";
-        }
-        
-        $obj->select('`products` as p JOIN `users` as u JOIN `stores` as s JOIN `categories` as c',
-         'p.id, p.category_id, p.store_id, p.name, p.price
-        , p.image, p.description, p.color, p.size, p.views, p.revenue ', null, $where, null, null);
+        $obj->select('`stores`','id', null, "seller_id = ".$user_data->data->id, null, null);// getting store id of user
         $result = $obj->getResult();
         echo json_encode($result);
 

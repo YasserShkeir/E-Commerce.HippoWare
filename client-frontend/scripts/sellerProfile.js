@@ -84,4 +84,35 @@ window.onload = () => {
 
   navBarCaller();
   footerCaller();
+
+  let products = [
+    {
+      productName: "JS name",
+      colors: "JS",
+      sizes: [1, 2, 3],
+      price: 200,
+    },
+    {
+      productName: "JS name2",
+      colors: "JS",
+      sizes: [2, 22, 222],
+      price: 300,
+    },
+  ];
+
+  const productsList = document.querySelector("#products-list");
+
+  for (product of products) {
+    let productCard = `<div class="product-card">
+  <img src="../assets/images/logo-removebg-preview.png" />
+  <div id="product-name">${product.productName}</div>
+  <div id="product-colors">
+    Colors: <span><div class="item-colors">${product.colors}</div></span>
+  </div>
+  <div id="product-sizes">Sizes: ${product.sizes}</div>
+  <div id="product-price">$${product.price}</div>
+</div>`;
+
+    productsList.innerHTML += productCard;
+  }
 };
