@@ -120,7 +120,7 @@ window.onload = () => {
     if (flag) {
       main.addEventListener("click", () => {
         localStorage.setItem("product", data["id"]);
-        window.open("client-frontend/html/sellerProfile.html", "_self");
+        window.open("sellerProfile.html", "_self");
       });
       div.appendChild(main);
       return;
