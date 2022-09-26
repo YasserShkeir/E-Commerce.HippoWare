@@ -356,8 +356,10 @@ const logOut=document.getElementById('log-out')
         if(storeName.value && storeWelcome.value ){
             console.log('fe')
             registeraStore()
-        }
+          }
     }
+
+
 
   
 

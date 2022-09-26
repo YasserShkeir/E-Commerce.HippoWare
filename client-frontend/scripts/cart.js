@@ -229,4 +229,15 @@ window.onload = () => {
         });
     }
   });
+  // SEARCH IMPLEMENTED
+const search_input = document.getElementById("search");
+search_input.addEventListener("input", () => {
+  document.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+      localStorage.setItem("searchItem", search_input.value);
+      window.location = '../html/searchResults.html';
+      console.log(search_input.value)
+    }
+  });
+});
 };
