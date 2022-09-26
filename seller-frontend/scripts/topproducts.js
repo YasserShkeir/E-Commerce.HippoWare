@@ -292,8 +292,20 @@ axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/discou
     console.log(error);
   })
 
-
-
+/*********************Log out******************* */
+const logOut=document.getElementById('log-out')
+    const logoutModal=document.getElementById('logout-modal')
+    const cancelLogout=document.getElementById("cancel-logout")
+    const confirmLogout=document.getElementById("confirm-logout")
+    
+    logOut.onclick=()=>{
+        logoutModal.style.display='Block'
+        cancelLogout.onclick=()=>{logoutModal.style.display='none'}
+        confirmLogout.onclick=()=>{
+            window.location.replace("../../index.html")
+            localStorage.clear()
+        }
+  }
 
   
 
