@@ -16,8 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     try {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
-        $store = $data["store"];
 
+        //getting best store discount code
+        $store = $data["store"];
         $obj->select('`discountcodes`','*', null, "store_id = ".$store, "discount Desc", "0,1");// getting messages
         $result = $obj->getResult();
         echo json_encode($result);

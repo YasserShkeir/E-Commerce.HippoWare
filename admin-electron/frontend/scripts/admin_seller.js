@@ -1,4 +1,5 @@
     const sellersList = document.querySelector(".sellers-list");
+    const jwt = localStorage.getItem('jwt');
 
     const rightSectionBtn1 = (status, id, name) => {
         if (status) {
@@ -34,7 +35,6 @@
 
 function renderSellers(data){
 
-
     for (i=0; i < data.length; i++) {
         
         leftBtn = rightSectionBtn1(parseInt(data[i].accepted), data[i].id, data[i].first_name+' '+data[i].last_name);
@@ -55,9 +55,9 @@ function renderSellers(data){
         
             <div class="info">
                 <h3>${data[i].first_name} ${data[i].last_name}</h3>
-                <h4>
-                ${status} <span id="registration_date">${data[i].date}</span>
-                </h4>
+                <p>
+                ${status} <b id="registration_date">${data[i].date}</b>
+                </p>
             </div>
             </div>
     
@@ -108,7 +108,7 @@ function fetchingSellers(sortby_par, filter_par, date_par, search_par){
 
     let payload = {sortby: sortby_par, filter: filter_par, date: date_par, search: search_par}
         let config = {
-            headers: {'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjUyNzgwNTIsImRhdGEiOnsiaWQiOiI3IiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMSIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGFzIn19.AAL2O2NtLqWh9B9ni2-GsHYvr7CcTy8xfB0LQOR3aAU'}
+            headers: {'Authorization': jwt}
         };
         let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/admin/sellers.php',payload, config).then(
             function (response) {
@@ -166,11 +166,10 @@ from_date_input.addEventListener('change', ()=>{
 function deleteSeller(user_id){
     let payload = {id: user_id}
     let config = {
-        headers: {'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjUyNzgwNTIsImRhdGEiOnsiaWQiOiI3IiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMSIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGFzIn19.AAL2O2NtLqWh9B9ni2-GsHYvr7CcTy8xfB0LQOR3aAU'}
+        headers: {'Authorization': jwt}
     };
     let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/admin/seller-delete.php',payload, config).then(
         function (response) {
-        console.log(response)
     })
     .catch(function (error) {
         console.log(error);
@@ -181,11 +180,10 @@ function deleteSeller(user_id){
 function denySeller(user_id){
     let payload = {id: user_id}
     let config = {
-        headers: {'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjUyNzgwNTIsImRhdGEiOnsiaWQiOiI3IiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMSIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGFzIn19.AAL2O2NtLqWh9B9ni2-GsHYvr7CcTy8xfB0LQOR3aAU'}
+        headers: {'Authorization': jwt}
     };
     let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/admin/seller-delete.php',payload, config).then(
         function (response) {
-        console.log(response)
     })
     .catch(function (error) {
         console.log(error);
@@ -213,8 +211,6 @@ function editSeller(user_id, user_name){
         let payload = {id: user_id, first_name: fname.value, last_name: lname.value, username: username.value, email: email.value, image: null, password: password.value, user_type_id: 2}
         let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/seller-edit.php',payload).then(
             function (response) {
-            console.log(response.data);
-            // I need this data here ^^
             document.getElementById('register-success').style.display='block'
             return response.data;
         })
@@ -229,11 +225,10 @@ function editSeller(user_id, user_name){
 function approveSeller(user_id){
     let payload = {id: user_id}
     let config = {
-        headers: {'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjUyNzgwNTIsImRhdGEiOnsiaWQiOiI3IiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMSIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGFzIn19.AAL2O2NtLqWh9B9ni2-GsHYvr7CcTy8xfB0LQOR3aAU'}
+        headers: {'Authorization': jwt}
     };
     let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/admin/seller-approval.php',payload, config).then(
         function (response) {
-        console.log(response)
     })
     .catch(function (error) {
         console.log(error);
@@ -245,8 +240,6 @@ function addSeller(firstName, lastName, userName, email, password){
     let payload = {first_name: firstName.value, last_name: lastName.value, username: userName.value, email: email.value, image: null, password: password.value, user_type_id: 2}
     let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/registration.php',payload).then(
         function (response) {
-        console.log(response.data);
-        // I need this data here ^^
         document.getElementById('register-success').style.display='block'
         return response.data;
     })

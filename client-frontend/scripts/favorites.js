@@ -63,6 +63,7 @@ window.onload = () => {
     });
 
     logout.addEventListener("click", () => {
+      localStorage.clear();
       window.open("../../index.html", "_self");
     });
   };
@@ -97,7 +98,7 @@ window.onload = () => {
 
     <!-- PRODUCTS LEFT SIDE -->
     <div class="left-side">
-      <img src="${data[i].image}" alt="">
+      <img id="favorite-product-image" src="${data[i].image}" alt="">
       <div>
         <h3>${data[i].name}</h3>
         
@@ -114,6 +115,8 @@ window.onload = () => {
   </div>
   </section>`;
 
+    let favoriteImage = document.querySelector("#favorite-product-image");
+    favoriteImage.style.maxWidth = "200px";
       // REMOVE FUNCTIONALITY
       let remove_links = Object.values(
         document.getElementsByClassName("remove-link")
@@ -122,10 +125,7 @@ window.onload = () => {
         element.addEventListener("click", () => {
           let payload = { product: element.id };
           let config = {
-            headers: {
-              Authorization:
-                "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU0OTcxMjIsImRhdGEiOnsiaWQiOiI4IiwibmFtZSI6ImNsaWVudCAgY2xpZW50IiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiY2xpZW50QGdtYWlsLmNvbSJ9fQ.TGAuZo0TnWnpPsdS2j8KBPv1x3zX2svqzANeZ8FHDwg",
-            },
+            headers: {Authorization: localStorage.getItem("jwt") },
           };
           let res = axios
             .post(
@@ -135,11 +135,11 @@ window.onload = () => {
             )
             .then(function (response) {
               console.log(response);
+              window.location.reload();
             })
             .catch(function (error) {
               console.log(error);
             });
-          window.location.reload();
         });
       });
     }
@@ -147,10 +147,7 @@ window.onload = () => {
 
   // RENDER ITEMS
   let config = {
-    headers: {
-      Authorization:
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU0OTcxMjIsImRhdGEiOnsiaWQiOiI4IiwibmFtZSI6ImNsaWVudCAgY2xpZW50IiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiY2xpZW50QGdtYWlsLmNvbSJ9fQ.TGAuZo0TnWnpPsdS2j8KBPv1x3zX2svqzANeZ8FHDwg",
-    },
+    headers: {Authorization: localStorage.getItem("jwt") },
   };
   let res = axios
     .post(
@@ -164,5 +161,15 @@ window.onload = () => {
     })
     .catch(function (error) {
       console.log(error);
+    });
+    // SEARCH IMPLEMENTED
+    const search_input = document.getElementById("search");
+    search_input.addEventListener("input", () => {
+      document.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+          localStorage.setItem("searchItem", search_input.value);
+          window.location = '../html/searchResults.html';
+        }
+      });
     });
 };

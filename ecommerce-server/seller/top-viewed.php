@@ -21,16 +21,20 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 2) echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
-
+        //checking if he is a selller
+        if($user_data->data->user_type != 2){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
+        //getting store id
         $obj->select('`stores`','id', null, "seller_id = ".$user_data->data->id, null, null);// getting store id of user
         $result = $obj->getResult();
         $storeid=$result[0]['id'];
         $where = "store_id = " . $storeid;
-        
+        // selects top 4 viewed products
         $obj->select('`products`','*', null, $where, "views DESC", "0,4");
         $result = $obj->getResult();
         echo json_encode($result);

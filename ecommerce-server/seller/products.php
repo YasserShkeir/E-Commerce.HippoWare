@@ -21,10 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 2) echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
+         //checking if he is a selller
+         if($user_data->data->user_type != 2){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
 
         $where = "u.id = s.seller_id and p.store_id = s.id and p.category_id = c.id and u.id = ".$user_data->data->id;
         if($data['category']){ // category filtering
@@ -34,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         if($data['search']){ //search filtering
             $where .= " and p.name LIKE '%".$data['search']."%'";
         }
-        
+        //selects products fitting the previous criteria
         $obj->select('`products` as p JOIN `users` as u JOIN `stores` as s JOIN `categories` as c',
          'p.id, p.category_id, p.store_id, p.name, p.price
         , p.image, p.description, p.color, p.size, p.views, p.revenue ', null, $where, null, null);

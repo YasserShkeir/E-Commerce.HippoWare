@@ -32,6 +32,7 @@ form{
 }
 h1{
     text-align: center;
+    color: red;
 }
 /* .personal-info, .address, .password{
     display: flex;
@@ -49,11 +50,16 @@ form>*{
     margin-bottom: 20px;
 }
 
+.register-form h1{
+    color:white;
+}
+
 h3{
     align-self: flex-start;
     font-weight: bold;
+    float: left;
 }
-.fullname, .home-details, .city-details, .signup-btns{
+.fullname, .home-details, .city-details, .signup-btns{ 
     display: flex;
     flex-direction: row;
     width:100%;

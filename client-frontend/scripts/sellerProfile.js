@@ -63,6 +63,7 @@ window.onload = () => {
     });
 
     logout.addEventListener("click", () => {
+      localStorage.clear();
       window.open("../../index.html", "_self");
     });
   };
@@ -240,7 +241,7 @@ window.onload = () => {
 
     card.addEventListener('click', () => {
       localStorage.setItem("itemId", data['id'])
-      window.open("client-frontend/html/itemProfile.html", "_self")
+      window.open("itemProfile.html", "_self")
     })
   }
 
@@ -333,4 +334,14 @@ window.onload = () => {
         console.log(error);
       })
   })
+  // SEARCH IMPLEMENTED
+  const search_input = document.getElementById("search");
+  search_input.addEventListener("input", () => {
+    document.addEventListener("keyup", function (event) {
+      if (event.keyCode === 13) {
+        localStorage.setItem("searchItem", search_input.value);
+        window.location = '../html/searchResults.html';
+      }
+    });
+  });
 };

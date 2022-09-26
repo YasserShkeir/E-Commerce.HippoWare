@@ -63,6 +63,7 @@ window.onload = () => {
     });
 
     logout.addEventListener("click", () => {
+      localStorage.clear();
       window.open("../../index.html", "_self");
     });
   };
@@ -135,8 +136,7 @@ window.onload = () => {
     };
     let config = {
       headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU1NjYxMDMsImRhdGEiOnsiaWQiOiIyMyIsIm5hbWUiOiJCYW4gTWUiLCJ1c2VyX3R5cGUiOiIzIiwiZW1haWwiOiJiYW5tZUBnbWFpbC5jb20ifX0.fbCucMT3poOUrQ_i1Q8cyUHrlqV3YVV5Rdft-4-e1H0",
+        Authorization: localStorage.getItem("jwt") 
       },
     };
     let res = axios
@@ -151,5 +151,15 @@ window.onload = () => {
       .catch(function (error) {
         console.log(error);
       });
+  });
+  // SEARCH IMPLEMENTED
+  const search_input = document.getElementById("search");
+  search_input.addEventListener("input", () => {
+    document.addEventListener("keyup", function (event) {
+      if (event.keyCode === 13) {
+        localStorage.setItem("searchItem", search_input.value);
+        window.location = '../html/searchResults.html';
+      }
+    });
   });
 };

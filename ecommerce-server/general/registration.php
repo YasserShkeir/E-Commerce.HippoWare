@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
+        //fetching data
         $first_name = $data['first_name'];
         $last_name = $data['last_name'];
         $username = $data['username'];
@@ -32,13 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         if($user_type_id == 3){
             $accepted = 1;
         }
-
+        //checks if email is used
         $obj->select('users', '*', null, "email='{$email}'", null, null);
         $result = $obj->getResult();
         if($result){
             $flag=0;
             $issues[] = "dup email";
         }
+        // checks if username is used
         $obj->select('users', '*', null, "username='{$username}'", null, null);
         $result = $obj->getResult();
         if($result){
@@ -46,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $issues[] = "dup username";
         }
 
+        //uploading photo
         define('UPLOAD_DIR', 'images/');
         $img = $image;
         $img = str_replace('data:image/png;base64,', '', $img);
@@ -55,10 +58,10 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $file = "../".$filee;
         $images_to_save = "/xampp/htdocs/E-Commerce.HippoWare/ecommerce-server/".$filee;
         
-        if($flag){
+        if($flag){// if no duplicate data user is insered according to role
             $obj->insert('users', ['user_type_id' => $user_type_id, 'first_name' => $first_name, 'last_name' => $last_name, 'username' => $username, 'email' => $email, 'password' => $password, 'image' => $images_to_save, 'accepted' => $accepted, 'date' => $date]);
             $result = $obj->getResult();
-            $success = file_put_contents($file, $data);
+            file_put_contents($file, $data);
             echo json_encode($result);
             if($user_type_id == 3){
                 $obj->select('users', '*', null, "username='{$username}'", null, null);

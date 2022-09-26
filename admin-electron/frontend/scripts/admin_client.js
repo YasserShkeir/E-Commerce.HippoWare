@@ -1,4 +1,5 @@
 const clients_list = document.querySelector('.clients-list');
+const jwt = localStorage.getItem('jwt');
 
 function renderClient(data){
 // console.log(data)
@@ -55,7 +56,6 @@ for(i = 0; i<=data.length; i++){
 
             ban_btns.forEach(element => {
                 element.addEventListener('click', () => {
-                    console.log(element.id, element.classList);
                     
                     if(element.classList.contains('red-btn')){
                         element.classList.add('light-btn');
@@ -69,7 +69,7 @@ for(i = 0; i<=data.length; i++){
 
                 let payload = {id: element.id }
                 let config = {
-                    headers: {'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjUyNzgwNTIsImRhdGEiOnsiaWQiOiI3IiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMSIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGFzIn19.AAL2O2NtLqWh9B9ni2-GsHYvr7CcTy8xfB0LQOR3aAU'}
+                    headers: {'Authorization': jwt}
                 };
                 let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/admin/client-ban.php',payload, config).then(
                     function (response) {
@@ -88,7 +88,7 @@ function fetchingClients(sortby_par, filter_par, date_par, search_par){
 
     let payload = {sortby: sortby_par, filter: filter_par, date: date_par, search: search_par}
         let config = {
-            headers: {'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjUyNzgwNTIsImRhdGEiOnsiaWQiOiI3IiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMSIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGFzIn19.AAL2O2NtLqWh9B9ni2-GsHYvr7CcTy8xfB0LQOR3aAU'}
+            headers: {'Authorization': jwt}
         };
         let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/admin/clients.php',payload, config).then(
             function (response) {

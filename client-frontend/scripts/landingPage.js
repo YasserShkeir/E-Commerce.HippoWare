@@ -63,6 +63,7 @@ window.onload = () => {
     });
 
     logout.addEventListener("click", () => {
+      localStorage.clear();
       window.open("../../index.html", "_self");
     });
   };
@@ -89,6 +90,17 @@ window.onload = () => {
   navBarCaller();
   footerCaller();
 
+  // SEARCH IMPLEMENTED
+const search_input = document.getElementById("search");
+search_input.addEventListener("input", () => {
+  document.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+      localStorage.setItem("searchItem", search_input.value);
+      window.location = '../html/searchResults.html';
+    }
+  });
+});
+
   // logout
 
   const logout = document.querySelector(".logOut");
@@ -104,7 +116,6 @@ window.onload = () => {
   const topSeller = document.querySelector("#topSellers");
   const topViews = document.querySelector("#topViews");
   const stores1 = document.querySelector("#stores1");
-  const stores2 = document.querySelector("#stores2");
 
   const constructproduct = (data, div, flag) => {
     const main = document.createElement("div");
@@ -121,7 +132,7 @@ window.onload = () => {
     if (flag) {
       main.addEventListener("click", () => {
         localStorage.setItem("product", data["id"]);
-        window.open("client-frontend/html/sellerProfile.html", "_self");
+        window.open("sellerProfile.html", "_self");
       });
       div.appendChild(main);
       return;
@@ -129,67 +140,11 @@ window.onload = () => {
 
     main.addEventListener("click", () => {
       localStorage.setItem("itemId", data["id"]);
-      window.open("client-frontend/html/itemProfile.html", "_self");
+      window.open("itemProfile.html", "_self");
     });
     div.appendChild(main);
   };
 
-  if (flag) {
-    main
-      .addEventListener("click", () => {
-        localStorage.setItem("storeid", data["id"]);
-        window.open("client-frontend/html/sellerProfile.html", "_self");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-    axios
-      .post(
-        "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-viewed.php",
-        null,
-        null
-      )
-      .then(function (response) {
-        for (const data of response.data) {
-          constructproduct(data, topViews, 0);
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-    axios
-      .post(
-        "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/stores.php",
-        null,
-        null
-      )
-      .then(function (response) {
-        console.log(response.data);
-        for (let i = 0; i < response.data.length && i < 2; i++) {
-          constructproduct(response.data[i], stores1, 1);
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-    const voucher = document.createElement("div");
-    voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
-    voucher.id = "voucher-card";
-    document.getElementById("row").appendChild(voucher);
-
-    voucher.style.cursor = "pointer";
-    const voucherPopup = document.querySelector("#voucherForm");
-    const closePopup = document.querySelector("#close");
-
-    voucher.addEventListener("click", () => {
-      voucherPopup.style.display = "block";
-      closePopup.addEventListener("click", () => {
-        voucherPopup.style.display = "none";
-      });
-    });
 
   axios
     .post(
@@ -208,13 +163,27 @@ window.onload = () => {
 
   axios
     .post(
+      "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-sellers.php",
+      null,
+      null
+    )
+    .then(function (response) {
+      for (const data of response.data) {
+        constructproduct(data, topSeller, 0);
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  axios
+    .post(
       "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/stores.php",
       null,
       null
     )
     .then(function (response) {
-      console.log(response.data);
-      for (let i = 0; i < response.data.length && i < 2; i++) {
+      for (let i = 0; i < 2 && i < 2; i++) {
         constructproduct(response.data[i], stores1, 1);
       }
     })
@@ -222,109 +191,82 @@ window.onload = () => {
       console.log(error);
     });
 
+  const voucher = document.createElement("div");
   voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
   voucher.id = "voucher-card";
   document.getElementById("row").appendChild(voucher);
-    
+
   voucher.style.cursor = "pointer";
-  
-  const createVoucher =document.querySelector("#createVoucher");
-  const receiverName=document.querySelector("#receiverName");
-  const senderName=document.querySelector("#senderName");
-  const message=document.querySelector("#message");
-  const amount=document.querySelector("#value");
+  const voucherPopup = document.querySelector("#voucherForm");
+  const closePopup = document.querySelector("#close");
+
   voucher.addEventListener("click", () => {
-    voucherPopup.style.display = "block";})
+    voucherPopup.style.display = "block";
+    closePopup.addEventListener("click", () => {
+      voucherPopup.style.display = "none";
+    });
+  });
+
+  voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
+  voucher.id = "voucher-card";
+  document.getElementById("row").appendChild(voucher);
+
+  voucher.style.cursor = "pointer";
+
+  const createVoucher = document.querySelector("#createVoucher");
+  const receiverName = document.querySelector("#receiverName");
+  const senderName = document.querySelector("#senderName");
+  const message = document.querySelector("#message");
+  const amount = document.querySelector("#value");
+  voucher.addEventListener("click", () => {
+    voucherPopup.style.display = "block";
+  });
 
   closePopup.addEventListener("click", () => {
-    voucherPopup.style.display = "none";})
+    voucherPopup.style.display = "none";
+  });
 
-  createVoucher.onclick=(e)=>{
-    e.preventDefault()
-    if(receiverName.value && senderName.value && message.value && amount.value){
-      sendVoucher(receiverName.value,message.value,amount.value)
+  createVoucher.onclick = (e) => {
+    e.preventDefault();
+    if (
+      receiverName.value &&
+      senderName.value &&
+      message.value &&
+      amount.value
+    ) {
+      sendVoucher(receiverName.value, message.value, amount.value);
     }
     voucherPopup.style.display = "none";
-  }
-  function sendVoucher(rec,msg,val){
+  };
+  function sendVoucher(rec, msg, val) {
     let payload = {
-      username:rec,
+      username: rec,
       message: msg,
-      value: val
-    }
-      let config = {
-          headers: {'Authorization': localStorage.jwt}
-      }
-      let res =  axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/client/send-voucher.php',payload,config).then(
-          function (response) {
-              console.log(response.data)
-              return response.data
-          })
-          .catch(function (error) {
-              console.log(error);
-          })
+      value: val,
+    };
+    let config = {
+      headers: { Authorization: localStorage.jwt },
+    };
+    let res = axios
+      .post(
+        "http://localhost/E-Commerce.HippoWare/ecommerce-server/client/send-voucher.php",
+        payload,
+        config
+      )
+      .then(function (response) {
+        console.log(response.data);
+        return response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
- }
 }
-<<<<<<< HEAD
-
-axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-sellers.php', null, null).then(
-  function (response) {
-    for (const data of response.data) {
-      constructproduct(data, topSeller, 0)
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
-
-axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-viewed.php', null, null).then(
-  function (response) {
-    for (const data of response.data) {
-      constructproduct(data, topViews,0)
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
-
-  axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/stores.php', null, null).then(
-  function (response) {
-    console.log(response.data)
-    for (let i = 0 ; i < response.data.length && i < 2 ; i++) {
-      constructproduct(response.data[i], stores1,1)
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
-
-  const voucher = document.createElement('div')
-  voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>'
-  voucher.id = "voucher-card"
-  document.getElementById("row").appendChild(voucher)
 
 
-  // SEARCH IMPLEMENTED
-  const search_input= document.getElementById('search')
-  search_input.addEventListener('input', ()=>{
-    
-    document.addEventListener("keyup", function(event) {
-        if (event.keyCode === 13) {
-
-            localStorage.setItem("searchItem", search_input.value);
-
-        }
-
-    });
-
-  })
+const voucher = document.createElement("div");
+voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
+voucher.id = "voucher-card";
+document.getElementById("row").appendChild(voucher);
 
 
-
-
-
-};
-=======
-  
->>>>>>> 6c303fb26e72e0b1e33cdf433fb8527fc9752e6e

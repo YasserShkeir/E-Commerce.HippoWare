@@ -21,13 +21,20 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
         
-        if($user_data->data->user_type != 2) echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
+         //checking if he is a selller
+        if($user_data->data->user_type != 2){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
 
         $product = $data['product'];
-
+        $obj->delete('favorites','product_id = '.$product);
+        $obj->delete('whishlist','product_id = '.$product);
+        $obj->delete('cart_items','product_id = '.$product);
+        //delete product 
         $obj->delete('products', "id = ". $product);
         $result = $obj->getResult();
         echo json_encode($result);

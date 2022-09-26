@@ -21,29 +21,31 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
+        //checking if he is n client
         if($user_data->data->user_type != 3){
             echo json_encode([
                 'status' => 0,
                 'message' => 'Access Denied',
             ]);
             die();
-        }
+        } 
 
-
+        //fething data
         $reciever = $data['username'];
         $message = $data['message'];
         $value = $data['value'];
 
+        // getting reciever id from username
         $obj->select('`users`','id', null, "username = '".$reciever."'", null, null);// getting store id of user
         $result = $obj->getResult();
 
-        if(!$result){ // if category exits insert fails
+        if(!$result){ // if user doesn't exist exit
             echo json_encode([
                 'status' => 0,
                 'message' => 'user does not exist',
             ]);
         }
-        else{
+        else{ // sends voucher
             $recieverid = $result[0]['id'];
             $obj->insert('vouchers',['sender_id' => $user_data->data->id, 'reciever_id' => $recieverid, 'message' => $message, 'value' => $value]);
             $result = $obj->getResult();

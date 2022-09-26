@@ -1,7 +1,7 @@
 .top-products-infographics{
     display: flex;
     flex-flow: wrap column;
-    width: 94vw;
+    width: 75vw;
     height: fit-content;
     gap: 10px;
     align-self: center;

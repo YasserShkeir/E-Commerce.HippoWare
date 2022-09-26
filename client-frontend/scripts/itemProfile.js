@@ -67,6 +67,7 @@ window.onload = () => {
     });
 
     logout.addEventListener("click", () => {
+      localStorage.clear();
       window.open("../../index.html", "_self");
     });
   };
@@ -161,7 +162,7 @@ window.onload = () => {
     .catch(function (error) {
       console.log(error);
     });
-};
+  };
 
 // adding button functionalities
 
@@ -265,3 +266,13 @@ fav.addEventListener("click", () => {
       console.log(error);
     });
 });
+  // SEARCH IMPLEMENTED
+  const search_input = document.getElementById("search");
+  search_input.addEventListener("input", () => {
+    document.addEventListener("keyup", function (event) {
+      if (event.keyCode === 13) {
+        localStorage.setItem("searchItem", search_input.value);
+        window.location = '../html/searchResults.html';
+      }
+    });
+  });

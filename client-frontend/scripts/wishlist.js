@@ -63,6 +63,7 @@ window.onload = () => {
     });
 
     logout.addEventListener("click", () => {
+      localStorage.clear();
       window.open("../../index.html", "_self");
     });
   };
@@ -88,21 +89,20 @@ window.onload = () => {
 
   navBarCaller();
   footerCaller();
-};
 
-// RENDER Products
+  // RENDER Products
 
-const whishlist_items = document.querySelector(".whishlist-items");
+  const whishlist_items = document.querySelector(".whishlist-items");
 
-function renderWishlist(data) {
-  for (i = 0; i < data.length; i++) {
-    whishlist_items.innerHTML += `<section class="whishlist-items">
+  function renderWishlist(data) {
+    for (i = 0; i < data.length; i++) {
+      whishlist_items.innerHTML += `<section class="whishlist-items">
 
       <div class="whishlist-product">
 
         <!-- PRODUCTS LEFT SIDE -->
         <div class="left-side">
-          <img src="${data[i].image}" alt="">
+          <img id="whishlist-product-image" src="${data[i].image}" alt="">
           <div>
             <h3>${data[i].name}</h3>
             <p>color <span class="color-div" style="background:${data[i].color}; color:${data[i].color};">00</span></p>
@@ -121,90 +121,102 @@ function renderWishlist(data) {
 
     </section>`;
 
-    // PURCHASE FUNCTIONALITY
-    let purchase_btns = Object.values(
-      document.getElementsByClassName("purchase-btn")
-    );
-    purchase_btns.forEach((element) => {
-      element.addEventListener("click", () => {
-        let itemColor = element.getAttribute("color");
-        let itemSize = element.getAttribute("size");
-        console.log(itemColor, itemSize);
+      let wishlistImage = document.querySelector("#whishlist-product-image");
+      wishlistImage.style.maxWidth = "200px";
 
-        let payload = { product: element.id, color: itemColor, size: itemSize };
-        let config = {
-          headers: {
-            Authorization:
-              "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU1MzQwMjMsImRhdGEiOnsiaWQiOiI4IiwibmFtZSI6ImNsaWVudCAgY2xpZW50IiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiY2xpZW50QGdtYWlsLmNvbSJ9fQ.qonDxT0UxvbkMQtskPy1zL05LpuSkbTLRX4VIisjr_g",
-          },
-        };
-        let res = axios
-          .post(
-            "http://localhost/E-Commerce.HippoWare/ecommerce-server/client/immediate-purchase.php",
-            payload,
-            config
-          )
-          .then(function (response) {
-            console.log(response);
-            element.style.background = "green";
-            element.style.color = "white";
-            element.innerHTML = "Purchased";
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      });
-    });
+      // PURCHASE FUNCTIONALITY
+      let purchase_btns = Object.values(
+        document.getElementsByClassName("purchase-btn")
+      );
+      purchase_btns.forEach((element) => {
+        element.addEventListener("click", () => {
+          let itemColor = element.getAttribute("color");
+          let itemSize = element.getAttribute("size");
+          console.log(itemColor, itemSize);
 
-    // REMOVE FUNCTIONALITY
-    let remove_links = Object.values(
-      document.getElementsByClassName("remove-link")
-    );
-    remove_links.forEach((element) => {
-      element.addEventListener("click", () => {
-        let payload = { product: element.id };
-        let config = {
-          headers: {
-            Authorization:
-              "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU0OTcxMjIsImRhdGEiOnsiaWQiOiI4IiwibmFtZSI6ImNsaWVudCAgY2xpZW50IiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiY2xpZW50QGdtYWlsLmNvbSJ9fQ.TGAuZo0TnWnpPsdS2j8KBPv1x3zX2svqzANeZ8FHDwg",
-          },
-        };
-        let res = axios
-          .post(
-            "http://localhost/E-Commerce.HippoWare/ecommerce-server/client/delete-whishlist.php",
-            payload,
-            config
-          )
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        window.location.reload();
+          let payload = {
+            product: element.id,
+            color: itemColor,
+            size: itemSize,
+          };
+          let config = {
+            headers: {
+              Authorization: localStorage.getItem("jwt"),
+            },
+          };
+          let res = axios
+            .post(
+              "http://localhost/E-Commerce.HippoWare/ecommerce-server/client/immediate-purchase.php",
+              payload,
+              config
+            )
+            .then(function (response) {
+              console.log(response);
+              element.style.background = "green";
+              element.style.color = "white";
+              element.innerHTML = "Purchased";
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
       });
-    });
+
+      // REMOVE FUNCTIONALITY
+      let remove_links = Object.values(
+        document.getElementsByClassName("remove-link")
+      );
+      remove_links.forEach((element) => {
+        element.addEventListener("click", () => {
+          let payload = { product: element.id };
+          let config = {
+            headers: {
+              Authorization: localStorage.getItem("jwt"),
+            },
+          };
+          let res = axios
+            .post(
+              "http://localhost/E-Commerce.HippoWare/ecommerce-server/client/delete-whishlist.php",
+              payload,
+              config
+            )
+            .then(function (response) {
+              console.log(response.data);
+              window.location.reload();
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
+      });
+    }
   }
-}
 
-// RENDER ITEMS
-// function productData(){}
-let config = {
-  headers: {
-    Authorization:
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU0OTcxMjIsImRhdGEiOnsiaWQiOiI4IiwibmFtZSI6ImNsaWVudCAgY2xpZW50IiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiY2xpZW50QGdtYWlsLmNvbSJ9fQ.TGAuZo0TnWnpPsdS2j8KBPv1x3zX2svqzANeZ8FHDwg",
-  },
-};
-let res = axios
-  .post(
-    "http://localhost/E-Commerce.HippoWare/ecommerce-server/client/whishlist.php",
-    null,
-    config
-  )
-  .then(function (response) {
-    renderWishlist(response.data);
-    console.log(response.data);
-  })
-  .catch(function (error) {
-    console.log(error);
+  // RENDER ITEMS
+  // function productData(){}
+  let config = {
+    headers: { Authorization: localStorage.getItem("jwt") },
+  };
+  let res = axios
+    .post(
+      "http://localhost/E-Commerce.HippoWare/ecommerce-server/client/whishlist.php",
+      null,
+      config
+    )
+    .then(function (response) {
+      renderWishlist(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  // SEARCH IMPLEMENTED
+  const search_input = document.getElementById("search");
+  search_input.addEventListener("input", () => {
+    document.addEventListener("keyup", function (event) {
+      if (event.keyCode === 13) {
+        localStorage.setItem("searchItem", search_input.value);
+        window.location = "../html/searchResults.html";
+      }
+    });
   });
+};

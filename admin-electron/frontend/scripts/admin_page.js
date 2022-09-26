@@ -1,5 +1,6 @@
 
 window.onload = () => {
+  if(localStorage.getItem('jwt')){
 
   // NAVBAR COMPONENT
   const navBar = document.querySelector(".nav-bar");
@@ -19,17 +20,23 @@ class="header-logo"
 
 <a href="admin_infographics.html" class="header-link">Statistics</a>
 
-<a href="index.html" class="header-link" id="logout_btn">Log Out</a>
+<a href="#" class="header-link" id="logout_btn">Log Out</a>
 </div>`;
 
+
   navBar.innerHTML += navContent;
-// 
+
+// LOGOUT
+const logout = document.querySelector('#logout_btn');
+logout.addEventListener('click', ()=>{
+          localStorage.removeItem("jwt");
+          window.location = 'index.html';
+  });
 
 let add_seller_btn = document.getElementById('add_seller_btn');
 const signup_form_container = document.querySelector('.signup-form-container');
 
 add_seller_btn.addEventListener('click', ()=>{
-  console.log(document.body);
   signup_form_container .style.display = 'block';
   
     document.getElementById('signup_close_btn').addEventListener('click', ()=>{
@@ -46,22 +53,14 @@ add_seller_btn.addEventListener('click', ()=>{
       addSeller(fname, lname, username, email, password)
     });
 
-    // LOG OUT
-    document.getElementById('logout_btn').addEventListener('click', ()=>{
-      window.location = 'index.html';
-    })
-
 });
 
-};
 
 // ADD SELLER
 function addSeller(firstName, lastName, userName, email, password){
     let payload = {first_name: firstName.value, last_name: lastName.value, username: userName.value, email: email.value, image: null, password: password.value, user_type_id: 2}
     let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/registration.php',payload).then(
         function (response) {
-        console.log(response.data);
-        // I need this data here ^^
         document.getElementById('register-success').style.display='block'
         return response.data;
     })
@@ -69,4 +68,8 @@ function addSeller(firstName, lastName, userName, email, password){
         console.log(error);
     })
 };
-
+  
+}else{
+  window.location = 'index.html';
+}
+}

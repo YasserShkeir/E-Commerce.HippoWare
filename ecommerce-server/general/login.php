@@ -24,14 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $name = $data['first_name'] . " " . $data['last_name'];
         $dbpass = $data['password'];
         $user_type = $data['user_type_id'];
-        if ($dbpass != $password) {
+        $status= $data['accepted'];
+        if ($dbpass != $password || $status !=1) {
             echo json_encode([
                 'status' => 0,
                 'message' => 'Invalid Carditional',
             ]);
         }else {
             $payload = [
-                'exp' => time() + 1440000, //10 mint
+                'exp' => time() + 1440000, //adds 1 day to exp date
                 'data' => [
                     'id' => $id,
                     'name' => $name,

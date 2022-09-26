@@ -21,15 +21,17 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
+        //checking if he is n client
         if($user_data->data->user_type != 3){
             echo json_encode([
                 'status' => 0,
                 'message' => 'Access Denied',
             ]);
             die();
-        }
+        } 
+
         $where = "p.id = w.product_id and client_id = ".$user_data->data->id;
-        
+        //selects whishlist items
         $obj->select('`whishlist` as w, products as p', "*", null, $where, null, null);
         $result = $obj->getResult();
         echo json_encode($result);
