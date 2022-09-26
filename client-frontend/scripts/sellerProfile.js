@@ -63,6 +63,7 @@ window.onload = () => {
     });
 
     logout.addEventListener("click", () => {
+      localStorage.clear();
       window.open("../../index.html", "_self");
     });
   };
@@ -240,7 +241,7 @@ window.onload = () => {
 
     card.addEventListener('click', () => {
       localStorage.setItem("itemId", data['id'])
-      window.open("client-frontend/html/itemProfile.html", "_self")
+      window.open("itemProfile.html", "_self")
     })
   }
 
@@ -340,7 +341,6 @@ window.onload = () => {
       if (event.keyCode === 13) {
         localStorage.setItem("searchItem", search_input.value);
         window.location = '../html/searchResults.html';
-        console.log(search_input.value)
       }
     });
   });

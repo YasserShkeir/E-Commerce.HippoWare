@@ -106,7 +106,6 @@ clientSignup.addEventListener("click", (event) => {
         register(3);
         document.getElementById("register-success").style.display = "Block";
       } else {
-        console.log("here");
         document.getElementById("wrong-format").style.display = "block";
       }
     } else {
@@ -117,7 +116,6 @@ clientSignup.addEventListener("click", (event) => {
 
 //function to register users according to their type
 function register(type) {
-  console.log(type);
   let payload = {
     first_name: firstName.value,
     last_name: lastName.value,
@@ -133,8 +131,6 @@ function register(type) {
       payload
     )
     .then(function (response) {
-      console.log(response.data);
-      // I need this data here ^^
       return response.data;
     })
     .catch(function (error) {
@@ -164,11 +160,8 @@ function signIn() {
       payload
     )
     .then(function (response) {
-      console.log(response.data);
-      // I need this data here ^^
       if (response.data.message == "Login Successfully") {
         localStorage.setItem("jwt", response.data.jwt);
-        console.log(localStorage);
         if (response.data["user_type"] == 2) {
           window.location.replace("./seller-frontend/html/products.html");
         } else {
@@ -258,7 +251,6 @@ axios
     null
   )
   .then(function (response) {
-    console.log(response.data);
     for (let i = 0; i < response.data.length || i < 8; i++) {
       constructproduct(response.data[i], stores1, 1);
     }
@@ -278,6 +270,5 @@ leftAd.addEventListener("click", () => {
 
 rightAd.addEventListener("click", () => {
   let currAd = advertisment.src;
-  console.log(currAd);
   advertisment.src = "./landingPage/assets/ad2.png";
 });
