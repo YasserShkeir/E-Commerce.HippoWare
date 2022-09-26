@@ -134,8 +134,7 @@ function renderWishlist(data) {
         let payload = { product: element.id, color: itemColor, size: itemSize };
         let config = {
           headers: {
-            Authorization:
-              "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU1MzQwMjMsImRhdGEiOnsiaWQiOiI4IiwibmFtZSI6ImNsaWVudCAgY2xpZW50IiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiY2xpZW50QGdtYWlsLmNvbSJ9fQ.qonDxT0UxvbkMQtskPy1zL05LpuSkbTLRX4VIisjr_g",
+            Authorization: localStorage.getItem("jwt") 
           },
         };
         let res = axios
@@ -165,8 +164,7 @@ function renderWishlist(data) {
         let payload = { product: element.id };
         let config = {
           headers: {
-            Authorization:
-              "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU0OTcxMjIsImRhdGEiOnsiaWQiOiI4IiwibmFtZSI6ImNsaWVudCAgY2xpZW50IiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiY2xpZW50QGdtYWlsLmNvbSJ9fQ.TGAuZo0TnWnpPsdS2j8KBPv1x3zX2svqzANeZ8FHDwg",
+            Authorization: localStorage.getItem("jwt") 
           },
         };
         let res = axios
@@ -190,10 +188,7 @@ function renderWishlist(data) {
 // RENDER ITEMS
 // function productData(){}
 let config = {
-  headers: {
-    Authorization:
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU0OTcxMjIsImRhdGEiOnsiaWQiOiI4IiwibmFtZSI6ImNsaWVudCAgY2xpZW50IiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiY2xpZW50QGdtYWlsLmNvbSJ9fQ.TGAuZo0TnWnpPsdS2j8KBPv1x3zX2svqzANeZ8FHDwg",
-  },
+  headers: {Authorization: localStorage.getItem("jwt") },
 };
 let res = axios
   .post(
@@ -203,7 +198,6 @@ let res = axios
   )
   .then(function (response) {
     renderWishlist(response.data);
-    console.log(response.data);
   })
   .catch(function (error) {
     console.log(error);
@@ -215,7 +209,6 @@ let res = axios
       if (event.keyCode === 13) {
         localStorage.setItem("searchItem", search_input.value);
         window.location = '../html/searchResults.html';
-        console.log(search_input.value)
       }
     });
   });

@@ -122,10 +122,7 @@ window.onload = () => {
         element.addEventListener("click", () => {
           let payload = { product: element.id };
           let config = {
-            headers: {
-              Authorization:
-                "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU0OTcxMjIsImRhdGEiOnsiaWQiOiI4IiwibmFtZSI6ImNsaWVudCAgY2xpZW50IiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiY2xpZW50QGdtYWlsLmNvbSJ9fQ.TGAuZo0TnWnpPsdS2j8KBPv1x3zX2svqzANeZ8FHDwg",
-            },
+            headers: {Authorization: localStorage.getItem("jwt") },
           };
           let res = axios
             .post(
@@ -147,10 +144,7 @@ window.onload = () => {
 
   // RENDER ITEMS
   let config = {
-    headers: {
-      Authorization:
-        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU0OTcxMjIsImRhdGEiOnsiaWQiOiI4IiwibmFtZSI6ImNsaWVudCAgY2xpZW50IiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiY2xpZW50QGdtYWlsLmNvbSJ9fQ.TGAuZo0TnWnpPsdS2j8KBPv1x3zX2svqzANeZ8FHDwg",
-    },
+    headers: {Authorization: localStorage.getItem("jwt") },
   };
   let res = axios
     .post(
@@ -172,7 +166,6 @@ window.onload = () => {
         if (event.keyCode === 13) {
           localStorage.setItem("searchItem", search_input.value);
           window.location = '../html/searchResults.html';
-          console.log(search_input.value)
         }
       });
     });

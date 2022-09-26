@@ -1,8 +1,4 @@
 window.onload = () => {
-  localStorage.setItem(
-    "jwt",
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU1MzQyNjMsImRhdGEiOnsiaWQiOiIxIiwibmFtZSI6InRlc3QxIGFwaTExIiwidXNlcl90eXBlIjoiMyIsImVtYWlsIjoiYXBpLXRlc3QgZW1haWxzZGEifX0.qD2Dw_a4EIr0rlbuzpcar-esx8Ttog-bP8vXrMmC54E"
-  );
   const navBarCaller = () => {
     const navBar = document.querySelector(".client-nav");
     navBar.innerHTML = `<a href="landingPage.html"
@@ -236,7 +232,6 @@ search_input.addEventListener("input", () => {
     if (event.keyCode === 13) {
       localStorage.setItem("searchItem", search_input.value);
       window.location = '../html/searchResults.html';
-      console.log(search_input.value)
     }
   });
 });
