@@ -134,15 +134,6 @@ window.onload = () => {
     div.appendChild(main);
   };
 
-  if (flag) {
-    main
-      .addEventListener("click", () => {
-        localStorage.setItem("storeid", data["id"]);
-        window.open("client-frontend/html/sellerProfile.html", "_self");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
 
     axios
       .post(
@@ -153,6 +144,21 @@ window.onload = () => {
       .then(function (response) {
         for (const data of response.data) {
           constructproduct(data, topViews, 0);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      axios
+      .post(
+        "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-sellers.php",
+        null,
+        null
+      )
+      .then(function (response) {
+        for (const data of response.data) {
+          constructproduct(data, topSeller, 0);
         }
       })
       .catch(function (error) {
@@ -190,5 +196,4 @@ window.onload = () => {
         voucherPopup.style.display = "none";
       });
     });
-  }
-};
+  };
