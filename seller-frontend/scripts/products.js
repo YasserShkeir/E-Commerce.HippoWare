@@ -69,6 +69,7 @@ window.onload = () => {
   }
   //helper function to display products
   function displayProducts(data) {
+    console.log(data)
     if (data == "") {
       let productCard = `<div> No product exits</div>`;
       products.innerHTML += productCard;
@@ -126,6 +127,7 @@ window.onload = () => {
         .then(function (response) {
           if (response) deleteModal.style.display = "None";
           products.removeChild(productCard);
+          location.reload()
         })
         .catch(function (error) {
           console.log(error);
@@ -214,7 +216,7 @@ window.onload = () => {
       });
   }
 
-  /*************stornig and creating categories*************/
+  /*************storing and creating categories*************/
 
   //Storing Categories in category options
   let categories = [];
@@ -277,6 +279,7 @@ window.onload = () => {
           config
         )
         .then(function (response) {
+          location.reload()
           return response.data;
         })
         .catch(function (error) {
@@ -297,6 +300,7 @@ window.onload = () => {
           config
         )
         .then(function (response) {
+          location.reload()
           return response.data;
         })
         .catch(function (error) {
@@ -342,7 +346,9 @@ window.onload = () => {
         config
       )
       .then(function (response) {
-        displayProducts(response.data);
+        console.log(response.data)
+        for (let data of response.data){
+          displayProducts(data);}
         return response.data;
       })
       .catch(function (error) {
