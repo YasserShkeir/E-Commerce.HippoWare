@@ -1,5 +1,6 @@
 
 window.onload = () => {
+  if(localStorage.getItem('jwt')){
 
   // NAVBAR COMPONENT
   const navBar = document.querySelector(".nav-bar");
@@ -19,11 +20,18 @@ class="header-logo"
 
 <a href="admin_infographics.html" class="header-link">Statistics</a>
 
-<a href="index.html" class="header-link" id="logout_btn">Log Out</a>
+<a href="#" class="header-link" id="logout_btn">Log Out</a>
 </div>`;
 
+
   navBar.innerHTML += navContent;
-// 
+
+// LOGOUT
+const logout = document.querySelector('#logout_btn');
+logout.addEventListener('click', ()=>{
+          localStorage.removeItem("jwt");
+          window.location = 'index.html';
+  });
 
 let add_seller_btn = document.getElementById('add_seller_btn');
 const signup_form_container = document.querySelector('.signup-form-container');
@@ -45,20 +53,8 @@ add_seller_btn.addEventListener('click', ()=>{
       addSeller(fname, lname, username, email, password)
     });
 
-    // LOG OUT
-    document.getElementById('logout_btn').addEventListener('click', ()=>{
-        
-          console.log(localStorage.getItem('jwt'));
-          localStorage.removeItem("jwt");
-          console.log(localStorage.getItem('jwt')) ;
-          debugger
-          window.location = 'index.html';
-    
-  })
-
 });
 
-};
 
 // ADD SELLER
 function addSeller(firstName, lastName, userName, email, password){
@@ -72,4 +68,8 @@ function addSeller(firstName, lastName, userName, email, password){
         console.log(error);
     })
 };
-
+  
+}else{
+  window.location = 'index.html';
+}
+}
