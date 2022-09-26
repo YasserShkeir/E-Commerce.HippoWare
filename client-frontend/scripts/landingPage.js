@@ -131,7 +131,7 @@ search_input.addEventListener("input", () => {
 
     if (flag) {
       main.addEventListener("click", () => {
-        localStorage.setItem("product", data["id"]);
+        localStorage.setItem("storeid", data["id"]);
         window.open("sellerProfile.html", "_self");
       });
       div.appendChild(main);
@@ -261,12 +261,13 @@ search_input.addEventListener("input", () => {
         console.log(error);
       });
   }
-}
 
 
-const voucher = document.createElement("div");
+
+voucher = document.createElement("div");
 voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
 voucher.id = "voucher-card";
 document.getElementById("row").appendChild(voucher);
 
 
+}
