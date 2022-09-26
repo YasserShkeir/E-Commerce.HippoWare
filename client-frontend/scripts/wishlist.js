@@ -102,7 +102,7 @@ window.onload = () => {
 
         <!-- PRODUCTS LEFT SIDE -->
         <div class="left-side">
-          <img id="whishlist-product-image" src="${data[i].name}" alt="">
+          <img id="whishlist-product-image" src="${data[i].image}" alt="">
           <div>
             <h3>${data[i].name}</h3>
             <p>color <span class="color-div" style="background:${data[i].color}; color:${data[i].color};">00</span></p>
@@ -181,12 +181,12 @@ window.onload = () => {
               config
             )
             .then(function (response) {
-              console.log(response);
+              console.log(response.data);
+              window.location.reload();
             })
             .catch(function (error) {
               console.log(error);
             });
-          window.location.reload();
         });
       });
     }

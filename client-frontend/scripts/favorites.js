@@ -133,11 +133,11 @@ window.onload = () => {
             )
             .then(function (response) {
               console.log(response);
+              window.location.reload();
             })
             .catch(function (error) {
               console.log(error);
             });
-          window.location.reload();
         });
       });
     }

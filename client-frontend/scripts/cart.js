@@ -218,6 +218,7 @@ window.onload = () => {
           config
         )
         .then(function (response) {
+          purchase.innerHTML = "Purchased"
           cardsList.removeChild(document.getElementById(item));
           removeFirst(checked, item);
         })
