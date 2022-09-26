@@ -98,7 +98,7 @@ window.onload = () => {
 
     <!-- PRODUCTS LEFT SIDE -->
     <div class="left-side">
-      <img src="${data[i].image}" alt="">
+      <img id="favorite-product-image" src="${data[i].image}" alt="">
       <div>
         <h3>${data[i].name}</h3>
         
@@ -115,6 +115,8 @@ window.onload = () => {
   </div>
   </section>`;
 
+    let favoriteImage = document.querySelector("#favorite-product-image");
+    favoriteImage.style.maxWidth = "200px";
       // REMOVE FUNCTIONALITY
       let remove_links = Object.values(
         document.getElementsByClassName("remove-link")
