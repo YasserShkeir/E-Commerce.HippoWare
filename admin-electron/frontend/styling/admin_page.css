@@ -186,7 +186,7 @@ body {
   margin-left: 1%;
 }
 
-.left-section h3{
+.left-section h3 {
   font-size: 20;
   font-weight: 100;
 }
@@ -255,7 +255,6 @@ body {
 .general-infographics {
   width: 94%;
   height: 80px;
-  background: var(--light-blue);
   border-radius: 50px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -266,6 +265,7 @@ body {
 
 .general-sellers {
   height: fit-content;
+  background: none !important;
 }
 
 .general-sellers .option,
@@ -474,13 +474,12 @@ body {
 
 .x-flex div input,
 .x-flex div select {
-
   width: 70%;
   background: var(--bg-color);
   border: none;
   border-radius: 30px;
   padding: 4px;
-  padding-left:10px;
+  padding-left: 10px;
 }
 
 #search_input {
@@ -499,10 +498,8 @@ body {
   flex-flow: wrap row;
   justify-content: space-between;
   align-content: center;
-  width: 100%;
-  background: var(--gray-blue);
+  width: 90%;
   border-radius: 45px;
-  padding: 10px 15px;
   gap: 10px;
 }
 

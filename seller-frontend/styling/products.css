@@ -432,6 +432,12 @@ body {
   justify-content: flex-start;
   align-items: center;
 }
+
+.register-form h1{
+color:white;
+margin-bottom: 4%;
+}
+
 #register-store {
   width: fit-content;
   padding: 10px 20px;
@@ -457,14 +463,35 @@ body {
 input::file-selector-button {
   font-weight: bold;
   padding: 0.5em;
-  border: thin solid grey;
   border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  font-weight: bolder;
 }
 .form-input-div {
   display: flex;
   flex-flow: wrap column;
   justify-content: flex-start;
   align-items: center;
+}
+
+.form-input-div h4{
+  align-self: flex-start;
+  opacity: .6;
+  margin-top: 4%;
+}
+
+.form-input-div input{
+  height: 30px;
+  padding: 5px ;
+  border-radius: 5px ;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  background: white;
+  width: 100%;
+}
+
+.form-input-div input select {
+  background: red;
 }
 .form-input-div > * {
   margin: 5px;
