@@ -418,7 +418,6 @@ body {
   width: 20vw;
   min-width: 400px;
   height: fit-content;
-  height: 95vh;
   background: var(--bg-color);
   position: fixed;
   top: 2vh;
