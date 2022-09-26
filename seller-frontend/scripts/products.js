@@ -175,9 +175,17 @@ window.onload = () => {
     images = reader.result;
     localStorage.setItem("img", images);
   });
+
+  
+    function delay(milliseconds){ // allows for delay
+      return new Promise(resolve => {
+          setTimeout(resolve, milliseconds);
+      });
+    }
   //upload new product
-  function uplaodNewPorduct() {
+  async function uplaodNewPorduct() {
     reader.readAsDataURL(document.getElementById("file").files[0]);
+    await delay(500)
     let payload = {
       image: localStorage.getItem("img"),
       category: uploadCategory.value,
