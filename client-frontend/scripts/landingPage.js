@@ -1,5 +1,4 @@
 window.onload = () => {
-  
   const navBarCaller = () => {
     const navBar = document.querySelector(".client-nav");
     navBar.innerHTML = `<a href="landingPage.html"
@@ -97,7 +96,6 @@ search_input.addEventListener("input", () => {
     if (event.keyCode === 13) {
       localStorage.setItem("searchItem", search_input.value);
       window.location = '../html/searchResults.html';
-      console.log(search_input.value)
     }
   });
 });

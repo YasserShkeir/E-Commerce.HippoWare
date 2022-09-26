@@ -142,7 +142,6 @@ for(i=0; i<data.length; i++){
         if (event.keyCode === 13) {
           localStorage.setItem("searchItem", search_input.value);
           window.location = '../html/searchResults.html';
-          console.log(search_input.value)
         }
       });
     });
