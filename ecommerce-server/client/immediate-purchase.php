@@ -21,22 +21,27 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
+        //checking if he is n client
         if($user_data->data->user_type != 3){
             echo json_encode([
                 'status' => 0,
                 'message' => 'Access Denied',
             ]);
             die();
-        }
+        } 
+
+        //gets cart id
         $obj->select('carts','id', null, `client_id = `.$user_data->data->id, null, null);
         $result = $obj->getResult();
         $cart = $result[0]['id'];
 
+        //fetching data
         $product = $data['product'];
         $size = $data['size'];
         $color = $data['color'];
         $date = date('Y-m-d');
 
+        //adds item to cart items as purchased and delete it from whishlist
         $obj->insert('cart_items',['products_id' => $product, 'cart_id' => $cart, 'quantity' => 1, 'size' => $size, 'date' => $date, 'paid' => 1,'discount' => 0]);
         $result = $obj->getResult();
         echo json_encode($result);

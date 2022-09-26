@@ -21,12 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 1) 
-        echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
-
+        //checking if he is an admin
+        if($user_data->data->user_type != 1){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
+        //fetching data and updating status
         $id = $data['id'];
         $status = $data['status'];
         $obj->update('users', ['accepted' => $status],"id='{$id}'" );

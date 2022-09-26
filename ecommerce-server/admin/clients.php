@@ -21,14 +21,18 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 1) echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
+        //checking if he is an admin
+        if($user_data->data->user_type != 1){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
 
-        $where = "user_type_id = 3 and accepted != -1 and accepted != -2";
+        $where = "user_type_id = 3 and accepted != -1 and accepted != -2"; // no banned/deleted clients
         $sortby=null;
-        if($data['sortby']){ // gets the sorts needed if any
+        if($data['sortby']){ // gets the sort inquiries needed if any
             if($data['sortby'] == 'name-acs') $sortby = "first_name ASC, last_name ASC";
             else if($data['sortby'] == 'name-desc') $sortby = "first_name DESC, last_name DESC";
             else if($data['sortby'] == 'date-acs') $sortby = "date ACS";
@@ -41,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         if($data['search']){ //search filtering
             $where .= " and (first_name LIKE '%".$data['search']."%' or first_name LIKE '%".$data['search']."%')";
         }
-        
+        // selects all clients and returns them
         $obj->select('users', '*', null, $where, $sortby, null);
         $result = $obj->getResult();
         echo json_encode($result);

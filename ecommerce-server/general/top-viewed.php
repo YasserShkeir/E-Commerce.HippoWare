@@ -14,6 +14,7 @@ $obj = new Database();
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     
+    //selecting top viewed products
     $obj->select('`products`','*', null, null, "views DESC", "0,4");
     $result = $obj->getResult();
     echo json_encode($result);

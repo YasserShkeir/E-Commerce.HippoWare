@@ -21,10 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 1) echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
+        //checking if he is an admin
+        if($user_data->data->user_type != 1){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
+        //fetching data
         $id = $data['id'];
         $image = $data['image'];
         $fname = $data['first_name'];
@@ -42,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $dbemail =  $data['email'];
             $dbusername =  $data['username'];
         }
+
         if($dbemail != $email){// checks if the seller wants to change his email
             $obj->select('users', '*', null, "email='{$email}'", null, null);
             $result = $obj->getResult();
@@ -50,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                 $issues[] = "dup email";
             }
         }
+
         if($dbusername != $username){// checks if the seller wants to change his username
             $obj->select('users', '*', null, "username='{$username}'", null, null);
             $result = $obj->getResult();
@@ -58,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                 $issues[] = "dup username";
             }
         }
+
         // decoding binary64 img
         define('UPLOAD_DIR', 'images/');
         $img = $image;

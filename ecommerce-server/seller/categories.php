@@ -21,13 +21,17 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 2) echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
+         //checking if he is a selller
+         if($user_data->data->user_type != 3){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
 
         $where = "c.store_id = s.id and s.seller_id = ".$user_data->data->id;
-        
+        //seleccting all store categories
         $obj->select('`stores` as s JOIN `categories` as c','c.name', null, $where, 'c.name ASC', null);
         $result = $obj->getResult();
         echo json_encode($result);

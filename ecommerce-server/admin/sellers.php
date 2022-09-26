@@ -21,10 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 1) echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
+        //checking if he is an admin
+        if($user_data->data->user_type != 1){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
 
         $where = "user_type_id = 2 and accepted != -1 and accepted != -2";
         $sortby=null;
@@ -44,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         if($data['filter'] != 2){ // filter accoridng to acceptance status
             $where .= " and accepted = ".$data['filter'];
         }
-        
+        //selects all users with give criteria
         $obj->select('users', '*', null, $where, $sortby, null);
         $result = $obj->getResult();
         echo json_encode($result);

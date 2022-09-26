@@ -20,10 +20,15 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 2) echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
+         //checking if he is a selller
+         if($user_data->data->user_type != 3){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
+
         $name = $data["name"];
         $welc_msg = $data["welc_msg"];
 
@@ -36,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $file = "../".$filee;
         $images_to_save = "/xampp/htdocs/E-Commerce.HippoWare/ecommerce-server/".$filee;
 
-
+        //insering new stor for a user
         $obj->insert('stores',['seller_id' => $user_data->data->id,'name' => $name , 'image' => $images_to_save, 'welc_msg' => $welc_msg]);
         $result = $obj->getResult();
         file_put_contents($file, $data);

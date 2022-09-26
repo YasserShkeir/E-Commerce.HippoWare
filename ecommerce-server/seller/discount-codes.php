@@ -26,12 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             'message' => 'Access Denied',
         ]);
 
+        //getting store id
         $obj->select('`stores`','id', null, "seller_id = ".$user_data->data->id, null, null);// getting store id of user
         $result = $obj->getResult();
         $storeid=$result[0]['id'];
 
         $where = "store_id = ".$storeid;
-        
+        // gets all discount codes of a store
         $obj->select('`discountcodes`','*', null, $where, null, null);
         $result = $obj->getResult();
         echo json_encode($result);

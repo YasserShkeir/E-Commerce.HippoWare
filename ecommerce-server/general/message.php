@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
+        // if user is admin it fails
         if($user_data->data->user_type ==1 ) {
             echo json_encode([
                 'status' => 0,
@@ -29,19 +30,24 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             ]);
             die();
         }
+
+
         $store = $data["store"];
         $message = $data["message"];
 
-        $obj->select('`stores`','seller_id', null, "id = ".$store, null, null);// getting store id of user
+        // getting seller id of a store
+        $obj->select('`stores`','seller_id', null, "id = ".$store, null, null);
         $result = $obj->getResult();
         $sellerid=$result[0]['seller_id'];
 
-        $obj->select('`chats`','*', null, "seller_id = ".$sellerid . " and client_id = ".$user_data->data->id, null, null);// getting store id of user
+        // getting chat id
+        $obj->select('`chats`','*', null, "seller_id = ".$sellerid . " and client_id = ".$user_data->data->id, null, null);
         $result = $obj->getResult();
         $chatid=$result[0]['id'];
 
         $time = date('Y-m-d h:i:s');
 
+        //inserting message
         $obj->insert('messages',["chat_id" =>$chatid , 'content' => $message, 'sender_id' => $user_data->data->id, 'timestamp' => `TO_TIMESTAMP('$time', 'YYYY-MM-DD HH24:MI:SS')`]);
         $result = $obj->getResult();
         echo json_encode($result);
