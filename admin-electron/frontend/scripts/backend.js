@@ -18,10 +18,11 @@ login_btn.addEventListener('click', (e)=>{
             let res = await axios.post('http://localhost/ecommerce-server/admin/admin-login.php', payload);
             let data = res.data;
             if(!data.status){
-                // window.location.reload();
+                window.location.reload();
                 alert(data.message)
             }else{
                 localStorage.setItem('admin_name', data.name);
+                localStorage.setItem('jwt', data.jwt);
                 window.location = 'admin_sellers.html';
             }
         }

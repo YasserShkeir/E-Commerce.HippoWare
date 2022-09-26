@@ -47,8 +47,14 @@ add_seller_btn.addEventListener('click', ()=>{
 
     // LOG OUT
     document.getElementById('logout_btn').addEventListener('click', ()=>{
-      window.location = 'index.html';
-    })
+        
+          console.log(localStorage.getItem('jwt'));
+          localStorage.removeItem("jwt");
+          console.log(localStorage.getItem('jwt')) ;
+          debugger
+          window.location = 'index.html';
+    
+  })
 
 });
 
