@@ -240,7 +240,7 @@ window.onload = () => {
 
     card.addEventListener('click', () => {
       localStorage.setItem("itemId", data['id'])
-      window.open("client-frontend/html/itemProfile.html", "_self")
+      window.open("itemProfile.html", "_self")
     })
   }
 
