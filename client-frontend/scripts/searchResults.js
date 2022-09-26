@@ -91,17 +91,16 @@ window.onload = () => {
 
 
   //SEARCH RESULT IMPLEMENT
+  
   const displayed_results_row = document.querySelector('.displayed-results-row');
   let txtToSearch = localStorage.getItem('searchItem');
   const search_text = document.getElementById('search_text');
   search_text.innerText = txtToSearch;
-  // console.log(txtToSearch)
 
   let payload = {search: txtToSearch}
 
                   let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/products-search.php',payload, null).then(
                       function (response) {
-                      console.log(response.data);
                       if(response.data.length <1){
                         displayed_results_row.innerHTML = '<h1>NO RESULT FOUND :(</h1>';
                         displayed_results_row.style.opacity = '.6';
@@ -109,6 +108,7 @@ window.onload = () => {
                         displayed_results_row.style.marginTop = '10%';
                       }else{
                         renderSearchResult(response.data)
+                          console.log(response.data);
                       }
                       
                   })
@@ -123,16 +123,16 @@ function renderSearchResult(data){
 for(i=0; i<data.length; i++){
 
   displayed_results_row.innerHTML += ` 
-        <div class="background style="backgound = url(${data[i],image}); background-repeat: no-repeat; background-size: contain;"
+        <div class="background style="backgound = url(${data[i].image}); background-repeat: no-repeat; background-size: contain;"
           <div class="name-description">
             <div class="name">${data[i].name}</div>
             <div class="description">${data[i].description}</div>
-          </div>
+          
           <div class="store-price">
             <div class="store"></div>
             <div class="price">$${data[i].price}</div>
           </div>
-        </div>`;
+        </div></div>`;
 }
 }
 };
