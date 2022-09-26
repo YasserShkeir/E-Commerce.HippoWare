@@ -22,7 +22,6 @@ login_btn.addEventListener('click', (e)=>{
                 alert(data.message)
             }else{
                 localStorage.setItem('admin_name', data.name);
-                console.log(localStorage.getItem('admin_name'));
                 window.location = 'admin_sellers.html';
             }
         }

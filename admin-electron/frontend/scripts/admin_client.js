@@ -55,7 +55,6 @@ for(i = 0; i<=data.length; i++){
 
             ban_btns.forEach(element => {
                 element.addEventListener('click', () => {
-                    console.log(element.id, element.classList);
                     
                     if(element.classList.contains('red-btn')){
                         element.classList.add('light-btn');

@@ -169,7 +169,6 @@ function deleteSeller(user_id){
     };
     let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/admin/seller-delete.php',payload, config).then(
         function (response) {
-        console.log(response)
     })
     .catch(function (error) {
         console.log(error);

@@ -29,7 +29,6 @@ let add_seller_btn = document.getElementById('add_seller_btn');
 const signup_form_container = document.querySelector('.signup-form-container');
 
 add_seller_btn.addEventListener('click', ()=>{
-  console.log(document.body);
   signup_form_container .style.display = 'block';
   
     document.getElementById('signup_close_btn').addEventListener('click', ()=>{
