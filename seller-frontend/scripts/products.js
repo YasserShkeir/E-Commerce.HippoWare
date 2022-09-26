@@ -288,8 +288,6 @@ window.onload = () => {
         }
     }
 
-    
-
     /*************searching for product by name*************/
 
     //search products
