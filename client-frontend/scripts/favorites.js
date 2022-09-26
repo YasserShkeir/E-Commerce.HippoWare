@@ -63,6 +63,7 @@ window.onload = () => {
     });
 
     logout.addEventListener("click", () => {
+      localStorage.clear();
       window.open("../../index.html", "_self");
     });
   };
