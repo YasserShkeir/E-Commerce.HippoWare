@@ -1,4 +1,5 @@
 window.onload = () => {
+  
   const navBarCaller = () => {
     const navBar = document.querySelector(".client-nav");
     navBar.innerHTML = `<a href="landingPage.html"
@@ -89,6 +90,18 @@ window.onload = () => {
   navBarCaller();
   footerCaller();
 
+  // SEARCH IMPLEMENTED
+const search_input = document.getElementById("search");
+search_input.addEventListener("input", () => {
+  document.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+      localStorage.setItem("searchItem", search_input.value);
+      window.location = '../html/searchResults.html';
+      console.log(search_input.value)
+    }
+  });
+});
+
   // logout
 
   const logout = document.querySelector(".logOut");
@@ -120,7 +133,7 @@ window.onload = () => {
     if (flag) {
       main.addEventListener("click", () => {
         localStorage.setItem("product", data["id"]);
-        window.open("client-frontend/html/sellerProfile.html", "_self");
+        window.open("sellerProfile.html", "_self");
       });
       div.appendChild(main);
       return;
@@ -128,7 +141,7 @@ window.onload = () => {
 
     main.addEventListener("click", () => {
       localStorage.setItem("itemId", data["id"]);
-      window.open("client-frontend/html/itemProfile.html", "_self");
+      window.open("itemProfile.html", "_self");
     });
     div.appendChild(main);
   };
@@ -171,8 +184,7 @@ window.onload = () => {
       null
     )
     .then(function (response) {
-      console.log(response.data);
-      for (let i = 0; i < response.data.length && i < 2; i++) {
+      for (let i = 0; i < 2 && i < 2; i++) {
         constructproduct(response.data[i], stores1, 1);
       }
     })
@@ -258,12 +270,4 @@ voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
 voucher.id = "voucher-card";
 document.getElementById("row").appendChild(voucher);
 
-// SEARCH IMPLEMENTED
-const search_input = document.getElementById("search");
-search_input.addEventListener("input", () => {
-  document.addEventListener("keyup", function (event) {
-    if (event.keyCode === 13) {
-      localStorage.setItem("searchItem", search_input.value);
-    }
-  });
-});
+

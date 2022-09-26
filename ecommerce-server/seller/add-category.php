@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $data = json_decode($request_body, true);
 
         //checking if he is a selller
-        if($user_data->data->user_type != 3){
+        if($user_data->data->user_type != 2){
             echo json_encode([
                 'status' => 0,
                 'message' => 'Access Denied',
