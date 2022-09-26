@@ -2,7 +2,7 @@
   "name": "admin-desktop-app",
   "version": "1.0.0",
   "description": "Hippo's Ware Admin's Desktop-App",
-  "main": "main.js",
+  "main": "./frontend/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ."
