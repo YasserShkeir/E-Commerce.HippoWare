@@ -306,6 +306,58 @@ const logOut=document.getElementById('log-out')
             localStorage.clear()
         }
   }
+/*************store registration*************/
+
+    //store registration
+    const storeRegistration= document.getElementById('store-registration');
+    const registerStore= document.getElementById('register-store');
+    const storeImage= document.getElementById('store-img');
+    const storeName= document.getElementById('store-name')
+    const storeWelcome= document.getElementById('store-welcome')
+    const storeRegisterBtn=document.getElementById('register-store-btn')
+    const registerStoreClose=document.getElementById('registerstore_close_btn')
+    
+
+    function registeraStore(){
+    images=''
+    reader = new FileReader();
+    reader.addEventListener("load", () => {
+    images = reader.result 
+    console.log(images)
+    localStorage.setItem('store-img',images)
+    })
+    reader.readAsDataURL(storeImage.files[0]);
+    console.log(localStorage.getItem('store-img'))
+    let config = {
+        headers: {'Authorization': localStorage.jwt}
+    }
+    let payload = {
+        name:storeName.value,
+        welc_msg: storeWelcome.value,
+        image:localStorage.getItem('store-img')}
+    let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/add-store.php',payload,config).then(
+        function (response) {
+        console.log(response.data);
+        // I need this data here ^^
+        return response.data;
+    })
+    .catch(function (error) {
+        console.log(error);
+    }) 
+}
+    storeRegisterBtn.onclick=()=>{
+        storeRegistration.style.display="Block"
+    }
+    registerStoreClose.onclick=()=>{
+        storeRegistration.style.display="none"
+    }
+    registerStore.onclick=(e)=>{
+        e.preventDefault();
+        if(storeName.value && storeWelcome.value ){
+            console.log('fe')
+            registeraStore()
+        }
+    }
 
   
 
