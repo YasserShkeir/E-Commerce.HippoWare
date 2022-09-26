@@ -31,7 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         } 
 
         $product = $data['product'];
-
+        $obj->delete('favorites','product_id = '.$product);
+        $obj->delete('whishlist','product_id = '.$product);
+        $obj->delete('cart_items','product_id = '.$product);
         //delete product 
         $obj->delete('products', "id = ". $product);
         $result = $obj->getResult();
