@@ -21,19 +21,22 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
+        //checking if he is n client
         if($user_data->data->user_type != 3){
             echo json_encode([
                 'status' => 0,
                 'message' => 'Access Denied',
             ]);
             die();
-        }
+        } 
+
+        //getting cart id
         $obj->select('carts','id', null, `client_id = `.$user_data->data->id, null, null);
         $result = $obj->getResult();
         $cart = $result[0]['id'];
 
         $where = "p.id = c.products_id and paid = 0 and c.cart_id = ".$cart;
-        
+        //gets cart items
         $obj->select('cart_items as c, products as p', "*, c.color as colorc", null, $where, null, null);
         $result = $obj->getResult();
         echo json_encode($result);

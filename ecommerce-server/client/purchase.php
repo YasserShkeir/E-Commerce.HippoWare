@@ -21,24 +21,27 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
+        //checking if he is n client
         if($user_data->data->user_type != 3){
             echo json_encode([
                 'status' => 0,
                 'message' => 'Access Denied',
             ]);
             die();
-        }
+        } 
+        //get cart id
         $obj->select('carts','id', null, `client_id = `.$user_data->data->id, null, null);
         $result = $obj->getResult();
         $cart = $result[0]['id'];
 
+        //fetching data
         $product = $data['product'];
         $code = $data['code'];
         $date = date('Y-m-d');
 
         $where = "id = " . $code;
 
-        if($code){
+        if($code){// if the user provided a discount code
             $obj->select('`discountcodes`','*', null, $where, null, null);
             $result = $obj->getResult();
             $dis_store_id = $result[0]["store_id"];
@@ -52,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $prod_store_id = $result[0]["store_id"];
             $price = $result[0]["price"];
 
-            if($prod_store_id == $dis_store_id && $price >= $limit){
+            if($prod_store_id == $dis_store_id && $price >= $limit){ //checks if the code applies here and updates accordingly
                 $obj->update('cart_items',['date' => $date, 'paid' => 1, 'discount' => $discount], 'cart_id = '. $cart . ' and products_id = '.$product);
                 $result = $obj->getResult();
                 echo json_encode([
@@ -67,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                     'message' => 1,
                 ]);
             }
-        }else{
+        }else{//if no code update the item as purchased
             $obj->update('cart_items',['date' => $date, 'paid' => 1], 'cart_id = '. $cart . ' and products_id = '.$product);
             $result = $obj->getResult();
             echo json_encode([

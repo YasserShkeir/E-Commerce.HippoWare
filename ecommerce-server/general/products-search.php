@@ -15,6 +15,8 @@ $obj = new Database();
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $request_body = file_get_contents('php://input');
     $data = json_decode($request_body, true);
+
+    //selects products for a given keyword
     $search = $data['search'];
     $where = "name LIKE '%" . $search . "%'";
         

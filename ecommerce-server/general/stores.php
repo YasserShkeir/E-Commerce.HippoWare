@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $request_body = file_get_contents('php://input');
     $data = json_decode($request_body, true);
         
+    //selecting 8 stores
     $obj->select('`stores`','*', null, null, null, "0,8");
     $result = $obj->getResult();
     echo json_encode($result);

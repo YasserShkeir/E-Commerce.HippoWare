@@ -21,10 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 3) echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
+        //checking if he is n client
+        if($user_data->data->user_type != 3){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
+        //fetching data from body
         $id = $user_data->data->id;
         $image = $data['image'];
         $fname = $data['first_name'];
@@ -36,13 +41,14 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $flag = 1;
         $issues = [];
 
+        //getting current user data
         $obj->select('users', '*', null, "id='{$id}'", null, null);
         $datas = $obj->getResult();
         foreach ($datas as $data) {
             $dbemail =  $data['email'];
             $dbusername =  $data['username'];
         }
-        if($dbemail != $email){// checks if the seller wants to change his email
+        if($dbemail != $email){// checks if the client wants to change his email
             $obj->select('users', '*', null, "email='{$email}'", null, null);
             $result = $obj->getResult();
             if($result){
@@ -50,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                 $issues[] = "dup email";
             }
         }
-        if($dbusername != $username){// checks if the seller wants to change his username
+        if($dbusername != $username){// checks if the client wants to change his username
             $obj->select('users', '*', null, "username='{$username}'", null, null);
             $result = $obj->getResult();
             if($result){

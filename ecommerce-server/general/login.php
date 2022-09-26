@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ]);
         }else {
             $payload = [
-                'exp' => time() + 1440000, //10 mint
+                'exp' => time() + 1440000, //adds 1 day to exp date
                 'data' => [
                     'id' => $id,
                     'name' => $name,

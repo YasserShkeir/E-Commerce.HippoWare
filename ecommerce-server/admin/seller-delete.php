@@ -20,18 +20,23 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 1) echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
+        //checking if he is an admin
+        if($user_data->data->user_type != 1){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
 
+        //fetching data and deleting user
         $user_id = $data['id'];
         $flag = 1;
         $issues = [];
             
-            $obj->delete('users', "id='{$user_id}'");
-            $result = $obj->getResult();
-            echo json_encode($result);
+        $obj->delete('users', "id='{$user_id}'");
+        $result = $obj->getResult();
+         echo json_encode($result);
 
     } catch (Exception $e) {
         echo json_encode([

@@ -17,9 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $data['email'];
     $password =$data['password'];
 
-    $obj->select('users', '*', null, "email='{$email}'", null, null); // selected data for given attribute
+    $obj->select('users', '*', null, "email='{$email}'", null, null); // selects user for given email
     $datas = $obj->getResult();
-            if (!$datas) {
+    if (!$datas) {
         echo json_encode([
             'status' => 0,
             'message' => 'Invalid Carditional'
@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'status' => 0,
                 'message' => 'Invalid Carditional',
             ]);
+            die();
         }else if( $data['user_type_id'] != 1){ //makes sure is admin
             echo json_encode([
                 'status' => 0,
@@ -42,8 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ]);
         }
          else {
+            //adding payload and user data
             $payload = [
-                'exp' => time() + 1440000, //10 mint
+                'exp' => time() + 1440000, //adds 1 day till exp
                 'data' => [
                     'id' => $id,
                     'name' => $name,

@@ -21,21 +21,25 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 1) 
-        echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
+        //checking if he is an admin
+        if($user_data->data->user_type != 1){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
 
         $id = $data['id'];
-
-        $obj->select('users', '*', null, "id='{$id}'", null, null); // gets current ban status
+        // getting current ban status
+        $obj->select('users', '*', null, "id='{$id}'", null, null); 
         $datas = $obj->getResult();
         foreach ($datas as $data) {
             if($data['accepted'] == 1){
                 $ban = 0;
             }else $ban = 1;
         }
+         // switching ban status
         $obj->update('users', ['accepted' => $ban],"id='{$id}'" );
         $result = $obj->getResult();
         echo json_encode($result);

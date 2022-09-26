@@ -21,20 +21,25 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 2)
-        echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
+         //checking if he is a selller
+         if($user_data->data->user_type != 3){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
 
         $discount = floatval( $data['discount']);
         $description = $data['description'];
         $limit = $data['limit'];
 
+        // getting store id
         $obj->select('`stores`','id', null, "seller_id = ".$user_data->data->id, null, null);
         $result = $obj->getResult();
         $storeid = (int)$result[0]['id'];
 
+        //inserts discount code
         $obj->insert('discountcodes',['discount'=> $discount, 'description' => $description, 'limits' => $limit, 'store_id' => $storeid]);
         $result = $obj->getResult();
         echo json_encode($result);

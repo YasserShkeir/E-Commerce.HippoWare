@@ -21,11 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
 
-        if($user_data->data->user_type != 1) echo json_encode([
-            'status' => 0,
-            'message' => 'Access Denied',
-        ]);
-
+        //checking if he is an admin
+        if($user_data->data->user_type != 1){
+            echo json_encode([
+                'status' => 0,
+                'message' => 'Access Denied',
+            ]);
+            die();
+        } 
+        // fetching data
         $image = $data['image'];
         $fname = $data['first_name'];
         $lname = $data['last_name'];
@@ -58,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $file = "../".$filee;
         $images_to_save = "/xampp/htdocs/E-Commerce.HippoWare/ecommerce-server/".$filee;
         
-        if($flag){
+        if($flag){// if no data conflits => inserts seller
             $obj->insert('users', ['user_type_id' => 2, 'first_name' => $fname, 'last_name' => $lname, 'username' => $username, 'email' => $email, 'password' => $password, 'image' => $images_to_save, 'accepted' => 1, 'date' => $date]);
             $result = $obj->getResult();
             file_put_contents($file, $data);
