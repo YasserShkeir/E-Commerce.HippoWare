@@ -35,7 +35,8 @@ window.onload = () => {
     const storeRegisterBtn=document.getElementById('register-store-btn')
     const registerStoreClose=document.getElementById('registerstore_close_btn')
     
-    
+
+
     /*************display and delete products*************/
     //all categories displayed
     if (categorySelect.value== 'none'){
@@ -287,14 +288,6 @@ window.onload = () => {
         }
     }
 
-    menuLogOut.onclick=()=>{
-        logoutModal.style.display='Block'
-        cancelLogout.onclick=()=>{logoutModal.style.display='none'}
-        confirmLogout.onclick=()=>{
-            window.location.replace("home_page.html")
-            localStorage.clear()
-        }
-    }
     
 
     /*************searching for product by name*************/
@@ -325,14 +318,6 @@ window.onload = () => {
             })
     }
     
-
-    /*************Hamburger Menu*************/
-    hamburgerMenu.onmouseover=()=>{
-        menuContents.style.display='Block'
-    }
-    menuContents.onmouseleave=()=>{
-        menuContents.style.display='none'
-    }
     
     /*************store registration*************/
 

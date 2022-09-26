@@ -17,7 +17,7 @@ window.onload = () => {
   </div>
   <div class="client-nav-search">
     <i class="fa fa-search"></i>
-    <input id="search" type="text" placeholder="Search" />
+    <input id="search" type="text" placeholder="Search"/>
   </div>
   
   <div class="mobile-links">
@@ -104,7 +104,6 @@ window.onload = () => {
   const topSeller = document.querySelector("#topSellers");
   const topViews = document.querySelector("#topViews");
   const stores1 = document.querySelector("#stores1");
-  const stores2 = document.querySelector("#stores2");
 
   const constructproduct = (data, div, flag) => {
     const main = document.createElement("div");
@@ -135,65 +134,136 @@ window.onload = () => {
   };
 
 
-    axios
-      .post(
-        "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-viewed.php",
-        null,
-        null
-      )
-      .then(function (response) {
-        for (const data of response.data) {
-          constructproduct(data, topViews, 0);
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  axios
+    .post(
+      "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-viewed.php",
+      null,
+      null
+    )
+    .then(function (response) {
+      for (const data of response.data) {
+        constructproduct(data, topViews, 0);
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-      axios
-      .post(
-        "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-sellers.php",
-        null,
-        null
-      )
-      .then(function (response) {
-        for (const data of response.data) {
-          constructproduct(data, topSeller, 0);
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  axios
+    .post(
+      "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/top-sellers.php",
+      null,
+      null
+    )
+    .then(function (response) {
+      for (const data of response.data) {
+        constructproduct(data, topSeller, 0);
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-    axios
+  axios
+    .post(
+      "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/stores.php",
+      null,
+      null
+    )
+    .then(function (response) {
+      console.log(response.data);
+      for (let i = 0; i < response.data.length && i < 2; i++) {
+        constructproduct(response.data[i], stores1, 1);
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  const voucher = document.createElement("div");
+  voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
+  voucher.id = "voucher-card";
+  document.getElementById("row").appendChild(voucher);
+
+  voucher.style.cursor = "pointer";
+  const voucherPopup = document.querySelector("#voucherForm");
+  const closePopup = document.querySelector("#close");
+
+  voucher.addEventListener("click", () => {
+    voucherPopup.style.display = "block";
+    closePopup.addEventListener("click", () => {
+      voucherPopup.style.display = "none";
+    });
+  });
+
+  voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
+  voucher.id = "voucher-card";
+  document.getElementById("row").appendChild(voucher);
+
+  voucher.style.cursor = "pointer";
+
+  const createVoucher = document.querySelector("#createVoucher");
+  const receiverName = document.querySelector("#receiverName");
+  const senderName = document.querySelector("#senderName");
+  const message = document.querySelector("#message");
+  const amount = document.querySelector("#value");
+  voucher.addEventListener("click", () => {
+    voucherPopup.style.display = "block";
+  });
+
+  closePopup.addEventListener("click", () => {
+    voucherPopup.style.display = "none";
+  });
+
+  createVoucher.onclick = (e) => {
+    e.preventDefault();
+    if (
+      receiverName.value &&
+      senderName.value &&
+      message.value &&
+      amount.value
+    ) {
+      sendVoucher(receiverName.value, message.value, amount.value);
+    }
+    voucherPopup.style.display = "none";
+  };
+  function sendVoucher(rec, msg, val) {
+    let payload = {
+      username: rec,
+      message: msg,
+      value: val,
+    };
+    let config = {
+      headers: { Authorization: localStorage.jwt },
+    };
+    let res = axios
       .post(
-        "http://localhost/E-Commerce.HippoWare/ecommerce-server/general/stores.php",
-        null,
-        null
+        "http://localhost/E-Commerce.HippoWare/ecommerce-server/client/send-voucher.php",
+        payload,
+        config
       )
       .then(function (response) {
         console.log(response.data);
-        for (let i = 0; i < response.data.length && i < 2; i++) {
-          constructproduct(response.data[i], stores1, 1);
-        }
+        return response.data;
       })
       .catch(function (error) {
         console.log(error);
       });
+  }
+}
 
-    const voucher = document.createElement("div");
-    voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
-    voucher.id = "voucher-card";
-    document.getElementById("row").appendChild(voucher);
 
-    voucher.style.cursor = "pointer";
-    const voucherPopup = document.querySelector("#voucherForm");
-    const closePopup = document.querySelector("#close");
+const voucher = document.createElement("div");
+voucher.innerHTML = '<a><img src="../assets/images/voucher.png" /></a>';
+voucher.id = "voucher-card";
+document.getElementById("row").appendChild(voucher);
 
-    voucher.addEventListener("click", () => {
-      voucherPopup.style.display = "block";
-      closePopup.addEventListener("click", () => {
-        voucherPopup.style.display = "none";
-      });
-    });
-  };
+// SEARCH IMPLEMENTED
+const search_input = document.getElementById("search");
+search_input.addEventListener("input", () => {
+  document.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+      localStorage.setItem("searchItem", search_input.value);
+    }
+  });
+});

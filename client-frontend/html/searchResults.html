@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styling/styling.css" />
     <link rel="stylesheet" href="../styling/searchResults.css" />
-    <link rel="icon" href="../assets/images/hippo-icon.png" type="image/png" />
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../scripts/searchResults.js"></script>
     <link
       rel="stylesheet"
@@ -17,90 +16,9 @@
   <body>
     <nav class="client-nav flex"></nav>
     <section class="search-results">
-      <h3><span>Search result:</span> White shirt</h3>
+      <h3><span>Search result:</span> <span id="search_text">White shirt</span></h3>
       <div class="displayed-results-row">
-        <div class="background">
-          <div class="name-description">
-            <div class="name">White shirt</div>
-            <div class="description">Stylish white shirt</div>
-          </div>
-          <div class="store-price">
-            <div class="store">Darling</div>
-            <div class="price">$45</div>
-          </div>
-        </div>
-        <div class="background">
-          <div class="name-description">
-            <div class="name">White shirt</div>
-            <div class="description">Stylish white shirt</div>
-          </div>
-          <div class="store-price">
-            <div class="store">Darling</div>
-            <div class="price">$45</div>
-          </div>
-        </div>
-        <div class="background">
-          <div class="name-description">
-            <div class="name">White shirt</div>
-            <div class="description">Stylish white shirt</div>
-          </div>
-          <div class="store-price">
-            <div class="store">Darling</div>
-            <div class="price">$45</div>
-          </div>
-        </div>
-        <div class="background">
-          <div class="name-description">
-            <div class="name">White shirt</div>
-            <div class="description">Stylish white shirt</div>
-          </div>
-          <div class="store-price">
-            <div class="store">Darling</div>
-            <div class="price">$45</div>
-          </div>
-        </div>
-      </div>
-      <div class="displayed-results-row">
-        <div class="background">
-          <div class="name-description">
-            <div class="name">White shirt</div>
-            <div class="description">Stylish white shirt</div>
-          </div>
-          <div class="store-price">
-            <div class="store">Darling</div>
-            <div class="price">$45</div>
-          </div>
-        </div>
-        <div class="background">
-          <div class="name-description">
-            <div class="name">White shirt</div>
-            <div class="description">Stylish white shirt</div>
-          </div>
-          <div class="store-price">
-            <div class="store">Darling</div>
-            <div class="price">$45</div>
-          </div>
-        </div>
-        <div class="background">
-          <div class="name-description">
-            <div class="name">White shirt</div>
-            <div class="description">Stylish white shirt</div>
-          </div>
-          <div class="store-price">
-            <div class="store">Darling</div>
-            <div class="price">$45</div>
-          </div>
-        </div>
-        <div class="background">
-          <div class="name-description">
-            <div class="name">White shirt</div>
-            <div class="description">Stylish white shirt</div>
-          </div>
-          <div class="store-price">
-            <div class="store">Darling</div>
-            <div class="price">$45</div>
-          </div>
-        </div>
+        <!-- SEARCH RESULTS WILL BE RENDERED HERE -->
       </div>
     </section>
     <footer class="client-footer flex-col"></footer>

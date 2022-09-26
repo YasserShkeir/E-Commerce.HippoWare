@@ -34,7 +34,6 @@
 
 function renderSellers(data){
 
-
     for (i=0; i < data.length; i++) {
         
         leftBtn = rightSectionBtn1(parseInt(data[i].accepted), data[i].id, data[i].first_name+' '+data[i].last_name);
@@ -55,9 +54,9 @@ function renderSellers(data){
         
             <div class="info">
                 <h3>${data[i].first_name} ${data[i].last_name}</h3>
-                <h4>
-                ${status} <span id="registration_date">${data[i].date}</span>
-                </h4>
+                <p>
+                ${status} <b id="registration_date">${data[i].date}</b>
+                </p>
             </div>
             </div>
     

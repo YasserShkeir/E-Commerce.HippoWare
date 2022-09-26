@@ -16,21 +16,18 @@
 </head>
 <body>
     <nav class="nav-bar">
-        <div class="search">
-            <img class="search-icon" src="../assets/search-icon.png">
-            <input type="search" name="search" class="search-input" id="search-input" placeholder="search">
-        </div>
-        <div class="website-logo">
-            <img class="logo" src="../assets/logo.png" alt="">    
-        </div>
-        <div class="nav-links">
-            <button class="register-store-btn" id="register-store-btn">register store</button>
-            <a href="products.html">Products</a>
-            <a href="topproducts.html">Statistics</a>
-            <button class="ads-btn">Upload Ads</button>
-        </div>
-        
-        <a class="log-out" id="log-out">Log Out</a>
+        <img
+    src="../assets/logo.png"
+    alt=""
+    class="header-logo"/>
+  
+        <div class="header-links">
+            <a href="#" class="header-link" id="register-store-btn">Register Store</a>
+            <a href="../html/products.html" class="header-link">Products</a>
+            <a href="../html/topproducts.html" class="header-link" >Statistics</a>
+            <a href="#" class="header-link">Upload Ads</a>
+            <a href="#" class="header-link" id="log-out">Log Out</a>
+        </div> 
     </nav>
     
     
@@ -39,7 +36,10 @@
             <select name="category" id="category-select" class="category-select">
                 <option value="none" selected disabled hidden>Category</option>
             </select>
-
+            <div class="search-container">
+                <img class="search-icon" src="../assets/search-icon.png">
+                <input type="text" id="search-input" placeholder="Search" />
+            </div>
             <div class="add-btns">
                 <div class="dropdown" id="dropdown">
                     <button class="addcategory-btn" id="add-category">Add Category</button>
@@ -50,7 +50,6 @@
                         <div><input placeholder="new category" class="customize-category" id="customize-category"></div>
                     </div>
                 </div>
-
                 <button class="addproduct-btn" id="add-product">Add Product</button>
             </div>
         </div>
@@ -81,23 +80,23 @@
         </div>
 
 
-
+        <!-- upload product Modal content -->
         <div id="uploadproduct-modal" >
             <!-- Modal content -->
             <form class="uploadmodal-content">
                 <h3>Upload Product</h3>
                 <input id="file" type="file" class="upload-image" accept="image/png"/>
-                <input class="upload" id="upload-category" placeholder="Category" required>
-                <input class="upload" id="upload-price" placeholder="Price" required>
-                <input class="upload" id="upload-revenue" placeholder="Revenue" required>
-                <input class="upload" id="upload-discount" placeholder="Discount" required>
-                <input class="upload" id="upload-name" placeholder="Name" required>
-                <input class="upload" id="upload-color" placeholder="Color" required>
-                <input class="upload" id="upload-size" placeholder="Size" required>
+                <input type="text" class="upload" id="upload-category" placeholder="Category" required />
+                <input type="text" class="upload" id="upload-price" placeholder="Price" required />
+                <input type="text" class="upload" id="upload-revenue" placeholder="Revenue" required />
+                <input type="text" class="upload" id="upload-discount" placeholder="Discount" required />
+                <input type="text" class="upload" id="upload-name" placeholder="Name" required />
+                <input type="text" class="upload" id="upload-color" placeholder="Color" required />
+                <input type="text" class="upload" id="upload-size" placeholder="Size" required />
                 <textarea class="upload" id="upload-description" placeholder="Description" required></textarea>
                 <div class="confirmuplaod-btns">
-                    <button class="submit-upload" id="submit-upload">Submit</button>
-                    <button class="cancel-upload" id="cancel-upload">Cancel</button>
+                    <button class="submit-upload" id="submit-upload" type="submit">Submit</button>
+                    <button class="cancel-upload" id="cancel-upload" type="submit">Cancel</button>
                 </div>
             </form>
         </div>
