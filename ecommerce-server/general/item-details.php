@@ -19,9 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     // getting item details
     $where = "p.store_id = s.id and p.id = ".$data['product'];
         
-    $obj->select('`products` as p, stores as s','p.name, p.id, p.color, p.size, p.image, p.price, s.name as store, p.description', null, $where, null, null);
+    $obj->select('`products` as p, stores as s','p.name, p.id, p.color, p.size, p.image, p.price, s.name as store, p.description,p.views', null, $where, null, null);
     $result = $obj->getResult();
     echo json_encode($result);
+    $views = (int)$result[0]['views'];
+    $obj->update('products', ['views' => $views + 1],"id='".$data['product']."'" );
+            
 
 } else {
     echo json_encode([

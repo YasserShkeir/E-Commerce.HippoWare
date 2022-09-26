@@ -352,14 +352,15 @@ window.onload = () => {
 
   /*************store registration*************/
 
-  function registeraStore() {
+  async function registeraStore() {
     images = "";
     reader = new FileReader();
-    reader.addEventListener("load", () => {
+    reader.addEventListener("load", async () => {
       images = reader.result;
       localStorage.setItem("store-img", images);
     });
     reader.readAsDataURL(storeImage.files[0]);
+    await delay(500)
     let config = {
       headers: { Authorization: localStorage.jwt },
     };
