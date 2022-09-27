@@ -18,12 +18,11 @@ function (response) {
 .catch(function (error) {
   console.log(error);
 })
-console.log(pie)
 
 //filling revenue chart
 
 let arr2 = new Array()
-arr2.push(["Sales", "Time"])
+arr2.push(["Sales", "Revenue"])
 const fillArr2 = (y,x) => {
   arr2.push([x,y])
 }
@@ -39,7 +38,8 @@ for (let i = 0; i < 84; i = i + 7) {
   todaycopy2.setDate(today.getDate() - i + 7)
   startDate = todaycopy.getFullYear().toString() + "-" + todaycopy.getMonth().toString() + "-" + todaycopy.getDate().toString()
   endDate = todaycopy2.getFullYear().toString() + "-" + todaycopy2.getMonth().toString() + "-" + todaycopy2.getDate().toString()
-  
+    
+  console.log(startDate + " " + endDate)
   let payload = {
     startdate: startDate, enddate: endDate
   }
@@ -56,7 +56,7 @@ today = new Date()
 todaycopy = new Date()
 todaycopy2 = new Date()
 let arr3 = new Array()
-arr3.push(["Sales", "Time"])
+arr3.push(["Sales", "Revenue"])
 const fillArr3 = (y,x) => {
   arr3.push([x,y])
 }
@@ -65,7 +65,6 @@ for (let i = 0; i < 12; i++) {
   todaycopy2.setMonth(today.getMonth() - i + 1)
   startDate = todaycopy.getFullYear().toString() + "-" + todaycopy.getMonth().toString() + "-" + todaycopy.getDate().toString()
   endDate = todaycopy2.getFullYear().toString() + "-" + todaycopy2.getMonth().toString() + "-" + todaycopy2.getDate().toString()
-  console.log(startDate + " " + endDate)
   let payload = {
     startdate: startDate, enddate: endDate
   }
@@ -83,7 +82,7 @@ today = new Date()
 todaycopy = new Date()
 todaycopy2 = new Date()
 let arr4 = new Array()
-arr4.push(["Sales", "Time"])
+arr4.push(["Sales", "Revenue"])
 const fillArr4 = (y,x) => {
   arr4.push([x,y])
 }
@@ -92,7 +91,6 @@ for (let i = 0; i < 12; i++) {
   todaycopy2.setFullYear(today.getFullYear() - i + 1)
   startDate = todaycopy.getFullYear().toString() + "-" + todaycopy.getMonth().toString() + "-" + todaycopy.getDate().toString()
   endDate = todaycopy2.getFullYear().toString() + "-" + todaycopy2.getMonth().toString() + "-" + todaycopy2.getDate().toString()
-  console.log(startDate + " " + endDate)
   let payload = {
     startdate: startDate, enddate: endDate
   }
@@ -152,6 +150,7 @@ function drawChart() {
 
 // REVENUE LINE GRAPH
   var data = google.visualization.arrayToDataTable(arr2);
+  console.log(arr2)
   // Set Options
   var options = {
     title: "Revenue",
@@ -230,7 +229,6 @@ function createNewDiscount(val,des,lim){
   }
   axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/create-discount-code.php', payload, config).then(
     function (response) {
-      console.log(response.data)
       discountModal.style.display="none"
     })
     .catch(function (error) {
@@ -281,7 +279,6 @@ const addDisc = (code) => {
 
 axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/discount-codes.php',null, config).then(
   function (response) {
-    console.log(response.data)
     if (response.data){
     for(const code of response.data){
       addDisc(code)
@@ -323,11 +320,9 @@ const logOut=document.getElementById('log-out')
     reader = new FileReader();
     reader.addEventListener("load", () => {
     images = reader.result 
-    console.log(images)
     localStorage.setItem('store-img',images)
     })
     reader.readAsDataURL(storeImage.files[0]);
-    console.log(localStorage.getItem('store-img'))
     let config = {
         headers: {'Authorization': localStorage.jwt}
     }
@@ -337,8 +332,6 @@ const logOut=document.getElementById('log-out')
         image:localStorage.getItem('store-img')}
     let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/seller/add-store.php',payload,config).then(
         function (response) {
-        console.log(response.data);
-        // I need this data here ^^
         return response.data;
     })
     .catch(function (error) {
@@ -354,7 +347,6 @@ const logOut=document.getElementById('log-out')
     registerStore.onclick=(e)=>{
         e.preventDefault();
         if(storeName.value && storeWelcome.value ){
-            console.log('fe')
             registeraStore()
           }
     }

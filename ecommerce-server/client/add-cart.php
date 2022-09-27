@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $quantity = $data['quantity'];
         $date = date('Y-m-d');
 
-        $obj->insert('cart_items',['products_id' => $product, 'cart_id' => $cart, 'quantity' => $quantity, 'size' => $size, 'date' => $date, 'paid' => 0]);
+        $obj->insert('cart_items',['products_id' => $product, 'cart_id' => $cart, 'quantity' => $quantity, 'size' => $size, 'date' => $date, 'paid' => 0, 'discount' => 0]);
         $result = $obj->getResult();
         echo json_encode($result);
 
