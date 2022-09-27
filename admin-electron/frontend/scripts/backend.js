@@ -15,7 +15,7 @@ login_btn.addEventListener('click', (e)=>{
         async function doPostRequest() {
             let payload = { "email": email_input.value,
                             "password": password_input.value };
-            let res = await axios.post('http://localhost/ecommerce-server/admin/admin-login.php', payload);
+            let res = await axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/admin/admin-login.php', payload);
             let data = res.data;
             if(!data.status){
                 window.location.reload();

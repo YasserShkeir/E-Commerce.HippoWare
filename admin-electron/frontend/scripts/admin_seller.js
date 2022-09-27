@@ -209,7 +209,7 @@ function editSeller(user_id, user_name){
     document.getElementById('seller-add').addEventListener('click', ()=>{
         
         let payload = {id: user_id, first_name: fname.value, last_name: lname.value, username: username.value, email: email.value, image: null, password: password.value, user_type_id: 2}
-        let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/seller-edit.php',payload).then(
+        let res = axios.post('http://localhost/E-Commerce.HippoWare/ecommerce-server/general/seller-add.php',payload).then(
             function (response) {
             document.getElementById('register-success').style.display='block'
             return response.data;
